@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.elementary",
+  "title": "09 · 三角、指數與對數求導",
+  "intro": "熟習基本函數的導數，並把它們與乘積法則結合。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.product-quotient",
+    "cis221-calculus.trigonometry",
+    "cis221-calculus.exp-log"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "三角求導使用弧度。sec x=1/cos x，所以 tan 的導數也可寫成 1/cos²x。ln x 的實數定義域是 x>0。aˣ 的導數為 aˣ ln a，其中 a>0。"
+    },
+    {
+      "type": "formula",
+      "text": "(sin x)′=cos x；(cos x)′=−sin x；(tan x)′=sec²x；(eˣ)′=eˣ；(ln x)′=1/x。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 y=x eˣ 的導數。\n① 設 u=x、v=eˣ，則 u′=1、v′=eˣ。\n② 用乘積法則 y′=eˣ+x eˣ。\n③ 提取公因子，得到 eˣ(1+x)。"
+    },
+    {
+      "type": "tip",
+      "text": "cos 的導數有負號；對 ln x 求導後仍須遵守原函數的定義域。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "d(sin x)/dx 是？",
+      "options": [
+        "cos x",
+        "−cos x",
+        "sin x",
+        "−sin x"
+      ],
+      "answer": 0,
+      "explanation": "sin 的導數為 cos，角度以弧度表示。"
+    },
+    {
+      "prompt": "d(cos x)/dx 是？",
+      "options": [
+        "sin x",
+        "cos x",
+        "−cos x",
+        "−sin x"
+      ],
+      "answer": 3,
+      "explanation": "cos 的導數是負的 sin。"
+    },
+    {
+      "prompt": "d(eˣ)/dx 是？",
+      "options": [
+        "e^(x−1)",
+        "1",
+        "eˣ",
+        "x eˣ"
+      ],
+      "answer": 2,
+      "explanation": "自然指數函數求導後保持不變。"
+    },
+    {
+      "prompt": "x>0 時，d(ln x)/dx 是？",
+      "options": [
+        "−1/x²",
+        "1/x",
+        "ln x",
+        "x"
+      ],
+      "answer": 1,
+      "explanation": "自然對數的導數為 1/x。"
+    },
+    {
+      "prompt": "d(2ˣ)/dx 是？",
+      "options": [
+        "2ˣ ln 2",
+        "x·2^(x−1)",
+        "2ˣ",
+        "ln 2"
+      ],
+      "answer": 0,
+      "explanation": "套用 (aˣ)′=aˣ ln a。"
+    },
+    {
+      "prompt": "cos x≠0 時，d(tan x)/dx 是？",
+      "options": [
+        "1/sin²x",
+        "−1/cos²x",
+        "cos x",
+        "1/cos²x"
+      ],
+      "answer": 3,
+      "explanation": "tan 的導數為 sec²x，而 sec x=1/cos x。"
+    },
+    {
+      "prompt": "d(3sin x−2cos x)/dx 是？",
+      "options": [
+        "−3cos x+2sin x",
+        "3sin x+2cos x",
+        "3cos x+2sin x",
+        "3cos x−2sin x"
+      ],
+      "answer": 2,
+      "explanation": "分別求導，第二項 −2cos x 變成 +2sin x。"
+    },
+    {
+      "prompt": "d(x eˣ)/dx 是？",
+      "options": [
+        "2x eˣ",
+        "eˣ(1+x)",
+        "eˣ",
+        "x eˣ"
+      ],
+      "answer": 1,
+      "explanation": "乘積法則得到 1·eˣ+x·eˣ。"
+    },
+    {
+      "prompt": "x>0 時，d(x ln x)/dx 是？",
+      "options": [
+        "ln x+1",
+        "1/x",
+        "ln x",
+        "x+1"
+      ],
+      "answer": 0,
+      "explanation": "乘積法則得到 ln x+x(1/x)=ln x+1。"
+    },
+    {
+      "prompt": "f(x)=sin x+eˣ，f′(0) 是？",
+      "options": [
+        "1",
+        "0",
+        "−1",
+        "2"
+      ],
+      "answer": 3,
+      "explanation": "f′=cos x+eˣ，在 0 為 1+1=2。"
+    }
+  ],
+  "passCount": 7
+}

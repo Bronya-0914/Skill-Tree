@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.rates",
+  "title": "05 · 平均與瞬間變化率",
+  "intro": "區分改變量、平均速度和瞬間速度，建立導數的幾何意義。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.graphs"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "改變量 Δf 只比較輸出差；變化率還要除以輸入差。割線連接兩點，切線描述一點附近的方向。位置對時間的導數是速度，速度對時間的導數是加速度。"
+    },
+    {
+      "type": "formula",
+      "text": "平均變化率=[f(b)−f(a)]/(b−a)；f′(x)=lim(h→0)[f(x+h)−f(x)]/h。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "s(t)=t²，求 t=1 到 t=3 的平均速度與 t=3 的瞬間速度。\n① 平均速度=(9−1)/(3−1)=4。\n② s′(t)=2t。\n③ t=3 的瞬間速度為 6。"
+    },
+    {
+      "type": "tip",
+      "text": "變化率有單位，例如位置為公尺、時間為秒，速度就是 m/s。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "f(x)=x²，從 x=1 到 x=4 的平均變化率是？",
+      "options": [
+        "5",
+        "15",
+        "3",
+        "8"
+      ],
+      "answer": 0,
+      "explanation": "(16−1)/(4−1)=15/3=5。"
+    },
+    {
+      "prompt": "f(x)=3x+2，x 從 1 變成 4，Δf 是多少？",
+      "options": [
+        "3",
+        "12",
+        "11",
+        "9"
+      ],
+      "answer": 3,
+      "explanation": "Δx=3，Δf=3×3=9。"
+    },
+    {
+      "prompt": "同一函數 f(x)=3x+2，在任何非零長度區間的平均變化率是？",
+      "options": [
+        "5",
+        "隨區間改變",
+        "3",
+        "2"
+      ],
+      "answer": 2,
+      "explanation": "直線斜率固定為 3。"
+    },
+    {
+      "prompt": "導數 f′(a) 的幾何意義是？",
+      "options": [
+        "x 軸截距",
+        "圖形在 x=a 的切線斜率",
+        "點的 y 座標",
+        "整段曲線的面積"
+      ],
+      "answer": 1,
+      "explanation": "導數描述局部瞬間變化率，也就是切線斜率。"
+    },
+    {
+      "prompt": "s(t)=t³，已知 v(t)=3t²，t=2 的瞬間速度是？",
+      "options": [
+        "12",
+        "8",
+        "6",
+        "4"
+      ],
+      "answer": 0,
+      "explanation": "s′(t)=3t²，代入 2 得 12。"
+    },
+    {
+      "prompt": "位置單位為 m、時間為 s，位置對時間導數的單位是？",
+      "options": [
+        "m·s",
+        "m/s²",
+        "s/m",
+        "m/s"
+      ],
+      "answer": 3,
+      "explanation": "導數單位是輸出單位除以輸入單位。"
+    },
+    {
+      "prompt": "f(x)=x² 的差商 [f(x+h)−f(x)]/h（h≠0）是？",
+      "options": [
+        "x+h",
+        "h²",
+        "2x+h",
+        "2x"
+      ],
+      "answer": 2,
+      "explanation": "展開 (x+h)²−x²=2xh+h²，再除以 h。"
+    },
+    {
+      "prompt": "常數函數 f(x)=9 的瞬間變化率是？",
+      "options": [
+        "不存在",
+        "0",
+        "9",
+        "1"
+      ],
+      "answer": 1,
+      "explanation": "輸出固定不變，任何差商都為 0。"
+    },
+    {
+      "prompt": "若 f′(a)<0，代表圖形在該點的切線？",
+      "options": [
+        "向右下傾斜",
+        "向右上傾斜",
+        "水平",
+        "必定垂直"
+      ],
+      "answer": 0,
+      "explanation": "負斜率表示 x 增加時切線上的 y 減少。"
+    },
+    {
+      "prompt": "v(t)=5t−2 的加速度是？",
+      "options": [
+        "5t",
+        "−2",
+        "5t²/2",
+        "5"
+      ],
+      "answer": 3,
+      "explanation": "加速度是速度的導數，v′(t)=5。"
+    }
+  ],
+  "passCount": 7
+}

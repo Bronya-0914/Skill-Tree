@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f3f5">
+  <meta name="description" content="從 Start 開始，用互動技能樹、圖解與練習，逐步掌握微分和積分。">
+  <title>微積分漫遊 · Calculus Skill Tree</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%231a1a1e'/%3E%3Ctext x='19' y='46' font-size='46' fill='%23e6e6e8'%3E∫%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    /* 深淺主題：先於樣版繪製套用，避免載入時閃白。預設深色，與風格來源一致。 */
+    (function(){
+      var KEY='skill-tree-theme';
+      function paint(dark){
+        document.documentElement.classList.toggle('dark',dark);
+        var meta=document.querySelector('meta[name="theme-color"]');
+        if(meta)meta.setAttribute('content',dark?'#0a0a0b':'#f3f3f5');
+      }
+      var dark=true;
+      try{var saved=localStorage.getItem(KEY);dark=saved!=='light';}catch(_){}
+      paint(dark);
+      document.addEventListener('DOMContentLoaded',function(){
+        var btn=document.getElementById('theme-toggle');
+        if(!btn)return;
+        btn.addEventListener('click',function(){
+          dark=!document.documentElement.classList.contains('dark');
+          paint(dark);
+          try{localStorage.setItem(KEY,dark?'dark':'light');}catch(_){}
+          btn.setAttribute('aria-label',dark?'切換為淺色':'切換為深色');
+        });
+      });
+    })();
+  </script>
+  <script src="learning-packs/catalog.js" defer></script>
+  <script src="js/vendor/fflate.js" defer></script>
+  <script src="js/topic-packs.js" defer></script>
+  <script src="js/workspace.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="js/pack-ui.js" defer></script>
+  <script src="js/glow-settings.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#lesson">跳至學習內容</a>
+
+  <!-- 抽屜／側板開關：純 CSS，不綁任何 JS -->
+  <input type="checkbox" id="nav-toggle" class="overlay-toggle" tabindex="-1" aria-hidden="true">
+  <input type="checkbox" id="lesson-toggle" class="overlay-toggle" tabindex="-1" aria-hidden="true">
+
+  <!-- 全螢幕工作台畫布 -->
+  <section class="stage map" id="map" tabindex="0" aria-label="技能樹畫布。可拖曳，使用右下按鈕縮放。Tab 可選擇各節點。">
+    <div class="tree-world" id="world"><svg id="connections" viewBox="0 0 760 950" aria-hidden="true"></svg><div id="nodes"></div></div>
+    <div class="map-empty" id="map-empty"><span>每一棵大樹，都從這裡開始</span><p>點選 Start，開啟你的學習旅程</p><span class="empty-arrow">↑</span></div>
+    <div class="map-legend"><span><i class="lit"></i>已掌握</span><span><i class="available"></i>可學習</span><span><i class="locked"></i>待解鎖</span></div>
+    <div class="map-tools"><button id="zoom-out" aria-label="縮小">−</button><output id="zoom-label">100%</output><button id="zoom-in" aria-label="放大">＋</button><button id="fit" aria-label="將技能樹置中">⊙</button><button class="theme-toggle" id="theme-toggle" type="button" aria-label="切換深淺色" title="切換深淺色（深 / 淺）"><span class="ic-wrap" aria-hidden="true"><svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span></button></div>
+  </section>
+
+  <!-- 左上浮動膠囊 -->
+  <header class="site-card">
+    <label class="round-btn" for="nav-toggle" title="導覽選單" aria-label="開啟導覽選單"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></label>
+    <span class="brand-icon" aria-hidden="true">∫</span>
+    <span class="brand-text">微積分漫遊<small>CALCULUS / SKILL TREE</small></span>
+    <label class="round-btn lesson-switch" for="lesson-toggle" title="切換課程面板" aria-label="切換課程面板"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M14 4v16"/></svg></label>
+  </header>
+
+  <!-- 右上工具組 -->
+  <div class="topright-ctl"><button class="round-btn" id="reset" title="重設進度" aria-label="重設進度"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button></div>
+
+  <!-- 左側抽屜：預設收合 -->
+  <label class="drawer-backdrop" for="nav-toggle" aria-hidden="true"></label>
+  <aside class="drawer" aria-label="導覽與學習包">
+    <div class="drawer-head"><div><span class="eyebrow">YOUR LEARNING LANDSCAPE</span><h2>微積分漫遊</h2></div><label class="drawer-close" for="nav-toggle" title="收起選單" aria-label="收起選單">✕</label></div>
+    <div class="drawer-progress"><div><span>你的探索進度</span><strong id="progress-text">載入中…</strong></div><progress id="progress" value="0" max="1" aria-label="課程完成進度"></progress><small id="progress-caption">第一步，從 Start 開始。</small></div>
+    <div class="drawer-tools"><label class="sr-only" for="topic-jump">前往主題</label><select id="topic-jump"><option value="">前往主題…</option></select><button class="quiet" id="manage-packs">主題學習包 <span id="pack-count">0</span> ＋</button></div>
+    <p id="catalog-warning" class="pack-error" role="alert" hidden></p>
+    <details class="drawer-group" open><summary>功能介紹</summary><div class="path-notes"><div><span class="path-symbol derivative">d</span><div><h3>微分 · 看懂瞬間的變化</h3><p>從斜率出發，掌握求導規則與變化率。</p></div></div><div><span class="path-symbol integral">∫</span><div><h3>積分 · 把微小的量加起來</h3><p>從反導函數出發，理解面積與累積。</p></div></div><div><span class="path-symbol union">∞</span><div><h3>連起兩種思考方式</h3><p>用微積分基本定理，接通兩條學習路線。</p></div></div></div></details>
+    <section class="glow-settings" aria-label="光效設定">
+      <h3>光效設定</h3>
+      <p>點亮技能時的光芒顏色，選色後即時套用並保存在此瀏覽器。</p>
+      <div class="glow-swatches" id="glow-swatches" role="group" aria-label="預設光效顏色">
+        <button class="glow-swatch" type="button" data-color="#ffffff" style="--swatch:#ffffff" aria-label="白光" aria-pressed="true"></button>
+        <button class="glow-swatch" type="button" data-color="#f2d9a8" style="--swatch:#f2d9a8" aria-label="暖白" aria-pressed="false"></button>
+        <button class="glow-swatch" type="button" data-color="#e8b264" style="--swatch:#e8b264" aria-label="琥珀" aria-pressed="false"></button>
+        <button class="glow-swatch" type="button" data-color="#e0655f" style="--swatch:#e0655f" aria-label="珊瑚" aria-pressed="false"></button>
+        <button class="glow-swatch" type="button" data-color="#a58bd6" style="--swatch:#a58bd6" aria-label="紫" aria-pressed="false"></button>
+        <button class="glow-swatch" type="button" data-color="#7aa2e3" style="--swatch:#7aa2e3" aria-label="藍" aria-pressed="false"></button>
+        <button class="glow-swatch" type="button" data-color="#4fc3b8" style="--swatch:#4fc3b8" aria-label="青綠" aria-pressed="false"></button>
+        <button class="glow-swatch" type="button" data-color="#8a8a92" style="--swatch:#8a8a92" aria-label="中性灰" aria-pressed="false"></button>
+      </div>
+      <div class="glow-picker"><input type="color" id="glow-color" value="#ffffff" aria-label="自訂光效顏色"><label for="glow-color">自訂顏色</label><output id="glow-value">#FFFFFF</output></div>
+      <div class="glow-actions"><button class="quiet" id="glow-preview" type="button">預覽光效</button><button class="quiet" id="glow-reset" type="button">還原白光</button><span class="glow-sample" id="glow-sample" aria-hidden="true">點亮</span></div>
+      <p class="glow-hint">深淺主題各自保留亮度；系統設定為「減少動態」時不播放動畫。</p>
+    </section>
+    <div class="drawer-foot"><span>↔ 拖曳探索 · 滾輪縮放 · 雙指縮放</span><span id="storage-note">進度自動保存在此瀏覽器</span></div>
+  </aside>
+
+  <!-- 右側課程側板：桌機預設展開、手機預設收合 -->
+  <aside class="lesson-card" id="lesson" tabindex="-1" aria-label="課程內容"></aside>
+
+  <!-- 底部狀態列 -->
+  <div class="status-dock"><span>THE KNOWLEDGE MAP</span><span>每一步，都算進步</span></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="reset-dialog"><h2>重新開始這趟旅程？</h2><p>這會清除本瀏覽器的點亮紀錄與練習成績。</p><div class="dialog-actions"><button class="quiet" id="cancel-reset">保留進度</button><button class="primary" id="confirm-reset">重新開始</button></div></dialog>
+  <dialog id="pack-dialog" aria-labelledby="pack-dialog-title">
+    <div class="pack-dialog-heading"><div><span class="eyebrow">GROW YOUR KNOWLEDGE</span><h2 id="pack-dialog-title">主題學習包</h2></div><button id="close-packs" class="quiet" aria-label="關閉主題學習包">✕</button></div>
+    <p>選擇一個 ZIP，先預覽節點，再確認加入技能樹。</p>
+    <label class="pack-drop" id="pack-drop" for="pack-file"><strong>選擇或拖放主題 ZIP</strong><span>包含 topic.json 與 nodes/*.json · 最多 5 MB</span><input id="pack-file" type="file" accept=".zip,application/zip"></label>
+    <div class="pack-links"><a href="learning-packs/cis221-calculus.zip" download>↓ 下載 CIS221 學習包</a><a href="PACK_FORMAT.md" target="_blank" rel="noopener">查看製作格式 ↗</a></div>
+    <p id="pack-status" role="status" aria-live="polite"></p>
+    <section id="pack-preview" hidden aria-label="匯入預覽"></section>
+    <div class="dialog-actions" id="pack-confirm-actions" hidden><button class="quiet" id="cancel-import">取消這次匯入</button><button class="primary" id="confirm-import">確認加入技能樹</button></div>
+    <h3 class="library-heading">目前的學習包</h3><div id="pack-library"></div>
+    <p class="pack-footnote">網站會自動載入預設學習包。上傳的學習包及進度保存在此瀏覽器，可匯出 ZIP 備份教材；更新同一節點會保留已完成紀錄。</p>
+  </dialog>
+</body>
+</html>

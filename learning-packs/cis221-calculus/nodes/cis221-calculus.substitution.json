@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.substitution",
+  "title": "22 · 換元積分與反向鏈式法則",
+  "intro": "找出內層函數及其導數，把複合積分化為熟悉形式。",
+  "kind": "integral",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.elementary-integrals",
+    "cis221-calculus.chain"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "換元是把鏈式法則倒過來使用。先選內層為 u，再把 dx 與其他因子合成 du。若只差常數倍，可以補償；若還剩未處理的 x，就要檢查換元是否完整。"
+    },
+    {
+      "type": "formula",
+      "text": "u=g(x)，du=g′(x) dx：∫f(g(x))g′(x) dx=∫f(u) du。\n定積分換元時，上下限同步改為 g(a)、g(b)。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 ∫2x cos(x²) dx。\n① 設 u=x²，du=2x dx。\n② 積分化為 ∫cos u du=sin u+C。\n③ 代回得 sin(x²)+C。"
+    },
+    {
+      "type": "tip",
+      "text": "定積分可全程使用新變量和新上下限，或先求原函數代回 x；不要混用 u 的式子和 x 的上下限。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "計算 ∫2x cos(x²) dx，最直接的換元是？",
+      "options": [
+        "u=cos x",
+        "u=2x cos x",
+        "u=x³",
+        "u=x²"
+      ],
+      "answer": 3,
+      "explanation": "內層是 x²，而外面的 2x dx 正好是其微分。"
+    },
+    {
+      "prompt": "∫2x e^(x²) dx 是？",
+      "options": [
+        "e^(x²)/(2x)+C",
+        "x²e^(x²)+C",
+        "e^(x²)+C",
+        "2e^(x²)+C"
+      ],
+      "answer": 2,
+      "explanation": "設 u=x²，得到 ∫e^u du。"
+    },
+    {
+      "prompt": "∫3(3x+1)² dx 是？",
+      "options": [
+        "(3x+1)²/3+C",
+        "(3x+1)³/3+C",
+        "(3x+1)³+C",
+        "3(3x+1)³+C"
+      ],
+      "answer": 1,
+      "explanation": "u=3x+1，du=3dx，積分為 u³/3+C。"
+    },
+    {
+      "prompt": "∫cos(2x) dx 是？",
+      "options": [
+        "(1/2)sin(2x)+C",
+        "2sin(2x)+C",
+        "sin(2x)+C",
+        "−(1/2)sin(2x)+C"
+      ],
+      "answer": 0,
+      "explanation": "內層導數是 2，所以積分係數要除以 2。"
+    },
+    {
+      "prompt": "∫e^(3x) dx 是？",
+      "options": [
+        "3e^(3x)+C",
+        "e^(3x)+C",
+        "e^(3x)/x+C",
+        "(1/3)e^(3x)+C"
+      ],
+      "answer": 3,
+      "explanation": "求導驗算：(1/3)×3e^(3x)=e^(3x)。"
+    },
+    {
+      "prompt": "∫2x/(x²+1) dx 是？",
+      "options": [
+        "2ln(x²+1)+C",
+        "ln|x|+C",
+        "ln(x²+1)+C",
+        "1/(x²+1)+C"
+      ],
+      "answer": 2,
+      "explanation": "u=x²+1>0，du=2x dx，得到 ln u+C。"
+    },
+    {
+      "prompt": "x>0 時，∫(ln x)/x dx 是？",
+      "options": [
+        "(ln x)²+C",
+        "(ln x)²/2+C",
+        "ln x+C",
+        "1/(2x²)+C"
+      ],
+      "answer": 1,
+      "explanation": "令 u=ln x，du=dx/x，積分變為 ∫u du。"
+    },
+    {
+      "prompt": "用 u=x² 換元 ∫[0,2]2x e^(x²) dx，新上下限是？",
+      "options": [
+        "0 到 4",
+        "0 到 2",
+        "2 到 4",
+        "0 到 e⁴"
+      ],
+      "answer": 0,
+      "explanation": "把原上下限代入 u=x²，得到 0²=0、2²=4。"
+    },
+    {
+      "prompt": "∫[0,1]2x/(x²+1) dx 是？",
+      "options": [
+        "1",
+        "2ln 2",
+        "ln 3",
+        "ln 2"
+      ],
+      "answer": 3,
+      "explanation": "原函數 ln(x²+1)，代入得 ln 2−ln 1=ln 2。"
+    },
+    {
+      "prompt": "∫x√(x²+4) dx 是？",
+      "options": [
+        "√(x²+4)+C",
+        "(x²+4)^(3/2)/2+C",
+        "(x²+4)^(3/2)/3+C",
+        "(x²+4)^(3/2)+C"
+      ],
+      "answer": 2,
+      "explanation": "u=x²+4，x dx=du/2，得到 (1/2)×(2/3)u^(3/2)+C。"
+    }
+  ],
+  "passCount": 7
+}

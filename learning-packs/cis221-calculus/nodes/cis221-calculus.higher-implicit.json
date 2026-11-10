@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.higher-implicit",
+  "title": "16 · 高階與隱式偏導數",
+  "intro": "計算二階偏導、混合偏導，以及隱式曲面上的局部斜率。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.partials",
+    "cis221-calculus.implicit"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "高階偏導是對一階偏導再求導。若混合二階偏導在鄰域內連續，交換求導次序得到相同結果。隱式求 z_x 時，固定 y，把 z 視為 x 的函數。"
+    },
+    {
+      "type": "formula",
+      "text": "f_xy=(f_x)_y；若 F(x,y,z)=0 且 F_z≠0，z_x=−F_x/F_z、z_y=−F_y/F_z。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "球面 x²+y²+z²=9。\n① 對 x 求導得 2x+2z z_x=0。\n② z≠0 時，z_x=−x/z。\n③ 在 (1,2,2)，z_x=−1/2，且該點滿足球面方程。"
+    },
+    {
+      "type": "tip",
+      "text": "混合偏導相等需要適當連續性條件。解隱式偏導時要檢查 F_z 是否為零。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "f=x³y，f_xx 是？",
+      "options": [
+        "3x²y",
+        "6xy",
+        "3x²",
+        "6x"
+      ],
+      "answer": 1,
+      "explanation": "先得 f_x=3x²y，再對 x 求導得 6xy。"
+    },
+    {
+      "prompt": "f=x²y³，f_xy=(f_x)_y 是？",
+      "options": [
+        "6xy²",
+        "2xy³",
+        "3x²y²",
+        "6x²y"
+      ],
+      "answer": 0,
+      "explanation": "f_x=2xy³，再對 y 求導得 6xy²。"
+    },
+    {
+      "prompt": "f=x²+y²，f_xy 是？",
+      "options": [
+        "2",
+        "4",
+        "2x+2y",
+        "0"
+      ],
+      "answer": 3,
+      "explanation": "f_x=2x，對 y 求導為 0。"
+    },
+    {
+      "prompt": "哪個條件足以保證 f_xy=f_yx？",
+      "options": [
+        "f 在該點等於零",
+        "f_x 在該點等於 f_y",
+        "混合二階偏導在該點鄰域連續",
+        "f 只要有定義"
+      ],
+      "answer": 2,
+      "explanation": "混合偏導的連續性是交換次序的常用充分條件。"
+    },
+    {
+      "prompt": "x²+y²+z²=9、z≠0，固定 y 求 z_x 是？",
+      "options": [
+        "x/z",
+        "−x/z",
+        "−y/z",
+        "−z/x"
+      ],
+      "answer": 1,
+      "explanation": "2x+2z z_x=0，解得 −x/z。"
+    },
+    {
+      "prompt": "球面 x²+y²+z²=9、z≠0，固定 x 求 z_y 是？",
+      "options": [
+        "−y/z",
+        "−x/z",
+        "y/z",
+        "−z/y"
+      ],
+      "answer": 0,
+      "explanation": "對 y 求導得到 2y+2z z_y=0。"
+    },
+    {
+      "prompt": "球面 x²+y²+z²=9 在 (1,2,2) 的 z_x 是？",
+      "options": [
+        "−1",
+        "1/2",
+        "−2",
+        "−1/2"
+      ],
+      "answer": 3,
+      "explanation": "z_x=−x/z=−1/2。"
+    },
+    {
+      "prompt": "由 x+y+z=6，把 z 視為 x、y 的函數，z_x 是？",
+      "options": [
+        "0",
+        "6",
+        "−1",
+        "1"
+      ],
+      "answer": 2,
+      "explanation": "固定 y 後求導，1+z_x=0。"
+    },
+    {
+      "prompt": "f=x²y²，f_yy 是？",
+      "options": [
+        "2x²y",
+        "2x²",
+        "2y²",
+        "4xy"
+      ],
+      "answer": 1,
+      "explanation": "先對 y 得 2x²y，再對 y 得 2x²。"
+    },
+    {
+      "prompt": "若 F_z=0，能否直接使用 z_x=−F_x/F_z？",
+      "options": [
+        "不能，需另行分析局部關係",
+        "可以，答案必定為零",
+        "可以，直接約掉 F_z",
+        "可以，所有曲面都有有限斜率"
+      ],
+      "answer": 0,
+      "explanation": "分母為零時該公式不能直接使用，局部也未必可把 z 寫成可微函數。"
+    }
+  ],
+  "passCount": 7
+}

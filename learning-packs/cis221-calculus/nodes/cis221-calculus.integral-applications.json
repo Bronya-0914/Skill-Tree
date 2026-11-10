@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.integral-applications",
+  "title": "23 · 積分應用與初始條件",
+  "intro": "從變化率重建總量，並用初始資料決定積分常數。",
+  "kind": "integral",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.definite",
+    "cis221-calculus.elementary-integrals"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "速度積分得到位移，速率積分得到路程；有折返時兩者不同。加速度先積分為速度，再積分為位置，每次都需要相應初始條件。邊際成本積分得到成本增加量，再加固定成本。"
+    },
+    {
+      "type": "formula",
+      "text": "s′(t)=v(t)，v′(t)=a(t)；s(b)−s(a)=∫[a,b]v(t) dt。\n總路程=∫[a,b]|v(t)| dt；總成本 C(q)=C(0)+∫[0,q]C′(u) du。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "物體 a(t)=2、v(0)=3、s(0)=5。\n① v(t)=2t+C₁，由 v(0)=3 得 v=2t+3。\n② s(t)=t²+3t+C₂，由 s(0)=5 得 s=t²+3t+5。\n③ t=2 時位置為 15，這段時間的位移為 15−5=10。"
+    },
+    {
+      "type": "tip",
+      "text": "先寫清正在求的是位置、位移、路程還是總量。初始位置不等於位移。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "v(t)=2t（米/秒），0≤t≤3 的位移是多少米？",
+      "options": [
+        "3",
+        "18",
+        "9",
+        "6"
+      ],
+      "answer": 2,
+      "explanation": "位移 ∫[0,3]2t dt=[t²]₀³=9 米。"
+    },
+    {
+      "prompt": "a(t)=4、v(0)=1，速度函數是？",
+      "options": [
+        "v(t)=4",
+        "v(t)=4t+1",
+        "v(t)=2t²+1",
+        "v(t)=4t"
+      ],
+      "answer": 1,
+      "explanation": "積分得到 4t+C，初始條件給 C=1。"
+    },
+    {
+      "prompt": "v(t)=3、s(0)=5，s(2) 是？",
+      "options": [
+        "11",
+        "6",
+        "8",
+        "15"
+      ],
+      "answer": 0,
+      "explanation": "s(t)=3t+5，所以 s(2)=11。"
+    },
+    {
+      "prompt": "v(t)=t−1，0≤t≤2 的位移是？",
+      "options": [
+        "1",
+        "2",
+        "−1",
+        "0"
+      ],
+      "answer": 3,
+      "explanation": "∫[0,2](t−1) dt=[t²/2−t]₀²=0。"
+    },
+    {
+      "prompt": "v(t)=t−1，0≤t≤2 的總路程是？",
+      "options": [
+        "2",
+        "1/2",
+        "1",
+        "0"
+      ],
+      "answer": 2,
+      "explanation": "在 t=1 分段，兩個三角形面積各 1/2，總路程為 1。"
+    },
+    {
+      "prompt": "邊際成本 C′(q)=2q+5、固定成本 C(0)=10，C(3) 是？",
+      "options": [
+        "40",
+        "34",
+        "24",
+        "19"
+      ],
+      "answer": 1,
+      "explanation": "C(q)=q²+5q+10，代入 3 得 9+15+10=34。"
+    },
+    {
+      "prompt": "圓面積 A(r) 滿足 A′(r)=2πr、A(0)=0，A(r) 是？",
+      "options": [
+        "πr²",
+        "2πr²",
+        "2πr",
+        "πr³/3"
+      ],
+      "answer": 0,
+      "explanation": "積分 2πr 得 πr²+C，初始條件給 C=0。"
+    },
+    {
+      "prompt": "球體積 V(r) 滿足 V′(r)=4πr²、V(0)=0，V(r) 是？",
+      "options": [
+        "4πr²",
+        "πr³",
+        "12πr³",
+        "4πr³/3"
+      ],
+      "answer": 3,
+      "explanation": "對半徑積分，∫4πr² dr=4πr³/3+C，且 C=0。"
+    },
+    {
+      "prompt": "水流入速度為 5 公升/分鐘，持續 4 分鐘，原有 7 公升且沒有流出，最後有多少公升？",
+      "options": [
+        "12",
+        "35",
+        "27",
+        "20"
+      ],
+      "answer": 2,
+      "explanation": "新增水量 5×4=20，再加原有的 7 得 27。"
+    },
+    {
+      "prompt": "a(t)=2、v(0)=0、s(0)=1，位置 s(t) 是？",
+      "options": [
+        "2t²+1",
+        "t²+1",
+        "2t+1",
+        "t²"
+      ],
+      "answer": 1,
+      "explanation": "先得 v=2t，再得 s=t²+C，由 s(0)=1 得 C=1。"
+    }
+  ],
+  "passCount": 7
+}

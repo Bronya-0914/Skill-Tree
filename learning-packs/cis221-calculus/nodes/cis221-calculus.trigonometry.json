@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.trigonometry",
+  "title": "03 · 三角函數與弧度",
+  "intro": "熟習常用三角函數值、週期與弧度制，為求導和積分作準備。",
+  "kind": "base",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.graphs"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "在直角三角形，sin 是對邊除以斜邊，cos 是鄰邊除以斜邊。sin、cos 的週期為 2π，tan 的週期為 π。微積分中的三角求導公式使用弧度。"
+    },
+    {
+      "type": "formula",
+      "text": "sin²x+cos²x=1；tan x=sin x/cos x（cos x≠0）；180°=π 弧度。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 sin(π/6) 與 cos(π/3)。\n① π/6=30°，π/3=60°。\n② 由特殊直角三角形得 sin30°=1/2。\n③ cos60° 亦為 1/2。"
+    },
+    {
+      "type": "tip",
+      "text": "注意函數的輸入單位，並檢查 tan 的分母 cos 是否為零。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "90° 等於多少弧度？",
+      "options": [
+        "2π",
+        "π/4",
+        "π/2",
+        "π"
+      ],
+      "answer": 2,
+      "explanation": "90×π/180=π/2。"
+    },
+    {
+      "prompt": "sin(π/6) 等於？",
+      "options": [
+        "1",
+        "1/2",
+        "√3/2",
+        "0"
+      ],
+      "answer": 1,
+      "explanation": "π/6 是 30°，正弦為 1/2。"
+    },
+    {
+      "prompt": "cos(π) 等於？",
+      "options": [
+        "−1",
+        "1",
+        "0",
+        "1/2"
+      ],
+      "answer": 0,
+      "explanation": "單位圓上角度 π 的點是 (−1,0)，cos 是 x 座標。"
+    },
+    {
+      "prompt": "tan(π/4) 等於？",
+      "options": [
+        "0",
+        "−1",
+        "√3",
+        "1"
+      ],
+      "answer": 3,
+      "explanation": "sin(π/4) 和 cos(π/4) 相等，商為 1。"
+    },
+    {
+      "prompt": "sin x 的基本週期是？",
+      "options": [
+        "π/2",
+        "4π",
+        "2π",
+        "π"
+      ],
+      "answer": 2,
+      "explanation": "x 增加 2π 時，sin 完成一個基本循環。"
+    },
+    {
+      "prompt": "y=sin(2x) 的基本週期是？",
+      "options": [
+        "π/2",
+        "π",
+        "2π",
+        "4π"
+      ],
+      "answer": 1,
+      "explanation": "週期為 2π/2=π。"
+    },
+    {
+      "prompt": "sin²x+cos²x 的值是？",
+      "options": [
+        "1",
+        "0",
+        "2",
+        "sin(2x)"
+      ],
+      "answer": 0,
+      "explanation": "這是三角函數的基本恆等式。"
+    },
+    {
+      "prompt": "哪個輸入令 tan x 沒有定義？",
+      "options": [
+        "0",
+        "π/4",
+        "π",
+        "π/2"
+      ],
+      "answer": 3,
+      "explanation": "cos(π/2)=0，所以 tan 的分母為零。"
+    },
+    {
+      "prompt": "對所有實數 x，sin(−x) 等於？",
+      "options": [
+        "cos x",
+        "−cos x",
+        "−sin x",
+        "sin x"
+      ],
+      "answer": 2,
+      "explanation": "sin 是奇函數，輸入變號時輸出也變號。"
+    },
+    {
+      "prompt": "y=3cos x−2 的最大值是？",
+      "options": [
+        "−2",
+        "1",
+        "3",
+        "5"
+      ],
+      "answer": 1,
+      "explanation": "cos x 最大為 1，因此最大輸出為 3×1−2=1。"
+    }
+  ],
+  "passCount": 7
+}

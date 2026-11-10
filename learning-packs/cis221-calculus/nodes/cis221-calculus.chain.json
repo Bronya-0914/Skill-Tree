@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.chain",
+  "title": "10 · 複合函數與鏈式法則",
+  "intro": "辨認內外層函數，把複合函數的求導拆成清楚步驟。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.elementary",
+    "cis221-calculus.product-quotient"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "先對外層求導，保留內層原樣，再乘內層導數。外層可以是冪次、三角、指數或對數函數。若同時包含乘積或商，需要結合對應法則。"
+    },
+    {
+      "type": "formula",
+      "text": "[f(g(x))]′=f′(g(x))·g′(x)。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 y=(2x²+1)³ 的導數。\n① 外層是 u³，內層 u=2x²+1。\n② 外層導數為 3u²，內層導數為 4x。\n③ y′=12x(2x²+1)²。"
+    },
+    {
+      "type": "tip",
+      "text": "檢查最後是否乘了內層導數。對數複合函數還要檢查真數為正。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "d[(3x+1)⁴]/dx 是？",
+      "options": [
+        "4(3x+1)³",
+        "12(3x+1)⁴",
+        "3(3x+1)³",
+        "12(3x+1)³"
+      ],
+      "answer": 3,
+      "explanation": "外層 4(3x+1)³ 再乘內層導數 3。"
+    },
+    {
+      "prompt": "d[sin(2x)]/dx 是？",
+      "options": [
+        "−2cos(2x)",
+        "2sin(2x)",
+        "2cos(2x)",
+        "cos(2x)"
+      ],
+      "answer": 2,
+      "explanation": "sin 變 cos，再乘 2。"
+    },
+    {
+      "prompt": "d[cos(x²)]/dx 是？",
+      "options": [
+        "2x sin(x²)",
+        "−2x sin(x²)",
+        "−sin(x²)",
+        "2x cos(x²)"
+      ],
+      "answer": 1,
+      "explanation": "外層導數 −sin(x²)，乘內層 2x。"
+    },
+    {
+      "prompt": "d[e^(5x)]/dx 是？",
+      "options": [
+        "5e^(5x)",
+        "e^(5x)",
+        "5x e^(5x)",
+        "e^(5x−1)"
+      ],
+      "answer": 0,
+      "explanation": "外層 e^u 的導數仍為 e^u，再乘 5。"
+    },
+    {
+      "prompt": "d[ln(x²+1)]/dx 是？",
+      "options": [
+        "1/(x²+1)",
+        "2/(x²+1)",
+        "ln(2x)",
+        "2x/(x²+1)"
+      ],
+      "answer": 3,
+      "explanation": "套用 g′/g，得到 2x/(x²+1)。"
+    },
+    {
+      "prompt": "x>−1 時，d[√(x+1)]/dx 是？",
+      "options": [
+        "1/√(x+1)",
+        "2√(x+1)",
+        "1/(2√(x+1))",
+        "√(x+1)/2"
+      ],
+      "answer": 2,
+      "explanation": "外層平方根導數為 1/(2√u)，內層導數為 1。"
+    },
+    {
+      "prompt": "d[(x²−1)²]/dx 是？",
+      "options": [
+        "2x(x²−1)",
+        "4x(x²−1)",
+        "2(x²−1)",
+        "4x²(x²−1)"
+      ],
+      "answer": 1,
+      "explanation": "2(x²−1) 乘 2x，得到 4x(x²−1)。"
+    },
+    {
+      "prompt": "若 y=f(u)、u=g(x)，dy/dx 等於？",
+      "options": [
+        "(dy/du)(du/dx)",
+        "(dy/du)+(du/dx)",
+        "(dy/du)/(du/dx)",
+        "du/dy"
+      ],
+      "answer": 0,
+      "explanation": "鏈式法則把沿途變化率相乘。"
+    },
+    {
+      "prompt": "f(x)=(x²+2)³，f′(1) 是？",
+      "options": [
+        "27",
+        "18",
+        "6",
+        "54"
+      ],
+      "answer": 3,
+      "explanation": "f′=6x(x²+2)²，代入 1 得 6×9=54。"
+    },
+    {
+      "prompt": "d[x sin(x²)]/dx 是？",
+      "options": [
+        "sin(x²)+2x cos(x²)",
+        "x cos(x²)",
+        "sin(x²)+2x²cos(x²)",
+        "2x cos(x²)"
+      ],
+      "answer": 2,
+      "explanation": "乘積法則給 sin(x²)+x·[2x cos(x²)]。"
+    }
+  ],
+  "passCount": 7
+}

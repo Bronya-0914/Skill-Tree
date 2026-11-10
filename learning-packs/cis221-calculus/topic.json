@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus",
+  "title": "CIS221 微積分完整學習路線",
+  "version": 1,
+  "description": "27 個循序漸進的學習節點，涵蓋代數、微分、多變量、積分及數值方法。每節點 10 題，附教學、例題與解析。",
+  "attachTo": "start"
+}

@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.multi-chain",
+  "title": "17 · 多變量鏈式法則",
+  "intro": "沿每條變量依賴路徑相乘，再把不同路徑的貢獻相加。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.partials",
+    "cis221-calculus.chain"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "當多個中間變量一起改變，總變化率要計入所有路徑。若中間變量依賴 u、v，求對 u 的偏導時固定 v。可先代入化簡，作為鏈式法則的交叉檢查。"
+    },
+    {
+      "type": "formula",
+      "text": "z=f(x,y)，x=x(t)、y=y(t)：dz/dt=f_x x′+f_y y′。\nz_u=f_x x_u+f_y y_u。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "z=x²+y²，x=t、y=2t。\n① f_x=2x、f_y=2y，x′=1、y′=2。\n② dz/dt=2x+4y。\n③ 代回得 10t；直接寫成 z=5t² 也得到同一結果。"
+    },
+    {
+      "type": "tip",
+      "text": "不要只乘一條路徑。求導結束後，把仍含中間變量的式子代回題目需要的變量。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "z=f(x,y)，x=x(t)、y=y(t)，dz/dt 的公式是？",
+      "options": [
+        "f_x x′+f_y y′",
+        "f_x+f_y",
+        "f_x x′−f_y y′",
+        "f_x f_y"
+      ],
+      "answer": 0,
+      "explanation": "每條路徑相乘，再把 x、y 兩條路徑相加。"
+    },
+    {
+      "prompt": "z=x²+y²，x=t、y=2t，dz/dt 是？",
+      "options": [
+        "6t",
+        "5t",
+        "10",
+        "10t"
+      ],
+      "answer": 3,
+      "explanation": "代入得 z=5t²，所以導數為 10t。"
+    },
+    {
+      "prompt": "z=xy，x=t²、y=t，t=2 時 dz/dt 是？",
+      "options": [
+        "6",
+        "4",
+        "12",
+        "8"
+      ],
+      "answer": 2,
+      "explanation": "z=t³，導數為 3t²，在 2 得 12。"
+    },
+    {
+      "prompt": "z=x+y，x=u+v、y=u−v，z_u 是？",
+      "options": [
+        "−2",
+        "2",
+        "0",
+        "1"
+      ],
+      "answer": 1,
+      "explanation": "z=(u+v)+(u−v)=2u，對 u 求偏導為 2。"
+    },
+    {
+      "prompt": "z=x+y，x=u+v、y=u−v，z_v 是？",
+      "options": [
+        "0",
+        "2",
+        "1",
+        "−1"
+      ],
+      "answer": 0,
+      "explanation": "化簡後 z=2u，與 v 無關。"
+    },
+    {
+      "prompt": "z=x²+y²，x=u+v、y=u−v，z_u 是？",
+      "options": [
+        "4v",
+        "2u",
+        "2u+2v",
+        "4u"
+      ],
+      "answer": 3,
+      "explanation": "代入 z=2u²+2v²，對 u 求導得 4u。"
+    },
+    {
+      "prompt": "z=e^(x+y)，x=t、y=−t，dz/dt 是？",
+      "options": [
+        "e^t",
+        "2e^t",
+        "0",
+        "1"
+      ],
+      "answer": 2,
+      "explanation": "x+y=0，所以 z=e⁰=1 為常數。"
+    },
+    {
+      "prompt": "某點 f_x=2、f_y=−3、x′=4、y′=1，dz/dt 是？",
+      "options": [
+        "−24",
+        "5",
+        "11",
+        "−1"
+      ],
+      "answer": 1,
+      "explanation": "2×4+(−3)×1=5。"
+    },
+    {
+      "prompt": "w=x+y+z，x=t、y=t²、z=t³，t=1 時 dw/dt 是？",
+      "options": [
+        "6",
+        "3",
+        "5",
+        "1"
+      ],
+      "answer": 0,
+      "explanation": "dw/dt=1+2t+3t²，在 1 得 6。"
+    },
+    {
+      "prompt": "z=x²+y，x=u²、y=3u，z_u 是？",
+      "options": [
+        "2u²+3",
+        "4u+3",
+        "u⁴+3u",
+        "4u³+3"
+      ],
+      "answer": 3,
+      "explanation": "z=u⁴+3u，求導得 4u³+3。"
+    }
+  ],
+  "passCount": 7
+}

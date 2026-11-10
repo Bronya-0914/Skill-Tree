@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.power",
+  "title": "07 · 基本求導與高階導數",
+  "intro": "運用常數、冪次、加減與常數倍規則，並求二階及三階導數。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.limits"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "先把根式與倒數寫成冪次，再使用冪次法則。高階導數是重複求導，二階導數描述一階變化率如何改變。公式只在相應函數有定義且可微的範圍使用。"
+    },
+    {
+      "type": "formula",
+      "text": "d(xⁿ)/dx=nx^(n−1)；(af+bg)′=af′+bg′；常數的導數為 0。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 f(x)=2x³−5x²+4 的 f′ 和 f″。\n① f′(x)=6x²−10x。\n② 對 f′ 再求導，f″(x)=12x−10。\n③ f″(1)=2。"
+    },
+    {
+      "type": "tip",
+      "text": "求導會令冪次減一；常數項會消失。√x 的導數公式 1/(2√x) 適用於 x>0。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "d(x⁵)/dx 是？",
+      "options": [
+        "5x⁵",
+        "4x⁵",
+        "5x⁴",
+        "x⁴"
+      ],
+      "answer": 2,
+      "explanation": "次方 5 乘到前面，次方減 1。"
+    },
+    {
+      "prompt": "d(4x³−2x+7)/dx 是？",
+      "options": [
+        "12x³−2",
+        "12x²−2",
+        "12x²+7",
+        "4x²−2"
+      ],
+      "answer": 1,
+      "explanation": "分別求導得到 12x²、−2 和 0。"
+    },
+    {
+      "prompt": "x≠0 時，d(1/x²)/dx 是？",
+      "options": [
+        "−2/x³",
+        "2/x³",
+        "−1/x³",
+        "1/(2x³)"
+      ],
+      "answer": 0,
+      "explanation": "1/x²=x^(−2)，導數是 −2x^(−3)。"
+    },
+    {
+      "prompt": "x>0 時，d(√x)/dx 是？",
+      "options": [
+        "2√x",
+        "1/√x",
+        "√x/2",
+        "1/(2√x)"
+      ],
+      "answer": 3,
+      "explanation": "√x=x^(1/2)，導數為 (1/2)x^(−1/2)。"
+    },
+    {
+      "prompt": "f(x)=x⁴ 的二階導數是？",
+      "options": [
+        "24x",
+        "12x³",
+        "12x²",
+        "4x³"
+      ],
+      "answer": 2,
+      "explanation": "先得 f′=4x³，再求導得 f″=12x²。"
+    },
+    {
+      "prompt": "f(x)=x³ 的三階導數是？",
+      "options": [
+        "0",
+        "6",
+        "3",
+        "6x"
+      ],
+      "answer": 1,
+      "explanation": "依序是 3x²、6x、6。"
+    },
+    {
+      "prompt": "f(x)=3x²−4x，f′(2) 是？",
+      "options": [
+        "8",
+        "4",
+        "12",
+        "2"
+      ],
+      "answer": 0,
+      "explanation": "f′=6x−4，代入 2 得 8。"
+    },
+    {
+      "prompt": "常數函數 f(x)=π 的導數是？",
+      "options": [
+        "1",
+        "π",
+        "x",
+        "0"
+      ],
+      "answer": 3,
+      "explanation": "π 是常數，對 x 求導為 0。"
+    },
+    {
+      "prompt": "d(7x)/dx 是？",
+      "options": [
+        "7x",
+        "0",
+        "7",
+        "x"
+      ],
+      "answer": 2,
+      "explanation": "x 的導數為 1，常數倍 7 保留。"
+    },
+    {
+      "prompt": "s(t)=2t³，t=1 的加速度是多少？",
+      "options": [
+        "0",
+        "12",
+        "6",
+        "2"
+      ],
+      "answer": 1,
+      "explanation": "加速度為 s″(t)=12t，代入 1 得 12。"
+    }
+  ],
+  "passCount": 7
+}

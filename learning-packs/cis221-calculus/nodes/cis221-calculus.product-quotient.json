@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.product-quotient",
+  "title": "08 · 乘積與商法則",
+  "intro": "處理兩個函數相乘、相除，並檢查分母限制。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.power"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "乘積求導需把兩個因子各求導一次並相加。商法則的分子有固定的相減順序，分母須平方。遇到能先展開或約簡的式子，也可以先化簡再求導。"
+    },
+    {
+      "type": "formula",
+      "text": "(uv)′=u′v+uv′；(u/v)′=(u′v−uv′)/v²，v≠0。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 y=(x²+1)/x 的導數（x≠0）。\n① u=x²+1，u′=2x；v=x，v′=1。\n② y′=[2x·x−(x²+1)]/x²。\n③ 化簡得 1−1/x²。"
+    },
+    {
+      "type": "tip",
+      "text": "一般來說 (uv)′ 不等於 u′v′，(u/v)′ 也不等於 u′/v′。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "(uv)′ 的正確公式是？",
+      "options": [
+        "uv′−u′v",
+        "u′v+uv′",
+        "u′v′",
+        "u′+v′"
+      ],
+      "answer": 1,
+      "explanation": "乘積法則為兩項相加。"
+    },
+    {
+      "prompt": "d[x(x+2)]/dx 是？",
+      "options": [
+        "2x+2",
+        "x+2",
+        "2x",
+        "2"
+      ],
+      "answer": 0,
+      "explanation": "展開 x²+2x 後求導得 2x+2。"
+    },
+    {
+      "prompt": "d[x²(x−1)]/dx 是？",
+      "options": [
+        "2x(x−1)",
+        "3x²−1",
+        "x²−2x",
+        "3x²−2x"
+      ],
+      "answer": 3,
+      "explanation": "展開為 x³−x²，導數為 3x²−2x。"
+    },
+    {
+      "prompt": "x≠−1 時，d[x/(x+1)]/dx 是？",
+      "options": [
+        "1/(x+1)",
+        "1",
+        "1/(x+1)²",
+        "−1/(x+1)²"
+      ],
+      "answer": 2,
+      "explanation": "分子為 (x+1)−x=1，分母為 (x+1)²。"
+    },
+    {
+      "prompt": "x≠1 時，d[(x+1)/(x−1)]/dx 是？",
+      "options": [
+        "0",
+        "−2/(x−1)²",
+        "2/(x−1)²",
+        "1"
+      ],
+      "answer": 1,
+      "explanation": "分子為 (x−1)−(x+1)=−2。"
+    },
+    {
+      "prompt": "x≠0 時，d[(x²+1)/x]/dx 是？",
+      "options": [
+        "1−1/x²",
+        "1+1/x²",
+        "2x",
+        "2−1/x²"
+      ],
+      "answer": 0,
+      "explanation": "先寫成 x+1/x，導數為 1−1/x²。"
+    },
+    {
+      "prompt": "f(x)=x²(x+1)，f′(1) 是？",
+      "options": [
+        "3",
+        "4",
+        "2",
+        "5"
+      ],
+      "answer": 3,
+      "explanation": "f′=3x²+2x，在 1 得 5。"
+    },
+    {
+      "prompt": "若 u(2)=3、u′(2)=4、v(2)=5、v′(2)=−1，(uv)′(2) 是？",
+      "options": [
+        "−4",
+        "15",
+        "17",
+        "23"
+      ],
+      "answer": 2,
+      "explanation": "4×5+3×(−1)=17。"
+    },
+    {
+      "prompt": "若 u(a)=2、u′(a)=3、v(a)=4、v′(a)=1，(u/v)′(a) 是？",
+      "options": [
+        "7/8",
+        "5/8",
+        "3",
+        "1/2"
+      ],
+      "answer": 1,
+      "explanation": "(3×4−2×1)/4²=10/16=5/8。"
+    },
+    {
+      "prompt": "商法則計算時，分母 v 必須滿足？",
+      "options": [
+        "v≠0",
+        "v>0",
+        "v<0",
+        "v′≠0"
+      ],
+      "answer": 0,
+      "explanation": "原商必須有定義，因此 v 不能為零，但可以為負。"
+    }
+  ],
+  "passCount": 7
+}

@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.integral-properties",
+  "title": "21 · 積分性質與奇偶對稱",
+  "intro": "運用線性、分段、反向上下限和對稱性，減少計算。",
+  "kind": "integral",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.definite",
+    "cis221-calculus.trigonometry"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "積分可以按同一區間線性組合，也可以把相鄰區間接起來。奇函數滿足 f(−x)=−f(x)，偶函數滿足 f(−x)=f(x)。對稱技巧要求區間關於零對稱，並且相關定積分存在。"
+    },
+    {
+      "type": "formula",
+      "text": "∫[a,b](αf+βg)=α∫[a,b]f+β∫[a,b]g；∫[b,a]f=−∫[a,b]f。\n奇函數：∫[−a,a]f=0；偶函數：∫[−a,a]f=2∫[0,a]f（可積時）。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 ∫[−2,2](x³+x²) dx。\n① x³ 是奇函數，對稱區間積分為 0。\n② x² 是偶函數，積分為 2∫[0,2]x² dx。\n③ 得 2×(8/3)=16/3。"
+    },
+    {
+      "type": "tip",
+      "text": "不能把奇函數性質直接套在跨越奇點的發散積分。例如 ∫[−1,1]1/x dx 的普通瑕積分不存在。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "已知 ∫[0,2]f dx=5，則 ∫[2,0]f dx 是？",
+      "options": [
+        "−5",
+        "5",
+        "0",
+        "10"
+      ],
+      "answer": 0,
+      "explanation": "交換上下限令積分變號。"
+    },
+    {
+      "prompt": "已知同一區間上 ∫f=3、∫g=2，則 ∫(2f−g) 是？",
+      "options": [
+        "8",
+        "1",
+        "6",
+        "4"
+      ],
+      "answer": 3,
+      "explanation": "利用線性得到 2×3−2=4。"
+    },
+    {
+      "prompt": "已知 ∫[0,1]f=2、∫[1,3]f=5，則 ∫[0,3]f 是？",
+      "options": [
+        "10",
+        "5/2",
+        "7",
+        "3"
+      ],
+      "answer": 2,
+      "explanation": "相鄰區間的積分相加為 2+5=7。"
+    },
+    {
+      "prompt": "∫[4,4] (x²+1) dx 是？",
+      "options": [
+        "1",
+        "0",
+        "17",
+        "4"
+      ],
+      "answer": 1,
+      "explanation": "上下限相同，區間長度為零。"
+    },
+    {
+      "prompt": "∫[−2,2] x³ dx 是？",
+      "options": [
+        "0",
+        "8",
+        "16",
+        "−8"
+      ],
+      "answer": 0,
+      "explanation": "x³ 是連續奇函數，對稱區間積分為零。"
+    },
+    {
+      "prompt": "∫[−1,1] x² dx 是？",
+      "options": [
+        "0",
+        "1/3",
+        "2",
+        "2/3"
+      ],
+      "answer": 3,
+      "explanation": "x² 為偶函數，2∫[0,1]x² dx=2/3。"
+    },
+    {
+      "prompt": "下列哪個函數是偶函數？",
+      "options": [
+        "x³",
+        "x",
+        "cos x",
+        "sin x"
+      ],
+      "answer": 2,
+      "explanation": "cos(−x)=cos x，因此是偶函數。"
+    },
+    {
+      "prompt": "∫[−π,π] sin x dx 是？",
+      "options": [
+        "2π",
+        "0",
+        "2",
+        "−2"
+      ],
+      "answer": 1,
+      "explanation": "sin 是連續奇函數，在對稱區間積分為零。"
+    },
+    {
+      "prompt": "∫[−1,1] (x³+2) dx 是？",
+      "options": [
+        "4",
+        "0",
+        "2",
+        "6"
+      ],
+      "answer": 0,
+      "explanation": "奇函數部分為 0，常數部分為 2×2=4。"
+    },
+    {
+      "prompt": "為何不能直接說 ∫[−1,1]1/x dx=0？",
+      "options": [
+        "1/x 其實是偶函數",
+        "積分上下限不能有負數",
+        "所有奇函數都不可積",
+        "x=0 有奇點，兩側瑕積分不收斂"
+      ],
+      "answer": 3,
+      "explanation": "奇函數的零積分性質要求積分存在；這裡兩側都發散。"
+    }
+  ],
+  "passCount": 7
+}

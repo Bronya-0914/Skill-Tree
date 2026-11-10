@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.partials",
+  "title": "15 · 一階偏導數",
+  "intro": "對一個變量求導時固定其餘變量，計算指定位置的局部變化率。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.surfaces",
+    "cis221-calculus.chain"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "偏導數沿著固定其他座標的截面計算斜率。對 x 求導時，y、z 等視為常數，但含 x 的乘積與複合函數仍要使用相應求導法則。"
+    },
+    {
+      "type": "formula",
+      "text": "f_x=∂f/∂x（固定 y）；f_y=∂f/∂y（固定 x）。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "f(x,y)=x²y+sin x。\n① 固定 y，f_x=2xy+cos x。\n② 固定 x，f_y=x²。\n③ 在 (0,3)，f_x=1，f_y=0。"
+    },
+    {
+      "type": "tip",
+      "text": "先看清楚分母中的變量。例如 ∂f/∂y 要對 y 求導，不能把 x 也一起改變。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "f=x²+3y²，f_x 是？",
+      "options": [
+        "6y",
+        "0",
+        "2x",
+        "2x+6y"
+      ],
+      "answer": 2,
+      "explanation": "對 x 求導，3y² 當常數，所以 f_x=2x。"
+    },
+    {
+      "prompt": "f=x²+3y²，f_y 是？",
+      "options": [
+        "2x+6y",
+        "6y",
+        "2x",
+        "3y"
+      ],
+      "answer": 1,
+      "explanation": "x² 當常數，3y² 對 y 求導得 6y。"
+    },
+    {
+      "prompt": "f=x²y，f_x 是？",
+      "options": [
+        "2xy",
+        "x²",
+        "2x",
+        "x²y"
+      ],
+      "answer": 0,
+      "explanation": "把 y 視為常數倍，得到 2xy。"
+    },
+    {
+      "prompt": "f=x²y，f_y 是？",
+      "options": [
+        "2xy",
+        "2y",
+        "0",
+        "x²"
+      ],
+      "answer": 3,
+      "explanation": "x² 是常數倍，y 對自身求導是 1。"
+    },
+    {
+      "prompt": "f=e^(xy)，f_x 是？",
+      "options": [
+        "e^(xy)",
+        "xy e^(xy)",
+        "y e^(xy)",
+        "x e^(xy)"
+      ],
+      "answer": 2,
+      "explanation": "外層求導不變，再乘 xy 對 x 的偏導數 y。"
+    },
+    {
+      "prompt": "f=sin x+cos y，f_y 是？",
+      "options": [
+        "cos y",
+        "−sin y",
+        "cos x−sin y",
+        "sin y"
+      ],
+      "answer": 1,
+      "explanation": "sin x 對 y 的偏導數為 0，cos y 導數為 −sin y。"
+    },
+    {
+      "prompt": "f=x²+y²，在 (1,3) 的 f_x 是？",
+      "options": [
+        "2",
+        "6",
+        "10",
+        "1"
+      ],
+      "answer": 0,
+      "explanation": "f_x=2x，代入 x=1 得 2。"
+    },
+    {
+      "prompt": "f=3x+4y，f_y 是？",
+      "options": [
+        "3",
+        "7",
+        "4y",
+        "4"
+      ],
+      "answer": 3,
+      "explanation": "只有 4y 對 y 求導產生 4。"
+    },
+    {
+      "prompt": "f(x,y,z)=xz+y²，f_z 是？",
+      "options": [
+        "2y",
+        "xz",
+        "x",
+        "z"
+      ],
+      "answer": 2,
+      "explanation": "對 z 求導時，x 和 y 固定。"
+    },
+    {
+      "prompt": "偏導數 f_x(a,b) 描述哪種變化？",
+      "options": [
+        "只改變 z 而固定 x、y",
+        "固定 y=b 時，沿 x 方向的瞬間變化率",
+        "x 與 y 都以相同速度改變",
+        "整個曲面的面積"
+      ],
+      "answer": 1,
+      "explanation": "偏導數定義固定其他自變量，只讓指定變量改變。"
+    }
+  ],
+  "passCount": 7
+}

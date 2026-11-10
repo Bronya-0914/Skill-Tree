@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.elementary-integrals",
+  "title": "19 · 指數、對數與三角積分",
+  "intro": "辨認常見導數的反向形式，留意正負號及對數絕對值。",
+  "kind": "integral",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.antiderivatives",
+    "cis221-calculus.elementary"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "三角積分沿用弧度制。因為 cos 的導數是負的 sin，所以 sin 的積分帶負號。1/x 的原函數用 ln|x|，可在不跨越零的正或負區間使用。"
+    },
+    {
+      "type": "formula",
+      "text": "∫eˣ dx=eˣ+C；∫(1/x) dx=ln|x|+C（x≠0）。\n∫cos x dx=sin x+C；∫sin x dx=−cos x+C；∫sec²x dx=tan x+C。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 ∫(2eˣ+3cos x−1/x) dx。\n① 三項分別積分為 2eˣ、3sin x、−ln|x|。\n② 合併並加 C。\n③ 答案 2eˣ+3sin x−ln|x|+C，適用於不跨越 x=0 的區間。"
+    },
+    {
+      "type": "tip",
+      "text": "對數絕對值不代表可以穿越 x=0；原來的 1/x 在零沒有定義。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "∫eˣ dx 是？",
+      "options": [
+        "e^(x+1)+C",
+        "eˣ/x+C",
+        "eˣ+C",
+        "x eˣ+C"
+      ],
+      "answer": 2,
+      "explanation": "eˣ 求導後仍是 eˣ。"
+    },
+    {
+      "prompt": "∫cos x dx 是？",
+      "options": [
+        "−cos x+C",
+        "sin x+C",
+        "−sin x+C",
+        "cos x+C"
+      ],
+      "answer": 1,
+      "explanation": "sin x 的導數為 cos x。"
+    },
+    {
+      "prompt": "∫sin x dx 是？",
+      "options": [
+        "−cos x+C",
+        "cos x+C",
+        "sin x+C",
+        "−sin x+C"
+      ],
+      "answer": 0,
+      "explanation": "−cos x 的導數是 sin x。"
+    },
+    {
+      "prompt": "∫sec²x dx 是？",
+      "options": [
+        "sec x+C",
+        "−tan x+C",
+        "2sec x tan x+C",
+        "tan x+C"
+      ],
+      "answer": 3,
+      "explanation": "tan x 的導數是 sec²x，在函數有定義的區間使用。"
+    },
+    {
+      "prompt": "x<0 的區間上，∫(1/x) dx 可寫成？",
+      "options": [
+        "−ln(−x)+C",
+        "1/x²+C",
+        "ln(−x)+C",
+        "ln x+C"
+      ],
+      "answer": 2,
+      "explanation": "此時 |x|=−x，而 ln(−x) 的導數仍是 1/x。"
+    },
+    {
+      "prompt": "∫(4eˣ−2sin x) dx 是？",
+      "options": [
+        "eˣ+2cos x+C",
+        "4eˣ+2cos x+C",
+        "4eˣ−2cos x+C",
+        "4x eˣ+2cos x+C"
+      ],
+      "answer": 1,
+      "explanation": "−2sin x 積分為 +2cos x。"
+    },
+    {
+      "prompt": "∫2ˣ dx 是？",
+      "options": [
+        "2ˣ/ln 2+C",
+        "2ˣ ln 2+C",
+        "2^(x+1)+C",
+        "x·2ˣ+C"
+      ],
+      "answer": 0,
+      "explanation": "2ˣ 的導數多了 ln 2，因此積分要除以 ln 2。"
+    },
+    {
+      "prompt": "x>0 時，∫(3/x+cos x) dx 是？",
+      "options": [
+        "3/x²+sin x+C",
+        "ln(3x)+sin x+C",
+        "3ln x−sin x+C",
+        "3ln x+sin x+C"
+      ],
+      "answer": 3,
+      "explanation": "常數倍提出；1/x 積分為 ln x，cos 積分為 sin。"
+    },
+    {
+      "prompt": "F′(x)=cos x、F(0)=2，F(x) 是？",
+      "options": [
+        "−sin x+2",
+        "cos x+1",
+        "sin x+2",
+        "sin x+1"
+      ],
+      "answer": 2,
+      "explanation": "F=sin x+C，代入 0 得 C=2。"
+    },
+    {
+      "prompt": "哪個函數是 −sin x 的一個原函數？",
+      "options": [
+        "−sin x",
+        "cos x",
+        "−cos x",
+        "sin x"
+      ],
+      "answer": 1,
+      "explanation": "cos x 的導數恰好是 −sin x。"
+    }
+  ],
+  "passCount": 7
+}

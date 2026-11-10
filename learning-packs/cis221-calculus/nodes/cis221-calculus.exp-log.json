@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.exp-log",
+  "title": "04 · 指數與對數",
+  "intro": "理解指數和對數的互逆關係、定義域與基本運算。",
+  "kind": "base",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.functions"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "指數底數要求 b>0 且 b≠1。對數真數必須大於零。b>1 時 bˣ 隨 x 增大而增大；0<b<1 時則遞減。自然對數 ln 的底數是 e。"
+    },
+    {
+      "type": "formula",
+      "text": "log_b a=c ⇔ b^c=a；ln(eˣ)=x；log_b(uv)=log_b u+log_b v。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "計算 log₂32。\n① 設結果為 c，則 2^c=32。\n② 32=2⁵。\n③ 所以 log₂32=5。"
+    },
+    {
+      "type": "tip",
+      "text": "對數乘法法則要求真數為正。ln(u+v) 一般不能拆成 ln u+ln v。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "log₂32 等於？",
+      "options": [
+        "4",
+        "5",
+        "16",
+        "6"
+      ],
+      "answer": 1,
+      "explanation": "因為 2⁵=32，所以答案是 5。"
+    },
+    {
+      "prompt": "2^(−3) 等於？",
+      "options": [
+        "1/8",
+        "−8",
+        "8",
+        "−1/8"
+      ],
+      "answer": 0,
+      "explanation": "負次方代表倒數，2^(−3)=1/2³=1/8。"
+    },
+    {
+      "prompt": "e^(ln 5) 等於？",
+      "options": [
+        "ln 5",
+        "e⁵",
+        "1",
+        "5"
+      ],
+      "answer": 3,
+      "explanation": "eˣ 與 ln x 在正數範圍互為反函數。"
+    },
+    {
+      "prompt": "ln 1 等於？",
+      "options": [
+        "e",
+        "不存在",
+        "0",
+        "1"
+      ],
+      "answer": 2,
+      "explanation": "因為 e⁰=1，所以 ln1=0。"
+    },
+    {
+      "prompt": "ln(x−2) 的定義域是？",
+      "options": [
+        "所有實數",
+        "x>2",
+        "x≥2",
+        "x≠2"
+      ],
+      "answer": 1,
+      "explanation": "真數 x−2 必須大於零。"
+    },
+    {
+      "prompt": "當 x 增加時，(1/3)^x 如何變化？",
+      "options": [
+        "嚴格遞減",
+        "嚴格遞增",
+        "恆定",
+        "先增後減"
+      ],
+      "answer": 0,
+      "explanation": "底數位於 0 與 1 之間，指數函數嚴格遞減。"
+    },
+    {
+      "prompt": "u>0、v>0 時，ln(uv) 等於？",
+      "options": [
+        "ln u×ln v",
+        "ln(u+v)",
+        "ln u−ln v",
+        "ln u+ln v"
+      ],
+      "answer": 3,
+      "explanation": "對數把乘法轉成加法。"
+    },
+    {
+      "prompt": "x>0 時，ln(x³) 等於？",
+      "options": [
+        "ln x+3",
+        "x ln 3",
+        "3ln x",
+        "(ln x)³"
+      ],
+      "answer": 2,
+      "explanation": "正真數的冪次可以移到對數前。"
+    },
+    {
+      "prompt": "解方程 e^x=7，x 等於？",
+      "options": [
+        "1/7",
+        "ln 7",
+        "7e",
+        "e⁷"
+      ],
+      "answer": 1,
+      "explanation": "兩邊取自然對數，得到 x=ln7。"
+    },
+    {
+      "prompt": "函數 y=2^x 的值域是？",
+      "options": [
+        "(0,∞)",
+        "[0,∞)",
+        "所有實數",
+        "(1,∞)"
+      ],
+      "answer": 0,
+      "explanation": "指數函數總為正，可任意接近 0，但不會等於 0。"
+    }
+  ],
+  "passCount": 7
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.implicit",
+  "title": "11 · 隱函數微分",
+  "intro": "對混合 x、y 的方程求導，解出 dy/dx 並計算切線斜率。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.chain"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "把 y 視為 x 的函數。對 x 求導時，y² 要變成 2y y′，xy 要使用乘積法則。將含 y′ 的項移到一邊，提取公因子，再解出 y′。"
+    },
+    {
+      "type": "formula",
+      "text": "對 F(x,y)=0 且 F_y≠0，局部可微解滿足 y′=−F_x/F_y。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 x²+y²=13 在 (2,3) 的斜率。\n① 兩邊求導得 2x+2y y′=0。\n② y≠0 時，y′=−x/y。\n③ 代入 (2,3)，得到 −2/3。"
+    },
+    {
+      "type": "tip",
+      "text": "代入的點必須在曲線上。解出的分母為零時，需另外判斷，不能直接相除。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "把 y 視為 x 的函數，d(y³)/dx 是？",
+      "options": [
+        "y′³",
+        "3xy²",
+        "3y²y′",
+        "3y²"
+      ],
+      "answer": 2,
+      "explanation": "對 y³ 用鏈式法則，需再乘 y′。"
+    },
+    {
+      "prompt": "d(xy)/dx 是？",
+      "options": [
+        "1",
+        "y+xy′",
+        "xy′",
+        "y′"
+      ],
+      "answer": 1,
+      "explanation": "乘積法則給 1·y+x·y′。"
+    },
+    {
+      "prompt": "由 x²+y²=25，y≠0 時 y′ 是？",
+      "options": [
+        "−x/y",
+        "x/y",
+        "−y/x",
+        "2x+2y"
+      ],
+      "answer": 0,
+      "explanation": "兩邊求導，2x+2y y′=0，再解出 y′。"
+    },
+    {
+      "prompt": "曲線 x²+y²=25 在 (3,4) 的切線斜率是？",
+      "options": [
+        "3/4",
+        "−4/3",
+        "4/3",
+        "−3/4"
+      ],
+      "answer": 3,
+      "explanation": "使用 y′=−x/y，代入得到 −3/4。"
+    },
+    {
+      "prompt": "由 xy=6 且 x≠0，y′ 是？",
+      "options": [
+        "−x/y",
+        "6",
+        "−y/x",
+        "y/x"
+      ],
+      "answer": 2,
+      "explanation": "y+xy′=0，所以 y′=−y/x。"
+    },
+    {
+      "prompt": "由 y²=x+1 且 y≠0，y′ 是？",
+      "options": [
+        "−1/(2y)",
+        "1/(2y)",
+        "2y",
+        "1/y"
+      ],
+      "answer": 1,
+      "explanation": "兩邊求導為 2y y′=1。"
+    },
+    {
+      "prompt": "由 x+y=5，y′ 是？",
+      "options": [
+        "−1",
+        "1",
+        "0",
+        "5"
+      ],
+      "answer": 0,
+      "explanation": "1+y′=0，所以 y′=−1。"
+    },
+    {
+      "prompt": "由 x²+xy+y²=7，且 x+2y≠0，y′ 是？",
+      "options": [
+        "−2x/(2y)",
+        "(2x+y)/(x+2y)",
+        "−(x+2y)/(2x+y)",
+        "−(2x+y)/(x+2y)"
+      ],
+      "answer": 3,
+      "explanation": "求導得 2x+y+xy′+2yy′=0，收集 y′ 後求解。"
+    },
+    {
+      "prompt": "由 sin y=x 且 cos y≠0，y′ 是？",
+      "options": [
+        "−sin y",
+        "1/sin y",
+        "1/cos y",
+        "cos y"
+      ],
+      "answer": 2,
+      "explanation": "cos y·y′=1，所以 y′=1/cos y。"
+    },
+    {
+      "prompt": "圓 x²+y²=9 在 (3,0) 的切線是？",
+      "options": [
+        "x=0",
+        "x=3",
+        "y=0",
+        "y=3x"
+      ],
+      "answer": 1,
+      "explanation": "圓在最右端的切線為垂直線，不能把 y=0 代入 −x/y 當有限斜率。"
+    }
+  ],
+  "passCount": 7
+}

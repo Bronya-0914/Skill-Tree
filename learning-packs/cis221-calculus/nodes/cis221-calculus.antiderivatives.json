@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.antiderivatives",
+  "title": "18 · 不定積分與冪次法則",
+  "intro": "把積分理解為求導的逆運算，學會寫出一整族原函數。",
+  "kind": "integral",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.power"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "若 F′(x)=f(x)，F 就是 f 的一個原函數。不定積分表示所有相差常數的原函數。可以逐項積分，也可以把常數倍提出。求完後再微分，應回到原來的被積函數。"
+    },
+    {
+      "type": "formula",
+      "text": "∫xⁿ dx=x^(n+1)/(n+1)+C（n≠−1，在函數有定義的區間內）；∫k dx=kx+C。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 ∫(6x²−4x+3) dx。\n① 逐項把次方加 1，再除以新次方。\n② 得 2x³−2x²+3x+C。\n③ 求導得到 6x²−4x+3，驗算完成。"
+    },
+    {
+      "type": "tip",
+      "text": "積分與求導的冪次規則方向相反。n=−1 要另用對數公式，不能除以零。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "∫x³ dx 是？",
+      "options": [
+        "3x²+C",
+        "x⁴+C",
+        "x³/3+C",
+        "x⁴/4+C"
+      ],
+      "answer": 3,
+      "explanation": "次方由 3 加到 4，再除以 4。"
+    },
+    {
+      "prompt": "∫5 dx 是？",
+      "options": [
+        "C",
+        "x⁵/5+C",
+        "5x+C",
+        "5+C"
+      ],
+      "answer": 2,
+      "explanation": "常數 5 的原函數是 5x；求導可驗算。"
+    },
+    {
+      "prompt": "∫(2x+3) dx 是？",
+      "options": [
+        "2+C",
+        "x²+3x+C",
+        "2x²+3x+C",
+        "x²+3+C"
+      ],
+      "answer": 1,
+      "explanation": "分別積分 2x 與 3，再加一個任意常數。"
+    },
+    {
+      "prompt": "x>0 時，∫√x dx 是？",
+      "options": [
+        "(2/3)x^(3/2)+C",
+        "(1/2)x^(−1/2)+C",
+        "2√x+C",
+        "x^(3/2)+C"
+      ],
+      "answer": 0,
+      "explanation": "把 √x 寫成 x^(1/2)，新次方為 3/2，係數為 2/3。"
+    },
+    {
+      "prompt": "x>0 時，∫x^(−2) dx 是？",
+      "options": [
+        "1/x+C",
+        "ln x+C",
+        "−2x^(−3)+C",
+        "−1/x+C"
+      ],
+      "answer": 3,
+      "explanation": "新次方為 −1，除以 −1 得 −x^(−1)。"
+    },
+    {
+      "prompt": "若 F′(x)=f(x)，哪項也必定是 f 的原函數？",
+      "options": [
+        "F(x)+x",
+        "F′(x)",
+        "F(x)+7",
+        "7F(x)"
+      ],
+      "answer": 2,
+      "explanation": "常數項求導為零，因此加常數不改變導數。"
+    },
+    {
+      "prompt": "已知 F′(x)=2x、F(1)=4，F(x) 是？",
+      "options": [
+        "x²−3",
+        "x²+3",
+        "x²+4",
+        "2x²+2"
+      ],
+      "answer": 1,
+      "explanation": "先積分得 x²+C，再由 1+C=4 求得 C=3。"
+    },
+    {
+      "prompt": "∫(3x²−2x) dx 是？",
+      "options": [
+        "x³−x²+C",
+        "6x−2+C",
+        "3x³−2x²+C",
+        "x³+x²+C"
+      ],
+      "answer": 0,
+      "explanation": "3x² 的積分是 x³，−2x 的積分是 −x²。"
+    },
+    {
+      "prompt": "冪次積分公式中，哪個 n 必須另外處理？",
+      "options": [
+        "0",
+        "1",
+        "2",
+        "−1"
+      ],
+      "answer": 3,
+      "explanation": "n=−1 時 n+1=0，公式的分母為零。"
+    },
+    {
+      "prompt": "如何驗算候選原函數 F(x) 是否正確？",
+      "options": [
+        "檢查 F(0) 是否為零",
+        "把被積函數再求導一次",
+        "檢查 F′(x) 是否等於被積函數",
+        "檢查 F(x) 是否恆為正"
+      ],
+      "answer": 2,
+      "explanation": "原函數的定義就是求導後回到被積函數。"
+    }
+  ],
+  "passCount": 7
+}

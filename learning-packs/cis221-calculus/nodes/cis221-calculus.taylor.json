@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "id": "cis221-calculus.taylor",
+  "title": "25 · Taylor 多項式與二階近似",
+  "intro": "加入高階導數，建立線性、二次及更高次的局部近似。",
+  "kind": "derivative",
+  "minutes": 15,
+  "parents": [
+    "cis221-calculus.linearization",
+    "cis221-calculus.elementary"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "學習重點"
+    },
+    {
+      "type": "paragraph",
+      "text": "Taylor 多項式以展開點 a 的導數決定每項係數；a=0 時稱為 Maclaurin 多項式。階乘 k! 不能省略。有限次多項式通常只是局部近似，誤差要視函數、次數和離展開點的距離而定。"
+    },
+    {
+      "type": "formula",
+      "text": "Tₙ(x)=Σ[k=0 到 n] f⁽ᵏ⁾(a)(x−a)ᵏ/k!。\nT₂(x)=f(a)+f′(a)(x−a)+f″(a)(x−a)²/2。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "example",
+      "text": "求 eˣ 在 a=0 的二次近似，並估算 e^0.1。\n① f(0)=f′(0)=f″(0)=1。\n② T₂(x)=1+x+x²/2。\n③ T₂(0.1)=1+0.1+0.005=1.105。"
+    },
+    {
+      "type": "tip",
+      "text": "Taylor 的次數指保留到哪個次方；某些導數等於零時，對應的項會消失。"
+    }
+  ],
+  "questions": [
+    {
+      "prompt": "eˣ 在 0 的二次 Taylor 多項式是？",
+      "options": [
+        "1+x+x²/2",
+        "1+x+x²",
+        "x+x²/2",
+        "1+x²/2"
+      ],
+      "answer": 0,
+      "explanation": "所有階導數在 0 都是 1，二次項係數需除以 2!。"
+    },
+    {
+      "prompt": "sin x 在 0 的三次 Taylor 多項式是？",
+      "options": [
+        "x+x³/6",
+        "1−x²/2",
+        "x−x³/3",
+        "x−x³/6"
+      ],
+      "answer": 3,
+      "explanation": "在 0 的導數依次為 0、1、0、−1，因此保留 x−x³/6。"
+    },
+    {
+      "prompt": "cos x 在 0 的二次 Taylor 多項式是？",
+      "options": [
+        "x−x²/2",
+        "−x²",
+        "1−x²/2",
+        "1+x²/2"
+      ],
+      "answer": 2,
+      "explanation": "cos 0=1，一階導數為 0，二階導數為 −1。"
+    },
+    {
+      "prompt": "ln(1+x) 在 0 的二次 Taylor 多項式是？",
+      "options": [
+        "−x−x²/2",
+        "x−x²/2",
+        "1+x−x²/2",
+        "x+x²/2"
+      ],
+      "answer": 1,
+      "explanation": "f(0)=0，f′(0)=1，f″(0)=−1。"
+    },
+    {
+      "prompt": "用 eˣ 的二次近似 1+x+x²/2 估算 e^0.1，結果是？",
+      "options": [
+        "1.105",
+        "1.11",
+        "1.1",
+        "1.1005"
+      ],
+      "answer": 0,
+      "explanation": "代入 0.1 得 1+0.1+0.01/2=1.105。"
+    },
+    {
+      "prompt": "已知 f(2)=3、f′(2)=4、f″(2)=6，T₂(x) 是？",
+      "options": [
+        "3+4(x−2)+6(x−2)²",
+        "3+4x+3x²",
+        "4+6(x−2)+3(x−2)²",
+        "3+4(x−2)+3(x−2)²"
+      ],
+      "answer": 3,
+      "explanation": "二次項係數為 f″(2)/2=3，全部使用 x−2。"
+    },
+    {
+      "prompt": "Taylor 公式中三次項的分母 3! 等於多少？",
+      "options": [
+        "9",
+        "1",
+        "6",
+        "3"
+      ],
+      "answer": 2,
+      "explanation": "3!=3×2×1=6。"
+    },
+    {
+      "prompt": "f(x)=x² 在 a=1 的二次 Taylor 多項式是？",
+      "options": [
+        "1+2(x−1)+2(x−1)²",
+        "1+2(x−1)+(x−1)²",
+        "1+(x−1)+(x−1)²",
+        "2+2(x−1)+(x−1)²"
+      ],
+      "answer": 1,
+      "explanation": "f(1)=1、f′(1)=2、f″(1)=2，展開後恰好等於 x²。"
+    },
+    {
+      "prompt": "Maclaurin 多項式的展開點是哪裡？",
+      "options": [
+        "a=0",
+        "a=1",
+        "a=−1",
+        "每次一定是極值點"
+      ],
+      "answer": 0,
+      "explanation": "Maclaurin 是以零為展開點的 Taylor 多項式。"
+    },
+    {
+      "prompt": "對一般非多項式函數，有限次 Taylor 多項式應如何理解？",
+      "options": [
+        "對所有實數都必定完全相等",
+        "次數越高就必定在所有地方更準",
+        "只要一階導數非零便不能使用",
+        "展開點附近的近似，通常存在誤差"
+      ],
+      "answer": 3,
+      "explanation": "有限次近似通常留下餘項，適用範圍與誤差需要考慮。"
+    }
+  ],
+  "passCount": 7
+}
