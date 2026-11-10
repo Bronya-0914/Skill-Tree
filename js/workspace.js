@@ -1,6 +1,6 @@
 'use strict';
 
-/* 學習工作區：右側答題框可拖曳移動、可調整大小，以及「草稿紙」手寫區。
+/* 學習工作區：可拖曳、八方向調整大小的答題框，以及並排手寫白板。
    純呈現與本機狀態，不碰技能樹狀態機、教材格式、進度與既有三個 localStorage 鍵。
    新增鍵皆含 schemaVersion：calculus-tree-lesson-frame-v1、calculus-tree-scratch-v1。 */
 
@@ -35,93 +35,105 @@
     }
   }
 
-  /* ---- 答題框：拖曳移動、原生 resize 調整大小、位置尺寸保存、雙擊還原 ---- */
+  /* ---- 工作區：獨立拖曳與八方向縮放，沿用已保存的視窗資料 ---- */
   let frame = readJson(FRAME_KEY);
-  if (frame && typeof frame !== 'object') frame = null;
+  let frameGesture = null;
+  let suppressFrameClick = false;
+  let quizInitialized = frame?.quizInitialized === true;
 
+  function setFrame(next) {
+    const width = clamp(next.width, Math.min(340, innerWidth-16), innerWidth-16);
+    const height = clamp(next.height, Math.min(300, innerHeight-16), innerHeight-16);
+    const left = clamp(next.left, 8, innerWidth-width-8);
+    const top = clamp(next.top, 8, innerHeight-height-8);
+    Object.assign(card.style, {left:`${left}px`, top:`${top}px`, right:'auto', bottom:'auto', width:`${width}px`, height:`${height}px`});
+  }
   function applyFrame() {
     if (!isDesktop()) return;
-    // offset* 不受收合用的 transform 影響，避免收合狀態下重算位置時把位移算進去。
-    const base = {left:card.offsetLeft, top:card.offsetTop, width:card.offsetWidth, height:card.offsetHeight};
-    const width = Number.isFinite(frame?.width) ? clamp(frame.width, 300, window.innerWidth - 40) : base.width;
-    const height = Number.isFinite(frame?.height) ? clamp(frame.height, 220, window.innerHeight - 120) : base.height;
-    const left = Number.isFinite(frame?.left) ? clamp(frame.left, 8, window.innerWidth - 140) : base.left;
-    const top = Number.isFinite(frame?.top) ? clamp(frame.top, 8, window.innerHeight - 100) : base.top;
-    Object.assign(card.style, {
-      left:`${left}px`, top:`${top}px`, right:'auto', bottom:'auto',
-      width:`${width}px`, height:`${height}px`
-    });
+    const next = {left:card.offsetLeft, top:card.offsetTop, width:card.offsetWidth, height:card.offsetHeight};
+    for (const key of Object.keys(next)) if (Number.isFinite(frame?.[key])) next[key] = frame[key];
+    setFrame(next);
     syncCollapseDirection();
   }
   function rememberFrame() {
-    if (!isDesktop()) return;
-    const rect = card.getBoundingClientRect();
-    frame = {left:rect.left, top:rect.top, width:rect.width, height:rect.height};
+    frame = {left:card.offsetLeft, top:card.offsetTop, width:card.offsetWidth, height:card.offsetHeight, quizInitialized};
     writeJson(FRAME_KEY, frame);
   }
-  // 側板被拖到左半邊時，收合方向要跟著改成往左，否則會停在畫布中央。
   function syncCollapseDirection() {
     if (!isDesktop()) { card.style.transform = ''; return; }
-    const toLeft = card.offsetLeft < window.innerWidth / 2;
-    card.style.transform = toggle?.checked
-      ? (toLeft ? 'translateX(calc(-100% - 100px))' : 'translateX(calc(100% + 100px))')
-      : '';
+    // Move fully outside the viewport even after the user positions the panel in its center.
+    const distance = card.offsetLeft < innerWidth/2 ? -card.offsetLeft-card.offsetWidth-16 : innerWidth-card.offsetLeft+16;
+    card.style.transform = toggle?.checked ? `translateX(${distance}px)` : '';
+  }
+  function setQuizMode(enabled) {
+    card.classList.toggle('quiz-mode', enabled);
+    if (!enabled || !isDesktop() || quizInitialized) return;
+    quizInitialized = true;
+    setFrame({left:card.offsetLeft, top:card.offsetTop, width:Math.max(900,card.offsetWidth), height:Math.max(600,card.offsetHeight)});
+    rememberFrame();
+    syncCollapseDirection();
   }
 
   card.addEventListener('pointerdown', event => {
-    if (!isDesktop() || toggle?.checked || (event.pointerType === 'mouse' && event.button !== 0)) return;
-    if (!event.target.closest('.lesson-top')) return;
-    if (event.target.closest('button,input,a,label,select,textarea')) return;
-    const rect = card.getBoundingClientRect();
-    const offsetX = event.clientX - rect.left, offsetY = event.clientY - rect.top;
-    let moved = false;
-    const onMove = move => {
-      card.style.left = `${clamp(move.clientX - offsetX, 8, window.innerWidth - 140)}px`;
-      card.style.top = `${clamp(move.clientY - offsetY, 8, window.innerHeight - 100)}px`;
-      card.style.right = 'auto';
-      card.style.bottom = 'auto';
-      moved = true;
-    };
-    const onUp = () => {
-      document.removeEventListener('pointermove', onMove);
-      document.removeEventListener('pointerup', onUp);
-      card.classList.remove('frame-dragging');
-      if (!moved) return;
-      rememberFrame();
-      syncCollapseDirection();
-      if (typeof window.fitTree === 'function') window.fitTree();
-    };
-    card.classList.add('frame-dragging');
-    document.addEventListener('pointermove', onMove);
-    document.addEventListener('pointerup', onUp);
+    if (!isDesktop() || toggle?.checked || frameGesture || event.button !== 0) return;
+    const handle = event.target.closest('[data-resize]');
+    if (!handle && !event.target.closest('.lesson-frame-bar')) return;
+    frameGesture = {pointerId:event.pointerId, edge:handle?.dataset.resize || '', x:event.clientX, y:event.clientY,
+      left:card.offsetLeft, top:card.offsetTop, width:card.offsetWidth, height:card.offsetHeight, moved:false};
+    card.setPointerCapture(event.pointerId);
+    card.classList.add('frame-interacting');
+    document.body.classList.add('frame-interacting');
     event.preventDefault();
+    event.stopPropagation();
   });
-
-  // 原生 resize 把手改變尺寸後，把實際尺寸寫回 inline 並保存。
-  card.addEventListener('pointerup', () => {
-    if (!isDesktop() || toggle?.checked) return;
-    const rect = card.getBoundingClientRect();
-    if (Math.abs(rect.width - parseFloat(card.style.width)) > 1 ||
-        Math.abs(rect.height - parseFloat(card.style.height)) > 1) {
-      card.style.width = `${rect.width}px`;
-      card.style.height = `${rect.height}px`;
+  card.addEventListener('pointermove', event => {
+    const start = frameGesture;
+    if (!start || event.pointerId !== start.pointerId) return;
+    const dx = event.clientX-start.x, dy = event.clientY-start.y;
+    start.moved ||= Math.hypot(dx,dy) > 3;
+    let {left, top, width, height} = start;
+    if (!start.edge) {
+      left += dx;
+      top += dy;
+    } else {
+      const right = left+width, bottom = top+height;
+      const minWidth = Math.min(340,innerWidth-16), minHeight = Math.min(300,innerHeight-16);
+      if (start.edge.includes('w')) { left = clamp(left+dx,8,right-minWidth); width = right-left; }
+      if (start.edge.includes('e')) width = clamp(width+dx,minWidth,innerWidth-left-8);
+      if (start.edge.includes('n')) { top = clamp(top+dy,8,bottom-minHeight); height = bottom-top; }
+      if (start.edge.includes('s')) height = clamp(height+dy,minHeight,innerHeight-top-8);
     }
+    setFrame({left, top, width, height});
+    event.preventDefault();
+    event.stopPropagation();
+  });
+  function finishFrame(event) {
+    if (!frameGesture || (event?.pointerId !== undefined && event.pointerId !== frameGesture.pointerId)) return;
+    const {pointerId, moved} = frameGesture;
+    frameGesture = null;
+    if (card.hasPointerCapture(pointerId)) card.releasePointerCapture(pointerId);
+    card.classList.remove('frame-interacting');
+    document.body.classList.remove('frame-interacting');
     rememberFrame();
-  });
-
-  card.addEventListener('dblclick', event => {
-    if (!isDesktop() || !event.target.closest('.lesson-top')) return;
-    try { localStorage.removeItem(FRAME_KEY); } catch (_) {}
-    frame = null;
-    card.style.cssText = '';
-    applyFrame();
-    if (typeof window.fitTree === 'function') window.fitTree();
-  });
-
-  if (toggle) toggle.addEventListener('change', syncCollapseDirection);
+    suppressFrameClick = moved;
+    setTimeout(() => { suppressFrameClick = false; }, 0);
+  }
+  card.addEventListener('pointerup', finishFrame);
+  card.addEventListener('pointercancel', finishFrame);
+  card.addEventListener('lostpointercapture', finishFrame);
+  window.addEventListener('blur', () => finishFrame());
+  card.addEventListener('click', event => {
+    if (!suppressFrameClick) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
+  if (toggle) toggle.addEventListener('change', () => { finishFrame(); syncCollapseDirection(); });
   window.addEventListener('resize', () => {
-    if (isDesktop()) applyFrame();
-    else { card.style.cssText = ''; }
+    finishFrame();
+    if (isDesktop()) {
+      applyFrame();
+      setQuizMode(card.classList.contains('quiz-mode'));
+    } else card.style.cssText = '';
   });
   applyFrame();
 
@@ -136,6 +148,16 @@
   }
   let tool = 'pen', size = 6;
   let activeResize = null, activeTheme = null, clearedBackup = null;
+  let finishDrawing = null;
+
+  function unmountScratchpad() {
+    if (finishDrawing) finishDrawing();
+    finishDrawing = null;
+    if (activeResize) activeResize.disconnect();
+    if (activeTheme) activeTheme.disconnect();
+    activeResize = null;
+    activeTheme = null;
+  }
 
   function saveStrokes() {
     let total = strokes.reduce((sum, stroke) => sum + stroke.points.length, 0);
@@ -147,11 +169,10 @@
 
   function mountScratchpad(container) {
     if (!container) return;
-    if (activeResize) { activeResize.disconnect(); activeResize = null; }
-    if (activeTheme) { activeTheme.disconnect(); activeTheme = null; }
+    unmountScratchpad();
     container.innerHTML = `<div class="scratch" aria-label="手寫草稿區">
       <div class="scratch-bar">
-        <span class="scratch-label">草稿紙</span>
+        <span class="scratch-label">答題白板</span>
         <div class="scratch-tools" role="group" aria-label="草稿紙工具">
           <button type="button" data-tool="pen" aria-pressed="true">筆</button>
           <button type="button" data-tool="eraser" aria-pressed="false">橡皮擦</button>
@@ -161,7 +182,7 @@
         </div>
       </div>
       <div class="scratch-frame"><canvas id="scratch-canvas" aria-label="手寫草稿畫布，可用滑鼠或手指書寫"></canvas></div>
-      <p class="scratch-hint">拖曳標題列可移動答題框、右下角可調整大小，雙擊標題列還原版面。筆跡自動保存在此瀏覽器。</p>
+      <p class="scratch-hint">可用滑鼠、觸控筆或手指書寫。筆跡自動儲存。</p>
     </div>`;
     const canvas = container.querySelector('#scratch-canvas');
     const holder = container.querySelector('.scratch-frame');
@@ -202,9 +223,10 @@
       ];
     };
 
-    let drawing = false, current = null;
+    let drawing = false, current = null, drawingPointer = null;
     canvas.addEventListener('pointerdown', event => {
-      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      if (drawing || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      drawingPointer = event.pointerId;
       drawing = true;
       current = {tool, size, points:[toPoint(event)]};
       strokes.push(current);
@@ -214,23 +236,29 @@
       event.preventDefault();
     });
     canvas.addEventListener('pointermove', event => {
-      if (!drawing || !current) return;
+      if (!drawing || !current || event.pointerId !== drawingPointer) return;
       const point = toPoint(event);
       const last = current.points[current.points.length - 1];
       if (Math.hypot(point[0] - last[0], point[1] - last[1]) < 1.2) return;
       current.points.push(point);
       redraw();
     });
-    const finish = () => {
-      if (!drawing) return;
+    const finish = event => {
+      if (!drawing || (event?.pointerId !== undefined && event.pointerId !== drawingPointer)) return;
       drawing = false;
+      if (canvas.hasPointerCapture(drawingPointer)) canvas.releasePointerCapture(drawingPointer);
+      drawingPointer = null;
       current = null;
       saveStrokes();
     };
     canvas.addEventListener('pointerup', finish);
     canvas.addEventListener('pointercancel', finish);
+    canvas.addEventListener('lostpointercapture', finish);
+    finishDrawing = finish;
 
     const toolButtons = [...container.querySelectorAll('[data-tool]')];
+    for (const button of toolButtons) button.setAttribute('aria-pressed', String(button.dataset.tool === tool));
+    container.querySelector('#scratch-size').value = String(size);
     for (const button of toolButtons) button.onclick = () => {
       tool = button.dataset.tool;
       for (const other of toolButtons) other.setAttribute('aria-pressed', String(other === button));
@@ -258,9 +286,10 @@
     resizeCanvas();
   }
 
-  window.LessonWorkspace = {mountScratchpad, resetFrame:() => {
+  window.LessonWorkspace = {mountScratchpad, unmountScratchpad, setQuizMode, resetFrame:() => {
     try { localStorage.removeItem(FRAME_KEY); } catch (_) {}
     frame = null;
+    quizInitialized = false;
     card.style.cssText = '';
     applyFrame();
   }};
