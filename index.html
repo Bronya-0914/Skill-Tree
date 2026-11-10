@@ -36,7 +36,10 @@
   <script src="js/vendor/fflate.js" defer></script>
   <script src="js/topic-packs.js" defer></script>
   <script src="js/workspace.js" defer></script>
+  <script src="js/tree-layout.js" defer></script>
+  <script src="js/unlock-effects.js" defer></script>
   <script src="app.js" defer></script>
+  <script src="js/backup-ui.js" defer></script>
   <script src="js/pack-ui.js" defer></script>
   <script src="js/glow-settings.js" defer></script>
 </head>
@@ -73,10 +76,19 @@
     <div class="drawer-progress"><div><span>你的探索進度</span><strong id="progress-text">載入中…</strong></div><progress id="progress" value="0" max="1" aria-label="課程完成進度"></progress><small id="progress-caption">第一步，從 Start 開始。</small></div>
     <div class="drawer-tools"><label class="sr-only" for="topic-jump">前往主題</label><select id="topic-jump"><option value="">前往主題…</option></select><button class="quiet" id="manage-packs">主題學習包 <span id="pack-count">0</span> ＋</button></div>
     <p id="catalog-warning" class="pack-error" role="alert" hidden></p>
+    <section class="glow-settings backup-settings" aria-label="資料備份">
+      <h3>資料備份</h3>
+      <p>進度與設定只存在此瀏覽器。匯出檔案可搬到新網址或另一部裝置；匯入會覆蓋目前的記錄。</p>
+      <div class="backup-actions">
+        <button class="quiet" id="backup-export" type="button">匯出記錄</button>
+        <input type="file" id="backup-file" accept="application/json,.json" aria-label="選擇要匯入的備份檔">
+      </div>
+      <p class="glow-hint" id="backup-status" role="status">尚未匯出或匯入。</p>
+    </section>
     <details class="drawer-group" open><summary>功能介紹</summary><div class="path-notes"><div><span class="path-symbol derivative">d</span><div><h3>微分 · 看懂瞬間的變化</h3><p>從斜率出發，掌握求導規則與變化率。</p></div></div><div><span class="path-symbol integral">∫</span><div><h3>積分 · 把微小的量加起來</h3><p>從反導函數出發，理解面積與累積。</p></div></div><div><span class="path-symbol union">∞</span><div><h3>連起兩種思考方式</h3><p>用微積分基本定理，接通兩條學習路線。</p></div></div></div></details>
     <section class="glow-settings" aria-label="光效設定">
       <h3>光效設定</h3>
-      <p>點亮技能時的光芒顏色，選色後即時套用並保存在此瀏覽器。</p>
+      <p>選色會即時同步到 <b>Start</b>、已掌握節點、連線與點亮光效，並自動儲存。</p>
       <div class="glow-swatches" id="glow-swatches" role="group" aria-label="預設光效顏色">
         <button class="glow-swatch" type="button" data-color="#ffffff" style="--swatch:#ffffff" aria-label="白光" aria-pressed="true"></button>
         <button class="glow-swatch" type="button" data-color="#f2d9a8" style="--swatch:#f2d9a8" aria-label="暖白" aria-pressed="false"></button>
@@ -87,15 +99,37 @@
         <button class="glow-swatch" type="button" data-color="#4fc3b8" style="--swatch:#4fc3b8" aria-label="青綠" aria-pressed="false"></button>
         <button class="glow-swatch" type="button" data-color="#8a8a92" style="--swatch:#8a8a92" aria-label="中性灰" aria-pressed="false"></button>
       </div>
-      <div class="glow-picker"><input type="color" id="glow-color" value="#ffffff" aria-label="自訂光效顏色"><label for="glow-color">自訂顏色</label><output id="glow-value">#FFFFFF</output></div>
-      <div class="glow-actions"><button class="quiet" id="glow-preview" type="button">預覽光效</button><button class="quiet" id="glow-reset" type="button">還原白光</button><span class="glow-sample" id="glow-sample" aria-hidden="true">點亮</span></div>
-      <p class="glow-hint">深淺主題各自保留亮度；系統設定為「減少動態」時不播放動畫。</p>
+      <div class="glow-palette" role="group" aria-label="自訂技能樹顏色">
+        <div id="glow-spectrum" class="glow-spectrum" tabindex="0" role="group" aria-label="色盤，左右方向鍵調整飽和度，上下方向鍵調整亮度" aria-describedby="glow-spectrum-value">
+          <span class="glow-cursor" id="glow-cursor" aria-hidden="true"></span>
+        </div>
+        <div class="glow-hue-label"><label for="glow-hue">色相</label><output id="glow-hue-value" for="glow-hue">0°</output></div>
+        <input id="glow-hue" class="glow-hue" type="range" min="0" max="360" step="1" value="0" aria-label="色相">
+        <p id="glow-spectrum-value" class="glow-palette-detail">飽和度 0% · 亮度 100%</p>
+        <div class="glow-picker"><span id="glow-chip" class="glow-chip" aria-hidden="true"></span><label for="glow-color">HEX</label><input type="text" id="glow-color" value="#FFFFFF" maxlength="7" spellcheck="false" autocomplete="off" aria-label="自訂顏色色碼，例如 #E8B264"><output id="glow-value" class="sr-only">#FFFFFF</output></div>
+      </div>
+      <div class="glow-actions"><button class="quiet" id="glow-preview" type="button">預覽解鎖特效</button><button class="quiet" id="glow-reset" type="button">還原白光</button><span class="glow-sample" id="glow-sample" aria-hidden="true">點亮</span></div>
+      <p class="glow-hint">在色盤上拖曳調整飽和度與亮度，下方彩條選擇色相，也可輸入 HEX 色碼。</p>
     </section>
     <div class="drawer-foot"><span>↔ 拖曳探索 · 滾輪縮放 · 雙指縮放</span><span id="storage-note">進度自動保存在此瀏覽器</span></div>
   </aside>
 
   <!-- 右側課程側板：桌機預設展開、手機預設收合 -->
-  <aside class="lesson-card" id="lesson" tabindex="-1" aria-label="課程內容"></aside>
+  <aside class="lesson-card" id="lesson" tabindex="-1" aria-label="課程與答題工作區">
+    <div class="lesson-frame-bar">
+      <span class="lesson-drag-handle" title="拖曳移動工作區">⠿ 學習工作區</span>
+      <span class="lesson-frame-hint">拖曳移動 · 四邊縮放</span>
+    </div>
+    <div class="lesson-content" id="lesson-content"></div>
+    <div class="frame-resize" data-resize="n" aria-hidden="true"></div>
+    <div class="frame-resize" data-resize="e" aria-hidden="true"></div>
+    <div class="frame-resize" data-resize="s" aria-hidden="true"></div>
+    <div class="frame-resize" data-resize="w" aria-hidden="true"></div>
+    <div class="frame-resize" data-resize="ne" aria-hidden="true"></div>
+    <div class="frame-resize" data-resize="nw" aria-hidden="true"></div>
+    <div class="frame-resize" data-resize="se" aria-hidden="true"></div>
+    <div class="frame-resize" data-resize="sw" aria-hidden="true"></div>
+  </aside>
 
   <!-- 底部狀態列 -->
   <div class="status-dock"><span>THE KNOWLEDGE MAP</span><span>每一步，都算進步</span></div>
