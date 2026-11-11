@@ -42,6 +42,8 @@
   <script src="js/backup-ui.js" defer></script>
   <script src="js/pack-ui.js" defer></script>
   <script src="js/glow-settings.js" defer></script>
+  <script src="js/i18n-messages.js" defer></script>
+  <script src="js/i18n.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#lesson">跳至學習內容</a>
@@ -67,12 +69,13 @@
   </header>
 
   <!-- 右上工具組 -->
-  <div class="topright-ctl"><button class="round-btn" id="reset" title="重設進度" aria-label="重設進度"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button></div>
+  <div class="topright-ctl"><div class="language-switch" role="group" aria-label="Language / 語言" data-language-control><button type="button" data-language="zh-Hant" lang="zh-Hant" aria-label="切換為中文" aria-pressed="true">中文</button><button type="button" data-language="en" lang="en" aria-label="Switch to English" aria-pressed="false">EN</button></div><button class="round-btn" id="reset" title="重設進度" aria-label="重設進度"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button></div>
 
   <!-- 左側抽屜：預設收合 -->
   <label class="drawer-backdrop" for="nav-toggle" aria-hidden="true"></label>
   <aside class="drawer" aria-label="導覽與學習包">
     <div class="drawer-head"><div><span class="eyebrow">YOUR LEARNING LANDSCAPE</span><h2>微積分漫遊</h2></div><label class="drawer-close" for="nav-toggle" title="收起選單" aria-label="收起選單">✕</label></div>
+    <div class="language-switch" role="group" aria-label="Language / 語言" data-language-control><button type="button" data-language="zh-Hant" lang="zh-Hant" aria-label="切換為中文" aria-pressed="true">中文</button><button type="button" data-language="en" lang="en" aria-label="Switch to English" aria-pressed="false">EN</button></div>
     <div class="drawer-progress"><div><span>你的探索進度</span><strong id="progress-text">載入中…</strong></div><progress id="progress" value="0" max="1" aria-label="課程完成進度"></progress><small id="progress-caption">第一步，從 Start 開始。</small></div>
     <div class="drawer-tools"><label class="sr-only" for="topic-jump">前往主題</label><select id="topic-jump"><option value="">前往主題…</option></select><button class="quiet" id="manage-packs">主題學習包 <span id="pack-count">0</span> ＋</button></div>
     <p id="catalog-warning" class="pack-error" role="alert" hidden></p>
@@ -81,7 +84,7 @@
       <p>進度與設定只存在此瀏覽器。匯出檔案可搬到新網址或另一部裝置；匯入會覆蓋目前的記錄。</p>
       <div class="backup-actions">
         <button class="quiet" id="backup-export" type="button">匯出記錄</button>
-        <input type="file" id="backup-file" accept="application/json,.json" aria-label="選擇要匯入的備份檔">
+        <label class="quiet backup-file-label" for="backup-file">匯入記錄<input class="sr-only" type="file" id="backup-file" accept="application/json,.json" aria-label="選擇要匯入的備份檔"></label>
       </div>
       <p class="glow-hint" id="backup-status" role="status">尚未匯出或匯入。</p>
     </section>
