@@ -11,7 +11,7 @@
   const MAX_FILE = 5 * 1024 * 1024;
   const PROGRESS_KEY = 'calculus-tree-progress-v1';
   const FALLBACK_KEYS = [PROGRESS_KEY, 'calculus-tree-packs-v1', 'calculus-tree-session-v1',
-    'skill-tree-theme', 'calculus-tree-glow-v1', 'calculus-tree-lesson-frame-v1', 'calculus-tree-scratch-v1'];
+    'skill-tree-theme', 'calculus-tree-glow-v1', 'calculus-tree-lesson-frame-v1', 'calculus-tree-scratch-v1', 'skill-tree-language'];
   const KEYS = Array.isArray(window.SkillTreeBackupKeys) && window.SkillTreeBackupKeys.length
     ? window.SkillTreeBackupKeys : FALLBACK_KEYS;
 
@@ -99,7 +99,7 @@
       let payload;
       try { payload = JSON.parse(String(reader.result)); }
       catch (_) { setStatus('檔案不是有效的 JSON，已取消匯入。', true); fileInput.value = ''; return; }
-      const confirmed = window.confirm('匯入會覆蓋此瀏覽器目前的進度與設定，確定繼續？');
+      const confirmed = window.confirm(window.SkillTreeI18n.t('匯入會覆蓋此瀏覽器目前的進度與設定，確定繼續？'));
       const result = importPayload(payload, confirmed);
       fileInput.value = '';
       if (!result.ok) { setStatus(result.error, !result.cancelled); return; }

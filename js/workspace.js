@@ -60,10 +60,24 @@
     writeJson(FRAME_KEY, frame);
   }
   function syncCollapseDirection() {
+    card.inert = !isOpen();
     if (!isDesktop()) { card.style.transform = ''; return; }
     // Move fully outside the viewport even after the user positions the panel in its center.
     const distance = card.offsetLeft < innerWidth/2 ? -card.offsetLeft-card.offsetWidth-16 : innerWidth-card.offsetLeft+16;
     card.style.transform = toggle?.checked ? `translateX(${distance}px)` : '';
+  }
+  function isOpen() {
+    return isDesktop() ? !toggle?.checked : !!toggle?.checked;
+  }
+  async function setOpen(open) {
+    finishFrame();
+    if (toggle) toggle.checked = isDesktop() ? !open : open;
+    syncCollapseDirection();
+    // Wait for the actual slide to finish before starting an unlock animation.
+    // Reduced-motion styles have no transition, so this resolves immediately.
+    void card.offsetWidth;
+    await Promise.all(card.getAnimations().filter(animation => animation.transitionProperty === 'transform')
+      .map(animation => animation.finished.catch(() => {})));
   }
   function setQuizMode(enabled) {
     card.classList.toggle('quiz-mode', enabled);
@@ -128,14 +142,21 @@
     event.stopImmediatePropagation();
   }, true);
   if (toggle) toggle.addEventListener('change', () => { finishFrame(); syncCollapseDirection(); });
+  let desktopLayout = isDesktop();
   window.addEventListener('resize', () => {
     finishFrame();
+    if (desktopLayout !== isDesktop()) {
+      if (toggle) toggle.checked = !toggle.checked;
+      desktopLayout = isDesktop();
+    }
     if (isDesktop()) {
       applyFrame();
       setQuizMode(card.classList.contains('quiz-mode'));
     } else card.style.cssText = '';
+    syncCollapseDirection();
   });
   applyFrame();
+  syncCollapseDirection();
 
   /* ---- 草稿紙：canvas 手寫，筆跡以虛擬座標保存，縮放與換主題後重繪 ---- */
   const savedScratch = readJson(SCRATCH_KEY);
@@ -286,7 +307,7 @@
     resizeCanvas();
   }
 
-  window.LessonWorkspace = {mountScratchpad, unmountScratchpad, setQuizMode, resetFrame:() => {
+  window.LessonWorkspace = {mountScratchpad, unmountScratchpad, setQuizMode, setOpen, isOpen, resetFrame:() => {
     try { localStorage.removeItem(FRAME_KEY); } catch (_) {}
     frame = null;
     quizInitialized = false;
