@@ -41,11 +41,12 @@ const attempts = new Map();
 const viewport = {x:0,y:0,scale:1};
 let toastTimer;
 let justLitId = null;
+let completionPresentation = 0;
 
 // A+ 補強：重開後回到同一課、同一分頁，並保留作答卷。格式帶 schemaVersion 以便日後遷移。
 const SESSION_KEY = 'calculus-tree-session-v1';
 const BACKUP_KEYS = [STORAGE_KEY, PACKS_KEY, SESSION_KEY, 'skill-tree-theme',
-  'calculus-tree-glow-v1', 'calculus-tree-lesson-frame-v1', 'calculus-tree-scratch-v1'];
+  'calculus-tree-glow-v1', 'calculus-tree-lesson-frame-v1', 'calculus-tree-scratch-v1', 'skill-tree-language'];
 window.SkillTreeBackupKeys = BACKUP_KEYS;
 function saveSession() {
   try {
@@ -159,19 +160,31 @@ function renderTree() {
   if (justLitId) window.SkillTreeEffects?.play($('#nodes').querySelector('.node.just-lit'));
   justLitId = null;
 }
-function selectNode(id) {
+function selectNode(id, {open = true} = {}) {
   const node = allNodes.find(item => item.id === id);
   if (!node || !isAvailable(node)) {
     if (node) notify(`先完成「${node.parents.filter(parent => !isCompleted(parent)).map(parent => allNodes.find(item => item.id === parent).title).join('」與「')}」即可解鎖。`);
     return;
   }
   selectedId = id;
+  completionPresentation++;
+  if (open) window.LessonWorkspace?.setOpen(true);
   activeTab = 'learn';
-  renderTree();
+  if (open) renderTree();
+  else {
+    // Keep node elements in place between the two clicks of a double-click.
+    for (const button of $('#nodes').querySelectorAll('.node')) {
+      const selected = button.dataset.id === selectedId;
+      button.classList.toggle('selected', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    }
+  }
   renderLesson();
   ($('#quiz-content') || $('#lesson-content')).scrollTop = 0;
-  focusTree();
-  if (matchMedia('(max-width:760px)').matches) $('#lesson').scrollIntoView({behavior:'smooth',block:'start'});
+  if (open) {
+    focusTree();
+    if (matchMedia('(max-width:760px)').matches) $('#lesson').scrollIntoView({behavior:'smooth',block:'start'});
+  }
 }
 function renderWelcome() {
   const finished = progress.completed.length === lessons.length;
@@ -247,15 +260,16 @@ function renderQuiz(lesson) {
     const correct = lesson.quiz.filter((question,index) => attempt.answers[index] === question[2]).length;
     attempt.submitted = true;
     progress.scores[lesson.id] = Math.max(progress.scores[lesson.id] || 0, correct);
-    if (correct >= lesson.passCount && !isCompleted(lesson.id)) {
+    const passed = correct >= lesson.passCount;
+    const firstCompletion = passed && !isCompleted(lesson.id);
+    if (firstCompletion) {
       progress.completed.push(lesson.id);
-      justLitId = lesson.id;
     }
     saveProgress();
     renderTree();
     renderLesson();
     ($('#quiz-content') || $('#lesson-content')).scrollTop = 0;
-    if (correct >= lesson.passCount) notify(progress.completed.length === lessons.length ? '恭喜！整棵微積分技能樹已點亮。' : `「${lesson.title}」已點亮！`);
+    if (passed) presentCompletion(lesson, firstCompletion);
   };
   if (attempt.submitted) $('#quiz-submit').onclick = () => { attempts.delete(lesson.id); renderLesson(); ($('#quiz-content') || $('#lesson-content')).scrollTop = 0; };
   if ($('#next-lesson')) $('#next-lesson').onclick = () => {
@@ -263,6 +277,23 @@ function renderQuiz(lesson) {
     selectNode(next?.id || 'start');
   };
   updateQuizSubmit();
+}
+async function presentCompletion(lesson, firstCompletion) {
+  const presentation = ++completionPresentation;
+  // Preserve the graded answers; only collapse the workspace so they can be reopened.
+  $('#nav-toggle').checked = false;
+  await window.LessonWorkspace?.setOpen(false);
+  if (presentation !== completionPresentation || selectedId !== lesson.id ||
+      !isCompleted(lesson.id) || window.LessonWorkspace?.isOpen()) return;
+  focusTree();
+  viewport.y = map.clientHeight * .45 - lesson.y * viewport.scale;
+  applyTransform();
+  if (firstCompletion) {
+    justLitId = lesson.id;
+    renderTree();
+  }
+  $('#nodes').querySelector(`[data-id="${CSS.escape(lesson.id)}"]`)?.focus({preventScroll:true});
+  notify(progress.completed.length === lessons.length ? '恭喜！整棵微積分技能樹已點亮。' : `「${lesson.title}」已點亮！`);
 }
 function applyTransform() {
   $('#world').style.transform = `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.scale})`;
@@ -317,6 +348,22 @@ const map = $('#map');
 const pointers = new Map();
 let gesture = null;
 let suppressClick = false;
+let previousBackgroundClick = false;
+let backgroundDoubleClick = false;
+function isMapBackground(target) {
+  return target === map || (!!target.closest('#world') && !target.closest('button,a,input,select,textarea,[role="button"]'));
+}
+map.addEventListener('click', event => {
+  const background = event.detail > 0 && !suppressClick && isMapBackground(event.target);
+  backgroundDoubleClick = event.detail === 2 && previousBackgroundClick && background;
+  previousBackgroundClick = background;
+}, true);
+map.addEventListener('dblclick', event => {
+  if (!backgroundDoubleClick || suppressClick || !isMapBackground(event.target)) return;
+  event.preventDefault();
+  window.LessonWorkspace?.setOpen(false);
+  map.focus({preventScroll:true});
+});
 map.addEventListener('pointerdown', event => {
   if (event.target.closest('.map-tools')) return;
   pointers.set(event.pointerId, {x:event.clientX,y:event.clientY});
@@ -375,7 +422,14 @@ $('#nodes').addEventListener('click',event => {
     return;
   }
   const node = event.target.closest('[data-id]');
-  if (node) selectNode(node.dataset.id);
+  if (node) selectNode(node.dataset.id, {open:event.detail === 0});
+});
+$('#nodes').addEventListener('dblclick', event => {
+  if (suppressClick) return;
+  const node = event.target.closest('.node[data-id]');
+  if (!node) return;
+  event.preventDefault();
+  selectNode(node.dataset.id);
 });
 map.addEventListener('wheel',event => {
   if (event.target.closest('.prerequisite-label')) return;
@@ -389,6 +443,7 @@ $('#fit').onclick = fitTree;
 $('#reset').onclick = () => $('#reset-dialog').showModal();
 $('#cancel-reset').onclick = () => $('#reset-dialog').close();
 $('#confirm-reset').onclick = () => {
+  completionPresentation++;
   progress={started:false,completed:[],scores:{}};
   attempts.clear();
   saveProgress();
