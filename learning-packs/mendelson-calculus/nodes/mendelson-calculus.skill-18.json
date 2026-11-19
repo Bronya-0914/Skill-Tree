@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-18",
+  "title": "18 · 最佳化建模",
+  "intro": "參考原書第 16 章。學習最佳化建模，完成4 道分步輸入長題。",
+  "kind": "derivative",
+  "minutes": 40,
+  "parents": [
+    "mendelson-calculus.skill-15"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "把目標寫成單一變量，明確列出可行範圍，再求臨界點並比較邊界。答案須回到原情境檢查單位與可行性。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "用 84 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。"
+    },
+    {
+      "type": "example",
+      "text": "由周長式得到 x+y 等於多少？\n計算：84/2 = 42。"
+    },
+    {
+      "type": "example",
+      "text": "面積最大時 x 等於多少？\n計算：42/2 = 21。"
+    },
+    {
+      "type": "example",
+      "text": "最大面積（m²）？\n計算：21*21 = 441。"
+    },
+    {
+      "type": "example",
+      "text": "面積 A(x) 的二階導數？\n計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+    },
+    {
+      "type": "paragraph",
+      "text": "用 96 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。"
+    },
+    {
+      "type": "example",
+      "text": "由周長式得到 x+y 等於多少？\n計算：96/2 = 48。"
+    },
+    {
+      "type": "example",
+      "text": "面積最大時 x 等於多少？\n計算：48/2 = 24。"
+    },
+    {
+      "type": "example",
+      "text": "最大面積（m²）？\n計算：24*24 = 576。"
+    },
+    {
+      "type": "example",
+      "text": "面積 A(x) 的二階導數？\n計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "multipart",
+      "prompt": "用 24 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "由周長式得到 x+y 等於多少？",
+          "answers": [
+            "12"
+          ],
+          "explanation": "計算：24/2 = 12。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積最大時 x 等於多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "計算：12/2 = 6。"
+        },
+        {
+          "type": "input",
+          "prompt": "最大面積（m²）？",
+          "answers": [
+            "36"
+          ],
+          "explanation": "計算：6*6 = 36。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積 A(x) 的二階導數？",
+          "answers": [
+            "-2"
+          ],
+          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "用 36 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "由周長式得到 x+y 等於多少？",
+          "answers": [
+            "18"
+          ],
+          "explanation": "計算：36/2 = 18。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積最大時 x 等於多少？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "計算：18/2 = 9。"
+        },
+        {
+          "type": "input",
+          "prompt": "最大面積（m²）？",
+          "answers": [
+            "81"
+          ],
+          "explanation": "計算：9*9 = 81。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積 A(x) 的二階導數？",
+          "answers": [
+            "-2"
+          ],
+          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "用 48 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "由周長式得到 x+y 等於多少？",
+          "answers": [
+            "24"
+          ],
+          "explanation": "計算：48/2 = 24。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積最大時 x 等於多少？",
+          "answers": [
+            "12"
+          ],
+          "explanation": "計算：24/2 = 12。"
+        },
+        {
+          "type": "input",
+          "prompt": "最大面積（m²）？",
+          "answers": [
+            "144"
+          ],
+          "explanation": "計算：12*12 = 144。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積 A(x) 的二階導數？",
+          "answers": [
+            "-2"
+          ],
+          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "用 60 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "由周長式得到 x+y 等於多少？",
+          "answers": [
+            "30"
+          ],
+          "explanation": "計算：60/2 = 30。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積最大時 x 等於多少？",
+          "answers": [
+            "15"
+          ],
+          "explanation": "計算：30/2 = 15。"
+        },
+        {
+          "type": "input",
+          "prompt": "最大面積（m²）？",
+          "answers": [
+            "225"
+          ],
+          "explanation": "計算：15*15 = 225。"
+        },
+        {
+          "type": "input",
+          "prompt": "面積 A(x) 的二階導數？",
+          "answers": [
+            "-2"
+          ],
+          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+        }
+      ]
+    }
+  ],
+  "passCount": 3
+}

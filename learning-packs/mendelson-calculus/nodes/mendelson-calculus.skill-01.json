@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-01",
+  "title": "01 · 不等式與區間",
+  "intro": "參考原書第 1 章。學習不等式與區間，完成10 道輸入練習。",
+  "kind": "base",
+  "minutes": 20,
+  "parents": [],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "移項後若乘除負數，不等號必須反向。先找臨界點，再測試各區間；端點是否包含取決於等號。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "解 2x+5<13，輸入 x 的上界。"
+    },
+    {
+      "type": "example",
+      "text": "解 2x+5<13，輸入 x 的上界。\n計算：(13-5)/2 = 4。"
+    },
+    {
+      "type": "paragraph",
+      "text": "解 2x+6<14，輸入 x 的上界。"
+    },
+    {
+      "type": "example",
+      "text": "解 2x+6<14，輸入 x 的上界。\n計算：(14-6)/2 = 4。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "解 2x+2<10，輸入 x 的上界。",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：(10-2)/2 = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "解 -2x≤6，輸入 x 的下界。",
+      "answers": [
+        "-3"
+      ],
+      "explanation": "計算：6/(-2) = -3。"
+    },
+    {
+      "type": "input",
+      "prompt": "|x|≤2 的區間長度是多少？",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：2-(-2) = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "(x-2)(x-5)<0，輸入解區間的左端點。",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²<4，有幾個整數解？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：2*2-1 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "解 2x+3<11，輸入 x 的上界。",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：(11-3)/2 = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "解 -3x≤9，輸入 x 的下界。",
+      "answers": [
+        "-3"
+      ],
+      "explanation": "計算：9/(-3) = -3。"
+    },
+    {
+      "type": "input",
+      "prompt": "|x|≤3 的區間長度是多少？",
+      "answers": [
+        "6"
+      ],
+      "explanation": "計算：3-(-3) = 6。"
+    },
+    {
+      "type": "input",
+      "prompt": "(x-3)(x-6)<0，輸入解區間的左端點。",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²<9，有幾個整數解？",
+      "answers": [
+        "5"
+      ],
+      "explanation": "計算：2*3-1 = 5。"
+    }
+  ],
+  "passCount": 7
+}

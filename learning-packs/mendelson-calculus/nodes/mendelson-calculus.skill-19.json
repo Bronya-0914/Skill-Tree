@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-19",
+  "title": "19 · 直線運動",
+  "intro": "參考原書第 17 章。學習直線運動，完成10 道輸入練習。",
+  "kind": "derivative",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-14"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "速度是位置導數，加速度是速度導數。位移為位置差，路程要按速度變號的時刻分段取絕對值。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "s(t)=5t²，求 v(3)。"
+    },
+    {
+      "type": "example",
+      "text": "s(t)=5t²，求 v(3)。\n計算：2*5*3 = 30。"
+    },
+    {
+      "type": "paragraph",
+      "text": "s(t)=6t²，求 v(3)。"
+    },
+    {
+      "type": "example",
+      "text": "s(t)=6t²，求 v(3)。\n計算：2*6*3 = 36。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "s(t)=2t²，求 v(3)。",
+      "answers": [
+        "12"
+      ],
+      "explanation": "計算：2*2*3 = 12。"
+    },
+    {
+      "type": "input",
+      "prompt": "s(t)=t³-2t，求 a(2)。",
+      "answers": [
+        "12"
+      ],
+      "explanation": "計算：6*2 = 12。"
+    },
+    {
+      "type": "input",
+      "prompt": "s(t)=2t²，在 0≤t≤2 的位移？",
+      "answers": [
+        "8"
+      ],
+      "explanation": "計算：2*(4-0) = 8。"
+    },
+    {
+      "type": "input",
+      "prompt": "v(t)=2t-4，何時靜止？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：4/2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "v=-2 m/s，速率是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：abs(-2) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "s(t)=3t²，求 v(3)。",
+      "answers": [
+        "18"
+      ],
+      "explanation": "計算：2*3*3 = 18。"
+    },
+    {
+      "type": "input",
+      "prompt": "s(t)=t³-3t，求 a(2)。",
+      "answers": [
+        "12"
+      ],
+      "explanation": "計算：6*2 = 12。"
+    },
+    {
+      "type": "input",
+      "prompt": "s(t)=3t²，在 0≤t≤2 的位移？",
+      "answers": [
+        "12"
+      ],
+      "explanation": "計算：3*(4-0) = 12。"
+    },
+    {
+      "type": "input",
+      "prompt": "v(t)=2t-6，何時靜止？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：6/2 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "v=-3 m/s，速率是多少？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：abs(-3) = 3。"
+    }
+  ],
+  "passCount": 7
+}

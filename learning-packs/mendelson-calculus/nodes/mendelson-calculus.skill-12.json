@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-12",
+  "title": "12 · 三角函數與求導",
+  "intro": "參考原書第 10 章。學習三角函數與求導，完成10 道輸入練習。",
+  "kind": "derivative",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-11"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "求導公式採弧度。sin 的導數是 cos，cos 的導數是 -sin，tan 的導數是 sec²；複合角仍須乘內層導數。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "f(x)=sin(5x)，求 f′(0)。"
+    },
+    {
+      "type": "example",
+      "text": "f(x)=sin(5x)，求 f′(0)。\n計算：5*cos(0) = 5。"
+    },
+    {
+      "type": "paragraph",
+      "text": "f(x)=sin(6x)，求 f′(0)。"
+    },
+    {
+      "type": "example",
+      "text": "f(x)=sin(6x)，求 f′(0)。\n計算：6*cos(0) = 6。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "f(x)=sin(2x)，求 f′(0)。",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2*cos(0) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=cos(2x)，求 f′(0)。",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：-2*sin(0) = 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=tan(2x)，求 f′(0)。",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2/cos(0)^2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=2sin(x)，求 f′(pi)。",
+      "answers": [
+        "-2"
+      ],
+      "explanation": "計算：2*cos(pi) = -2。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=sin(x)^2，求 f′(pi/2)。",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：2*1*0 = 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=sin(3x)，求 f′(0)。",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3*cos(0) = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=cos(3x)，求 f′(0)。",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：-3*sin(0) = 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=tan(3x)，求 f′(0)。",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3/cos(0)^2 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=3sin(x)，求 f′(pi)。",
+      "answers": [
+        "-3"
+      ],
+      "explanation": "計算：3*cos(pi) = -3。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=sin(x)^3，求 f′(pi/2)。",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：3*1*0 = 0。"
+    }
+  ],
+  "passCount": 7
+}

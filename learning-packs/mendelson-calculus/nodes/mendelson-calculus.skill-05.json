@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-05",
+  "title": "05 · 函數、定義域與值域",
+  "intro": "參考原書第 5 章。學習函數、定義域與值域，完成10 道輸入練習。",
+  "kind": "base",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-02",
+    "mendelson-calculus.skill-04"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "• 函數：每個合法輸入只有一個輸出。\n• 定義域：可代入的 x；分母不為零、偶次根號內非負、對數真數為正。\n• 值域：合法輸入實際能產生的 y。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "√(x-5) 的定義域下界？"
+    },
+    {
+      "type": "example",
+      "text": "√(x-5) 的定義域下界？\n計算：5 = 5。"
+    },
+    {
+      "type": "paragraph",
+      "text": "√(x-6) 的定義域下界？"
+    },
+    {
+      "type": "example",
+      "text": "√(x-6) 的定義域下界？\n計算：6 = 6。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "√(x-2) 的定義域下界？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "1/(x-2) 的定義域排除哪個數？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "y=2-x² 的最大值？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2-0 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=x²+2，求 f(2)。",
+      "answers": [
+        "6"
+      ],
+      "explanation": "計算：4+2 = 6。"
+    },
+    {
+      "type": "input",
+      "prompt": "y=√(4-x²) 的最大值？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：sqrt(4) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "√(x-3) 的定義域下界？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "1/(x-3) 的定義域排除哪個數？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "y=3-x² 的最大值？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3-0 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x)=x²+3，求 f(2)。",
+      "answers": [
+        "7"
+      ],
+      "explanation": "計算：4+3 = 7。"
+    },
+    {
+      "type": "input",
+      "prompt": "y=√(9-x²) 的最大值？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：sqrt(9) = 3。"
+    }
+  ],
+  "passCount": 7
+}

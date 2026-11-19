@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-25",
+  "title": "25 · 旋轉體體積",
+  "intro": "參考原書第 22 章。學習旋轉體體積，完成4 道分步輸入長題。",
+  "kind": "integral",
+  "minutes": 40,
+  "parents": [
+    "mendelson-calculus.skill-23"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "先畫旋轉軸與切片。圓盤法用 π(R²-r²)，柱殼法用 2π×半徑×高度；上下限依切片變量。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "將 y=x、y=0、x=7 圍成的三角形繞 x 軸旋轉。"
+    },
+    {
+      "type": "example",
+      "text": "在 x=7 的圓盤半徑？\n計算：7 = 7。"
+    },
+    {
+      "type": "example",
+      "text": "截面面積除以 pi，在右端點的值？\n計算：7^2 = 49。"
+    },
+    {
+      "type": "example",
+      "text": "體積除以 pi？\n計算：7^3/3 = 114.33333333333333。"
+    },
+    {
+      "type": "paragraph",
+      "text": "將 y=x、y=0、x=8 圍成的三角形繞 x 軸旋轉。"
+    },
+    {
+      "type": "example",
+      "text": "在 x=8 的圓盤半徑？\n計算：8 = 8。"
+    },
+    {
+      "type": "example",
+      "text": "截面面積除以 pi，在右端點的值？\n計算：8^2 = 64。"
+    },
+    {
+      "type": "example",
+      "text": "體積除以 pi？\n計算：8^3/3 = 170.66666666666666。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "multipart",
+      "prompt": "將 y=x、y=0、x=2 圍成的三角形繞 x 軸旋轉。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 x=2 的圓盤半徑？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "計算：2 = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "截面面積除以 pi，在右端點的值？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：2^2 = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "2.6666666666666665"
+          ],
+          "explanation": "計算：2^3/3 = 2.6666666666666665。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "將 y=x、y=0、x=3 圍成的三角形繞 x 軸旋轉。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 x=3 的圓盤半徑？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "計算：3 = 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "截面面積除以 pi，在右端點的值？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "計算：3^2 = 9。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "計算：3^3/3 = 9。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "將 y=x、y=0、x=4 圍成的三角形繞 x 軸旋轉。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 x=4 的圓盤半徑？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：4 = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "截面面積除以 pi，在右端點的值？",
+          "answers": [
+            "16"
+          ],
+          "explanation": "計算：4^2 = 16。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "21.333333333333332"
+          ],
+          "explanation": "計算：4^3/3 = 21.333333333333332。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "將 y=x、y=0、x=5 圍成的三角形繞 x 軸旋轉。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 x=5 的圓盤半徑？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "計算：5 = 5。"
+        },
+        {
+          "type": "input",
+          "prompt": "截面面積除以 pi，在右端點的值？",
+          "answers": [
+            "25"
+          ],
+          "explanation": "計算：5^2 = 25。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "41.666666666666664"
+          ],
+          "explanation": "計算：5^3/3 = 41.666666666666664。"
+        }
+      ]
+    }
+  ],
+  "passCount": 3
+}
