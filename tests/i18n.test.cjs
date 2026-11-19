@@ -21,7 +21,7 @@ test('every built-in course string has an English display translation',()=>{
   }
   check(packs);
   for(const pack of packs) for(const node of pack.nodes){lessons++;questions+=node.questions.length;}
-  assert.equal(lessons,27);assert.equal(questions,270);
+  assert.equal(lessons,52);assert.equal(questions,418);
 });
 test('dynamic labels translate embedded course names and maintain values',()=>{
   assert.equal(english('已作答 3 / 10 題 · 全部作答後才能交卷'),'3 / 10 answered · Answer every question to submit');

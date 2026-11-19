@@ -26,7 +26,7 @@ const library = api.loadLibrary(packs.map(item => item.pack));
 for (const {pack,dir} of packs) {
   const files = {'topic.json':zip.strToU8(JSON.stringify(pack.topic,null,2))};
   for (const node of pack.nodes) files['nodes/'+node.id+'.json'] = zip.strToU8(JSON.stringify(node,null,2));
-  if (fs.existsSync(path.join(dir,'README.md'))) files['README.md'] = zip.strToU8(fs.readFileSync(path.join(dir,'README.md'),'utf8'));
+  for(const name of ['README.md','README.en.md']) if(fs.existsSync(path.join(dir,name))) files[name]=zip.strToU8(fs.readFileSync(path.join(dir,name),'utf8'));
   const bytes = zip.zipSync(files,{level:6});
   api.readZip(bytes,zip);
   fs.writeFileSync(path.join(root,pack.topic.id+'.zip'),bytes);

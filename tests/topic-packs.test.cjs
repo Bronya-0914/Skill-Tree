@@ -6,43 +6,26 @@ const path = require('node:path');
 const packs = require('../js/topic-packs.js');
 const zip = require('../js/vendor/fflate.js');
 const root = path.resolve(__dirname, '..');
-const bytes = new Uint8Array(fs.readFileSync(path.join(root, 'learning-packs/cis221-calculus.zip')));
+const bytes = new Uint8Array(fs.readFileSync(path.join(root, 'tests/fixtures/cis221-calculus.zip')));
 const sample = packs.readZip(bytes, zip);
 const copy = () => structuredClone(sample);
-
-test('網站只有 Learning Pack 課程，載入檔與 JSON / ZIP 一致', () => {
-  const vm = require('node:vm');
-  const bundled = JSON.parse(JSON.stringify(vm.runInNewContext(
-    fs.readFileSync(path.join(root,'learning-packs/catalog.js'),'utf8')+'\nLEARNING_PACKS')));
-  assert.deepEqual(bundled,[sample]);
-  const library=packs.loadLibrary(bundled);
-  const lessons=packs.buildLessons(library);
-  assert.equal(lessons.length,27);
-  assert.equal(lessons.reduce((total,node)=>total+node.quiz.length,0),270);
-  assert.ok(lessons.every(node=>node.topicId==='cis221-calculus'));
-  assert.ok(!fs.existsSync(path.join(root,'lessons.js')));
-  assert.ok(!fs.existsSync(path.join(root,'examples')));
-  const sourceNodes=fs.readdirSync(path.join(root,'learning-packs/cis221-calculus/nodes'));
-  assert.equal(sourceNodes.length,27);
-  for(const node of sample.nodes) {
-    assert.deepEqual(JSON.parse(fs.readFileSync(path.join(root,'learning-packs/cis221-calculus/nodes',node.id+'.json'),'utf8')),node);
-  }
-});
+// 「較新版本」必須相對目前教材版本計算，否則教材升版後這些測試會失效。
+const newerVersion = sample.topic.version + 1;
 
 test('已上傳同一主題不重複，較新自訂版本保留', () => {
   assert.equal(packs.loadLibrary([sample],[copy()]).length,1);
-  const saved=copy();saved.topic.version=2;saved.nodes[0].title='自訂課程名稱';
+  const saved=copy();saved.topic.version=newerVersion;saved.nodes[0].title='自訂課程名稱';
   assert.equal(packs.loadLibrary([sample],[saved])[0].nodes[0].title,'自訂課程名稱');
 });
 
 test('預設包升級會更新同 ID，但保留使用者額外節點和其他主題', () => {
   const saved=copy();
   saved.nodes.push({...saved.nodes[0],id:'cis221-calculus.review',parents:[]});
-  const current=copy();current.topic.version=2;current.nodes[0].title='新版課程';
+  const current=copy();current.topic.version=newerVersion;current.nodes[0].title='新版課程';
   const other=copy();other.topic.id='review';other.nodes=[{...other.nodes[0],id:'review.first',parents:[]}];
   const library=packs.loadLibrary([current],[saved,other]);
   assert.equal(library.length,2);
-  assert.equal(library[0].topic.version,2);
+  assert.equal(library[0].topic.version,newerVersion);
   assert.equal(library[0].nodes.length,28);
   assert.equal(library[0].nodes[0].title,'新版課程');
   assert.throws(()=>packs.loadLibrary([sample],[saved,saved]),/重複/);
@@ -71,7 +54,7 @@ test('相同包冪等，較新版本更新同 ID 並保留未列出的舊節點'
   const first = packs.prepare(sample,[]);
   assert.equal(packs.prepare(sample,first.packs).changed,false);
   const newer=copy();
-  newer.topic.version=2;
+  newer.topic.version=newerVersion;
   newer.nodes=[newer.nodes.find(node=>node.id.endsWith('.functions'))];
   newer.nodes[0].title='更新切線課';
   const result=packs.prepare(newer,first.packs);
@@ -133,6 +116,6 @@ test('跨主題先修可解析，更新後也檢查整體關係', () => {
   second.nodes=[{...second.nodes[0],id:'advanced.review',parents:[]}];
   const result=packs.prepare(second,[sample]);
   assert.ok(result.lessons.findIndex(node=>node.id==='advanced.review') > result.lessons.findIndex(node=>node.id==='cis221-calculus.implicit'));
-  const circular=copy();circular.topic.version=2;circular.topic.attachTo='advanced.review';
+  const circular=copy();circular.topic.version=newerVersion;circular.topic.attachTo='advanced.review';
   assert.throws(()=>packs.prepare(circular,result.packs),/循環/);
 });

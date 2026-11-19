@@ -5,8 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const packs = require('../js/topic-packs.js');
 const layout = require('../js/tree-layout.js');
-const bundled = JSON.parse(JSON.stringify(vm.runInNewContext(
-  fs.readFileSync(path.join(__dirname, '../learning-packs/catalog.js'), 'utf8') + '\nLEARNING_PACKS')));
+const bundled = [packs.readZip(new Uint8Array(fs.readFileSync(path.join(__dirname,'fixtures/cis221-calculus.zip'))),require('../js/vendor/fflate.js'))];
 const makeNodes = () => [{id:'start', title:'Start', parents:[]}, ...packs.buildLessons(bundled)];
 
 function verifyGraph(nodes) {
