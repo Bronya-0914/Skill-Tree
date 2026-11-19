@@ -2,227 +2,222 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-18",
   "title": "18 · 最佳化建模",
-  "intro": "參考原書第 16 章。學習最佳化建模，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能把文字題翻譯成目標函數與約束條件，用導數找出最大值或最小值，並確認答案合理。這是微積分在工程、經濟與設計上最實用的出口。",
   "kind": "derivative",
-  "minutes": 40,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-15"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：先建模，再求導"
     },
     {
       "type": "paragraph",
-      "text": "把目標寫成單一變量，明確列出可行範圍，再求臨界點並比較邊界。答案須回到原情境檢查單位與可行性。"
+      "text": "最佳化問題有兩個要素：要最大化或最小化的目標函數，以及限制條件的約束方程式。必須先用約束把目標函數化成單一變量的函數，才能求導。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "目標：最大化或最小化 f(x)\n約束：g(x, y) = 0，用來消去多餘變量"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：臨界點要驗證"
     },
     {
       "type": "paragraph",
-      "text": "用 84 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。"
+      "text": "導數為 0 只給出候選點。要用二階判別或端點比較確認它是最大還是最小。若定義域是閉區間，端點必須一併比較；若端點使面積或長度為負，還要排除。"
     },
     {
-      "type": "example",
-      "text": "由周長式得到 x+y 等於多少？\n計算：84/2 = 42。"
+      "type": "formula",
+      "text": "f'(c) = 0 且 f''(c) < 0  ⇒  極大\nf'(c) = 0 且 f''(c) > 0  ⇒  極小"
     },
     {
-      "type": "example",
-      "text": "面積最大時 x 等於多少？\n計算：42/2 = 21。"
-    },
-    {
-      "type": "example",
-      "text": "最大面積（m²）？\n計算：21*21 = 441。"
-    },
-    {
-      "type": "example",
-      "text": "面積 A(x) 的二階導數？\n計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+      "type": "heading",
+      "text": "原理三：答案要回到情境檢查"
     },
     {
       "type": "paragraph",
-      "text": "用 96 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。"
+      "text": "算出數字後要問：單位對不對、數值合不合理、有沒有違反約束。例如長度不能為負、機率不能大於 1。數學上正確但情境上不合理的解必須捨去。"
     },
     {
-      "type": "example",
-      "text": "由周長式得到 x+y 等於多少？\n計算：96/2 = 48。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "面積最大時 x 等於多少？\n計算：48/2 = 24。"
+      "type": "paragraph",
+      "text": "第一步，找出要最大或最小的量，寫成目標函數。"
     },
     {
-      "type": "example",
-      "text": "最大面積（m²）？\n計算：24*24 = 576。"
+      "type": "paragraph",
+      "text": "第二步，寫出約束條件，用它把目標函數化成一個變量。"
     },
     {
-      "type": "example",
-      "text": "面積 A(x) 的二階導數？\n計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+      "type": "paragraph",
+      "text": "第三步，確定該變量的合理範圍（通常由長度、面積為正決定）。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，求導、解 f'=0，並比較端點。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，把答案代回情境，檢查單位與合理性。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是沒有用約束消去變量，直接對兩個變量求導，結果無法求解。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是找到臨界點就宣稱是答案，沒有驗證它是最大還是最小。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是忽略定義域端點。有些最佳解就落在邊界上，例如「長度可以為 0」的極端情況。"
     }
   ],
   "questions": [
     {
+      "prompt": "解最佳化問題的第一步是？",
+      "options": [
+        "寫出目標函數與約束條件",
+        "直接求導",
+        "先算二階導數",
+        "先代入數字"
+      ],
+      "answer": 0,
+      "explanation": "必須先有目標函數才能求導，也必須有約束才能消去多餘變量。跳過建模直接求導，通常會卡在兩個未知數上。"
+    },
+    {
+      "type": "input",
+      "prompt": "周長為 20 的長方形，最大面積是多少？",
+      "answers": [
+        "25"
+      ],
+      "explanation": "設長 x、寬 y，2x + 2y = 20 得 y = 10 - x。面積 A = x(10-x) = 10x - x²，A' = 10 - 2x = 0 得 x = 5。最大面積 5·5 = 25。"
+    },
+    {
+      "type": "input",
+      "prompt": "兩數之和為 10，乘積最大時較小的數是多少？",
+      "answers": [
+        "5"
+      ],
+      "explanation": "設兩數 x 與 10-x，乘積 P = x(10-x)，P' = 10 - 2x = 0 得 x = 5。兩數相等時乘積最大，最大值 25。"
+    },
+    {
+      "prompt": "閉區間上求最佳解時，為何要檢查端點？",
+      "options": [
+        "極值可能出現在邊界上",
+        "端點一定不是答案",
+        "端點導數必為 0",
+        "端點使函數無定義"
+      ],
+      "answer": 0,
+      "explanation": "閉區間上的極值可能發生在臨界點，也可能在端點。若只檢查 f'=0，會漏掉邊界解，這在實際應用中很常見。"
+    },
+    {
+      "type": "input",
+      "prompt": "x + y = 12，xy 最大時的 x 是多少？",
+      "answers": [
+        "6"
+      ],
+      "explanation": "y = 12 - x，乘積 P = x(12-x) = 12x - x²，P' = 12 - 2x = 0 得 x = 6。此時 y = 6，兩數相等。"
+    },
+    {
       "type": "multipart",
-      "prompt": "用 24 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
+      "prompt": "周長為 24 的長方形。",
       "parts": [
         {
           "type": "input",
-          "prompt": "由周長式得到 x+y 等於多少？",
+          "prompt": "設一邊為 x，另一邊 12 - x 中 x 的係數是多少？",
           "answers": [
-            "12"
+            "-1"
           ],
-          "explanation": "計算：24/2 = 12。"
+          "explanation": "由 2x + 2y = 24 得 x + y = 12，故 y = 12 - x，x 的係數為 -1。"
         },
         {
           "type": "input",
-          "prompt": "面積最大時 x 等於多少？",
+          "prompt": "面積最大時的 x 是多少？",
           "answers": [
             "6"
           ],
-          "explanation": "計算：12/2 = 6。"
+          "explanation": "A = x(12-x) = 12x - x²，A' = 12 - 2x = 0 得 x = 6。"
         },
         {
           "type": "input",
-          "prompt": "最大面積（m²）？",
+          "prompt": "最大面積是多少？",
           "answers": [
             "36"
           ],
-          "explanation": "計算：6*6 = 36。"
-        },
-        {
-          "type": "input",
-          "prompt": "面積 A(x) 的二階導數？",
-          "answers": [
-            "-2"
-          ],
-          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+          "explanation": "代入 x = 6 得 A = 6·6 = 36。周長固定時，正方形面積最大。"
         }
-      ]
+      ],
+      "explanation": "本題是固定周長求最大面積的標準範式。結論可推廣：周長固定時正方形面積最大；面積固定時正方形周長最小。"
+    },
+    {
+      "type": "input",
+      "prompt": "兩正數之和為 8，平方和最小時其中一數是多少？",
+      "answers": [
+        "4"
+      ],
+      "explanation": "設一數 x，另一數 8-x，平方和 S = x² + (8-x)² = 2x² - 16x + 64。S' = 4x - 16 = 0 得 x = 4，此時兩數相等。"
+    },
+    {
+      "prompt": "二階判別在最佳化問題中的作用是？",
+      "options": [
+        "確認臨界點是最大還是最小",
+        "找出臨界點",
+        "消去變量",
+        "計算面積"
+      ],
+      "answer": 0,
+      "explanation": "一階導數找出候選點，二階導數判斷它是極大還是極小。少了這一步，可能把最小值誤報成最大值。"
+    },
+    {
+      "type": "input",
+      "prompt": "面積為 36 的長方形，周長最小是多少？",
+      "answers": [
+        "24"
+      ],
+      "explanation": "設長 x、寬 36/x，周長 P = 2x + 72/x，P' = 2 - 72/x² = 0 得 x² = 36，x = 6。周長為 2·6 + 2·6 = 24，即正方形。"
     },
     {
       "type": "multipart",
-      "prompt": "用 36 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
+      "prompt": "兩正數之和為 10，求平方和的最小值。",
       "parts": [
         {
           "type": "input",
-          "prompt": "由周長式得到 x+y 等於多少？",
+          "prompt": "設一數為 x，另一數 10 - x 中 x 的係數是多少？",
           "answers": [
-            "18"
+            "-1"
           ],
-          "explanation": "計算：36/2 = 18。"
+          "explanation": "由 x + y = 10 得 y = 10 - x，x 的係數為 -1。"
         },
         {
           "type": "input",
-          "prompt": "面積最大時 x 等於多少？",
+          "prompt": "平方和最小時的 x 是多少？",
           "answers": [
-            "9"
+            "5"
           ],
-          "explanation": "計算：18/2 = 9。"
+          "explanation": "S = x² + (10-x)² = 2x² - 20x + 100，S' = 4x - 20 = 0 得 x = 5。"
         },
         {
           "type": "input",
-          "prompt": "最大面積（m²）？",
+          "prompt": "最小平方和是多少？",
           "answers": [
-            "81"
+            "50"
           ],
-          "explanation": "計算：9*9 = 81。"
-        },
-        {
-          "type": "input",
-          "prompt": "面積 A(x) 的二階導數？",
-          "answers": [
-            "-2"
-          ],
-          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
+          "explanation": "代入 x = 5：25 + 25 = 50。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "用 48 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "由周長式得到 x+y 等於多少？",
-          "answers": [
-            "24"
-          ],
-          "explanation": "計算：48/2 = 24。"
-        },
-        {
-          "type": "input",
-          "prompt": "面積最大時 x 等於多少？",
-          "answers": [
-            "12"
-          ],
-          "explanation": "計算：24/2 = 12。"
-        },
-        {
-          "type": "input",
-          "prompt": "最大面積（m²）？",
-          "answers": [
-            "144"
-          ],
-          "explanation": "計算：12*12 = 144。"
-        },
-        {
-          "type": "input",
-          "prompt": "面積 A(x) 的二階導數？",
-          "answers": [
-            "-2"
-          ],
-          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
-        }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "用 60 m 圍欄圍出一個矩形。設一邊為 x，另一邊為 y，求最大面積。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "由周長式得到 x+y 等於多少？",
-          "answers": [
-            "30"
-          ],
-          "explanation": "計算：60/2 = 30。"
-        },
-        {
-          "type": "input",
-          "prompt": "面積最大時 x 等於多少？",
-          "answers": [
-            "15"
-          ],
-          "explanation": "計算：30/2 = 15。"
-        },
-        {
-          "type": "input",
-          "prompt": "最大面積（m²）？",
-          "answers": [
-            "225"
-          ],
-          "explanation": "計算：15*15 = 225。"
-        },
-        {
-          "type": "input",
-          "prompt": "面積 A(x) 的二階導數？",
-          "answers": [
-            "-2"
-          ],
-          "explanation": "計算：A=x(P/2-x) ⇒ A″=-2 = -2。"
-        }
-      ]
+      ],
+      "explanation": "固定和求最小平方和，答案永遠是兩數相等。這與「固定周長求最大面積」是同一個對稱性原理。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

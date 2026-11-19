@@ -2,130 +2,217 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-21",
   "title": "21 · 原函數與初值",
-  "intro": "參考原書第 19 章。學習原函數與初值，完成10 道輸入練習。",
+  "intro": "學完這一節，你能從導數反推原函數、理解為什麼要加常數 C，並用初值條件定出唯一的解。這是積分的起點，也是解微分方程的第一步。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-12"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：原函數是求導的反向操作"
     },
     {
       "type": "paragraph",
-      "text": "積分逆轉求導。冪次積分增加指數再除新指數，但 x⁻¹ 例外；不定積分保留 C，用初始條件求 C。"
+      "text": "若 F'(x) = f(x)，則 F 是 f 的一個原函數。求導會消去常數，所以反推時常數無法確定；所有原函數只差一個常數。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "F'(x) = f(x)  ⇒  ∫f(x) dx = F(x) + C"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：常數 C 不能省略"
     },
     {
       "type": "paragraph",
-      "text": "F′(x)=5x，F(0)=1，求 F(2)。"
+      "text": "C 代表所有可能的垂直平移。少了 C，只得到其中一條曲線，而不是全部解。不定積分的答案必須帶 C，這是與定積分最明顯的差別。"
     },
     {
-      "type": "example",
-      "text": "F′(x)=5x，F(0)=1，求 F(2)。\n計算：5*4/2+1 = 11。"
+      "type": "formula",
+      "text": "∫x² dx = x³/3 + C\nC 取不同值，得到一整族平行曲線"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：初值條件定出唯一的 C"
     },
     {
       "type": "paragraph",
-      "text": "F′(x)=6x，F(0)=1，求 F(2)。"
+      "text": "給定一點的函數值，就能解出 C。這個條件叫初值條件。實際問題中它通常來自初始位置、初始速度或初始溫度。"
     },
     {
-      "type": "example",
-      "text": "F′(x)=6x，F(0)=1，求 F(2)。\n計算：6*4/2+1 = 13。"
+      "type": "formula",
+      "text": "已知 F(x₀) = y₀，代入 F(x) = G(x) + C 解出 C"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，逐項反推：冪次加 1，再除以新冪次。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，加上常數 C。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，若有初值條件，把該點代入，解出 C。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，把 C 寫回原函數，得到唯一解。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，求導驗證：把結果求導，應回到原本的 f(x)。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忘記加 C。不定積分的答案沒有 C 就不完整。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是冪次法則用反。∫x² dx 是 x³/3，不是 3x²；求導才是指數下降。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是初值代入後沒有解出 C 就停止，或把 C 當成已知數直接寫進答案。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "F′(x)=2x，F(0)=1，求 F(2)。",
-      "answers": [
-        "5"
+      "prompt": "∫2x dx 等於？",
+      "options": [
+        "x² + C",
+        "2 + C",
+        "x²",
+        "2x² + C"
       ],
-      "explanation": "計算：2*4/2+1 = 5。"
+      "answer": 0,
+      "explanation": "反推冪次：2x 的原函數是 x²，再加常數 C。求導驗證：(x²+C)' = 2x，正確。"
     },
     {
       "type": "input",
-      "prompt": "∫x^2 dx 中 x^3 的係數？",
+      "prompt": "∫3x² dx 在 x = 1 時的值是多少？（取 C = 0）",
       "answers": [
-        "0.3333333333333333"
+        "1"
       ],
-      "explanation": "計算：1/3 = 0.3333333333333333。"
+      "explanation": "∫3x² dx = x³ + C，取 C=0 得 x³，代入 1 得 1。這與求導相反：3x² 的指數加 1 再除以 3。"
     },
     {
       "type": "input",
-      "prompt": "F′(x)=2，F(1)=0，求 F(3)。",
+      "prompt": "已知 f'(x) = 2x 且 f(0) = 3，則 f(1) 等於多少？",
       "answers": [
         "4"
       ],
-      "explanation": "計算：2*(3-1) = 4。"
+      "explanation": "f(x) = x² + C，代入 f(0)=3 得 C=3，故 f(x)=x²+3。f(1)=1+3=4。初值條件的作用就是定出 C。"
     },
     {
-      "type": "input",
-      "prompt": "F′(x)=cos x，F(0)=2，求 F(pi/2)。",
-      "answers": [
-        "3"
+      "prompt": "關於不定積分的常數 C，下列敘述何者正確？",
+      "options": [
+        "不可省略，代表所有垂直平移",
+        "可以省略，不影響結果",
+        "必須為 0",
+        "由被積函數決定"
       ],
-      "explanation": "計算：1+2 = 3。"
+      "answer": 0,
+      "explanation": "C 代表原函數的整族解，省略就只剩一條曲線。只有在定積分中，C 會因為相減而抵消，才可以不管。"
     },
     {
       "type": "input",
-      "prompt": "F′(x)=2x+2，F(0)=0，求 F(1)。",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：1+2 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "F′(x)=3x，F(0)=1，求 F(2)。",
-      "answers": [
-        "7"
-      ],
-      "explanation": "計算：3*4/2+1 = 7。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫x^3 dx 中 x^4 的係數？",
-      "answers": [
-        "0.25"
-      ],
-      "explanation": "計算：1/4 = 0.25。"
-    },
-    {
-      "type": "input",
-      "prompt": "F′(x)=3，F(1)=0，求 F(3)。",
-      "answers": [
-        "6"
-      ],
-      "explanation": "計算：3*(3-1) = 6。"
-    },
-    {
-      "type": "input",
-      "prompt": "F′(x)=cos x，F(0)=3，求 F(pi/2)。",
+      "prompt": "∫x³ dx 在 x = 2 時的值是多少？（取 C = 0）",
       "answers": [
         "4"
       ],
-      "explanation": "計算：1+3 = 4。"
+      "explanation": "∫x³ dx = x⁴/4 + C，取 C=0 代入 2 得 16/4 = 4。冪次加 1 後要除以新冪次 4。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "已知 f'(x) = 6x 且 f(1) = 2。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "初值條件給出的函數值是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "題目直接給 f(1) = 2，這就是用來定 C 的條件。"
+        },
+        {
+          "type": "input",
+          "prompt": "常數 C 等於多少？",
+          "answers": [
+            "-1"
+          ],
+          "explanation": "f(x) = 3x² + C，代入 f(1)=2 得 3 + C = 2，故 C = -1。"
+        },
+        {
+          "type": "input",
+          "prompt": "f(2) 等於多少？",
+          "answers": [
+            "11"
+          ],
+          "explanation": "f(x) = 3x² - 1，代入 2 得 12 - 1 = 11。"
+        }
+      ],
+      "explanation": "三步流程：反推原函數、代初值定 C、用完整函數求其他點。順序顛倒就無法得到唯一解。"
     },
     {
       "type": "input",
-      "prompt": "F′(x)=2x+3，F(0)=0，求 F(1)。",
+      "prompt": "∫(1/x²) dx 在 x = 2 時的值是多少？（取 C = 0）",
       "answers": [
-        "4"
+        "-1/2"
       ],
-      "explanation": "計算：1+3 = 4。"
+      "explanation": "1/x² = x⁻²，原函數為 x⁻¹/(-1) = -1/x。取 C=0 代入 2 得 -1/2。負指數的冪次加 1 後仍是負數。"
+    },
+    {
+      "prompt": "同一個函數的兩個不同原函數，它們相差？",
+      "options": [
+        "一個常數",
+        "一個 x 的函數",
+        "零",
+        "無法比較"
+      ],
+      "answer": 0,
+      "explanation": "若 F' = G' = f，則 (F-G)' = 0，由中值定理知 F-G 為常數。這正是為什麼不定積分要寫 +C。"
+    },
+    {
+      "type": "input",
+      "prompt": "已知 f''(x) = 6x、f'(0) = 1、f(0) = 0，則 f(1) 等於多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "先反推一次：f'(x) = 3x² + 1（由 f'(0)=1 定 C）。再反推：f(x) = x³ + x + C，由 f(0)=0 得 C=0。故 f(1) = 2。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "已知 f'(x) = 4x³ 且 f(0) = 5。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "常數 C 等於多少？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "f(x) = x⁴ + C，代入 f(0)=5 得 C = 5。"
+        },
+        {
+          "type": "input",
+          "prompt": "f(1) 等於多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "f(x) = x⁴ + 5，代入 1 得 1 + 5 = 6。"
+        }
+      ],
+      "explanation": "本題的原函數是單項，反推後直接得到 x⁴。初值 f(0)=5 恰好給出 C，因為 x=0 時 x⁴ 為 0。"
     }
   ],
   "passCount": 7

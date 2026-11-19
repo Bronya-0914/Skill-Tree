@@ -2,130 +2,213 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-14",
   "title": "14 · 高階與隱函數微分",
-  "intro": "參考原書第 12 章。學習高階與隱函數微分，完成10 道輸入練習。",
+  "intro": "學完這一節，你能求二階與更高階導數、判斷凹凸性，並在方程式沒有解出 y 的情況下算出 dy/dx。隱函數微分讓圓、橢圓這類圖形也能求切線。",
   "kind": "derivative",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-11"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：高階導數是導數的導數"
     },
     {
       "type": "paragraph",
-      "text": "隱函數中的 y 是 x 的函數，微分 y² 要寫 2yy′。求二階導數時 y′ 也會隨 x 改變。"
+      "text": "對 f' 再求導得到 f''，依此類推。二階導數描述斜率本身的變化：f'' > 0 表示斜率遞增，圖形凹向上；f'' < 0 表示斜率遞減，圖形凹向下。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "f''(x) = d/dx [f'(x)]\nf'' > 0：凹向上；f'' < 0：凹向下"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：隱函數微分把 y 看成 y(x)"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=x^7，求 f″(1)。"
+      "text": "方程式 F(x, y) = 0 沒有把 y 解出來，但 y 仍然隨 x 改變。兩邊同時對 x 求導，遇到 y 就用鏈式法則乘上 dy/dx。求導後得到一個含 dy/dx 的方程式，再解出它。"
     },
     {
-      "type": "example",
-      "text": "f(x)=x^7，求 f″(1)。\n計算：7*6 = 42。"
+      "type": "formula",
+      "text": "d/dx [y] = dy/dx\nd/dx [y²] = 2y · dy/dx"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：結果通常同時含 x 與 y"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=x^8，求 f″(1)。"
+      "text": "隱函數微分的答案往往不是只含 x，而是 x 與 y 都在。要算某一點的斜率，必須把該點的兩個座標一起代入，不能只代 x。"
     },
     {
-      "type": "example",
-      "text": "f(x)=x^8，求 f″(1)。\n計算：8*7 = 56。"
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，兩邊對 x 求導，y 的每一項都乘上 dy/dx。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，把所有含 dy/dx 的項移到同一邊，其餘移到另一邊。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，提出 dy/dx 並相除，得到公式。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，要算特定點的斜率時，把該點的 x 與 y 一起代入。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用圖形檢查符號：圓在第一象限的切線斜率應為負，若算出正值就是符號錯了。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忘記對 y 乘 dy/dx。d/dx(y²) 是 2y·y'，不是 2y。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是算斜率時只代 x。隱函數的導數含 y，必須用該點的完整座標。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是把二階導數當成「導數的平方」。f'' 是再求一次導，不是 (f')²。"
     }
   ],
   "questions": [
     {
+      "prompt": "f(x) = x³ 的二階導數是？",
+      "options": [
+        "6x",
+        "3x²",
+        "6",
+        "x"
+      ],
+      "answer": 0,
+      "explanation": "f'(x) = 3x²，再求導得 f''(x) = 6x。選 3x² 是只求了一次；選 6 是把它當成 x³ 的三階導數。"
+    },
+    {
       "type": "input",
-      "prompt": "f(x)=x^4，求 f″(1)。",
+      "prompt": "f(x) = x⁴，則 f''(1) 等於多少？",
       "answers": [
         "12"
       ],
-      "explanation": "計算：4*3 = 12。"
+      "explanation": "f' = 4x³，f'' = 12x²，代入 1 得 12。二階導數仍是一個函數，要代入才有數值。"
     },
     {
       "type": "input",
-      "prompt": "x²+y²=8，在 (2,2) 求 y′。",
+      "prompt": "圓 x² + y² = 25 在點 (3, 4) 處的 dy/dx 是多少？",
       "answers": [
-        "-1"
+        "-3/4"
       ],
-      "explanation": "計算：-2/2 = -1。"
+      "explanation": "兩邊對 x 求導：2x + 2y·y' = 0，得 y' = -x/y。代入 (3,4) 得 -3/4。斜率為負，符合圓在第一象限的切線方向。"
+    },
+    {
+      "prompt": "隱函數微分時，對 y 的項應該如何處理？",
+      "options": [
+        "視 y 為 x 的函數，用鏈式法則乘上 dy/dx",
+        "當成常數，導數為 0",
+        "直接對 y 求導",
+        "先解出 y 再求導"
+      ],
+      "answer": 0,
+      "explanation": "y 隨 x 改變，所以對 x 求導時要用鏈式法則：d/dx(y²) = 2y·y'。當成常數會得到完全錯誤的結果。"
     },
     {
       "type": "input",
-      "prompt": "xy=2，在 (1,2) 求 y′。",
+      "prompt": "xy = 6 在點 (2, 3) 處的 dy/dx 是多少？",
       "answers": [
-        "-2"
+        "-3/2"
       ],
-      "explanation": "計算：-2/1 = -2。"
+      "explanation": "用乘積法則：1·y + x·y' = 0，得 y' = -y/x。代入 (2,3) 得 -3/2。也可先寫 y = 6/x，導數 -6/x² 在 2 得 -3/2，兩法一致。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "圓 x² + y² = 25，考慮點 (4, 3)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "dy/dx = -x/y 中，分母 y 在點 (4, 3) 的值是多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "該點的 y 座標就是 3，直接作為分母代入。"
+        },
+        {
+          "type": "input",
+          "prompt": "在點 (4, 3) 處的 dy/dx 是多少？",
+          "answers": [
+            "-4/3"
+          ],
+          "explanation": "代入 -x/y 得 -4/3。"
+        },
+        {
+          "type": "input",
+          "prompt": "該點法線的斜率是多少？",
+          "answers": [
+            "3/4"
+          ],
+          "explanation": "法線與切線垂直，斜率為切線斜率的負倒數：-1 ÷ (-4/3) = 3/4。"
+        }
+      ],
+      "explanation": "隱函數微分後公式為 -x/y，代入 (4,3) 得分母 3、切線斜率 -4/3。法線與切線垂直，斜率為 3/4。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=2x³，求 f‴(x)。",
+      "prompt": "f(x) = x³，則 f''(0) 等於多少？",
       "answers": [
-        "12"
+        "0"
       ],
-      "explanation": "計算：6*2 = 12。"
+      "explanation": "f' = 3x²，f'' = 6x，代入 0 得 0。二階導數為 0 表示該點可能是反曲點，需要進一步判斷符號變化。"
+    },
+    {
+      "prompt": "若 f''(x) > 0 在區間上恆成立，圖形在該區間上是？",
+      "options": [
+        "凹向上",
+        "凹向下",
+        "水平線",
+        "遞減"
+      ],
+      "answer": 0,
+      "explanation": "f'' > 0 表示斜率遞增，曲線向上彎，即凹向上。凹向下對應 f'' < 0；水平線對應 f' = 0；遞減對應 f' < 0，與二階導數無直接對應。"
     },
     {
       "type": "input",
-      "prompt": "y²=x，y=2 時求 y′。",
+      "prompt": "x³ + y³ = 9 在點 (1, 2) 處的 dy/dx 是多少？",
       "answers": [
-        "0.25"
+        "-1/4"
       ],
-      "explanation": "計算：1/(2*2) = 0.25。"
+      "explanation": "求導：3x² + 3y²·y' = 0，得 y' = -x²/y²。代入 (1,2) 得 -1/4。注意分子分母都要平方，不是 -x/y。"
     },
     {
-      "type": "input",
-      "prompt": "f(x)=x^5，求 f″(1)。",
-      "answers": [
-        "20"
+      "type": "multipart",
+      "prompt": "曲線 y² = x，考慮點 (4, 2)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 x = 4 時，y 的正值是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "y² = 4 且取正值，故 y = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "該點處的 dy/dx 是多少？",
+          "answers": [
+            "1/4"
+          ],
+          "explanation": "求導：2y·y' = 1，得 y' = 1/(2y)。代入 y = 2 得 1/4。"
+        }
       ],
-      "explanation": "計算：5*4 = 20。"
-    },
-    {
-      "type": "input",
-      "prompt": "x²+y²=18，在 (3,3) 求 y′。",
-      "answers": [
-        "-1"
-      ],
-      "explanation": "計算：-3/3 = -1。"
-    },
-    {
-      "type": "input",
-      "prompt": "xy=3，在 (1,3) 求 y′。",
-      "answers": [
-        "-3"
-      ],
-      "explanation": "計算：-3/1 = -3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=3x³，求 f‴(x)。",
-      "answers": [
-        "18"
-      ],
-      "explanation": "計算：6*3 = 18。"
-    },
-    {
-      "type": "input",
-      "prompt": "y²=x，y=3 時求 y′。",
-      "answers": [
-        "0.16666666666666666"
-      ],
-      "explanation": "計算：1/(2*3) = 0.16666666666666666。"
+      "explanation": "本題用隱函數微分處理一個可以解出 y 的方程式，結果與直接對 y = √x 求導一致。重點是養成「對 y 乘 y'」的習慣。"
     }
   ],
   "passCount": 7

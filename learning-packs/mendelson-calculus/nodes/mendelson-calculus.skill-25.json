@@ -2,187 +2,226 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-25",
   "title": "25 · 旋轉體體積",
-  "intro": "參考原書第 22 章。學習旋轉體體積，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能算出曲線繞軸旋轉所生成的立體體積。方法是把立體切成無窮多個薄圓盤，把體積加起來，這是定積分在幾何上的第二個主要應用。",
   "kind": "integral",
-  "minutes": 40,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-23"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：圓盤法"
     },
     {
       "type": "paragraph",
-      "text": "先畫旋轉軸與切片。圓盤法用 π(R²-r²)，柱殼法用 2π×半徑×高度；上下限依切片變量。"
+      "text": "把曲線繞 x 軸旋轉，每個截面是半徑 f(x) 的圓盤，面積 π[f(x)]²。乘上厚度 dx 就是一個薄圓盤的體積，積分起來就是整個立體。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "V = π ∫a^b [f(x)]² dx"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：墊圈法處理空洞"
     },
     {
       "type": "paragraph",
-      "text": "將 y=x、y=0、x=7 圍成的三角形繞 x 軸旋轉。"
+      "text": "若旋轉區域不貼著旋轉軸，截面會是一個環，外半徑 R、內半徑 r，面積 π(R² - r²)。這是圓盤法的推廣，圓盤法只是內半徑為 0 的特例。"
     },
     {
-      "type": "example",
-      "text": "在 x=7 的圓盤半徑？\n計算：7 = 7。"
+      "type": "formula",
+      "text": "V = π ∫a^b [R(x)² - r(x)²] dx"
     },
     {
-      "type": "example",
-      "text": "截面面積除以 pi，在右端點的值？\n計算：7^2 = 49。"
-    },
-    {
-      "type": "example",
-      "text": "體積除以 pi？\n計算：7^3/3 = 114.33333333333333。"
+      "type": "heading",
+      "text": "原理三：繞 y 軸用殼層法"
     },
     {
       "type": "paragraph",
-      "text": "將 y=x、y=0、x=8 圍成的三角形繞 x 軸旋轉。"
+      "text": "繞 y 軸旋轉時，改用圓柱殼層：半徑 x、高度 f(x)、厚度 dx，展開後面積 2πx·f(x)。把殼層加起來得到體積。選圓盤還是殼層，取決於哪個方向的截面容易寫。"
     },
     {
-      "type": "example",
-      "text": "在 x=8 的圓盤半徑？\n計算：8 = 8。"
+      "type": "formula",
+      "text": "V = 2π ∫a^b x·f(x) dx（繞 y 軸）"
     },
     {
-      "type": "example",
-      "text": "截面面積除以 pi，在右端點的值？\n計算：8^2 = 64。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "體積除以 pi？\n計算：8^3/3 = 170.66666666666666。"
+      "type": "paragraph",
+      "text": "第一步，確認繞哪一條軸旋轉，決定用圓盤、墊圈還是殼層。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，寫出半徑函數；圓盤法的半徑就是函數值。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，平方後乘 π，寫成定積分。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，找原函數，代上下限相減。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用簡單情形檢查：圓柱的體積應為 πr²h。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忘記平方。體積用 f(x)²，不是 f(x)；忘記平方會讓量綱變成面積。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是墊圈法只算外圓。必須減去內圓，否則多算了空洞部分。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是繞 y 軸仍用圓盤法。除非把函數改寫成 x = g(y)，否則應改用殼層法。"
     }
   ],
   "questions": [
     {
+      "prompt": "圓盤法的體積公式是？",
+      "options": [
+        "π∫[f(x)]² dx",
+        "π∫f(x) dx",
+        "2π∫f(x) dx",
+        "∫[f(x)]² dx"
+      ],
+      "answer": 0,
+      "explanation": "圓盤面積是 π 乘半徑平方，半徑就是 f(x)，所以是 π∫[f(x)]² dx。少了 π 或忘了平方都是常見錯誤。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = x 繞 x 軸旋轉，在 [0, 1] 的體積是多少？（π 請寫 pi）",
+      "answers": [
+        "pi/3"
+      ],
+      "explanation": "V = π∫0¹ x² dx = π·(1/3) = π/3。這是圓錐的體積公式 πr²h/3 的特例，r=1、h=1。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = x² 繞 x 軸旋轉，在 [0, 1] 的體積是多少？（π 請寫 pi）",
+      "answers": [
+        "pi/5"
+      ],
+      "explanation": "V = π∫0¹ (x²)² dx = π∫x⁴ dx = π/5。注意是 f(x) 平方後再平方，得到 x⁴。"
+    },
+    {
+      "prompt": "墊圈法適用於什麼情況？",
+      "options": [
+        "旋轉區域與旋轉軸之間有空洞",
+        "區域貼著旋轉軸",
+        "繞 y 軸旋轉",
+        "函數為常數"
+      ],
+      "answer": 0,
+      "explanation": "墊圈法處理截面是環的情形，需要外半徑與內半徑。若區域貼著旋轉軸，內半徑為 0，退化為圓盤法。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 2 繞 x 軸旋轉，在 [0, 3] 的體積是多少？（π 請寫 pi）",
+      "answers": [
+        "12*pi"
+      ],
+      "explanation": "V = π∫0³ 2² dx = π·4·3 = 12π。這是半徑 2、高 3 的圓柱，πr²h = 4π·3 = 12π，兩法一致。"
+    },
+    {
       "type": "multipart",
-      "prompt": "將 y=x、y=0、x=2 圍成的三角形繞 x 軸旋轉。",
+      "prompt": "設 y = √x 繞 x 軸旋轉，x 從 0 到 4。",
       "parts": [
         {
           "type": "input",
-          "prompt": "在 x=2 的圓盤半徑？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2 = 2。"
-        },
-        {
-          "type": "input",
-          "prompt": "截面面積除以 pi，在右端點的值？",
+          "prompt": "當 x = 4 時，[f(x)]² 等於多少？",
           "answers": [
             "4"
           ],
-          "explanation": "計算：2^2 = 4。"
+          "explanation": "f(x) = √x，平方後為 x；代入 4 得 4。根號平方後消失，這是此類題目的化簡關鍵。"
         },
         {
           "type": "input",
-          "prompt": "體積除以 pi？",
+          "prompt": "∫0⁴ x dx 等於多少？",
           "answers": [
-            "2.6666666666666665"
+            "8"
           ],
-          "explanation": "計算：2^3/3 = 2.6666666666666665。"
+          "explanation": "原函數 x²/2，代入 4 得 8，代入 0 得 0，結果 8。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積是多少？（π 請寫 pi）",
+          "answers": [
+            "8*pi"
+          ],
+          "explanation": "V = π·8 = 8π。"
         }
-      ]
+      ],
+      "explanation": "根號函數的體積計算反而簡單，因為平方後根號消失。這提示我們：先算 f² 再積分，不要急著展開。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = x³ 繞 x 軸旋轉，在 [0, 1] 的體積是多少？（π 請寫 pi）",
+      "answers": [
+        "pi/7"
+      ],
+      "explanation": "V = π∫0¹ (x³)² dx = π∫x⁶ dx = π/7。指數連續乘兩次：3 變 6，積分後分母是 7。"
+    },
+    {
+      "prompt": "繞 y 軸旋轉時，通常使用哪一種方法？",
+      "options": [
+        "殼層法",
+        "圓盤法",
+        "墊圈法",
+        "弧長公式"
+      ],
+      "answer": 0,
+      "explanation": "繞 y 軸時，若函數以 y = f(x) 給出，用殼層法 2π∫x·f(x) dx 最直接。圓盤法需要先把函數改寫成 x = g(y)。"
+    },
+    {
+      "type": "input",
+      "prompt": "半徑 2、高 3 的圓柱體積是多少？（π 請寫 pi）",
+      "answers": [
+        "12*pi"
+      ],
+      "explanation": "V = πr²h = π·4·3 = 12π。這個基本公式可用來檢查旋轉體計算：常數函數旋轉的結果必須與圓柱公式一致。"
     },
     {
       "type": "multipart",
-      "prompt": "將 y=x、y=0、x=3 圍成的三角形繞 x 軸旋轉。",
+      "prompt": "設 y = x 繞 x 軸旋轉，x 從 0 到 2。",
       "parts": [
         {
           "type": "input",
-          "prompt": "在 x=3 的圓盤半徑？",
-          "answers": [
-            "3"
-          ],
-          "explanation": "計算：3 = 3。"
-        },
-        {
-          "type": "input",
-          "prompt": "截面面積除以 pi，在右端點的值？",
-          "answers": [
-            "9"
-          ],
-          "explanation": "計算：3^2 = 9。"
-        },
-        {
-          "type": "input",
-          "prompt": "體積除以 pi？",
-          "answers": [
-            "9"
-          ],
-          "explanation": "計算：3^3/3 = 9。"
-        }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "將 y=x、y=0、x=4 圍成的三角形繞 x 軸旋轉。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "在 x=4 的圓盤半徑？",
+          "prompt": "當 x = 2 時，[f(x)]² 等於多少？",
           "answers": [
             "4"
           ],
-          "explanation": "計算：4 = 4。"
+          "explanation": "f(x) = x，平方後為 x²；代入 2 得 4。這是積分前先算 f² 的那一步。"
         },
         {
           "type": "input",
-          "prompt": "截面面積除以 pi，在右端點的值？",
+          "prompt": "∫0² x² dx 等於多少？",
           "answers": [
-            "16"
+            "8/3"
           ],
-          "explanation": "計算：4^2 = 16。"
+          "explanation": "原函數 x³/3，代入 2 得 8/3，代入 0 得 0。"
         },
         {
           "type": "input",
-          "prompt": "體積除以 pi？",
+          "prompt": "體積是多少？（π 請寫 pi）",
           "answers": [
-            "21.333333333333332"
+            "8*pi/3"
           ],
-          "explanation": "計算：4^3/3 = 21.333333333333332。"
+          "explanation": "V = π·8/3 = 8π/3。對應圓錐 πr²h/3 = π·4·2/3 = 8π/3，一致。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "將 y=x、y=0、x=5 圍成的三角形繞 x 軸旋轉。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "在 x=5 的圓盤半徑？",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：5 = 5。"
-        },
-        {
-          "type": "input",
-          "prompt": "截面面積除以 pi，在右端點的值？",
-          "answers": [
-            "25"
-          ],
-          "explanation": "計算：5^2 = 25。"
-        },
-        {
-          "type": "input",
-          "prompt": "體積除以 pi？",
-          "answers": [
-            "41.666666666666664"
-          ],
-          "explanation": "計算：5^3/3 = 41.666666666666664。"
-        }
-      ]
+      ],
+      "explanation": "線性函數繞軸旋轉得到圓錐，體積應符合 πr²h/3。用已知公式交叉驗證，可確認積分設定正確。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

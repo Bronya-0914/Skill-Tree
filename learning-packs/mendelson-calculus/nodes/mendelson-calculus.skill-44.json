@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-44",
   "title": "44 · Taylor 與 Maclaurin 展開",
-  "intro": "參考原書第 39 章。學習Taylor 與 Maclaurin 展開，完成4 道分步輸入長題。",
-  "kind": "base",
-  "minutes": 40,
+  "intro": "學完這一節，你能把函數展開成冪級數、寫出前幾項做近似，並理解為什麼 eˣ、sin、cos 的展開如此整齊。這是把函數變成多項式的橋樑。",
+  "kind": "integral",
+  "minutes": 26,
   "parents": [
     "mendelson-calculus.skill-20",
     "mendelson-calculus.skill-43"
@@ -12,218 +12,217 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：用導數在一個點複製函數"
     },
     {
       "type": "paragraph",
-      "text": "係數是 f⁽ⁿ⁾(a)/n!，不是只有導數值。先選展開中心與階數，再評估誤差；Taylor 多項式與無窮級數需區分。"
+      "text": "Taylor 展開的想法是：找一個多項式，使它在 x = a 處的函數值、一階導、二階導……都與原函數相同。係數由導數決定，除上 n! 是為了抵消化冪次時產生的因子。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "f(x) = Σ(n=0→∞) f⁽ⁿ⁾(a)·(x-a)ⁿ / n!"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：Maclaurin 是 a = 0 的特例"
     },
     {
       "type": "paragraph",
-      "text": "對 f(x)=e^(7x) 在 0 作二階 Maclaurin 近似。"
+      "text": "在 0 處展開叫 Maclaurin 級數。三個最重要的展開是 eˣ、sin x、cos x，它們的導數循環，所以係數有規律，收斂半徑都是無窮。"
     },
     {
-      "type": "example",
-      "text": "常數項？\n計算：exp(0) = 1。"
+      "type": "formula",
+      "text": "eˣ = 1 + x + x²/2! + x³/3! + …\nsin x = x - x³/3! + x⁵/5! - …\ncos x = 1 - x²/2! + x⁴/4! - …"
     },
     {
-      "type": "example",
-      "text": "x 的係數？\n計算：7/1 = 7。"
-    },
-    {
-      "type": "example",
-      "text": "x² 的係數？\n計算：7^2/2 = 24.5。"
-    },
-    {
-      "type": "example",
-      "text": "用此多項式近似 f(0.1)。\n計算：1+7*0.1+49/2*0.01 = 1.9450000000000003。"
+      "type": "heading",
+      "text": "原理三：取前幾項就是近似"
     },
     {
       "type": "paragraph",
-      "text": "對 f(x)=e^(8x) 在 0 作二階 Maclaurin 近似。"
+      "text": "截斷到 n 次多項式，就得到 n 階 Taylor 近似。項數越多越準，但在展開點附近最準，遠離時誤差變大。這與線性近似是同一個思路的推廣。"
     },
     {
-      "type": "example",
-      "text": "常數項？\n計算：exp(0) = 1。"
+      "type": "formula",
+      "text": "eˣ ≈ 1 + x（一階）\neˣ ≈ 1 + x + x²/2（二階）"
     },
     {
-      "type": "example",
-      "text": "x 的係數？\n計算：8/1 = 8。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "x² 的係數？\n計算：8^2/2 = 32。"
+      "type": "paragraph",
+      "text": "第一步，確定展開點 a 與需要的階數。"
     },
     {
-      "type": "example",
-      "text": "用此多項式近似 f(0.1)。\n計算：1+8*0.1+64/2*0.01 = 2.12。"
+      "type": "paragraph",
+      "text": "第二步，逐階求導，算出 f⁽ⁿ⁾(a)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，代入公式，除上 n!。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，要近似值就取前幾項代入具體 x。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用已知值檢查：e⁰ = 1、sin 0 = 0、cos 0 = 1 都應與展開式常數項一致。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忘記除以 n!。係數是 f⁽ⁿ⁾(a)/n!，少了階乘會讓高階項過大。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是 sin 與 cos 的展開混淆。sin 從 x 開始且只有奇次項，cos 從 1 開始且只有偶次項。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是以為展開式在任何地方都準。項數固定時，離展開點越遠誤差越大。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "對 f(x)=e^(2x) 在 0 作二階 Maclaurin 近似。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "常數項？",
-          "answers": [
-            "1"
-          ],
-          "explanation": "計算：exp(0) = 1。"
-        },
-        {
-          "type": "input",
-          "prompt": "x 的係數？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2/1 = 2。"
-        },
-        {
-          "type": "input",
-          "prompt": "x² 的係數？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2^2/2 = 2。"
-        },
-        {
-          "type": "input",
-          "prompt": "用此多項式近似 f(0.1)。",
-          "answers": [
-            "1.22"
-          ],
-          "explanation": "計算：1+2*0.1+4/2*0.01 = 1.22。"
-        }
-      ]
+      "prompt": "Taylor 級數中 (x-a)ⁿ 的係數是？",
+      "options": [
+        "f⁽ⁿ⁾(a)/n!",
+        "f⁽ⁿ⁾(a)·n!",
+        "f(a)/n",
+        "f⁽ⁿ⁾(a)"
+      ],
+      "answer": 0,
+      "explanation": "係數是 n 階導數在 a 的值除以 n!。階乘來自對 (x-a)ⁿ 反覆求導產生的因子，少了它高階項會嚴重偏大。"
+    },
+    {
+      "type": "input",
+      "prompt": "eˣ 的 Maclaurin 展開取前兩項 1 + x，在 x = 0.1 時近似值是多少？",
+      "answers": [
+        "1.1"
+      ],
+      "explanation": "1 + 0.1 = 1.1。實際 e^0.1 ≈ 1.1052，誤差約 0.005，二階項 x²/2 = 0.005 正好補上。"
+    },
+    {
+      "type": "input",
+      "prompt": "sin x 的 Maclaurin 展開中，x 的係數是多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "sin x = x - x³/6 + …，x 的係數為 1。這與 sin 在 0 的導數 cos 0 = 1 一致。"
+    },
+    {
+      "prompt": "eˣ 的 Maclaurin 展開是？",
+      "options": [
+        "1 + x + x²/2! + x³/3! + …",
+        "1 - x + x²/2! - …",
+        "x + x³/3! + …",
+        "1 + x² + x⁴ + …"
+      ],
+      "answer": 0,
+      "explanation": "eˣ 的所有導數在 0 都是 1，故每項係數為 1/n!，全為正。第二個選項是 e^(-x)，第三個是 sinh，第四個是 1/(1-x²)。"
+    },
+    {
+      "type": "input",
+      "prompt": "cos x 的 Maclaurin 展開，常數項是多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "cos 0 = 1，故常數項為 1。cos 的展開只有偶次項且正負交替：1 - x²/2 + x⁴/24 - …"
     },
     {
       "type": "multipart",
-      "prompt": "對 f(x)=e^(3x) 在 0 作二階 Maclaurin 近似。",
+      "prompt": "考慮 eˣ 在 x = 0 的展開。",
       "parts": [
         {
           "type": "input",
-          "prompt": "常數項？",
+          "prompt": "f(0) 等於多少？",
           "answers": [
             "1"
           ],
-          "explanation": "計算：exp(0) = 1。"
+          "explanation": "e⁰ = 1，這是展開式的常數項。"
         },
         {
           "type": "input",
-          "prompt": "x 的係數？",
+          "prompt": "f'(0) 等於多少？",
           "answers": [
-            "3"
+            "1"
           ],
-          "explanation": "計算：3/1 = 3。"
+          "explanation": "eˣ 的導數仍是 eˣ，在 0 為 1，這是 x 的係數。"
         },
         {
           "type": "input",
-          "prompt": "x² 的係數？",
+          "prompt": "取前兩項 1 + x，在 x = 0.1 的近似值是多少？",
           "answers": [
-            "4.5"
+            "1.1"
           ],
-          "explanation": "計算：3^2/2 = 4.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "用此多項式近似 f(0.1)。",
-          "answers": [
-            "1.345"
-          ],
-          "explanation": "計算：1+3*0.1+9/2*0.01 = 1.345。"
+          "explanation": "1 + 0.1 = 1.1。"
         }
-      ]
+      ],
+      "explanation": "eˣ 的展開最簡單：所有導數在 0 都是 1，係數就是 1/n!。這也是為什麼 e 的近似計算如此方便。"
+    },
+    {
+      "type": "input",
+      "prompt": "sin x 的 Maclaurin 展開中，x³ 的係數是多少？",
+      "answers": [
+        "-1/6"
+      ],
+      "explanation": "sin x = x - x³/3! + …，3! = 6，故係數為 -1/6。負號來自 sin 的三階導數在 0 為 -1。"
+    },
+    {
+      "prompt": "Taylor 展開的主要用途是？",
+      "options": [
+        "用多項式近似函數",
+        "求函數的定義域",
+        "判斷連續性",
+        "計算面積"
+      ],
+      "answer": 0,
+      "explanation": "Taylor 展開把複雜函數換成多項式，方便計算、積分與估計誤差。定義域與連續性由其他工具判斷。"
+    },
+    {
+      "type": "input",
+      "prompt": "e⁰ 的 Maclaurin 展開值是多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "展開式在 x = 0 時只剩常數項 1，與 e⁰ = 1 一致。這是檢查展開是否正確的最快方法。"
     },
     {
       "type": "multipart",
-      "prompt": "對 f(x)=e^(4x) 在 0 作二階 Maclaurin 近似。",
+      "prompt": "考慮 cos x 在 x = 0 的展開。",
       "parts": [
         {
           "type": "input",
-          "prompt": "常數項？",
+          "prompt": "f(0) 等於多少？",
           "answers": [
             "1"
           ],
-          "explanation": "計算：exp(0) = 1。"
+          "explanation": "cos 0 = 1。"
         },
         {
           "type": "input",
-          "prompt": "x 的係數？",
+          "prompt": "f''(0) 等於多少？",
           "answers": [
-            "4"
+            "-1"
           ],
-          "explanation": "計算：4/1 = 4。"
+          "explanation": "cos 的二階導數是 -cos，在 0 為 -1。這給出 x² 項的係數 -1/2。"
         },
         {
           "type": "input",
-          "prompt": "x² 的係數？",
+          "prompt": "取二次近似 1 - x²/2，在 x = 0.1 的值是多少？",
           "answers": [
-            "8"
+            "0.995"
           ],
-          "explanation": "計算：4^2/2 = 8。"
-        },
-        {
-          "type": "input",
-          "prompt": "用此多項式近似 f(0.1)。",
-          "answers": [
-            "1.48"
-          ],
-          "explanation": "計算：1+4*0.1+16/2*0.01 = 1.48。"
+          "explanation": "1 - 0.01/2 = 1 - 0.005 = 0.995。實際 cos 0.1 ≈ 0.995004。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "對 f(x)=e^(5x) 在 0 作二階 Maclaurin 近似。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "常數項？",
-          "answers": [
-            "1"
-          ],
-          "explanation": "計算：exp(0) = 1。"
-        },
-        {
-          "type": "input",
-          "prompt": "x 的係數？",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：5/1 = 5。"
-        },
-        {
-          "type": "input",
-          "prompt": "x² 的係數？",
-          "answers": [
-            "12.5"
-          ],
-          "explanation": "計算：5^2/2 = 12.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "用此多項式近似 f(0.1)。",
-          "answers": [
-            "1.625"
-          ],
-          "explanation": "計算：1+5*0.1+25/2*0.01 = 1.625。"
-        }
-      ]
+      ],
+      "explanation": "cos 的展開只有偶次項且正負交替。二次近似在 0.1 處已精確到小數第四位，說明展開在原點附近收斂極快。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

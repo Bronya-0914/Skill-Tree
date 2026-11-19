@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-34",
   "title": "34 · 旋轉曲面面積",
-  "intro": "參考原書第 31 章。學習旋轉曲面面積，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能算出曲線繞軸旋轉所生成的曲面面積。與體積不同，曲面面積要同時考慮旋轉半徑與曲線本身的長度，因此公式裡出現弧長元素。",
   "kind": "integral",
-  "minutes": 40,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-24",
     "mendelson-calculus.skill-32"
@@ -12,178 +12,217 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：把曲面切成細環"
     },
     {
       "type": "paragraph",
-      "text": "繞 x 軸的曲面積為 ∫2π|y|√(1+(y′)²) dx。它是圓周長乘弧長元素，不是體積的圓盤面積。"
+      "text": "曲線上一小段繞軸旋轉，形成一個細環，展開後近似長方形：長是這一小段的弧長 ds，寬是旋轉一週的周長 2πf(x)。把這些細環加起來就是曲面面積。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "dS = 2π·f(x)·ds = 2π·f(x)·√(1 + (y')²) dx"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：公式裡有兩個因子"
     },
     {
       "type": "paragraph",
-      "text": "直線 y=7x 在 1≤x≤2 繞 x 軸旋轉，只計側面。"
+      "text": "2πf(x) 是旋轉半徑造成的周長，√(1+(y')²) 是弧長元素。少了前者變成弧長，少了後者變成圓柱側面積。兩者都必須有。"
     },
     {
-      "type": "example",
-      "text": "求 y′。\n計算：7 = 7。"
+      "type": "formula",
+      "text": "S = 2π ∫a^b f(x)·√(1 + (y')²) dx"
     },
     {
-      "type": "example",
-      "text": "弧長倍率 √(1+(y′)²)？\n計算：sqrt(1+7^2) = 7.0710678118654755。"
-    },
-    {
-      "type": "example",
-      "text": "曲面積除以 pi？\n計算：2*7*sqrt(1+7^2)*(4-1)/2 = 148.49242404917499。"
+      "type": "heading",
+      "text": "原理三：常數函數退化為圓柱"
     },
     {
       "type": "paragraph",
-      "text": "直線 y=8x 在 1≤x≤2 繞 x 軸旋轉，只計側面。"
+      "text": "若 f(x) = r 為常數，則 y' = 0，公式變成 2πr(b-a)，正是圓柱側面積。這是驗算曲面面積最方便的特例。"
     },
     {
-      "type": "example",
-      "text": "求 y′。\n計算：8 = 8。"
+      "type": "formula",
+      "text": "f(x) = r  ⇒  S = 2πr(b - a)"
     },
     {
-      "type": "example",
-      "text": "弧長倍率 √(1+(y′)²)？\n計算：sqrt(1+8^2) = 8.06225774829855。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "曲面積除以 pi？\n計算：2*8*sqrt(1+8^2)*(4-1)/2 = 193.49418595916518。"
+      "type": "paragraph",
+      "text": "第一步，寫出 f(x) 與 y'，算 √(1+(y')²)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，乘上 2πf(x)，寫成定積分。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，能化簡就先化簡根號內。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，找原函數，代上下限。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用圓柱特例檢查量綱與數值。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是漏掉弧長因子，只算 2π∫f dx。那只得到「把曲線壓平後的側面」，不是真實曲面。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是漏掉 2π，得到的是「半圈」的面積。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是把 f(x) 當成常數提出積分號。只有當 f 確實是常數時才可以。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "直線 y=2x 在 1≤x≤2 繞 x 軸旋轉，只計側面。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "求 y′。",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2 = 2。"
-        },
-        {
-          "type": "input",
-          "prompt": "弧長倍率 √(1+(y′)²)？",
-          "answers": [
-            "2.23606797749979"
-          ],
-          "explanation": "計算：sqrt(1+2^2) = 2.23606797749979。"
-        },
-        {
-          "type": "input",
-          "prompt": "曲面積除以 pi？",
-          "answers": [
-            "13.416407864998739"
-          ],
-          "explanation": "計算：2*2*sqrt(1+2^2)*(4-1)/2 = 13.416407864998739。"
-        }
-      ]
+      "prompt": "旋轉曲面面積的公式是？",
+      "options": [
+        "2π∫f(x)√(1 + (y')²) dx",
+        "2π∫f(x) dx",
+        "π∫[f(x)]² dx",
+        "∫√(1 + (y')²) dx"
+      ],
+      "answer": 0,
+      "explanation": "曲面面積同時需要旋轉周長 2πf(x) 與弧長元素 √(1+(y')²)。少了任一個都會退化成別的量。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = x 繞 x 軸旋轉，在 [0, 1] 的表面積是多少？（π 請寫 pi）",
+      "answers": [
+        "pi*sqrt(2)"
+      ],
+      "explanation": "f(x) = x、y' = 1、√2 為常數。S = 2π∫0¹ x·√2 dx = 2π√2·(1/2) = π√2。這是圓錐側面積的特例。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 2 繞 x 軸旋轉，在 [0, 3] 的表面積是多少？（π 請寫 pi）",
+      "answers": [
+        "12*pi"
+      ],
+      "explanation": "f(x) = 2、y' = 0，S = 2π·2·3 = 12π。這是半徑 2、高 3 的圓柱側面積，與 2πrh 一致。"
+    },
+    {
+      "prompt": "曲面面積與圓柱側面積的關係是？",
+      "options": [
+        "常數函數時退化為 2πrh",
+        "兩者無關",
+        "曲面面積較小",
+        "曲面面積等於 πr²h"
+      ],
+      "answer": 0,
+      "explanation": "當 f 為常數時，曲面就是圓柱側面，公式給出 2πr(b-a) = 2πrh。這是驗算曲面面積的最佳特例。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = x 繞 x 軸旋轉，在 [0, 2] 的表面積是多少？（π 請寫 pi）",
+      "answers": [
+        "4*pi*sqrt(2)"
+      ],
+      "explanation": "S = 2π√2∫0² x dx = 2π√2·2 = 4π√2。與 [0,1] 的結果相比，區間加倍使面積也加倍，因為半徑與長度都按比例增加。"
     },
     {
       "type": "multipart",
-      "prompt": "直線 y=3x 在 1≤x≤2 繞 x 軸旋轉，只計側面。",
+      "prompt": "設 y = 3 繞 x 軸旋轉，x 從 0 到 2。",
       "parts": [
         {
           "type": "input",
-          "prompt": "求 y′。",
+          "prompt": "旋轉半徑是多少？",
           "answers": [
             "3"
           ],
-          "explanation": "計算：3 = 3。"
+          "explanation": "曲線是水平線 y = 3，到 x 軸的距離恆為 3。"
         },
         {
           "type": "input",
-          "prompt": "弧長倍率 √(1+(y′)²)？",
+          "prompt": "弧長元素 √(1 + (y')²) 等於多少？",
           "answers": [
-            "3.1622776601683795"
+            "1"
           ],
-          "explanation": "計算：sqrt(1+3^2) = 3.1622776601683795。"
+          "explanation": "y' = 0，故 √(1+0) = 1。水平線的弧長元素就是 dx。"
         },
         {
           "type": "input",
-          "prompt": "曲面積除以 pi？",
+          "prompt": "表面積是多少？（π 請寫 pi）",
           "answers": [
-            "28.460498941515414"
+            "12*pi"
           ],
-          "explanation": "計算：2*3*sqrt(1+3^2)*(4-1)/2 = 28.460498941515414。"
+          "explanation": "S = 2π·3·2 = 12π，即 2πrh。"
         }
-      ]
+      ],
+      "explanation": "常數函數是最容易檢查的情形：曲面就是圓柱，面積必為 2πrh。任何曲面面積計算都應在此退化正確。"
+    },
+    {
+      "type": "input",
+      "prompt": "半徑 2、高 3 的圓柱側面積是多少？（π 請寫 pi）",
+      "answers": [
+        "12*pi"
+      ],
+      "explanation": "側面積 = 2πrh = 2π·2·3 = 12π。不含上下底，因為曲面面積只算旋轉產生的側面。"
+    },
+    {
+      "prompt": "曲面面積公式中 √(1 + (y')²) 的來源是？",
+      "options": [
+        "弧長元素",
+        "圓周長",
+        "斜率",
+        "面積元素"
+      ],
+      "answer": 0,
+      "explanation": "√(1+(y')²)dx 是曲線的弧長元素 ds，代表每一小段的實際長度。曲面面積等於周長乘上這段長度。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 1 繞 x 軸旋轉，在 [0, 5] 的表面積是多少？（π 請寫 pi）",
+      "answers": [
+        "10*pi"
+      ],
+      "explanation": "S = 2π·1·5 = 10π。半徑 1、高 5 的圓柱側面積。"
     },
     {
       "type": "multipart",
-      "prompt": "直線 y=4x 在 1≤x≤2 繞 x 軸旋轉，只計側面。",
+      "prompt": "設 y = x 繞 x 軸旋轉，x 從 0 到 1。",
       "parts": [
         {
           "type": "input",
-          "prompt": "求 y′。",
+          "prompt": "弧長元素 √(1 + (y')²) 等於多少？",
           "answers": [
-            "4"
+            "sqrt(2)"
           ],
-          "explanation": "計算：4 = 4。"
+          "explanation": "y' = 1，√(1+1) = √2。"
         },
         {
           "type": "input",
-          "prompt": "弧長倍率 √(1+(y′)²)？",
+          "prompt": "積分中 x 的平均值（即 ∫x dx 除以區間長度）是多少？",
           "answers": [
-            "4.123105625617661"
+            "1/2"
           ],
-          "explanation": "計算：sqrt(1+4^2) = 4.123105625617661。"
+          "explanation": "∫0¹ x dx = 1/2，除以長度 1 得 1/2。這是旋轉半徑的平均值。"
         },
         {
           "type": "input",
-          "prompt": "曲面積除以 pi？",
+          "prompt": "表面積是多少？（π 請寫 pi）",
           "answers": [
-            "49.47726750741192"
+            "pi*sqrt(2)"
           ],
-          "explanation": "計算：2*4*sqrt(1+4^2)*(4-1)/2 = 49.47726750741192。"
+          "explanation": "S = 2π·√2·(1/2) = π√2。也可理解為 2π 乘平均半徑乘弧長。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "直線 y=5x 在 1≤x≤2 繞 x 軸旋轉，只計側面。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "求 y′。",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：5 = 5。"
-        },
-        {
-          "type": "input",
-          "prompt": "弧長倍率 √(1+(y′)²)？",
-          "answers": [
-            "5.0990195135927845"
-          ],
-          "explanation": "計算：sqrt(1+5^2) = 5.0990195135927845。"
-        },
-        {
-          "type": "input",
-          "prompt": "曲面積除以 pi？",
-          "answers": [
-            "76.48529270389177"
-          ],
-          "explanation": "計算：2*5*sqrt(1+5^2)*(4-1)/2 = 76.48529270389177。"
-        }
-      ]
+      ],
+      "explanation": "曲面面積可讀成「2π × 平均半徑 × 弧長」。本題平均半徑 1/2、弧長 √2，乘積再乘 2π 就是答案。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

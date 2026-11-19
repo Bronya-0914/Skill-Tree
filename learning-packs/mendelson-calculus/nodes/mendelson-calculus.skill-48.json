@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-48",
   "title": "48 · 梯度、方向導數與極值",
-  "intro": "參考原書第 43 章。學習梯度、方向導數與極值，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能算出梯度、求任意方向的方向導數，並用梯度為零找極值點。梯度是多變量微積分最重要的向量，它同時給出最陡方向與極值條件。",
   "kind": "base",
-  "minutes": 40,
+  "minutes": 26,
   "parents": [
     "mendelson-calculus.skill-18",
     "mendelson-calculus.skill-47"
@@ -12,218 +12,217 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：梯度是偏導組成的向量"
     },
     {
       "type": "paragraph",
-      "text": "方向導數用梯度內積單位方向。極值先解梯度為零，再用 Hessian 或其他方法分類；若二階判別退化，須另作分析。"
+      "text": "把兩個偏導排成向量，就是梯度。它指向函數增長最快的方向，長度是那個方向的最大變化率。這解釋了為什麼爬山要沿梯度走。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "∇f = (∂f/∂x, ∂f/∂y)"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：方向導數是梯度在該方向的投影"
     },
     {
       "type": "paragraph",
-      "text": "f(x,y)=(x-7)²+2(y-1)²。"
+      "text": "沿單位向量 u 的變化率，等於梯度與 u 的點積。當 u 與梯度同向時最大，垂直時為 0，這說明梯度垂直於等高線。"
     },
     {
-      "type": "example",
-      "text": "唯一駐點的 x 座標？\n計算：7 = 7。"
+      "type": "formula",
+      "text": "D_u f = ∇f · u，u 為單位向量"
     },
     {
-      "type": "example",
-      "text": "Hessian 行列式？\n計算：2*4-0 = 8。"
-    },
-    {
-      "type": "example",
-      "text": "全域最小值？\n計算：0+0 = 0。"
-    },
-    {
-      "type": "example",
-      "text": "在 (0,1) 沿正 x 軸的方向導數？\n計算：2*(0-7) = -14。"
+      "type": "heading",
+      "text": "原理三：極值的必要條件是梯度為零"
     },
     {
       "type": "paragraph",
-      "text": "f(x,y)=(x-8)²+2(y-1)²。"
+      "text": "內部點要成為極值，兩個偏導必須同時為 0，即梯度為零向量。這樣的點叫臨界點。與單變量一樣，臨界點不一定是極值，可能是鞍點。"
     },
     {
-      "type": "example",
-      "text": "唯一駐點的 x 座標？\n計算：8 = 8。"
+      "type": "formula",
+      "text": "∇f = 0：臨界點\n可能是極大、極小或鞍點"
     },
     {
-      "type": "example",
-      "text": "Hessian 行列式？\n計算：2*4-0 = 8。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "全域最小值？\n計算：0+0 = 0。"
+      "type": "paragraph",
+      "text": "第一步，算兩個偏導。"
     },
     {
-      "type": "example",
-      "text": "在 (0,1) 沿正 x 軸的方向導數？\n計算：2*(0-8) = -16。"
+      "type": "paragraph",
+      "text": "第二步，需要方向導數時，把方向化成單位向量再與梯度作點積。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，找極值先解方程組 fx = 0、fy = 0。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，用二階判別或代入鄰近點判斷類型。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，檢查結果：極小點的函數值應小於鄰近點。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是算方向導數時忘記把方向化成單位向量。用非單位向量會讓結果按比例放大。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是認為梯度為零就一定是極值。鞍點（如 f = x² - y² 在原點）也是梯度為零。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是把梯度當成純量。梯度是向量，有方向與大小。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "f(x,y)=(x-2)²+2(y-1)²。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "唯一駐點的 x 座標？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2 = 2。"
-        },
-        {
-          "type": "input",
-          "prompt": "Hessian 行列式？",
-          "answers": [
-            "8"
-          ],
-          "explanation": "計算：2*4-0 = 8。"
-        },
-        {
-          "type": "input",
-          "prompt": "全域最小值？",
-          "answers": [
-            "0"
-          ],
-          "explanation": "計算：0+0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "在 (0,1) 沿正 x 軸的方向導數？",
-          "answers": [
-            "-4"
-          ],
-          "explanation": "計算：2*(0-2) = -4。"
-        }
-      ]
+      "prompt": "梯度向量的方向代表？",
+      "options": [
+        "函數增長最快的方向",
+        "函數下降最快的方向",
+        "等高線方向",
+        "原點方向"
+      ],
+      "answer": 0,
+      "explanation": "梯度指向增長最快的方向，其長度是最大變化率。反方向是下降最快，垂直方向變化率為 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x, y) = x² + y² 的梯度在 (1, 1) 的第一個分量是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "fx = 2x，代入 1 得 2。梯度為 (2, 2)，指向遠離原點的方向，符合函數在該方向增長最快。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x, y) = x² + y² 在 (1, 1) 的梯度長度是多少？",
+      "answers": [
+        "2*sqrt(2)"
+      ],
+      "explanation": "梯度為 (2,2)，長度 √(4+4) = 2√2。這是該點的最大變化率。"
+    },
+    {
+      "prompt": "多變量函數在內部點有極值的必要條件是？",
+      "options": [
+        "梯度為零向量",
+        "梯度為 1",
+        "偏導為 1",
+        "函數值為 0"
+      ],
+      "answer": 0,
+      "explanation": "極值要求所有方向的變化率都為 0，即兩個偏導同時為 0。這是必要條件，但鞍點也滿足，需進一步判別。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x, y) = x² + y² 的極小點在原點，極小值是多少？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "f(0,0) = 0。平方和非負，故 0 是最小值。梯度在原點為 (0,0)，符合極值必要條件。"
     },
     {
       "type": "multipart",
-      "prompt": "f(x,y)=(x-3)²+2(y-1)²。",
+      "prompt": "設 f(x, y) = x² + y²。",
       "parts": [
         {
           "type": "input",
-          "prompt": "唯一駐點的 x 座標？",
-          "answers": [
-            "3"
-          ],
-          "explanation": "計算：3 = 3。"
-        },
-        {
-          "type": "input",
-          "prompt": "Hessian 行列式？",
-          "answers": [
-            "8"
-          ],
-          "explanation": "計算：2*4-0 = 8。"
-        },
-        {
-          "type": "input",
-          "prompt": "全域最小值？",
+          "prompt": "解 fx = 0 得 x 等於多少？",
           "answers": [
             "0"
           ],
-          "explanation": "計算：0+0 = 0。"
+          "explanation": "fx = 2x，令其為 0 得 x = 0。"
         },
         {
           "type": "input",
-          "prompt": "在 (0,1) 沿正 x 軸的方向導數？",
+          "prompt": "解 fy = 0 得 y 等於多少？",
           "answers": [
-            "-6"
+            "0"
           ],
-          "explanation": "計算：2*(0-3) = -6。"
+          "explanation": "fy = 2y，令其為 0 得 y = 0。"
+        },
+        {
+          "type": "input",
+          "prompt": "極小值是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "f(0,0) = 0。"
         }
-      ]
+      ],
+      "explanation": "梯度為零給出方程組，解出臨界點。本題只有一個臨界點，且確為極小，因為函數是開口向上的碗形。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x, y) = x² + y² 在 (1, 1) 沿 x 方向的方向導數是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "方向 (1,0) 已是單位向量，梯度 (2,2) 與其點積為 2。這正是 fx 的值，沿座標軸的方向導數就是該偏導。"
+    },
+    {
+      "prompt": "梯度與等高線的關係是？",
+      "options": [
+        "互相垂直",
+        "互相平行",
+        "方向相同",
+        "無關"
+      ],
+      "answer": 0,
+      "explanation": "沿等高線移動時函數值不變，變化率為 0，故梯度與等高線垂直。這也解釋了為什麼梯度指向最陡上升方向。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x, y) = xy 的臨界點，x 等於多少？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "fx = y、fy = x，同時為 0 得 x = 0、y = 0。此點是鞍點，不是極值。"
     },
     {
       "type": "multipart",
-      "prompt": "f(x,y)=(x-4)²+2(y-1)²。",
+      "prompt": "設 f(x, y) = x² + y² - 2x。",
       "parts": [
         {
           "type": "input",
-          "prompt": "唯一駐點的 x 座標？",
+          "prompt": "解 fx = 0 得 x 等於多少？",
           "answers": [
-            "4"
+            "1"
           ],
-          "explanation": "計算：4 = 4。"
+          "explanation": "fx = 2x - 2，令其為 0 得 x = 1。"
         },
         {
           "type": "input",
-          "prompt": "Hessian 行列式？",
-          "answers": [
-            "8"
-          ],
-          "explanation": "計算：2*4-0 = 8。"
-        },
-        {
-          "type": "input",
-          "prompt": "全域最小值？",
+          "prompt": "解 fy = 0 得 y 等於多少？",
           "answers": [
             "0"
           ],
-          "explanation": "計算：0+0 = 0。"
+          "explanation": "fy = 2y，令其為 0 得 y = 0。"
         },
         {
           "type": "input",
-          "prompt": "在 (0,1) 沿正 x 軸的方向導數？",
+          "prompt": "極小值是多少？",
           "answers": [
-            "-8"
+            "-1"
           ],
-          "explanation": "計算：2*(0-4) = -8。"
+          "explanation": "f(1,0) = 1 + 0 - 2 = -1。配方也可得 (x-1)² + y² - 1，最小值 -1。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "f(x,y)=(x-5)²+2(y-1)²。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "唯一駐點的 x 座標？",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：5 = 5。"
-        },
-        {
-          "type": "input",
-          "prompt": "Hessian 行列式？",
-          "answers": [
-            "8"
-          ],
-          "explanation": "計算：2*4-0 = 8。"
-        },
-        {
-          "type": "input",
-          "prompt": "全域最小值？",
-          "answers": [
-            "0"
-          ],
-          "explanation": "計算：0+0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "在 (0,1) 沿正 x 軸的方向導數？",
-          "answers": [
-            "-10"
-          ],
-          "explanation": "計算：2*(0-5) = -10。"
-        }
-      ]
+      ],
+      "explanation": "本題的臨界點不在原點，配方後可看出是碗形平移。梯度法與配方法結果一致，可互相驗證。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

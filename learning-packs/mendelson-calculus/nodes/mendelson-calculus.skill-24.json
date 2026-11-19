@@ -2,187 +2,226 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-24",
   "title": "24 · 弧長積分",
-  "intro": "參考原書第 21 章。學習弧長積分，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能用積分算出曲線的實際長度，而不只是直線距離。弧長公式把「無窮多小段直線」加起來，是勾股定理在曲線上的推廣。",
   "kind": "integral",
-  "minutes": 40,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-22"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：小段弧長近似為斜邊"
     },
     {
       "type": "paragraph",
-      "text": "把曲線切成短線段，得到 L=∫√(1+(y′)²) dx。先求導再代入，別把曲線下的面積當弧長。"
+      "text": "曲線上一小段，水平改變 dx、垂直改變 dy，長度近似 √(dx² + dy²)。這是勾股定理。把 dy 寫成 y'·dx，提出 dx 就得到弧長元素。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "ds = √(1 + (y')²) dx"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：整條弧長是積分"
     },
     {
       "type": "paragraph",
-      "text": "曲線 y=(2/3)x^(3/2)，考慮 0≤x≤7。"
+      "text": "把所有小段累加，就是從 a 到 b 的定積分。公式只依賴導數，因此先求導再代入，是固定流程。"
     },
     {
-      "type": "example",
-      "text": "在右端點，(y′)² 是多少？\n計算：7 = 7。"
+      "type": "formula",
+      "text": "L = ∫a^b √(1 + (y')²) dx"
     },
     {
-      "type": "example",
-      "text": "弧長被積函數在 x=0 的值？\n計算：sqrt(1+0) = 1。"
-    },
-    {
-      "type": "example",
-      "text": "求弧長（可輸入含 sqrt 的數值式）。\n計算：2/3*((8)^(3/2)-1) = 14.418277998646348。"
+      "type": "heading",
+      "text": "原理三：直線是最簡單的檢驗"
     },
     {
       "type": "paragraph",
-      "text": "曲線 y=(2/3)x^(3/2)，考慮 0≤x≤8。"
+      "text": "若 y = mx + c，則 y' = m 為常數，弧長為 √(1+m²)·(b-a)，正好是兩點距離公式。任何弧長計算都應該在直線上退化為距離公式，這是驗算的好方法。"
     },
     {
-      "type": "example",
-      "text": "在右端點，(y′)² 是多少？\n計算：8 = 8。"
+      "type": "formula",
+      "text": "y = mx + c  ⇒  L = √(1 + m²)·(b - a)"
     },
     {
-      "type": "example",
-      "text": "弧長被積函數在 x=0 的值？\n計算：sqrt(1+0) = 1。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "求弧長（可輸入含 sqrt 的數值式）。\n計算：2/3*((9)^(3/2)-1) = 17.333333333333332。"
+      "type": "paragraph",
+      "text": "第一步，求 y'，平方後加 1。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，確認根號內是否可以化簡成完全平方；能化簡就先化簡。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，寫出定積分，找原函數。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，代上下限相減。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用直線特例或數值估算檢查結果是否合理（弧長必大於水平距離）。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忘記平方 y'。公式是 1 + (y')²，不是 1 + y'。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是算出弧長小於水平距離。弧長一定不小於兩端點的直線距離，出現更小的值表示算錯。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是根號內未化簡就直接積分，導致無法計算。先檢查是否為完全平方。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "曲線 y=(2/3)x^(3/2)，考慮 0≤x≤2。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "在右端點，(y′)² 是多少？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2 = 2。"
-        },
-        {
-          "type": "input",
-          "prompt": "弧長被積函數在 x=0 的值？",
-          "answers": [
-            "1"
-          ],
-          "explanation": "計算：sqrt(1+0) = 1。"
-        },
-        {
-          "type": "input",
-          "prompt": "求弧長（可輸入含 sqrt 的數值式）。",
-          "answers": [
-            "2.797434948471088"
-          ],
-          "explanation": "計算：2/3*((3)^(3/2)-1) = 2.797434948471088。"
-        }
-      ]
+      "prompt": "弧長公式是？",
+      "options": [
+        "∫√(1 + (y')²) dx",
+        "∫(1 + y') dx",
+        "∫√(1 + y') dx",
+        "∫(y')² dx"
+      ],
+      "answer": 0,
+      "explanation": "弧長元素是 √(dx² + dy²)，提出 dx 後得 √(1 + (y')²)。導數必須平方，這是勾股定理的直接結果。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 3x 從 x = 0 到 x = 1 的弧長是多少？",
+      "answers": [
+        "sqrt(10)"
+      ],
+      "explanation": "y' = 3，√(1+9) = √10 為常數，積分得 √10·1 = √10。用距離公式驗證：從 (0,0) 到 (1,3) 的距離正是 √10。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = x 從 x = 0 到 x = 1 的弧長是多少？",
+      "answers": [
+        "sqrt(2)"
+      ],
+      "explanation": "y' = 1，√(1+1) = √2，乘上區間長度 1 得 √2。這正是單位正方形的對角線長。"
+    },
+    {
+      "prompt": "對直線而言，弧長積分的結果應該等於？",
+      "options": [
+        "兩端點的距離",
+        "水平距離",
+        "垂直距離",
+        "斜率"
+      ],
+      "answer": 0,
+      "explanation": "直線的弧長就是兩點間的直線距離，這是弧長公式的必然退化情形，也是最好的驗算方式。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 4x 從 x = 0 到 x = 1 的弧長是多少？",
+      "answers": [
+        "sqrt(17)"
+      ],
+      "explanation": "y' = 4，√(1+16) = √17，乘上長度 1 得 √17。對應點 (0,0) 到 (1,4) 的距離。"
     },
     {
       "type": "multipart",
-      "prompt": "曲線 y=(2/3)x^(3/2)，考慮 0≤x≤3。",
+      "prompt": "設 y = 3x，考慮 x 從 0 到 2。",
       "parts": [
         {
           "type": "input",
-          "prompt": "在右端點，(y′)² 是多少？",
+          "prompt": "y' 等於多少？",
           "answers": [
             "3"
           ],
-          "explanation": "計算：3 = 3。"
+          "explanation": "y = 3x 的導數是常數 3。"
         },
         {
           "type": "input",
-          "prompt": "弧長被積函數在 x=0 的值？",
+          "prompt": "1 + (y')² 等於多少？",
           "answers": [
-            "1"
+            "10"
           ],
-          "explanation": "計算：sqrt(1+0) = 1。"
+          "explanation": "1 + 9 = 10。這是要開根號的量。"
         },
         {
           "type": "input",
-          "prompt": "求弧長（可輸入含 sqrt 的數值式）。",
+          "prompt": "弧長是多少？",
           "answers": [
-            "4.666666666666666"
+            "2*sqrt(10)"
           ],
-          "explanation": "計算：2/3*((4)^(3/2)-1) = 4.666666666666666。"
+          "explanation": "√10 為常數，乘上區間長度 2 得 2√10。對應點 (0,0) 到 (2,6) 的距離 √(4+36) = √40 = 2√10。"
         }
-      ]
+      ],
+      "explanation": "直線的弧長計算最簡單：導數為常數，積分變成乘法。用距離公式交叉驗證，可確認公式用對。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = x 從 x = 1 到 x = 3 的弧長是多少？",
+      "answers": [
+        "2*sqrt(2)"
+      ],
+      "explanation": "y' = 1，√2 為常數，區間長度 2，故弧長 2√2。對應點 (1,1) 到 (3,3) 的距離 √(4+4) = 2√2。"
+    },
+    {
+      "prompt": "弧長公式中 y' 的角色是？",
+      "options": [
+        "曲線的斜率，決定每段的傾斜程度",
+        "曲線的函數值",
+        "曲線的凹向",
+        "曲線的面積"
+      ],
+      "answer": 0,
+      "explanation": "y' 是斜率，斜率越大曲線越陡，同樣的水平距離對應更長的弧。這正是 √(1+(y')²) 中 y' 的作用。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 5（常數）從 x = 0 到 x = 5 的弧長是多少？",
+      "answers": [
+        "5"
+      ],
+      "explanation": "y' = 0，√(1+0) = 1，積分得 5。水平線的弧長就是水平距離，符合直覺。"
     },
     {
       "type": "multipart",
-      "prompt": "曲線 y=(2/3)x^(3/2)，考慮 0≤x≤4。",
+      "prompt": "設 y = 2x，考慮 x 從 0 到 3。",
       "parts": [
         {
           "type": "input",
-          "prompt": "在右端點，(y′)² 是多少？",
+          "prompt": "y' 等於多少？",
           "answers": [
-            "4"
+            "2"
           ],
-          "explanation": "計算：4 = 4。"
+          "explanation": "y = 2x 的導數是 2。"
         },
         {
           "type": "input",
-          "prompt": "弧長被積函數在 x=0 的值？",
+          "prompt": "√(1 + (y')²) 等於多少？",
           "answers": [
-            "1"
+            "sqrt(5)"
           ],
-          "explanation": "計算：sqrt(1+0) = 1。"
+          "explanation": "1 + 4 = 5，開根號得 √5。"
         },
         {
           "type": "input",
-          "prompt": "求弧長（可輸入含 sqrt 的數值式）。",
+          "prompt": "弧長是多少？",
           "answers": [
-            "6.786893258332633"
+            "3*sqrt(5)"
           ],
-          "explanation": "計算：2/3*((5)^(3/2)-1) = 6.786893258332633。"
+          "explanation": "√5 為常數，乘上區間長度 3 得 3√5。對應點 (0,0) 到 (3,6) 的距離 √(9+36) = √45 = 3√5。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "曲線 y=(2/3)x^(3/2)，考慮 0≤x≤5。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "在右端點，(y′)² 是多少？",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：5 = 5。"
-        },
-        {
-          "type": "input",
-          "prompt": "弧長被積函數在 x=0 的值？",
-          "answers": [
-            "1"
-          ],
-          "explanation": "計算：sqrt(1+0) = 1。"
-        },
-        {
-          "type": "input",
-          "prompt": "求弧長（可輸入含 sqrt 的數值式）。",
-          "answers": [
-            "9.131292304466045"
-          ],
-          "explanation": "計算：2/3*((6)^(3/2)-1) = 9.131292304466045。"
-        }
-      ]
+      ],
+      "explanation": "本題把弧長計算拆成三個環節：求導、算根號、乘長度。直線情形下不需要真正的積分技巧，但要理解每個環節的意義。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

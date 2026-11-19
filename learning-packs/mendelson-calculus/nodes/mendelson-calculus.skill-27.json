@@ -2,130 +2,225 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-27",
   "title": "27 · 指數函數",
-  "intro": "參考原書第 24 章。學習指數函數，完成10 道輸入練習。",
+  "intro": "學完這一節，你能對 e 的次方與一般指數函數求導、積分，並理解為什麼 e 是「自然」的底。指數函數描述成長與衰減，是微分方程最常見的解。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-26"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：e 的次方導數等於自身"
     },
     {
       "type": "paragraph",
-      "text": "eˣ 的導數仍是 eˣ；aˣ 的導數多一個 ln a。指數與自然對數互為反函數，複合函數要用鏈式法則。"
+      "text": "e 是唯一使 aˣ 的導數等於自身的底。這個性質讓 eˣ 在求導與積分下都不變形，因此成為微分方程與成長模型的首選底數。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "(eˣ)' = eˣ\n∫eˣ dx = eˣ + C"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：一般指數需要乘 ln a"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=e^(5x)，求 f′(0)。"
+      "text": "對 aˣ 求導，會多出一個 ln a 的因子。這是因為 aˣ = e^(x·ln a)，用鏈式法則就得到 ln a。當 a = e 時 ln e = 1，因子消失，回到上一條。"
     },
     {
-      "type": "example",
-      "text": "f(x)=e^(5x)，求 f′(0)。\n計算：5*1 = 5。"
+      "type": "formula",
+      "text": "(aˣ)' = aˣ · ln a\naˣ = e^(x·ln a)"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：指數與對數互為反函數"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=e^(6x)，求 f′(0)。"
+      "text": "eˣ 與 ln x 互為反函數：ln(eˣ) = x、e^(ln x) = x。這個關係讓指數與對數的題目可以互相轉換，也解釋了為什麼兩者的圖形關於 y = x 對稱。"
     },
     {
-      "type": "example",
-      "text": "f(x)=e^(6x)，求 f′(0)。\n計算：6*1 = 6。"
+      "type": "formula",
+      "text": "ln(eˣ) = x\ne^(ln x) = x，x > 0"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，辨認底是否為 e；是 e 就直接套，不是就補上 ln a。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，複合形式用鏈式法則，內層導數乘上去。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，積分 e^(kx) 時除以 k；這是求導乘 k 的反向。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，化簡時用指數律：e^a·e^b = e^(a+b)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用 e⁰ = 1 檢查數值。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是 (e^(2x))' 寫成 e^(2x)。內層導數 2 必須乘上去，答案是 2e^(2x)。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把 (aˣ)' 寫成 aˣ。只有底為 e 時才成立，其他底要乘 ln a。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是積分 e^(2x) 時忘記除以 2。∫e^(2x)dx = e^(2x)/2 + C。"
     }
   ],
   "questions": [
     {
+      "prompt": "(eˣ)' 等於？",
+      "options": [
+        "eˣ",
+        "x·eˣ",
+        "e^(x-1)",
+        "1"
+      ],
+      "answer": 0,
+      "explanation": "eˣ 的導數就是它自己，這是 e 這個底最特殊的性質。其他底數求導都會多出一個 ln a 的因子。"
+    },
+    {
       "type": "input",
-      "prompt": "f(x)=e^(2x)，求 f′(0)。",
+      "prompt": "e⁰ 等於多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "任何非零數的 0 次方都是 1。e⁰ = 1 是檢查指數計算最常用的錨點。"
+    },
+    {
+      "type": "input",
+      "prompt": "(e^(2x))' 在 x = 0 等於多少？",
       "answers": [
         "2"
       ],
-      "explanation": "計算：2*1 = 2。"
+      "explanation": "鏈式法則：2e^(2x)，代入 0 得 2·1 = 2。內層導數 2 不可漏，這是最常見的失分點。"
+    },
+    {
+      "prompt": "(2ˣ)' 等於？",
+      "options": [
+        "2ˣ·ln 2",
+        "2ˣ",
+        "x·2^(x-1)",
+        "2·ln 2"
+      ],
+      "answer": 0,
+      "explanation": "一般指數求導要乘 ln a：2ˣ·ln 2。寫成 2ˣ 只在底為 e 時正確；x·2^(x-1) 是冪函數的規則，不適用於指數。"
     },
     {
       "type": "input",
-      "prompt": "e^(ln 2)？",
+      "prompt": "ln(e⁵) 等於多少？",
       "answers": [
-        "2"
+        "5"
       ],
-      "explanation": "計算：2 = 2。"
+      "explanation": "指數與對數互為反函數，ln(e⁵) = 5。也可用性質 5·ln e = 5·1 = 5。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = eˣ + e^(-x)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "e⁰ 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "任何數的 0 次方為 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "e^(-0) 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "e^0 = 1，負零仍是零。"
+        },
+        {
+          "type": "input",
+          "prompt": "f'(0) 等於多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "f'(x) = eˣ - e^(-x)，代入 0 得 1 - 1 = 0。這說明 f 在原點有水平切線。"
+        }
+      ],
+      "explanation": "f(x) = eˣ + e^(-x) 是雙曲餘弦的兩倍，在原點取最小值。求導時注意 e^(-x) 的導數是 -e^(-x)。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=e^(x²)，求 f′(0)。",
+      "prompt": "(x·eˣ)' 在 x = 0 等於多少？",
       "answers": [
-        "0"
+        "1"
       ],
-      "explanation": "計算：2*0*1 = 0。"
+      "explanation": "乘積法則：1·eˣ + x·eˣ = eˣ(1+x)，代入 0 得 1·1 = 1。"
+    },
+    {
+      "prompt": "eˣ 最特殊的性質是？",
+      "options": [
+        "導數等於自身",
+        "值域為正",
+        "過點 (0,1)",
+        "嚴格遞增"
+      ],
+      "answer": 0,
+      "explanation": "導數等於自身是 eˣ 獨有的性質，使它在微分方程中成為基本解。值域為正、過 (0,1)、嚴格遞增其他指數函數也有。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=e^(2x)，求 f″(0)。",
+      "prompt": "(eˣ)'' 在 x = 0 等於多少？",
       "answers": [
-        "4"
+        "1"
       ],
-      "explanation": "計算：2^2 = 4。"
+      "explanation": "eˣ 求導任意次仍是 eˣ，代入 0 恆為 1。這是它與多項式最大的差別：不會因為反覆求導而變成 0。"
     },
     {
-      "type": "input",
-      "prompt": "∫₀^(ln 2) 2eˣ dx？",
-      "answers": [
-        "2"
+      "type": "multipart",
+      "prompt": "考慮 y = eˣ 在 x = 0 處的切線。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "切線斜率是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "y' = eˣ，代入 0 得 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "切點的 y 座標是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "e⁰ = 1，故切點為 (0, 1)。"
+        },
+        {
+          "type": "input",
+          "prompt": "切線的 y 截距是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "點斜式 y - 1 = 1(x - 0)，整理得 y = x + 1，y 截距為 1。切線必過切點 (0,1)，代入 x=0 即可確認。"
+        }
       ],
-      "explanation": "計算：2*(2-1) = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=e^(3x)，求 f′(0)。",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3*1 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "e^(ln 3)？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=e^(x²)，求 f′(0)。",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：2*0*1 = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=e^(3x)，求 f″(0)。",
-      "answers": [
-        "9"
-      ],
-      "explanation": "計算：3^2 = 9。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀^(ln 2) 3eˣ dx？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3*(2-1) = 3。"
+      "explanation": "eˣ 在原點的切線是 y = x + 1。斜率 1、切點 (0,1)、y 截距 1，三個數字互相印證。"
     }
   ],
   "passCount": 7

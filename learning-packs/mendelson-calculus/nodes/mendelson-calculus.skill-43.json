@@ -2,130 +2,225 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-43",
   "title": "43 · 冪級數",
-  "intro": "參考原書第 38 章。學習冪級數，完成10 道輸入練習。",
-  "kind": "base",
-  "minutes": 20,
+  "intro": "學完這一節，你能判斷冪級數在哪些 x 上收斂、算出收斂半徑，並理解端點需要另外檢查。冪級數是 Taylor 展開的載體，也是把函數寫成無窮多項和的工具。",
+  "kind": "integral",
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-42"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：冪級數是帶變量的級數"
     },
     {
       "type": "paragraph",
-      "text": "先求收斂半徑，再分別檢查兩端點。半徑內可以逐項微積分，但操作後端點行為可能改變。"
+      "text": "冪級數形如 Σcₙ(x-a)ⁿ，把 x 看成參數。對不同的 x，級數可能收斂也可能發散。所有收斂的 x 構成的集合叫收斂區間，它的半徑就是收斂半徑 R。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "Σ(n=0→∞) cₙ(x - a)ⁿ"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：收斂半徑用比值法求"
     },
     {
       "type": "paragraph",
-      "text": "Σ(x/5)^n（n 從 0 起）的收斂半徑？"
+      "text": "把 x 當常數，對係數用比值判別，得到 |x-a| < R 時收斂。R 就是收斂半徑。若 ρ = 0 則 R 為無窮（處處收斂），若 ρ 為無窮則 R = 0（只在中心收斂）。"
     },
     {
-      "type": "example",
-      "text": "Σ(x/5)^n（n 從 0 起）的收斂半徑？\n計算：5 = 5。"
+      "type": "formula",
+      "text": "R = 1/ρ，ρ = lim |cₙ₊₁/cₙ|\n|x - a| < R 收斂；|x - a| > R 發散"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：端點必須單獨檢查"
     },
     {
       "type": "paragraph",
-      "text": "Σ(x/6)^n（n 從 0 起）的收斂半徑？"
+      "text": "收斂半徑只保證開區間內收斂，兩個端點 x = a ± R 恰好是邊界，比值法失效，必須把端點代入原級數，用其他判別法逐個檢查。這是本章最常被忽略的一步。"
     },
     {
-      "type": "example",
-      "text": "Σ(x/6)^n（n 從 0 起）的收斂半徑？\n計算：6 = 6。"
+      "type": "formula",
+      "text": "x = a - R 與 x = a + R：代入後另行判別"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，寫出係數 cₙ，用比值法求 ρ。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，取 R = 1/ρ，得到開收斂區間。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，把兩個端點分別代入原級數。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，用 p 級數或交錯級數判別端點。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，寫出完整的收斂區間，注意端點是開還是閉。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把收斂半徑當成收斂區間。半徑只給出開區間，端點要另外判斷。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是忘記中心點 a。Σcₙ(x-2)ⁿ 的收斂區間以 2 為中心，不是以 0。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是比值法算的是 cₙ 的比，不是整個項的比。先把 (x-a)ⁿ 提出來，剩下的才是係數。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "Σ(x/2)^n（n 從 0 起）的收斂半徑？",
-      "answers": [
-        "2"
+      "prompt": "收斂半徑 R 的意義是？",
+      "options": [
+        "|x - a| < R 時級數收斂",
+        "級數在 x = R 收斂",
+        "級數的和等於 R",
+        "級數有 R 項"
       ],
-      "explanation": "計算：2 = 2。"
+      "answer": 0,
+      "explanation": "收斂半徑描述以 a 為中心、半徑 R 的開區間，在其中級數絕對收斂。端點要另外檢查，不能直接斷定。"
     },
     {
       "type": "input",
-      "prompt": "Σ((x-1)/2)^n 的中心？",
-      "answers": [
-        "1"
-      ],
-      "explanation": "計算：1 = 1。"
-    },
-    {
-      "type": "input",
-      "prompt": "Σ(x/2)^n 在 x=1 的和？",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：1/(1-1/2) = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "1/(1-x) 的冪級數中 x^2 的係數？",
+      "prompt": "Σ(n=0→∞) xⁿ 的收斂半徑是多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：1 = 1。"
+      "explanation": "係數皆為 1，比值 ρ = 1，故 R = 1。收斂區間為 (-1, 1)，端點 x = ±1 時級數發散。"
     },
     {
       "type": "input",
-      "prompt": "1/(1-2x) 的冪級數中 x² 的係數？",
+      "prompt": "Σ(n=0→∞) (x/2)ⁿ 的收斂半徑是多少？",
       "answers": [
-        "4"
+        "2"
       ],
-      "explanation": "計算：2^2 = 4。"
+      "explanation": "這是公比 x/2 的幾何級數，收斂條件 |x/2| < 1，即 |x| < 2，故 R = 2。"
+    },
+    {
+      "prompt": "收斂區間的端點應該如何處理？",
+      "options": [
+        "代入原級數另行判別",
+        "一定收斂",
+        "一定發散",
+        "忽略不管"
+      ],
+      "answer": 0,
+      "explanation": "比值法在端點失效，必須把端點代入原級數，用 p 級數或交錯級數判別。端點可能收斂也可能發散，因級數而異。"
     },
     {
       "type": "input",
-      "prompt": "Σ(x/3)^n（n 從 0 起）的收斂半徑？",
+      "prompt": "Σxⁿ 在 x = 0.5 是否收斂？收斂填 1。",
+      "answers": [
+        "1"
+      ],
+      "explanation": "|0.5| < 1，在收斂區間內，故收斂。其和為 1/(1-0.5) = 2。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "考慮 Σ(n=0→∞) xⁿ。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "把它看成幾何級數，在 x = 0.5 時公比的值是多少？",
+          "answers": [
+            "0.5"
+          ],
+          "explanation": "公比為 x，代入 0.5 得 0.5。公比隨 x 改變，這正是冪級數的特點。"
+        },
+        {
+          "type": "input",
+          "prompt": "收斂條件是 |x| 小於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "|x| < 1 時收斂，這是幾何級數的條件。"
+        },
+        {
+          "type": "input",
+          "prompt": "收斂半徑是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "由 |x| < 1 得 R = 1。"
+        }
+      ],
+      "explanation": "幾何級數是最簡單的冪級數，收斂半徑直接由公比給出。這個例子說明 R 的幾何意義：以 0 為中心、半徑 1。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=1→∞) n!·xⁿ 的收斂半徑是多少？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "係數比為 (n+1)!/n! = n+1，趨向無窮，故 ρ 為無窮、R = 0。級數只在 x = 0 收斂，這是階乘增長太快的結果。"
+    },
+    {
+      "prompt": "用比值法求收斂半徑時，R 等於？",
+      "options": [
+        "1/ρ",
+        "ρ",
+        "ρ²",
+        "1/ρ²"
+      ],
+      "answer": 0,
+      "explanation": "ρ = lim|cₙ₊₁/cₙ|，收斂條件 |x-a|·ρ < 1，故 R = 1/ρ。ρ = 0 時 R 無窮，ρ 無窮時 R = 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=0→∞) xⁿ/3ⁿ 的收斂半徑是多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：3 = 3。"
+      "explanation": "這是公比 x/3 的幾何級數，收斂條件 |x/3| < 1，即 |x| < 3，故 R = 3。"
     },
     {
-      "type": "input",
-      "prompt": "Σ((x-1)/3)^n 的中心？",
-      "answers": [
-        "1"
+      "type": "multipart",
+      "prompt": "考慮 Σ(n=0→∞) (x/3)ⁿ。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 x = 1 時，公比 x/3 的值是多少？",
+          "answers": [
+            "1/3"
+          ],
+          "explanation": "x/3 在 x = 1 時為 1/3。收斂與否取決於這個公比的絕對值是否小於 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "收斂條件是 |x| 小於多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "|x/3| < 1 即 |x| < 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "收斂半徑是多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "由 |x| < 3 得 R = 3。"
+        }
       ],
-      "explanation": "計算：1 = 1。"
-    },
-    {
-      "type": "input",
-      "prompt": "Σ(x/3)^n 在 x=1 的和？",
-      "answers": [
-        "1.5"
-      ],
-      "explanation": "計算：1/(1-1/3) = 1.5。"
-    },
-    {
-      "type": "input",
-      "prompt": "1/(1-x) 的冪級數中 x^3 的係數？",
-      "answers": [
-        "1"
-      ],
-      "explanation": "計算：1 = 1。"
-    },
-    {
-      "type": "input",
-      "prompt": "1/(1-3x) 的冪級數中 x² 的係數？",
-      "answers": [
-        "9"
-      ],
-      "explanation": "計算：3^2 = 9。"
+      "explanation": "把係數與變量分開看：Σ(x/3)ⁿ = Σ(1/3)ⁿxⁿ，係數是 (1/3)ⁿ。收斂半徑由係數的增長率決定。"
     }
   ],
   "passCount": 7

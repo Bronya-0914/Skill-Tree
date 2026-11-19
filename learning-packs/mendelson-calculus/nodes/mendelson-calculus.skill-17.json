@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-17",
   "title": "17 · 函數圖形分析",
-  "intro": "參考原書第 15 章。學習函數圖形分析，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能只看導數就畫出函數的形狀：哪裡上升、哪裡下降、哪裡轉彎、哪裡有漸近線。這是把所有求導技術整合起來的綜合應用。",
   "kind": "derivative",
-  "minutes": 40,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-07",
     "mendelson-calculus.skill-15"
@@ -12,218 +12,209 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：一階導數決定增減"
     },
     {
       "type": "paragraph",
-      "text": "先找定義域與截距，再用一階導數判增減、二階導數判凹凸。拐點必須真的改變凹凸，不是只看 f″=0。"
+      "text": "f' > 0 的區間函數遞增，f' < 0 的區間函數遞減，f' = 0 是水平切線。把這些區間標在數線上，就得到函數的升降表。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "f' > 0  ⇒  遞增\nf' < 0  ⇒  遞減\nf' = 0  ⇒  水平切線"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：二階導數決定凹凸"
     },
     {
       "type": "paragraph",
-      "text": "分析 f(x)=x³-147x 的圖形。"
+      "text": "f'' > 0 凹向上（像碗），f'' < 0 凹向下（像傘）。凹凸改變的地方叫反曲點，該點 f'' = 0 或不存在，而且兩側符號必須相反。"
     },
     {
-      "type": "example",
-      "text": "較大的臨界點 x？\n計算：sqrt(49) = 7。"
+      "type": "formula",
+      "text": "f'' > 0  ⇒  凹向上\nf'' < 0  ⇒  凹向下\n反曲點：f'' 變號"
     },
     {
-      "type": "example",
-      "text": "此點的函數值？\n計算：7^3-147*7 = -686。"
-    },
-    {
-      "type": "example",
-      "text": "拐點的 x 座標？\n計算：6x=0 ⇒ x=0 = 0。"
-    },
-    {
-      "type": "example",
-      "text": "在 x=0 的切線斜率？\n計算：0-147 = -147。"
+      "type": "heading",
+      "text": "原理三：漸近線描述遠處行為"
     },
     {
       "type": "paragraph",
-      "text": "分析 f(x)=x³-192x 的圖形。"
+      "text": "垂直漸近線出現在函數趨向無窮的地方，通常是分母為 0 的點。水平漸近線看 x 趨向無窮時的極限。斜漸近線出現在分子次數比分母高一次時，用長除法可得。"
     },
     {
-      "type": "example",
-      "text": "較大的臨界點 x？\n計算：sqrt(64) = 8。"
+      "type": "formula",
+      "text": "垂直：分母為 0 且分子不為 0\n水平：lim(x→±∞) f(x) = L\n斜：分子比分母高一次，做長除法"
     },
     {
-      "type": "example",
-      "text": "此點的函數值？\n計算：8^3-192*8 = -1024。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "拐點的 x 座標？\n計算：6x=0 ⇒ x=0 = 0。"
+      "type": "paragraph",
+      "text": "第一步，求定義域，標出所有垂直漸近線的候選點。"
     },
     {
-      "type": "example",
-      "text": "在 x=0 的切線斜率？\n計算：0-192 = -192。"
+      "type": "paragraph",
+      "text": "第二步，求 f'(x)，解 f'=0 得臨界點，切分區間判斷增減。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，求 f''(x)，解 f''=0，切分區間判斷凹凸與反曲點。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，算 x 趨向無窮的極限，找水平或斜漸近線。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，把以上資訊整理成表，再畫圖；標出極值點、反曲點與漸近線。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把 f''=0 直接當成反曲點。必須兩側符號相反才算，例如 x⁴ 在 0 的 f''=0 但兩側都凹向上，不是反曲點。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是混淆「遞增」與「凹向上」。前者看 f'，後者看 f''，兩者互相獨立。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是忽略定義域就畫圖，於是把垂直漸近線畫成連續曲線。"
     }
   ],
   "questions": [
     {
+      "prompt": "若 f'(x) > 0 在區間上恆成立，則函數在該區間上？",
+      "options": [
+        "遞增",
+        "遞減",
+        "凹向上",
+        "凹向下"
+      ],
+      "answer": 0,
+      "explanation": "f' > 0 表示瞬時變化率為正，函數遞增。凹向上是 f'' > 0 的結果，兩者由不同導數決定，不可混淆。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = x² - 2x 的遞增區間，下界是多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "f' = 2x - 2，令 f' > 0 得 x > 1。故遞增區間為 (1, ∞)，下界是 1。頂點 x = 1 是極小點。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = x³ 的反曲點 x 座標是多少？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "f' = 3x²，f'' = 6x，令 f'' = 0 得 x = 0。兩側 f'' 由負變正，符號改變，確為反曲點。"
+    },
+    {
+      "prompt": "反曲點的必要條件是？",
+      "options": [
+        "f'' 在該點變號",
+        "f' = 0",
+        "f = 0",
+        "f'' > 0"
+      ],
+      "answer": 0,
+      "explanation": "反曲點的定義是凹凸性改變，也就是 f'' 從正變負或從負變正。f'=0 是極值的條件；f''=0 只是必要條件，還要檢查變號。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = 1/x 的垂直漸近線在哪裡？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "分母為 0 時函數趨向無窮，即 x = 0。此處 f 無定義，圖形在 y 軸兩側分別趨向 ±∞。"
+    },
+    {
       "type": "multipart",
-      "prompt": "分析 f(x)=x³-12x 的圖形。",
+      "prompt": "設 f(x) = x³ - 3x²。",
       "parts": [
         {
           "type": "input",
-          "prompt": "較大的臨界點 x？",
+          "prompt": "臨界點共有幾個？",
           "answers": [
             "2"
           ],
-          "explanation": "計算：sqrt(4) = 2。"
+          "explanation": "f' = 3x² - 6x = 3x(x-2)，解 f'=0 得 x = 0 與 x = 2，共兩個。"
         },
         {
           "type": "input",
-          "prompt": "此點的函數值？",
+          "prompt": "遞增區間 x > 2 的左端點是多少？",
           "answers": [
-            "-16"
+            "2"
           ],
-          "explanation": "計算：2^3-12*2 = -16。"
+          "explanation": "f' 在 x > 2 時為正（兩因子同號），故從 2 開始遞增。"
         },
         {
           "type": "input",
-          "prompt": "拐點的 x 座標？",
+          "prompt": "反曲點的 x 座標是多少？",
           "answers": [
-            "0"
+            "1"
           ],
-          "explanation": "計算：6x=0 ⇒ x=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "在 x=0 的切線斜率？",
-          "answers": [
-            "-12"
-          ],
-          "explanation": "計算：0-12 = -12。"
+          "explanation": "f'' = 6x - 6，令其為 0 得 x = 1。兩側 f'' 由負變正，確為反曲點。"
         }
-      ]
+      ],
+      "explanation": "本題把三個工具串起來：一階導找臨界點與增減，二階導找反曲點。三次函數的典型結構是一個極大、一個極小、一個反曲點。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = x² 的圖形在整個實數上是凹向上還是凹向下？凹向上填 1，凹向下填 2。",
+      "answers": [
+        "1"
+      ],
+      "explanation": "f' = 2x，f'' = 2 > 0 恆成立，故整條拋物線都凹向上。這也解釋了為什麼它只有極小值。"
+    },
+    {
+      "prompt": "如何找水平漸近線？",
+      "options": [
+        "計算 x 趨向無窮時函數的極限",
+        "令分母為 0",
+        "令 f' = 0",
+        "找反曲點"
+      ],
+      "answer": 0,
+      "explanation": "水平漸近線描述 x 很大或很負時函數趨近的值，所以要算 lim(x→±∞) f(x)。令分母為 0 找的是垂直漸近線。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = 2x + 3/x 的斜漸近線斜率是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "當 x 趨向無窮時，3/x 趨近 0，函數趨近 2x，故斜漸近線為 y = 2x，斜率 2。常數項 3/x 只影響近原點的行為。"
     },
     {
       "type": "multipart",
-      "prompt": "分析 f(x)=x³-27x 的圖形。",
+      "prompt": "設 f(x) = x⁴ - 2x²。",
       "parts": [
         {
           "type": "input",
-          "prompt": "較大的臨界點 x？",
+          "prompt": "f'(x) = 0 的正根是多少？",
           "answers": [
-            "3"
+            "1"
           ],
-          "explanation": "計算：sqrt(9) = 3。"
+          "explanation": "f' = 4x³ - 4x = 4x(x²-1)，根為 0、1、-1，正根是 1。"
         },
         {
           "type": "input",
-          "prompt": "此點的函數值？",
+          "prompt": "極小點共有幾個？",
           "answers": [
-            "-54"
+            "2"
           ],
-          "explanation": "計算：3^3-27*3 = -54。"
-        },
-        {
-          "type": "input",
-          "prompt": "拐點的 x 座標？",
-          "answers": [
-            "0"
-          ],
-          "explanation": "計算：6x=0 ⇒ x=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "在 x=0 的切線斜率？",
-          "answers": [
-            "-27"
-          ],
-          "explanation": "計算：0-27 = -27。"
+          "explanation": "f'' = 12x² - 4，在 x = ±1 時為 8 > 0（極小），在 x = 0 時為 -4（極大）。故極小點兩個。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "分析 f(x)=x³-48x 的圖形。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "較大的臨界點 x？",
-          "answers": [
-            "4"
-          ],
-          "explanation": "計算：sqrt(16) = 4。"
-        },
-        {
-          "type": "input",
-          "prompt": "此點的函數值？",
-          "answers": [
-            "-128"
-          ],
-          "explanation": "計算：4^3-48*4 = -128。"
-        },
-        {
-          "type": "input",
-          "prompt": "拐點的 x 座標？",
-          "answers": [
-            "0"
-          ],
-          "explanation": "計算：6x=0 ⇒ x=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "在 x=0 的切線斜率？",
-          "answers": [
-            "-48"
-          ],
-          "explanation": "計算：0-48 = -48。"
-        }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "分析 f(x)=x³-75x 的圖形。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "較大的臨界點 x？",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：sqrt(25) = 5。"
-        },
-        {
-          "type": "input",
-          "prompt": "此點的函數值？",
-          "answers": [
-            "-250"
-          ],
-          "explanation": "計算：5^3-75*5 = -250。"
-        },
-        {
-          "type": "input",
-          "prompt": "拐點的 x 座標？",
-          "answers": [
-            "0"
-          ],
-          "explanation": "計算：6x=0 ⇒ x=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "在 x=0 的切線斜率？",
-          "answers": [
-            "-75"
-          ],
-          "explanation": "計算：0-75 = -75。"
-        }
-      ]
+      ],
+      "explanation": "偶函數的圖形左右對稱，極值與反曲點也成對出現。判斷時先看 f' 的根，再用 f'' 分類，不要憑圖形印象猜。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

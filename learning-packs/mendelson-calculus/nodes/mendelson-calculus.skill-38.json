@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-38",
   "title": "38 · 參數曲線與運動",
-  "intro": "參考原書第 34 章。學習參數曲線與運動，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能用參數式描述曲線、算出它的斜率，並把參數 t 看成時間來描述運動。參數化讓圓、螺線與拋體運動都能用同一個框架處理。",
   "kind": "base",
-  "minutes": 40,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-19",
     "mendelson-calculus.skill-24",
@@ -13,218 +13,217 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：用參數同時描述 x 與 y"
     },
     {
       "type": "paragraph",
-      "text": "先分別求 x′、y′。dy/dx=y′/x′（x′≠0）；速率是速度向量長度，不能把某一分量當速率。"
+      "text": "參數曲線用第三個變量 t 同時給出 x 與 y。t 可以理解為時間：質點在每一刻有確定的位置。這比 y = f(x) 更靈活，因為允許同一 x 對應多個 y，也能描述垂直運動。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "x = f(t)，y = g(t)"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：斜率是兩個變化率相除"
     },
     {
       "type": "paragraph",
-      "text": "粒子位置 r(t)=(t,t²)，在 t=7 作答。"
+      "text": "dy/dx 表示 y 對 x 的變化率。由鏈式法則，dy/dt = (dy/dx)(dx/dt)，所以 dy/dx = (dy/dt)/(dx/dt)。關鍵是分母不能為 0；為 0 時切線垂直，斜率不存在。"
     },
     {
-      "type": "example",
-      "text": "速度的 y 分量？\n計算：2*7 = 14。"
+      "type": "formula",
+      "text": "dy/dx = (dy/dt) / (dx/dt)，dx/dt ≠ 0"
     },
     {
-      "type": "example",
-      "text": "速率？\n計算：sqrt(1+4*7^2) = 14.035668847618199。"
-    },
-    {
-      "type": "example",
-      "text": "軌跡切線斜率 dy/dx？\n計算：(2*7)/1 = 14。"
-    },
-    {
-      "type": "example",
-      "text": "加速度的 y 分量？\n計算：2 = 2。"
+      "type": "heading",
+      "text": "原理三：速度向量與速率"
     },
     {
       "type": "paragraph",
-      "text": "粒子位置 r(t)=(t,t²)，在 t=8 作答。"
+      "text": "速度向量是 (dx/dt, dy/dt)，同時給出水平與垂直的變化率。速率是速度向量的長度，等於 √((dx/dt)² + (dy/dt)²)，永遠非負。"
     },
     {
-      "type": "example",
-      "text": "速度的 y 分量？\n計算：2*8 = 16。"
+      "type": "formula",
+      "text": "速度向量 = (dx/dt, dy/dt)\n速率 = √((dx/dt)² + (dy/dt)²)"
     },
     {
-      "type": "example",
-      "text": "速率？\n計算：sqrt(1+4*8^2) = 16.0312195418814。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "軌跡切線斜率 dy/dx？\n計算：(2*8)/1 = 16。"
+      "type": "paragraph",
+      "text": "第一步，分別對 t 求導，得到 dx/dt 與 dy/dt。"
     },
     {
-      "type": "example",
-      "text": "加速度的 y 分量？\n計算：2 = 2。"
+      "type": "paragraph",
+      "text": "第二步，相除得 dy/dx。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，要某一點的斜率，把該點的 t 代入。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，求速率時取兩者平方和開根號。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，檢查 dx/dt 是否為 0；為 0 時斜率不存在，不要寫成有限值。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把 dy/dx 寫成 dy/dt 或 dx/dt。斜率是兩者相除，不是任一個。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是忘記檢查 dx/dt = 0。此時切線垂直，斜率不存在，強行相除會得到無意義的結果。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是把速率與速度混淆。速度是向量，速率是純量。"
     }
   ],
   "questions": [
     {
+      "prompt": "參數曲線的 dy/dx 等於？",
+      "options": [
+        "(dy/dt)/(dx/dt)",
+        "dy/dt · dx/dt",
+        "dx/dt ÷ dy/dt",
+        "dy/dt"
+      ],
+      "answer": 0,
+      "explanation": "由鏈式法則 dy/dt = (dy/dx)(dx/dt)，移項得 dy/dx = (dy/dt)/(dx/dt)。分母不可為 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "x = t、y = t²，在 t = 2 時 dy/dx 等於多少？",
+      "answers": [
+        "4"
+      ],
+      "explanation": "dx/dt = 1、dy/dt = 2t。相除得 2t，代入 2 得 4。這與 y = x² 的導數 2x 在 x=2 的值一致。"
+    },
+    {
+      "type": "input",
+      "prompt": "x = t²、y = t³，在 t = 1 時 dy/dx 等於多少？",
+      "answers": [
+        "3/2"
+      ],
+      "explanation": "dx/dt = 2t、dy/dt = 3t²。相除得 3t/2，代入 1 得 3/2。注意要先相除再化簡。"
+    },
+    {
+      "prompt": "參數曲線的速度向量是？",
+      "options": [
+        "(dx/dt, dy/dt)",
+        "(dy/dt, dx/dt)",
+        "(x, y)",
+        "(dx/dy, dy/dx)"
+      ],
+      "answer": 0,
+      "explanation": "速度是位置對時間的變化率，故為 (dx/dt, dy/dt)。它的長度是速率，方向是運動方向。"
+    },
+    {
+      "type": "input",
+      "prompt": "x = cos t、y = sin t，速率是多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "dx/dt = -sin t、dy/dt = cos t，速率 = √(sin²t + cos²t) = 1。這是單位圓，等速率繞行。"
+    },
+    {
       "type": "multipart",
-      "prompt": "粒子位置 r(t)=(t,t²)，在 t=2 作答。",
+      "prompt": "設 x = t、y = t²。",
       "parts": [
         {
           "type": "input",
-          "prompt": "速度的 y 分量？",
+          "prompt": "dx/dt 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "x = t 對 t 求導得 1，為常數。"
+        },
+        {
+          "type": "input",
+          "prompt": "dy/dt 在 t = 2 時等於多少？",
           "answers": [
             "4"
           ],
-          "explanation": "計算：2*2 = 4。"
+          "explanation": "y = t² 的導數是 2t，代入 2 得 4。"
         },
         {
           "type": "input",
-          "prompt": "速率？",
-          "answers": [
-            "4.123105625617661"
-          ],
-          "explanation": "計算：sqrt(1+4*2^2) = 4.123105625617661。"
-        },
-        {
-          "type": "input",
-          "prompt": "軌跡切線斜率 dy/dx？",
+          "prompt": "dy/dx 在 t = 2 時等於多少？",
           "answers": [
             "4"
           ],
-          "explanation": "計算：(2*2)/1 = 4。"
-        },
-        {
-          "type": "input",
-          "prompt": "加速度的 y 分量？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2 = 2。"
+          "explanation": "4/1 = 4。這與把 y 寫成 x² 後求導的結果一致。"
         }
-      ]
+      ],
+      "explanation": "參數式與顯式可以互相驗證：把 t = x 代回得 y = x²，導數 2x 在 x=2 為 4，與參數法相同。"
+    },
+    {
+      "type": "input",
+      "prompt": "x = 2t、y = 3t，dy/dx 等於多少？",
+      "answers": [
+        "3/2"
+      ],
+      "explanation": "dx/dt = 2、dy/dt = 3，相除得 3/2。這是一條直線，斜率恆為 3/2，與 t 無關。"
+    },
+    {
+      "prompt": "參數曲線的斜率何時不存在？",
+      "options": [
+        "dx/dt = 0 時",
+        "dy/dt = 0 時",
+        "t = 0 時",
+        "x = 0 時"
+      ],
+      "answer": 0,
+      "explanation": "dy/dx 的分母是 dx/dt，為 0 時無定義，對應垂直切線。dy/dt = 0 只表示水平切線，斜率為 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "x = t³、y = t²，在 t = 1 時 dy/dx 等於多少？",
+      "answers": [
+        "2/3"
+      ],
+      "explanation": "dx/dt = 3t²、dy/dt = 2t，相除得 2/(3t)，代入 1 得 2/3。"
     },
     {
       "type": "multipart",
-      "prompt": "粒子位置 r(t)=(t,t²)，在 t=3 作答。",
+      "prompt": "設 x = t²、y = 2t。",
       "parts": [
         {
           "type": "input",
-          "prompt": "速度的 y 分量？",
-          "answers": [
-            "6"
-          ],
-          "explanation": "計算：2*3 = 6。"
-        },
-        {
-          "type": "input",
-          "prompt": "速率？",
-          "answers": [
-            "6.082762530298219"
-          ],
-          "explanation": "計算：sqrt(1+4*3^2) = 6.082762530298219。"
-        },
-        {
-          "type": "input",
-          "prompt": "軌跡切線斜率 dy/dx？",
-          "answers": [
-            "6"
-          ],
-          "explanation": "計算：(2*3)/1 = 6。"
-        },
-        {
-          "type": "input",
-          "prompt": "加速度的 y 分量？",
+          "prompt": "dx/dt 在 t = 1 時等於多少？",
           "answers": [
             "2"
           ],
-          "explanation": "計算：2 = 2。"
-        }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "粒子位置 r(t)=(t,t²)，在 t=4 作答。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "速度的 y 分量？",
-          "answers": [
-            "8"
-          ],
-          "explanation": "計算：2*4 = 8。"
+          "explanation": "dx/dt = 2t，代入 1 得 2。"
         },
         {
           "type": "input",
-          "prompt": "速率？",
-          "answers": [
-            "8.06225774829855"
-          ],
-          "explanation": "計算：sqrt(1+4*4^2) = 8.06225774829855。"
-        },
-        {
-          "type": "input",
-          "prompt": "軌跡切線斜率 dy/dx？",
-          "answers": [
-            "8"
-          ],
-          "explanation": "計算：(2*4)/1 = 8。"
-        },
-        {
-          "type": "input",
-          "prompt": "加速度的 y 分量？",
+          "prompt": "dy/dt 等於多少？",
           "answers": [
             "2"
           ],
-          "explanation": "計算：2 = 2。"
+          "explanation": "y = 2t 的導數是常數 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "dy/dx 在 t = 1 時等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "2/2 = 1。這說明曲線在該點的切線斜率為 1。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "粒子位置 r(t)=(t,t²)，在 t=5 作答。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "速度的 y 分量？",
-          "answers": [
-            "10"
-          ],
-          "explanation": "計算：2*5 = 10。"
-        },
-        {
-          "type": "input",
-          "prompt": "速率？",
-          "answers": [
-            "10.04987562112089"
-          ],
-          "explanation": "計算：sqrt(1+4*5^2) = 10.04987562112089。"
-        },
-        {
-          "type": "input",
-          "prompt": "軌跡切線斜率 dy/dx？",
-          "answers": [
-            "10"
-          ],
-          "explanation": "計算：(2*5)/1 = 10。"
-        },
-        {
-          "type": "input",
-          "prompt": "加速度的 y 分量？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2 = 2。"
-        }
-      ]
+      ],
+      "explanation": "參數曲線的斜率計算只有兩步：分別求導、相除。本題兩者恰好相等，斜率為 1，對應 45 度切線。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

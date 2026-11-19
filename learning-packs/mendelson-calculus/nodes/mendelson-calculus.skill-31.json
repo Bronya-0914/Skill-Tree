@@ -2,130 +2,221 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-31",
   "title": "31 · 分部積分",
-  "intro": "參考原書第 28 章。學習分部積分，完成10 道輸入練習。",
+  "intro": "學完這一節，你能對兩個函數相乘的積分使用分部積分，把難積的部分轉成容易積的部分。這是處理 x·eˣ、x·sin x、ln x 這類函數的標準方法。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 26,
   "parents": [
     "mendelson-calculus.skill-27"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：乘積法則反過來用"
     },
     {
       "type": "paragraph",
-      "text": "由乘積法則得到 ∫u dv=uv-∫v du。選 u 讓微分後變簡單，選 dv 能積分；定積分保留端點項。"
+      "text": "乘積法則是 (uv)' = u'v + uv'。兩邊積分並移項，就得到分部積分公式。它把「u 乘 dv 的積分」換成「uv 減去 v 乘 du 的積分」，目的是讓新的積分比原本容易。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "∫u dv = uv - ∫v du"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：選 u 的原則"
     },
     {
       "type": "paragraph",
-      "text": "∫₀¹ 5x eˣ dx？"
+      "text": "選 u 要讓它求導後變簡單，選 dv 要讓它容易積。常用順序是對數、反三角、代數、三角、指數：排在前面的優先當 u。多項式乘指數時，多項式當 u，因為求導會降次。"
     },
     {
-      "type": "example",
-      "text": "∫₀¹ 5x eˣ dx？\n計算：5*[(x-1)*exp(x)]_0^1 = 5 = 5。"
+      "type": "formula",
+      "text": "優先當 u：ln、arcsin/arctan、xⁿ、sin/cos、eˣ"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：可能要用兩次"
     },
     {
       "type": "paragraph",
-      "text": "∫₀¹ 6x eˣ dx？"
+      "text": "有些積分用一次分部積分後，新的積分仍需再分一次，甚至會回到原積分。後者稱為循環型，可把原積分移到同一邊解出。x·eˣ、x·sin x 都只需一次；eˣ·sin x 需要兩次。"
     },
     {
-      "type": "example",
-      "text": "∫₀¹ 6x eˣ dx？\n計算：6*[(x-1)*exp(x)]_0^1 = 6 = 6。"
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，把被積函數拆成 u 與 dv 兩部分。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，對 u 求導得 du，對 dv 積分得 v。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，套公式 uv - ∫v du。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，處理新的積分；必要時再分一次。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，求導驗證：把結果求導，應回到原被積函數。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是 u 與 dv 選反。若選 u = eˣ、dv = x dx，新的積分會變成 ∫(x²/2)eˣ dx，比原來更難。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是忘記 v 的符號或漏掉負號。套公式時要完整寫出 uv - ∫v du。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是定積分時忘記對 uv 這一項也代上下限。uv 是整體，必須一起代。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "∫₀¹ 2x eˣ dx？",
-      "answers": [
-        "2"
+      "prompt": "分部積分的公式是？",
+      "options": [
+        "∫u dv = uv - ∫v du",
+        "∫u dv = uv + ∫v du",
+        "∫u dv = u'v - uv'",
+        "∫u dv = ∫u · ∫dv"
       ],
-      "explanation": "計算：2*[(x-1)*exp(x)]_0^1 = 2 = 2。"
+      "answer": 0,
+      "explanation": "由乘積法則移項得到：∫u dv = uv - ∫v du。減號不可寫成加號，否則結果會多出一倍的 ∫v du。"
     },
     {
       "type": "input",
-      "prompt": "∫₁ᵉ 2ln x dx？",
+      "prompt": "∫0¹ x·eˣ dx 等於多少？",
       "answers": [
-        "2"
+        "1"
       ],
-      "explanation": "計算：2*[x*ln(x)-x]_1^e = 2 = 2。"
+      "explanation": "取 u = x、dv = eˣdx，得 du = dx、v = eˣ。分部積分為 xeˣ - ∫eˣdx = xeˣ - eˣ。代入 1 得 0，代入 0 得 -1，相減為 1。"
     },
     {
       "type": "input",
-      "prompt": "∫₀^pi 2x sin x dx 除以 pi？",
+      "prompt": "∫1^e ln x dx 等於多少？",
       "answers": [
-        "2"
+        "1"
       ],
-      "explanation": "計算：2 = 2。"
+      "explanation": "取 u = ln x、dv = dx，得 du = dx/x、v = x。結果為 x ln x - x。代入 e 得 0，代入 1 得 -1，相減為 1。這是 ln x 積分的標準做法。"
+    },
+    {
+      "prompt": "分部積分中選擇 u 的常用原則是？",
+      "options": [
+        "讓 u 求導後變簡單，dv 容易積",
+        "隨便選都可以",
+        "u 一定選多項式",
+        "u 一定選指數函數"
+      ],
+      "answer": 0,
+      "explanation": "選 u 的目的是讓新積分更簡單。常用順序是對數、反三角、代數、三角、指數。多項式當 u 會因求導而降次，是最常見的選擇。"
     },
     {
       "type": "input",
-      "prompt": "分部積分 u=x^2，du/dx 在 x=1？",
+      "prompt": "∫0^π x·sin x dx 等於多少？（π 請寫 pi）",
       "answers": [
-        "2"
+        "pi"
       ],
-      "explanation": "計算：2*1 = 2。"
+      "explanation": "取 u = x、dv = sin x dx，得 v = -cos x。結果為 -x cos x + sin x。代入 π 得 π，代入 0 得 0，相減為 π。負號來自 cos 的積分。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "計算 ∫x·eˣ dx。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "取 u = x、dv = eˣdx，則 v = eˣ。在 x = 1 時 v 的值是多少？（e 請寫 e）",
+          "answers": [
+            "e"
+          ],
+          "explanation": "v = eˣ，代入 1 得 e ≈ 2.718。指數函數積分不變形，所以 v 仍是 eˣ。"
+        },
+        {
+          "type": "input",
+          "prompt": "剩下的積分 ∫v du = ∫eˣdx，在 x = 0 時的值是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "∫eˣdx = eˣ，代入 0 得 1。這個值就是分部積分中第二項在該點的大小。"
+        },
+        {
+          "type": "input",
+          "prompt": "在 x = 1 時，xeˣ - eˣ 的值是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "代入 1 得 e - e = 0。這是定積分計算中上限那一項的值。"
+        }
+      ],
+      "explanation": "x·eˣ 是分部積分的入門題：多項式當 u 降次，指數當 dv 不變形，一次就能解決。"
     },
     {
       "type": "input",
-      "prompt": "∫₀¹ x ln x dx 乘 8？（用端點極限）",
+      "prompt": "∫0¹ eˣ dx 等於多少？（e 請寫 e）",
       "answers": [
-        "-2"
+        "e-1"
       ],
-      "explanation": "計算：8*(-1/4) = -2。"
+      "explanation": "eˣ 的原函數仍是 eˣ，代入 1 得 e，代入 0 得 1，相減為 e-1。這題不需要分部積分，用來對照。"
+    },
+    {
+      "prompt": "分部積分最適合處理哪類積分？",
+      "options": [
+        "兩個不同類型函數的乘積",
+        "單一多項式",
+        "常數",
+        "有理函數的分式"
+      ],
+      "answer": 0,
+      "explanation": "分部積分處理的是「兩類函數相乘」且無法用代換解決的情形，如 x·eˣ、x·sin x、ln x。單一多項式用冪法則，有理分式用部分分式。"
     },
     {
       "type": "input",
-      "prompt": "∫₀¹ 3x eˣ dx？",
+      "prompt": "∫0^(π/2) x·cos x dx 等於多少？（π 請寫 pi）",
       "answers": [
-        "3"
+        "pi/2-1"
       ],
-      "explanation": "計算：3*[(x-1)*exp(x)]_0^1 = 3 = 3。"
+      "explanation": "取 u = x、dv = cos x dx，得 v = sin x。結果為 x sin x + cos x。代入 π/2 得 π/2 + 0，代入 0 得 0 + 1，相減為 π/2 - 1。"
     },
     {
-      "type": "input",
-      "prompt": "∫₁ᵉ 3ln x dx？",
-      "answers": [
-        "3"
+      "type": "multipart",
+      "prompt": "計算 ∫1^e ln x dx。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "取 u = ln x，則 du/dx = 1/x。在 x = e 時它的值是多少？（e 請寫 e）",
+          "answers": [
+            "1/e"
+          ],
+          "explanation": "1/x 在 x = e 時為 1/e ≈ 0.368。這是 du 與 dx 的比值。"
+        },
+        {
+          "type": "input",
+          "prompt": "取 dv = dx，則 v = x。在 x = 2 時 v 的值是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "v = x，代入 2 得 2。dv = dx 的積分就是 x 本身。"
+        },
+        {
+          "type": "input",
+          "prompt": "定積分的值是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "uv - ∫v du = x ln x - ∫1 dx = x ln x - x。代入 e 得 0，代入 1 得 -1，相減為 1。"
+        }
       ],
-      "explanation": "計算：3*[x*ln(x)-x]_1^e = 3 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀^pi 3x sin x dx 除以 pi？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "分部積分 u=x^3，du/dx 在 x=1？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3*1 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀¹ x ln x dx 乘 12？（用端點極限）",
-      "answers": [
-        "-3"
-      ],
-      "explanation": "計算：12*(-1/4) = -3。"
+      "explanation": "ln x 單獨出現時必須用分部積分，且要令 dv = dx。這是分部積分最經典的應用，結果 x ln x - x 值得記住。"
     }
   ],
   "passCount": 7

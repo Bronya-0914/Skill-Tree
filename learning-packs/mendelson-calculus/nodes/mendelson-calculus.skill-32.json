@@ -2,130 +2,225 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-32",
   "title": "32 · 三角積分與代換",
-  "intro": "參考原書第 29 章。學習三角積分與代換，完成10 道輸入練習。",
+  "intro": "學完這一節，你能處理含三角函數的積分：奇次用代換、偶次用半角公式、含根號用三角代換。這是積分技巧中最需要辨認模式的一類。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 26,
   "parents": [
     "mendelson-calculus.skill-30"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：奇次提出一個因子做代換"
     },
     {
       "type": "paragraph",
-      "text": "奇次 sin 或 cos 可拆出一因子後代換；偶次可用半角公式。√(a²-x²) 常設 x=a sin θ，並確認角度範圍。"
+      "text": "遇到 sinᵐx·cosⁿx，若其中一個是奇次，就從奇次的那個提出一個因子，剩下的用 sin²+cos²=1 轉換，再令 u 為另一個函數。這樣 du 正好出現。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "∫sinᵐx·cosⁿx dx，m 為奇數時令 u = cos x"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：偶次用半角公式降次"
     },
     {
       "type": "paragraph",
-      "text": "∫₀^(pi/2) 5sin x cos x dx？"
+      "text": "若兩者都是偶次，代換無效，必須用半角公式把平方降為一次。這是因為平方的積分無法直接處理，降次後才能逐項積分。"
     },
     {
-      "type": "example",
-      "text": "∫₀^(pi/2) 5sin x cos x dx？\n計算：5/2 = 2.5。"
+      "type": "formula",
+      "text": "sin²x = (1 - cos 2x)/2\ncos²x = (1 + cos 2x)/2"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：含根號用三角代換"
     },
     {
       "type": "paragraph",
-      "text": "∫₀^(pi/2) 6sin x cos x dx？"
+      "text": "√(a²-x²) 令 x = a sin θ，√(a²+x²) 令 x = a tan θ，√(x²-a²) 令 x = a sec θ。目的是用恆等式把根號消掉，代價是要處理 θ 的範圍。"
     },
     {
-      "type": "example",
-      "text": "∫₀^(pi/2) 6sin x cos x dx？\n計算：6/2 = 3。"
+      "type": "formula",
+      "text": "√(a² - x²)：x = a sin θ\n√(a² + x²)：x = a tan θ"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，判斷是乘積、單一偶次，還是含根號。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，乘積且有奇次：提出一個因子，令另一個為 u。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，兩者皆偶次：用半角公式降次，逐項積分。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，含根號：選對應的三角代換，化簡後積分，最後換回 x。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，求導驗證，或用特殊值檢查數值。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是對偶次直接代換。∫sin²x dx 不能令 u = sin x，因為 du = cos x dx 在分子上找不到。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是三角代換後忘記換回 x。答案必須用原本的變量表示。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是忽略 sin²+cos²=1 的用途。提出一個因子後，剩下的偶次冪要靠這個恆等式轉成另一函數。"
     }
   ],
   "questions": [
     {
+      "prompt": "∫sin x·cos x dx 最適合用什麼方法？",
+      "options": [
+        "令 u = sin x 代換",
+        "半角公式",
+        "分部積分",
+        "部分分式"
+      ],
+      "answer": 0,
+      "explanation": "cos x dx 正好是 sin x 的微分，故令 u = sin x，積分得 u²/2 = sin²x/2 + C。這是奇次乘積的標準做法。"
+    },
+    {
       "type": "input",
-      "prompt": "∫₀^(pi/2) 2sin x cos x dx？",
+      "prompt": "∫0^(π/2) sin x dx 等於多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：2/2 = 1。"
+      "explanation": "原函數 -cos x，代入 π/2 得 0，代入 0 得 -1，相減為 1。這是正弦在四分之一週期的面積。"
     },
     {
       "type": "input",
-      "prompt": "∫₀^pi 2sin²x dx 除以 pi？",
+      "prompt": "∫0^(π/2) cos x dx 等於多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：2/2 = 1。"
+      "explanation": "原函數 sin x，代入 π/2 得 1，代入 0 得 0，結果 1。與上題對稱，因為 sin 與 cos 在此區間互為鏡像。"
+    },
+    {
+      "prompt": "∫sin²x dx 應該用什麼方法？",
+      "options": [
+        "半角公式降次",
+        "令 u = sin x",
+        "分部積分",
+        "直接套冪法則"
+      ],
+      "answer": 0,
+      "explanation": "偶次無法用代換，必須用 sin²x = (1-cos2x)/2 降為一次。代換 u = sin x 會缺少 cos x 因子，行不通。"
     },
     {
       "type": "input",
-      "prompt": "∫₀^(pi/2) 2sin³x dx？",
+      "prompt": "∫0^(π/2) 2·sin x·cos x dx 等於多少？",
       "answers": [
-        "1.3333333333333333"
+        "1"
       ],
-      "explanation": "計算：2*2/3 = 1.3333333333333333。"
+      "explanation": "2 sin x cos x = sin 2x，積分得 -cos(2x)/2。代入 π/2 得 1/2，代入 0 得 -1/2，相減為 1。用倍角公式可大幅簡化。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "計算 ∫sin x·cos x dx。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "令 u = sin x，則 du/dx = cos x。在 x = 0 時 cos x 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "cos 0 = 1。所以在 x = 0 附近，du ≈ dx，代換幾乎是恆等的。"
+        },
+        {
+          "type": "input",
+          "prompt": "積分結果中 u 的次方是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "∫u du = u²/2，故次方為 2。結果為 sin²x/2 + C。"
+        },
+        {
+          "type": "input",
+          "prompt": "從 0 到 π/2 的定積分值是多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "sin²(π/2)/2 - sin²(0)/2 = 1/2 - 0 = 1/2。"
+        }
+      ],
+      "explanation": "奇次乘積的核心是「湊出 du」。cos x dx 恰好是 sin x 的微分，所以代換幾乎自動成立。"
     },
     {
       "type": "input",
-      "prompt": "x=2sin θ，θ=0 時 dx/dθ？",
+      "prompt": "∫0^(π/4) sec²x dx 等於多少？",
       "answers": [
-        "2"
+        "1"
       ],
-      "explanation": "計算：2*cos(0) = 2。"
+      "explanation": "sec²x 的原函數是 tan x，代入 π/4 得 1，代入 0 得 0，結果 1。這是 tan 導數公式的直接應用。"
+    },
+    {
+      "prompt": "遇到 √(1 - x²) 時，應該用哪種代換？",
+      "options": [
+        "x = sin θ",
+        "x = tan θ",
+        "x = sec θ",
+        "u = 1 - x²"
+      ],
+      "answer": 0,
+      "explanation": "x = sin θ 使 1 - x² = cos²θ，根號消失。x = tan θ 用於 √(1+x²)，x = sec θ 用於 √(x²-1)。"
     },
     {
       "type": "input",
-      "prompt": "∫₀¹ 2x/√(4-x²) dx？",
+      "prompt": "∫0^(π/2) sin(2x) dx 等於多少？",
       "answers": [
-        "0.5358983848622456"
+        "1"
       ],
-      "explanation": "計算：2*(2-sqrt(3)) = 0.5358983848622456。"
+      "explanation": "原函數 -cos(2x)/2，代入 π/2 得 -cos π/2 = 1/2，代入 0 得 -1/2，相減為 1。內層係數 2 在積分時要除以 2。"
     },
     {
-      "type": "input",
-      "prompt": "∫₀^(pi/2) 3sin x cos x dx？",
-      "answers": [
-        "1.5"
+      "type": "multipart",
+      "prompt": "計算 ∫0^(π/4) cos(2x) dx。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "cos(2x) 的原函數中，sin(2x) 的係數是多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "∫cos(2x)dx = sin(2x)/2，係數為 1/2，來自除以內層導數 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "原函數在 π/4 的值是多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "sin(π/2)/2 = 1/2。"
+        },
+        {
+          "type": "input",
+          "prompt": "定積分的值是多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "1/2 - sin(0)/2 = 1/2 - 0 = 1/2。"
+        }
       ],
-      "explanation": "計算：3/2 = 1.5。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀^pi 3sin²x dx 除以 pi？",
-      "answers": [
-        "1.5"
-      ],
-      "explanation": "計算：3/2 = 1.5。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀^(pi/2) 3sin³x dx？",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：3*2/3 = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "x=3sin θ，θ=0 時 dx/dθ？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3*cos(0) = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀¹ 3x/√(4-x²) dx？",
-      "answers": [
-        "0.8038475772933684"
-      ],
-      "explanation": "計算：3*(2-sqrt(3)) = 0.8038475772933684。"
+      "explanation": "三角函數的積分要注意內層係數：∫cos(kx)dx = sin(kx)/k。漏掉除以 k 是最常見的錯誤。"
     }
   ],
   "passCount": 7

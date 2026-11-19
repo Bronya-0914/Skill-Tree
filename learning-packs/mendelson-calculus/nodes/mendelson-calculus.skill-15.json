@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-15",
   "title": "15 · 極值判別",
-  "intro": "參考原書第 13 章。學習極值判別，完成10 道輸入練習。",
+  "intro": "學完這一節，你能找出函數的臨界點、判斷它是極大還是極小，並算出極值。這是所有最佳化問題的核心技術，也是圖形分析的基礎。",
   "kind": "derivative",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-13",
     "mendelson-calculus.skill-14"
@@ -12,121 +12,216 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：極值只可能出現在臨界點"
     },
     {
       "type": "paragraph",
-      "text": "臨界點包括導數為零或不存在但函數有定義的點。閉區間最值要比較臨界點和端點；二階導數為零時不能直接下結論。"
+      "text": "內部點要成為極值，導數必須為 0（或不存在）。這樣的點叫臨界點。但臨界點不一定是極值：x³ 在 0 的導數為 0，卻只是短暫的水平，兩側都繼續上升。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "臨界點：f'(c) = 0 或 f'(c) 不存在\n極值候選點 = 臨界點 ∪ 端點（閉區間時）"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：一階判別看符號變化"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=(x-5)²+1 的最小值？"
+      "text": "經過臨界點時，若 f' 由正變負，函數先升後降，該點是極大；若由負變正，先降後升，是極小；若符號不變，就不是極值。這個方法永遠可用，但要檢查左右兩側。"
     },
     {
-      "type": "example",
-      "text": "f(x)=(x-5)²+1 的最小值？\n計算：0+1 = 1。"
+      "type": "formula",
+      "text": "f' 由 + 變 −  ⇒  極大\nf' 由 − 變 +  ⇒  極小\n符號不變  ⇒  非極值"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：二階判別看彎曲方向"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=(x-6)²+1 的最小值？"
+      "text": "在臨界點若 f'' < 0，曲線凹向下，是極大；f'' > 0 凹向上，是極小。f'' = 0 時無法判定，必須回到一階判別。二階判別較快，但適用範圍較窄。"
     },
     {
-      "type": "example",
-      "text": "f(x)=(x-6)²+1 的最小值？\n計算：0+1 = 1。"
+      "type": "formula",
+      "text": "f'(c) = 0 且 f''(c) < 0  ⇒  極大\nf'(c) = 0 且 f''(c) > 0  ⇒  極小\nf''(c) = 0  ⇒  無法判定"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，求 f'(x) 並解 f'(x) = 0，同時找出 f' 不存在的點。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，把臨界點依大小排序，切成若干區間。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，在每個區間取一個測試點，判斷 f' 的正負。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，看臨界點兩側符號是否變化，決定極大、極小或非極值。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，把極值點的 x 代回原函數 f，得到極值（不是代入 f'）。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把 f'(c) = 0 直接當成極值。x³ 在 0 是反例，必須檢查符號變化。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把極值點代入 f' 而不是 f。極值是函數值，要代回原函數。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是閉區間求極值時只看臨界點，忘記比較端點。"
     }
   ],
   "questions": [
     {
+      "prompt": "f(x) = x² 的極小點在哪裡？",
+      "options": [
+        "x = 0",
+        "x = 1",
+        "x = 2",
+        "沒有極小點"
+      ],
+      "answer": 0,
+      "explanation": "f'(x) = 2x，令其為 0 得 x = 0。f'' = 2 > 0，凹向上，故為極小。極小值為 f(0) = 0。"
+    },
+    {
       "type": "input",
-      "prompt": "f(x)=(x-2)²+1 的最小值？",
+      "prompt": "f(x) = x² - 6x + 5 的極小值是多少？",
+      "answers": [
+        "-4"
+      ],
+      "explanation": "f'(x) = 2x - 6 = 0 得 x = 3。f'' = 2 > 0，極小。代回 f：9 - 18 + 5 = -4。注意是代回 f 不是 f'。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = x³ - 3x 的極大點 x 是多少？",
+      "answers": [
+        "-1"
+      ],
+      "explanation": "f' = 3x² - 3 = 0 得 x = ±1。f'' = 6x，在 x = -1 時 f'' = -6 < 0，故為極大；在 x = 1 時 f'' = 6 > 0，為極小。"
+    },
+    {
+      "prompt": "在臨界點 c 上，若 f''(c) > 0，則 c 是？",
+      "options": [
+        "極小點",
+        "極大點",
+        "反曲點",
+        "無法判定"
+      ],
+      "answer": 0,
+      "explanation": "f'' > 0 表示凹向上，臨界點位於谷底，是極小。f'' < 0 才是極大；f'' = 0 無法判定，需回到一階判別。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = x³ 在 x = 0 是否有極值？有填 1，沒有填 0。",
+      "answers": [
+        "0"
+      ],
+      "explanation": "f' = 3x²，在 0 為 0，但兩側 f' 都為正，符號不變，函數持續遞增。所以 0 是臨界點但不是極值，這是「臨界點不等於極值」的標準例子。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = x² - 4x + 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "f'(x) = 0 的 x 是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "f' = 2x - 4，令其為 0 得 x = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "f''(x) 的值是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "f' = 2x - 4，再求導得 f'' = 2，為常數。"
+        },
+        {
+          "type": "input",
+          "prompt": "該點是極大還是極小？極小填 1，極大填 2。",
+          "answers": [
+            "1"
+          ],
+          "explanation": "f'' = 2 > 0，凹向上，故為極小。極小值為 f(2) = 4 - 8 + 1 = -3。"
+        }
+      ],
+      "explanation": "二階判別的完整流程：找臨界點、算二階導、看正負。本題 f'' 是常數，整條曲線都凹向上，只有一個極小。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = 2x³ - 3x² 的極小點 x 是多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：0+1 = 1。"
+      "explanation": "f' = 6x² - 6x = 6x(x-1)，臨界點 x = 0 與 x = 1。f'' = 12x - 6，在 0 為 -6（極大），在 1 為 6（極小）。故極小點是 x = 1。"
+    },
+    {
+      "prompt": "臨界點的定義是？",
+      "options": [
+        "f'(c) = 0 或 f'(c) 不存在的內點",
+        "f(c) = 0 的點",
+        "f''(c) = 0 的點",
+        "區間端點"
+      ],
+      "answer": 0,
+      "explanation": "臨界點是導數為 0 或不存在的地方，這是極值的必要條件。f(c)=0 是零點，f''(c)=0 可能是反曲點，端點另外考慮。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=-x²+4x 的極大值位置 x？",
+      "prompt": "f(x) = x⁴，則 f''(0) 等於多少？",
       "answers": [
-        "2"
+        "0"
       ],
-      "explanation": "計算：4/2 = 2。"
+      "explanation": "f' = 4x³，f'' = 12x²，代入 0 得 0。此處二階判別失效，但一階判別顯示 f' 在 0 兩側由負變正，故仍是極小。"
     },
     {
-      "type": "input",
-      "prompt": "f(x)=x² 在 [-2,1] 的最大值？",
-      "answers": [
-        "4"
+      "type": "multipart",
+      "prompt": "設 f(x) = x³ - 12x。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "臨界點共有幾個？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "f' = 3x² - 12 = 0 得 x = ±2，兩個臨界點。"
+        },
+        {
+          "type": "input",
+          "prompt": "極大點的 x 是多少？",
+          "answers": [
+            "-2"
+          ],
+          "explanation": "f'' = 6x，在 -2 為 -12 < 0（極大），在 2 為 12 > 0（極小）。"
+        },
+        {
+          "type": "input",
+          "prompt": "極大值是多少？",
+          "answers": [
+            "16"
+          ],
+          "explanation": "代回 f：(-8) + 24 = 16。"
+        }
       ],
-      "explanation": "計算：2^2 = 4。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=x³-3x，極小點的函數值？",
-      "answers": [
-        "-2"
-      ],
-      "explanation": "計算：1-3 = -2。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=x²+2x，求二階導數。",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：2 = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=(x-3)²+1 的最小值？",
-      "answers": [
-        "1"
-      ],
-      "explanation": "計算：0+1 = 1。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=-x²+6x 的極大值位置 x？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：6/2 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=x² 在 [-3,1] 的最大值？",
-      "answers": [
-        "9"
-      ],
-      "explanation": "計算：3^2 = 9。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=x³-3x，極小點的函數值？",
-      "answers": [
-        "-2"
-      ],
-      "explanation": "計算：1-3 = -2。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=x²+3x，求二階導數。",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：2 = 2。"
+      "explanation": "三次函數的標準形：兩個臨界點，一極大一極小。順序永遠是先找臨界點、再用二階判別、最後代回原函數求值。"
     }
   ],
   "passCount": 7

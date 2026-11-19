@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-39",
   "title": "39 · 極座標",
-  "intro": "參考原書第 35 章。學習極座標，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能用極座標描述點與曲線、在直角與極座標之間轉換，並用積分算極座標圖形的面積。極座標讓圓、螺線與花瓣形狀的方程式變得極簡。",
   "kind": "base",
-  "minutes": 40,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-23",
     "mendelson-calculus.skill-24",
@@ -13,178 +13,201 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：用距離與角度定位"
     },
     {
       "type": "paragraph",
-      "text": "x=r cos θ，y=r sin θ。極座標面積為 ½∫r²dθ；弧長為 ∫√(r²+(dr/dθ)²)dθ，先確認曲線追蹤次數。"
+      "text": "極座標用 r（到原點的距離）與 θ（與正 x 軸的夾角）描述點。與直角座標的轉換由三角函數給出，這是所有極座標計算的基礎。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "x = r·cos θ\ny = r·sin θ\nr² = x² + y²"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：面積元素是扇形"
     },
     {
       "type": "paragraph",
-      "text": "極座標曲線 r=7，0≤θ≤pi/2。"
+      "text": "極座標的面積不是長方形而是扇形。半徑 r、角度 dθ 的扇形面積是 (1/2)r²dθ。積分起來就得到整個圖形的面積，公式裡有 1/2 是扇形面積的係數。"
     },
     {
-      "type": "example",
-      "text": "θ=0 時 x 座標？\n計算：7*cos(0) = 7。"
+      "type": "formula",
+      "text": "A = (1/2) ∫α^β r² dθ"
     },
     {
-      "type": "example",
-      "text": "扇形面積除以 pi？\n計算：7^2/4 = 12.25。"
-    },
-    {
-      "type": "example",
-      "text": "弧長除以 pi？\n計算：7/2 = 3.5。"
+      "type": "heading",
+      "text": "原理三：同一個圖形可以有極簡方程"
     },
     {
       "type": "paragraph",
-      "text": "極座標曲線 r=8，0≤θ≤pi/2。"
+      "text": "圓 x² + y² = 4 在極座標是 r = 2；螺線是 r = θ；心形線是 r = 1 + cos θ。極座標的價值在於把「到原點的距離」直接寫成角度的函數。"
     },
     {
-      "type": "example",
-      "text": "θ=0 時 x 座標？\n計算：8*cos(0) = 8。"
+      "type": "formula",
+      "text": "r = 常數：以原點為心的圓\nr = a(1 + cos θ)：心形線"
     },
     {
-      "type": "example",
-      "text": "扇形面積除以 pi？\n計算：8^2/4 = 16。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "弧長除以 pi？\n計算：8/2 = 4。"
+      "type": "paragraph",
+      "text": "第一步，確認圖形是否以原點為中心；是的話優先考慮極座標。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，寫出 r(θ) 與角度範圍。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，面積用 (1/2)∫r² dθ。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，積分時把 r² 展開，逐項處理。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用已知面積檢查：r = R 從 0 到 2π 應得 πR²。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是面積公式漏掉 1/2。少了它，答案會大一倍。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把 r 直接平方後忘記乘 dθ。面積元素是 (1/2)r²dθ，三個部分都不能少。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是角度範圍取錯。完整一圈是 2π，半圈是 π，範圍決定積分結果。"
     }
   ],
   "questions": [
     {
+      "prompt": "極座標與直角座標的轉換中，x 等於？",
+      "options": [
+        "r·cos θ",
+        "r·sin θ",
+        "r/θ",
+        "r + cos θ"
+      ],
+      "answer": 0,
+      "explanation": "由定義 x = r cos θ、y = r sin θ。這是把極座標投影到兩軸的結果，也是所有轉換的起點。"
+    },
+    {
+      "type": "input",
+      "prompt": "r = 2、θ = 0 的點，x 座標是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "x = r cos θ = 2·cos 0 = 2·1 = 2。θ = 0 表示在正 x 軸上，故 x 就是 r。"
+    },
+    {
+      "type": "input",
+      "prompt": "r = 1、θ = π/2 的點，y 座標是多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "y = r sin θ = 1·sin(π/2) = 1。θ = π/2 表示在正 y 軸上，故 y 就是 r。"
+    },
+    {
+      "prompt": "極座標的面積公式是？",
+      "options": [
+        "(1/2)∫r² dθ",
+        "∫r dθ",
+        "∫r² dθ",
+        "(1/2)∫r dθ"
+      ],
+      "answer": 0,
+      "explanation": "面積元素是半徑 r、角度 dθ 的扇形面積 (1/2)r²dθ。少了 1/2 會得到兩倍的面積。"
+    },
+    {
+      "type": "input",
+      "prompt": "r = 2 從 θ = 0 到 π 的圖形面積是多少？（π 請寫 pi）",
+      "answers": [
+        "2*pi"
+      ],
+      "explanation": "A = (1/2)∫0^π 4 dθ = (1/2)·4π = 2π。這是半徑 2 的半圓，面積 πr²/2 = 2π，一致。"
+    },
+    {
       "type": "multipart",
-      "prompt": "極座標曲線 r=2，0≤θ≤pi/2。",
+      "prompt": "設 r = 3，θ 從 0 到 π/2。",
       "parts": [
         {
           "type": "input",
-          "prompt": "θ=0 時 x 座標？",
+          "prompt": "r² 等於多少？",
           "answers": [
-            "2"
+            "9"
           ],
-          "explanation": "計算：2*cos(0) = 2。"
+          "explanation": "3² = 9，為常數。"
         },
         {
           "type": "input",
-          "prompt": "扇形面積除以 pi？",
+          "prompt": "面積是多少？（π 請寫 pi）",
+          "answers": [
+            "9*pi/4"
+          ],
+          "explanation": "A = (1/2)·9·(π/2) = 9π/4。這是半徑 3 的四分之一圓，πr²/4 = 9π/4，一致。"
+        }
+      ],
+      "explanation": "常數 r 對應圓，面積必為 πr² 的一部分。用這個特例檢查角度範圍與 1/2 係數是否正確。"
+    },
+    {
+      "type": "input",
+      "prompt": "直角座標點 (1, 1) 的極座標 r 等於多少？",
+      "answers": [
+        "sqrt(2)"
+      ],
+      "explanation": "r² = 1² + 1² = 2，故 r = √2。角度為 π/4，因為點在第一象限的對角線上。"
+    },
+    {
+      "prompt": "極座標方程 r = 1 表示什麼圖形？",
+      "options": [
+        "半徑 1 的圓",
+        "直線",
+        "拋物線",
+        "螺旋線"
+      ],
+      "answer": 0,
+      "explanation": "r 恆為 1 表示到原點距離固定，即半徑 1 的圓。面積為 π，可用 (1/2)∫0^{2π} 1 dθ = π 驗證。"
+    },
+    {
+      "type": "input",
+      "prompt": "r = 2·cos θ 表示的圓，半徑是多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "r = 2cos θ 兩邊乘 r 得 r² = 2r cos θ，即 x² + y² = 2x，配方得 (x-1)² + y² = 1，半徑 1。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 r = 1，θ 從 0 到 2π。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "r² 等於多少？",
           "answers": [
             "1"
           ],
-          "explanation": "計算：2^2/4 = 1。"
+          "explanation": "1² = 1，為常數。"
         },
         {
           "type": "input",
-          "prompt": "弧長除以 pi？",
+          "prompt": "面積是多少？（π 請寫 pi）",
           "answers": [
-            "1"
+            "pi"
           ],
-          "explanation": "計算：2/2 = 1。"
+          "explanation": "A = (1/2)·1·2π = π。這是單位圓，面積 πr² = π，一致。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "極座標曲線 r=3，0≤θ≤pi/2。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "θ=0 時 x 座標？",
-          "answers": [
-            "3"
-          ],
-          "explanation": "計算：3*cos(0) = 3。"
-        },
-        {
-          "type": "input",
-          "prompt": "扇形面積除以 pi？",
-          "answers": [
-            "2.25"
-          ],
-          "explanation": "計算：3^2/4 = 2.25。"
-        },
-        {
-          "type": "input",
-          "prompt": "弧長除以 pi？",
-          "answers": [
-            "1.5"
-          ],
-          "explanation": "計算：3/2 = 1.5。"
-        }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "極座標曲線 r=4，0≤θ≤pi/2。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "θ=0 時 x 座標？",
-          "answers": [
-            "4"
-          ],
-          "explanation": "計算：4*cos(0) = 4。"
-        },
-        {
-          "type": "input",
-          "prompt": "扇形面積除以 pi？",
-          "answers": [
-            "4"
-          ],
-          "explanation": "計算：4^2/4 = 4。"
-        },
-        {
-          "type": "input",
-          "prompt": "弧長除以 pi？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：4/2 = 2。"
-        }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "極座標曲線 r=5，0≤θ≤pi/2。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "θ=0 時 x 座標？",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：5*cos(0) = 5。"
-        },
-        {
-          "type": "input",
-          "prompt": "扇形面積除以 pi？",
-          "answers": [
-            "6.25"
-          ],
-          "explanation": "計算：5^2/4 = 6.25。"
-        },
-        {
-          "type": "input",
-          "prompt": "弧長除以 pi？",
-          "answers": [
-            "2.5"
-          ],
-          "explanation": "計算：5/2 = 2.5。"
-        }
-      ]
+      ],
+      "explanation": "完整一圈的角度範圍是 2π。本題是最基本的檢驗：單位圓面積必為 π，若算出 2π 就是漏了 1/2。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

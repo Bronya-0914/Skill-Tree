@@ -2,130 +2,225 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-11",
   "title": "11 · 鏈式法則",
-  "intro": "參考原書第 9 章。學習鏈式法則，完成10 道輸入練習。",
+  "intro": "學完這一節，你能對任何複合函數求導，例如 (3x-1)⁴、√(x²+1)、sin(2x)。鏈式法則是微積分中使用頻率最高的法則，沒有它幾乎無法處理真實函數。",
   "kind": "derivative",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-10"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：複合是兩層變化相乘"
     },
     {
       "type": "paragraph",
-      "text": "外層先求導，保留內層，再乘內層導數。先圈出內層函數，避免遺漏倍率。"
+      "text": "複合函數 f(g(x)) 有兩層：內層 g 先把 x 變成 u，外層 f 再把 u 變成輸出。x 改變一點，先被 g 放大或縮小，再被 f 放大或縮小，兩層的變化率相乘就是整體的變化率。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "y = f(u)，u = g(x)\ndy/dx = f'(u) · g'(x) = f'(g(x)) · g'(x)"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：外層導數要代回內層"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=(5x+1)²，求 f′(0)。"
+      "text": "算出外層導數後，必須把 u = g(x) 代回去，不能留著 u。常見錯誤是只寫 f'(u) 就結束，答案裡還帶著一個沒有定義的 u。"
     },
     {
-      "type": "example",
-      "text": "f(x)=(5x+1)²，求 f′(0)。\n計算：2*1*5 = 10。"
+      "type": "formula",
+      "text": "d/dx [g(x)]ⁿ = n[g(x)]ⁿ⁻¹ · g'(x)"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：由外而內，一層一層乘"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=(6x+1)²，求 f′(0)。"
+      "text": "多層複合就連續乘下去。每一層都問兩個問題：這一層的外函數是什麼、它的導數是什麼；內層的導數是什麼。把所有層的導數相乘。"
     },
     {
-      "type": "example",
-      "text": "f(x)=(6x+1)²，求 f′(0)。\n計算：2*1*6 = 12。"
+      "type": "formula",
+      "text": "d/dx f(g(h(x))) = f'(g(h(x))) · g'(h(x)) · h'(x)"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，指定內層 u = g(x)，把函數寫成 y = f(u)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，算外層導數 f'(u)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，算內層導數 g'(x)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，兩者相乘，並把 u 換回 g(x)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，化簡；需要數值時最後才代入，避免中間四捨五入。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忘記乘內層導數。d/dx (3x)² 不是 2(3x)，而是 2(3x)·3 = 18x。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把外層導數留在 u 的形式，沒有代回 x。答案必須只含 x。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是內外層顛倒。sin(x²) 的內層是 x²，導數 2x；sin²x 的內層是 sin x，導數 cos x。兩者完全不同。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "f(x)=(2x+1)²，求 f′(0)。",
-      "answers": [
-        "4"
+      "prompt": "d/dx (2x + 1)³ 等於？",
+      "options": [
+        "3(2x + 1)² · 2",
+        "3(2x + 1)²",
+        "2(2x + 1)³",
+        "6(2x + 1)³"
       ],
-      "explanation": "計算：2*1*2 = 4。"
+      "answer": 0,
+      "explanation": "外層是三次方，導數 3(2x+1)²；內層 2x+1 的導數是 2。兩者相乘得 6(2x+1)²。選 3(2x+1)² 是漏乘內層導數。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=√(x+4)，求 f′(0)。",
-      "answers": [
-        "0.25"
-      ],
-      "explanation": "計算：1/(2*2) = 0.25。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=1/(2x+1)，求 f′(0)。",
-      "answers": [
-        "-2"
-      ],
-      "explanation": "計算：-2/1^2 = -2。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=(x²+1)^2，求 f′(1)。",
-      "answers": [
-        "8"
-      ],
-      "explanation": "計算：2*2^1*2 = 8。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=(x³+2)²，求 f′(1)。",
-      "answers": [
-        "18"
-      ],
-      "explanation": "計算：2*(1+2)*3 = 18。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=(3x+1)²，求 f′(0)。",
-      "answers": [
-        "6"
-      ],
-      "explanation": "計算：2*1*3 = 6。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=√(x+9)，求 f′(0)。",
-      "answers": [
-        "0.16666666666666666"
-      ],
-      "explanation": "計算：1/(2*3) = 0.16666666666666666。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=1/(3x+1)，求 f′(0)。",
-      "answers": [
-        "-3"
-      ],
-      "explanation": "計算：-3/1^2 = -3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=(x²+1)^3，求 f′(1)。",
+      "prompt": "d/dx (x² + 1)³ 在 x = 1 等於多少？",
       "answers": [
         "24"
       ],
-      "explanation": "計算：3*2^2*2 = 24。"
+      "explanation": "外層 3(x²+1)²，內層 2x，相乘得 6x(x²+1)²。代入 1：6·1·4 = 24。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=(x³+3)²，求 f′(1)。",
+      "prompt": "d/dx √(x² + 1) 在 x = 0 等於多少？",
       "answers": [
-        "24"
+        "0"
       ],
-      "explanation": "計算：2*(1+3)*3 = 24。"
+      "explanation": "√(x²+1) = (x²+1)^(1/2)，導數為 (1/2)(x²+1)^(-1/2)·2x = x/√(x²+1)。代入 0 得 0。這也符合圖形在 x=0 處有水平切線。"
+    },
+    {
+      "prompt": "鏈式法則的正確形式是？",
+      "options": [
+        "f'(g(x)) · g'(x)",
+        "f'(x) · g'(x)",
+        "f(g'(x))",
+        "f'(g'(x))"
+      ],
+      "answer": 0,
+      "explanation": "外層導數要在內層的值處取值，再乘內層導數：f'(g(x))·g'(x)。寫成 f'(x)·g'(x) 是把兩層的變量混在一起。"
+    },
+    {
+      "type": "input",
+      "prompt": "d/dx (3x - 1)⁴ 在 x = 1 等於多少？",
+      "answers": [
+        "96"
+      ],
+      "explanation": "外層 4(3x-1)³，內層 3，相乘得 12(3x-1)³。代入 1：12·2³ = 12·8 = 96。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = (x² + 3x)⁵。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "內層 u = x² + 3x 在 x = 1 的值是多少？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "1 + 3 = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "內層導數 u' 在 x = 1 的值是多少？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "u' = 2x + 3，代入 1 得 5。"
+        },
+        {
+          "type": "input",
+          "prompt": "f'(1) 等於多少？",
+          "answers": [
+            "6400"
+          ],
+          "explanation": "f' = 5u⁴·u' = 5·4⁴·5 = 5·256·5 = 6400。"
+        }
+      ],
+      "explanation": "鏈式法則的計算順序：先算內層的值、再算內層的導數、最後套外層導數相乘。三項任一算錯，結果就錯。"
+    },
+    {
+      "type": "input",
+      "prompt": "d/dx [1/(x + 1)] 在 x = 1 等於多少？",
+      "answers": [
+        "-1/4"
+      ],
+      "explanation": "1/(x+1) = (x+1)⁻¹，導數為 -(x+1)⁻²，代入 1 得 -1/4。也可視為商法則：u=1、v=x+1，得 -1/(x+1)²。"
+    },
+    {
+      "prompt": "d/dx sin(x²) 等於？",
+      "options": [
+        "2x·cos(x²)",
+        "cos(x²)",
+        "2x·sin(x²)",
+        "cos(2x)"
+      ],
+      "answer": 0,
+      "explanation": "外層 sin 的導數是 cos，代回內層得 cos(x²)；內層 x² 的導數是 2x。相乘為 2x cos(x²)。漏掉 2x 是忘記內層導數。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x) = (2x + 3)³，則 f'(0) 等於多少？",
+      "answers": [
+        "54"
+      ],
+      "explanation": "f' = 3(2x+3)²·2 = 6(2x+3)²。代入 0 得 6·9 = 54。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = √(4x + 1)，考慮 x = 2。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "內層 4x + 1 在 x = 2 的值是多少？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "4·2 + 1 = 9。"
+        },
+        {
+          "type": "input",
+          "prompt": "內層導數是多少？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "4x + 1 的導數是 4，為常數。"
+        },
+        {
+          "type": "input",
+          "prompt": "f'(2) 等於多少？",
+          "answers": [
+            "2/3"
+          ],
+          "explanation": "f' = (1/(2√(4x+1)))·4 = 2/√(4x+1)。代入 2 得 2/3。"
+        }
+      ],
+      "explanation": "根號型的鏈式法則：外層導數 1/(2√u)，乘內層導數。化簡後通常只剩一個簡單分數，不要急著把小數算出來。"
     }
   ],
   "passCount": 7

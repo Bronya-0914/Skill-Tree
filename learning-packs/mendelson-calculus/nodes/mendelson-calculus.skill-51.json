@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-51",
   "title": "51 · 向量場與線積分",
-  "intro": "參考原書第 45 章。學習向量場與線積分，完成4 道分步輸入長題。",
-  "kind": "base",
-  "minutes": 40,
+  "intro": "學完這一節，你能算出向量場沿曲線的線積分，並判斷它是否為保守場。保守場的線積分只依端點，這讓計算大幅簡化，也是位能概念的數學基礎。",
+  "kind": "integral",
+  "minutes": 26,
   "parents": [
     "mendelson-calculus.skill-38",
     "mendelson-calculus.skill-47",
@@ -13,178 +13,201 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：向量場在每一點給一個向量"
     },
     {
       "type": "paragraph",
-      "text": "散度是各分量對相應座標的偏導數和。旋度衡量局部旋轉。線積分 ∫F·dr 用路徑代入；若有勢函數可用端點差。"
+      "text": "向量場 F(x, y) 在平面每一點指定一個向量，可想像成風場或水流。線積分把沿路徑的「F 在路徑方向的分量」累加起來，代表做功或流量。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "F(x, y) = (P(x, y), Q(x, y))"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：線積分是 F 與位移的點積"
     },
     {
       "type": "paragraph",
-      "text": "F=(2x,2y,2z)，沿任意光滑路徑由 (0,0,0) 到 (7,1,2)。"
+      "text": "沿曲線把每一小段的位移 dr 與該處的 F 作點積，再積分。只有與路徑同向的分量有貢獻，垂直分量不貢獻，這正是「做功」的幾何意義。"
     },
     {
-      "type": "example",
-      "text": "散度 div F？\n計算：2+2+2 = 6。"
+      "type": "formula",
+      "text": "∫_C F · dr = ∫a^b F(r(t)) · r'(t) dt"
     },
     {
-      "type": "example",
-      "text": "旋度的 z 分量？\n計算：∂(2y)/∂x-∂(2x)/∂y=0 = 0。"
-    },
-    {
-      "type": "example",
-      "text": "線積分 ∫F·dr？\n計算：7^2+1+4 = 54。"
+      "type": "heading",
+      "text": "原理三：保守場的線積分只依端點"
     },
     {
       "type": "paragraph",
-      "text": "F=(2x,2y,2z)，沿任意光滑路徑由 (0,0,0) 到 (8,1,2)。"
+      "text": "若 F 是某個純量函數 f 的梯度，稱 F 為保守場，f 為位勢。此時線積分等於位勢在終點減起點，與路徑無關。判斷條件是 ∂Q/∂x = ∂P/∂y。"
     },
     {
-      "type": "example",
-      "text": "散度 div F？\n計算：2+2+2 = 6。"
+      "type": "formula",
+      "text": "F = ∇f  ⇒  ∫_C F·dr = f(終點) - f(起點)\n保守條件：∂Q/∂x = ∂P/∂y"
     },
     {
-      "type": "example",
-      "text": "旋度的 z 分量？\n計算：∂(2y)/∂x-∂(2x)/∂y=0 = 0。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "線積分 ∫F·dr？\n計算：8^2+1+4 = 69。"
+      "type": "paragraph",
+      "text": "第一步，寫出 F 的兩個分量 P、Q。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，參數化路徑，求 r'(t)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，作點積後對 t 積分。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，先檢查是否保守：若保守，直接找位勢用端點相減。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用簡單路徑驗證：保守場沿閉曲線的積分必為 0。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把線積分當成一般定積分。必須先與路徑的切向量作點積，不能只積分量。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是認為所有向量場都保守。只有滿足 ∂Q/∂x = ∂P/∂y 的場才保守。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是保守場仍沿路徑硬算。找到位勢後用端點相減，可省去大量計算。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "F=(2x,2y,2z)，沿任意光滑路徑由 (0,0,0) 到 (2,1,2)。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "散度 div F？",
-          "answers": [
-            "6"
-          ],
-          "explanation": "計算：2+2+2 = 6。"
-        },
-        {
-          "type": "input",
-          "prompt": "旋度的 z 分量？",
-          "answers": [
-            "0"
-          ],
-          "explanation": "計算：∂(2y)/∂x-∂(2x)/∂y=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "線積分 ∫F·dr？",
-          "answers": [
-            "9"
-          ],
-          "explanation": "計算：2^2+1+4 = 9。"
-        }
-      ]
+      "prompt": "線積分的計算公式是？",
+      "options": [
+        "∫F·dr",
+        "∫F dr",
+        "∫|F| dr",
+        "∫F × dr"
+      ],
+      "answer": 0,
+      "explanation": "線積分是 F 與位移向量的點積再積分，只有沿路徑方向的分量有貢獻。用叉積的是另一種量，不是做功。"
+    },
+    {
+      "type": "input",
+      "prompt": "F = (1, 0) 沿 x 軸從 0 到 2 的線積分是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "路徑方向為 (1,0)，F·dr = 1·dx，積分得 2。這是常力沿直線做功的最簡單情形。"
+    },
+    {
+      "type": "input",
+      "prompt": "F = (x, 0) 沿 x 軸從 0 到 1 的線積分是多少？",
+      "answers": [
+        "1/2"
+      ],
+      "explanation": "F·dr = x dx，∫0¹ x dx = 1/2。力隨位置增加，故總功是平均力 1/2 乘位移 1。"
+    },
+    {
+      "prompt": "向量場保守的條件是？",
+      "options": [
+        "∂Q/∂x = ∂P/∂y",
+        "P = Q",
+        "∂P/∂x = ∂Q/∂y",
+        "F = 0"
+      ],
+      "answer": 0,
+      "explanation": "這是二維的旋度為零條件。滿足時存在位勢函數 f 使 F = ∇f，線積分只依端點。"
+    },
+    {
+      "type": "input",
+      "prompt": "F = (2x, 2y) 從 (0,0) 到 (1,1) 的線積分是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "F 是 f = x² + y² 的梯度，故積分等於 f(1,1) - f(0,0) = 2 - 0 = 2。保守場不必沿路徑計算。"
     },
     {
       "type": "multipart",
-      "prompt": "F=(2x,2y,2z)，沿任意光滑路徑由 (0,0,0) 到 (3,1,2)。",
+      "prompt": "F = (1, 1)，沿直線從 (0,0) 到 (2,3)。",
       "parts": [
         {
           "type": "input",
-          "prompt": "散度 div F？",
+          "prompt": "位移的 x 分量是多少？",
           "answers": [
-            "6"
+            "2"
           ],
-          "explanation": "計算：2+2+2 = 6。"
+          "explanation": "終點 x 減起點 x：2 - 0 = 2。"
         },
         {
           "type": "input",
-          "prompt": "旋度的 z 分量？",
+          "prompt": "線積分是多少？",
           "answers": [
-            "0"
+            "5"
           ],
-          "explanation": "計算：∂(2y)/∂x-∂(2x)/∂y=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "線積分 ∫F·dr？",
-          "answers": [
-            "14"
-          ],
-          "explanation": "計算：3^2+1+4 = 14。"
+          "explanation": "F·dr = 1·2 + 1·3 = 5。常向量場的線積分等於 F 與總位移的點積。"
         }
-      ]
+      ],
+      "explanation": "常向量場是最簡單的情形：線積分等於 F 與位移向量的點積，與路徑形狀無關。這也說明常場必保守。"
+    },
+    {
+      "type": "input",
+      "prompt": "F = (y, x) 是否為保守場？是填 1。",
+      "answers": [
+        "1"
+      ],
+      "explanation": "P = y、Q = x，∂Q/∂x = 1、∂P/∂y = 1，兩者相等，故保守。位勢為 f = xy，因為 ∇(xy) = (y, x)。"
+    },
+    {
+      "prompt": "保守場的線積分有何特性？",
+      "options": [
+        "只依起點與終點",
+        "只依路徑長度",
+        "恆為 0",
+        "恆為正"
+      ],
+      "answer": 0,
+      "explanation": "保守場的線積分等於位勢的端點差，與路徑無關。沿閉曲線積分為 0，因為起終點相同。"
+    },
+    {
+      "type": "input",
+      "prompt": "位勢 f = x² + y² 的梯度在 (1, 1) 的第一個分量是多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "∇f = (2x, 2y)，在 (1,1) 為 (2,2)，第一個分量是 2。梯度場就是最典型的保守場。"
     },
     {
       "type": "multipart",
-      "prompt": "F=(2x,2y,2z)，沿任意光滑路徑由 (0,0,0) 到 (4,1,2)。",
+      "prompt": "F = (3, 0)，沿 x 軸從 0 到 4。",
       "parts": [
         {
           "type": "input",
-          "prompt": "散度 div F？",
+          "prompt": "位移是多少？",
           "answers": [
-            "6"
+            "4"
           ],
-          "explanation": "計算：2+2+2 = 6。"
+          "explanation": "從 0 到 4，位移為 4。"
         },
         {
           "type": "input",
-          "prompt": "旋度的 z 分量？",
+          "prompt": "線積分是多少？",
           "answers": [
-            "0"
+            "12"
           ],
-          "explanation": "計算：∂(2y)/∂x-∂(2x)/∂y=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "線積分 ∫F·dr？",
-          "answers": [
-            "21"
-          ],
-          "explanation": "計算：4^2+1+4 = 21。"
+          "explanation": "F·dr = 3·4 = 12。常力沿直線做功等於力乘位移。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "F=(2x,2y,2z)，沿任意光滑路徑由 (0,0,0) 到 (5,1,2)。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "散度 div F？",
-          "answers": [
-            "6"
-          ],
-          "explanation": "計算：2+2+2 = 6。"
-        },
-        {
-          "type": "input",
-          "prompt": "旋度的 z 分量？",
-          "answers": [
-            "0"
-          ],
-          "explanation": "計算：∂(2y)/∂x-∂(2x)/∂y=0 = 0。"
-        },
-        {
-          "type": "input",
-          "prompt": "線積分 ∫F·dr？",
-          "answers": [
-            "30"
-          ],
-          "explanation": "計算：5^2+1+4 = 30。"
-        }
-      ]
+      ],
+      "explanation": "本題是做功的最基本模型：定力 3、位移 4，功為 12。線積分在此退化為乘法。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

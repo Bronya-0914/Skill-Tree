@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-16",
   "title": "16 · 相關變率",
-  "intro": "參考原書第 14 章。學習相關變率，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能處理兩個以上同時改變的量：先寫出它們的關係式，再對時間求導，把已知的變化率換成要求的變化率。這是導數在物理與工程中最直接的應用。",
   "kind": "derivative",
-  "minutes": 40,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-12",
     "mendelson-calculus.skill-14"
@@ -12,178 +12,197 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：所有量都隨時間改變"
     },
     {
       "type": "paragraph",
-      "text": "先用幾何關係連結變量，再對時間微分，最後代入當下數值。速度有正負，不能先把變動量當常數。"
+      "text": "相關變率的問題裡，長度、面積、體積都是時間的函數。題目給的「每秒增加 2 公分」就是 dr/dt，要求的是 dA/dt 或 dV/dt。關鍵是先把各量之間的幾何或代數關係寫出來。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "A = πr²  ⇒  dA/dt = 2πr · dr/dt"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：對時間求導要用鏈式法則"
     },
     {
       "type": "paragraph",
-      "text": "長 35 m 的梯子靠牆，底端以 2 m/s 離牆。底端距牆 21 m 時作答。"
+      "text": "關係式裡的每個變量都依賴 t，所以對 t 求導時，每個變量都要乘上自己的變化率。這就是鏈式法則：A 對 t 的變化率，等於 A 對 r 的變化率乘上 r 對 t 的變化率。"
     },
     {
-      "type": "example",
-      "text": "頂端高度 y（m）？\n計算：sqrt(1225-441) = 28。"
+      "type": "formula",
+      "text": "dA/dt = (dA/dr) · (dr/dt)"
     },
     {
-      "type": "example",
-      "text": "頂端垂直速度 dy/dt（m/s，向上為正）？\n計算：-(21/28)*2 = -1.5。"
-    },
-    {
-      "type": "example",
-      "text": "牆、地面與梯子圍成的面積變化率（m²/s）？\n計算：(2*28+21*(-1.5))/2 = 12.25。"
+      "type": "heading",
+      "text": "原理三：先代數後數值"
     },
     {
       "type": "paragraph",
-      "text": "長 40 m 的梯子靠牆，底端以 2 m/s 離牆。底端距牆 24 m 時作答。"
+      "text": "必須先把關係式微分完，再代入具體數值。若先把數字代入再求導，所有變化率都會變成 0，這是初學者最常見的致命錯誤。"
     },
     {
-      "type": "example",
-      "text": "頂端高度 y（m）？\n計算：sqrt(1600-576) = 32。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "頂端垂直速度 dy/dt（m/s，向上為正）？\n計算：-(24/32)*2 = -1.5。"
+      "type": "paragraph",
+      "text": "第一步，畫圖或寫下各量，標明哪些是變量、哪個是常數。"
     },
     {
-      "type": "example",
-      "text": "牆、地面與梯子圍成的面積變化率（m²/s）？\n計算：(2*32+24*(-1.5))/2 = 14。"
+      "type": "paragraph",
+      "text": "第二步，寫出把各量連起來的關係式（面積、體積、勾股定理等）。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，兩邊對 t 求導，每個變量都乘上自己的 dy/dt。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，代入題目給的瞬間數值與已知變化率。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，解出要求的變化率，並檢查單位與正負號是否符合情境（增加為正、減少為負）。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是先代數字再求導。代入後半徑變成常數，dr/dt 就消失了，答案必定錯。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是漏掉某個變量的變化率。例如長方形面積 A = xy，dA/dt = y·dx/dt + x·dy/dt，兩項都要有。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是忘記檢查符號。題目說「水位下降」時 dh/dt 應為負，若算出正值就要回頭檢查。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "長 10 m 的梯子靠牆，底端以 2 m/s 離牆。底端距牆 6 m 時作答。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "頂端高度 y（m）？",
-          "answers": [
-            "8"
-          ],
-          "explanation": "計算：sqrt(100-36) = 8。"
-        },
-        {
-          "type": "input",
-          "prompt": "頂端垂直速度 dy/dt（m/s，向上為正）？",
-          "answers": [
-            "-1.5"
-          ],
-          "explanation": "計算：-(6/8)*2 = -1.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "牆、地面與梯子圍成的面積變化率（m²/s）？",
-          "answers": [
-            "3.5"
-          ],
-          "explanation": "計算：(2*8+6*(-1.5))/2 = 3.5。"
-        }
-      ]
+      "prompt": "圓面積 A = πr²，若 dr/dt = 2、r = 3，則 dA/dt 等於？",
+      "options": [
+        "12π",
+        "6π",
+        "9π",
+        "18π"
+      ],
+      "answer": 0,
+      "explanation": "dA/dt = 2πr·dr/dt = 2π·3·2 = 12π。選 6π 是漏掉 dr/dt；選 9π 是誤用面積公式本身。"
+    },
+    {
+      "type": "input",
+      "prompt": "正方形邊長 x，dx/dt = 3。當 x = 5 時，面積的變化率是多少？",
+      "answers": [
+        "30"
+      ],
+      "explanation": "面積 A = x²，dA/dt = 2x·dx/dt = 2·5·3 = 30。單位是平方單位每秒。"
+    },
+    {
+      "type": "input",
+      "prompt": "球體積 V = (4/3)πr³，dr/dt = 1。當 r = 2 時，dV/dt 等於多少？（π 請寫 pi）",
+      "answers": [
+        "16*pi"
+      ],
+      "explanation": "dV/dr = 4πr²，乘上 dr/dt 得 4πr²·1 = 4π·4 = 16π。代入 r = 2 後才乘變化率，順序不能顛倒。"
+    },
+    {
+      "prompt": "解相關變率問題的第一步應該是？",
+      "options": [
+        "寫出各量之間的關係式",
+        "先代入所有已知數值",
+        "先對時間求導",
+        "先求二階導數"
+      ],
+      "answer": 0,
+      "explanation": "必須先有關係式才能求導。先代入數值會讓變量變成常數，變化率全部消失，這是此類題目最常見的失敗原因。"
+    },
+    {
+      "type": "input",
+      "prompt": "x² + y² = 25，dx/dt = 2。在點 (3, 4) 時，dy/dt 等於多少？",
+      "answers": [
+        "-3/2"
+      ],
+      "explanation": "對 t 求導：2x·dx/dt + 2y·dy/dt = 0，得 dy/dt = -(x/y)·dx/dt = -(3/4)·2 = -3/2。負號表示 y 正在減少。"
     },
     {
       "type": "multipart",
-      "prompt": "長 15 m 的梯子靠牆，底端以 2 m/s 離牆。底端距牆 9 m 時作答。",
+      "prompt": "圓面積 A = πr²，考慮 r = 2、dr/dt = 3 的瞬間。",
       "parts": [
         {
           "type": "input",
-          "prompt": "頂端高度 y（m）？",
+          "prompt": "dA/dr 在 r = 2 時等於多少？（π 請寫 pi）",
           "answers": [
-            "12"
+            "4*pi"
           ],
-          "explanation": "計算：sqrt(225-81) = 12。"
+          "explanation": "dA/dr = 2πr，代入 2 得 4π。這是面積對半徑的變化率。"
         },
         {
           "type": "input",
-          "prompt": "頂端垂直速度 dy/dt（m/s，向上為正）？",
+          "prompt": "dA/dt 等於多少？（π 請寫 pi）",
           "answers": [
-            "-1.5"
+            "12*pi"
           ],
-          "explanation": "計算：-(9/12)*2 = -1.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "牆、地面與梯子圍成的面積變化率（m²/s）？",
-          "answers": [
-            "5.25"
-          ],
-          "explanation": "計算：(2*12+9*(-1.5))/2 = 5.25。"
+          "explanation": "dA/dt = 4π·3 = 12π。把 dA/dr 乘上 dr/dt 即可。"
         }
-      ]
+      ],
+      "explanation": "兩個小問區分「對半徑的變化率」與「對時間的變化率」。相關變率的本質就是把前者乘上 dr/dt 換成後者。"
+    },
+    {
+      "type": "input",
+      "prompt": "長方形長 x、寬 y，x = 4、y = 3、dx/dt = 1、dy/dt = 2。面積的變化率是多少？",
+      "answers": [
+        "11"
+      ],
+      "explanation": "A = xy，dA/dt = y·dx/dt + x·dy/dt = 3·1 + 4·2 = 11。兩個乘積項都要算，漏一項是常見錯誤。"
+    },
+    {
+      "prompt": "相關變率問題中，鏈式法則的作用是？",
+      "options": [
+        "把一個量的變化率換成另一個量的變化率",
+        "消除所有變量",
+        "求二階導數",
+        "把函數變成常數"
+      ],
+      "answer": 0,
+      "explanation": "鏈式法則提供橋樑：dA/dt = (dA/dr)(dr/dt)。沒有它，就無法從已知的 dr/dt 得到要求的 dA/dt。"
+    },
+    {
+      "type": "input",
+      "prompt": "立方體邊長 x = 2，dx/dt = 0.5。體積的變化率是多少？",
+      "answers": [
+        "6"
+      ],
+      "explanation": "V = x³，dV/dt = 3x²·dx/dt = 3·4·0.5 = 6。先微分再代數值，順序不可顛倒。"
     },
     {
       "type": "multipart",
-      "prompt": "長 20 m 的梯子靠牆，底端以 2 m/s 離牆。底端距牆 12 m 時作答。",
+      "prompt": "x² + y² = 100，dx/dt = 1，考慮點 (6, 8)。",
       "parts": [
         {
           "type": "input",
-          "prompt": "頂端高度 y（m）？",
+          "prompt": "在該點，x·dx/dt 等於多少？",
           "answers": [
-            "16"
+            "6"
           ],
-          "explanation": "計算：sqrt(400-144) = 16。"
+          "explanation": "x = 6、dx/dt = 1，乘積為 6。這是求導式中第一項的值。"
         },
         {
           "type": "input",
-          "prompt": "頂端垂直速度 dy/dt（m/s，向上為正）？",
+          "prompt": "dy/dt 等於多少？",
           "answers": [
-            "-1.5"
+            "-3/4"
           ],
-          "explanation": "計算：-(12/16)*2 = -1.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "牆、地面與梯子圍成的面積變化率（m²/s）？",
-          "answers": [
-            "7"
-          ],
-          "explanation": "計算：(2*16+12*(-1.5))/2 = 7。"
+          "explanation": "2x·dx/dt + 2y·dy/dt = 0，代入得 12 + 16·dy/dt = 0，故 dy/dt = -3/4。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "長 25 m 的梯子靠牆，底端以 2 m/s 離牆。底端距牆 15 m 時作答。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "頂端高度 y（m）？",
-          "answers": [
-            "20"
-          ],
-          "explanation": "計算：sqrt(625-225) = 20。"
-        },
-        {
-          "type": "input",
-          "prompt": "頂端垂直速度 dy/dt（m/s，向上為正）？",
-          "answers": [
-            "-1.5"
-          ],
-          "explanation": "計算：-(15/20)*2 = -1.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "牆、地面與梯子圍成的面積變化率（m²/s）？",
-          "answers": [
-            "8.75"
-          ],
-          "explanation": "計算：(2*20+15*(-1.5))/2 = 8.75。"
-        }
-      ]
+      ],
+      "explanation": "對 x²+y²=100 求導得 2x·x' + 2y·y' = 0。兩項都含變化率，缺一不可；解出 y' 後要檢查符號是否符合圖形。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

@@ -2,130 +2,209 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-40",
   "title": "40 · 數列極限",
-  "intro": "參考原書第 36 章。學習數列極限，完成10 道輸入練習。",
+  "intro": "學完這一節，你能判斷一個數列是否收斂、算出它的極限，並用常見的極限形式快速判斷。數列是級數的基礎，也是理解「無窮多項相加」的前提。",
   "kind": "base",
-  "minutes": 20,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-28"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：數列極限看 n 很大時的行為"
     },
     {
       "type": "paragraph",
-      "text": "數列是以整數編號的函數。先比較最高次項；單調且有界可保證收斂。數列項趨零不代表其級數收斂。"
+      "text": "數列 aₙ 的極限是：n 趨向無窮時，aₙ 趨近的那個數。與函數極限一樣，只關心遠處的趨勢，不關心前幾項。若趨近有限值稱收斂，否則發散。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "lim(n→∞) aₙ = L  ⇔  當 n 足夠大，aₙ 可任意接近 L"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：有理式比最高次項"
     },
     {
       "type": "paragraph",
-      "text": "lim(n→∞) (5n+1)/(n+2)？"
+      "text": "分子分母都是多項式時，同除以最高次冪，或直接比較最高次項。這與函數在無窮遠處的極限完全相同，因為數列只是函數在整數點上的取值。"
     },
     {
-      "type": "example",
-      "text": "lim(n→∞) (5n+1)/(n+2)？\n計算：5/1 = 5。"
+      "type": "formula",
+      "text": "(aₙnᵖ + …)/(bₙnᵍ + …)：p = q 時為係數比；p < q 時為 0"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：等比數列的收斂取決於公比"
     },
     {
       "type": "paragraph",
-      "text": "lim(n→∞) (6n+1)/(n+2)？"
+      "text": "aₙ = rⁿ 在 |r| < 1 時收斂到 0，r = 1 時恆為 1，r > 1 或 r ≤ -1 時發散。這個判別是後面幾何級數的基礎。"
     },
     {
-      "type": "example",
-      "text": "lim(n→∞) (6n+1)/(n+2)？\n計算：6/1 = 6。"
+      "type": "formula",
+      "text": "|r| < 1  ⇒  rⁿ → 0\n|r| > 1  ⇒  發散"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，觀察數列的結構：有理式、等比、還是含根號。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，有理式同除最高次冪。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，等比看公比的絕對值。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，含根號時分子有理化或同除最高次。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用前幾項的數值粗略核對極限是否合理。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把「趨近 0」與「等於 0」混淆。數列的每一項都不為 0，但極限可以是 0。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是以為有界就一定收斂。1, -1, 1, -1, … 有界但不收斂。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是忽略公比為負的情形。r = -1 時數列在兩值間跳動，發散。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "lim(n→∞) (2n+1)/(n+2)？",
-      "answers": [
-        "2"
+      "prompt": "數列 aₙ = 1/n 的極限是？",
+      "options": [
+        "0",
+        "1",
+        "無窮",
+        "不存在"
       ],
-      "explanation": "計算：2/1 = 2。"
+      "answer": 0,
+      "explanation": "n 越大，1/n 越接近 0，故極限為 0。這是收斂數列最基本的例子，也是比較其他數列的基準。"
     },
     {
       "type": "input",
-      "prompt": "lim(n→∞) 2/n？",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：0 = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "a_n=1-1/n，第 2 項？",
-      "answers": [
-        "0.5"
-      ],
-      "explanation": "計算：1-1/2 = 0.5。"
-    },
-    {
-      "type": "input",
-      "prompt": "a_n=(2/3)^n 的極限？",
+      "prompt": "lim(n→∞) 1/n 等於多少？",
       "answers": [
         "0"
       ],
-      "explanation": "計算：0 (ratio magnitude below 1) = 0。"
+      "explanation": "分母趨向無窮而分子固定，分數趨向 0。注意每一項都不等於 0，但極限是 0。"
     },
     {
       "type": "input",
-      "prompt": "a_n=n²/(n²+2) 的極限？",
+      "prompt": "lim(n→∞) n/(n+1) 等於多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：1/1 = 1。"
+      "explanation": "分子分母同除 n，得 1/(1 + 1/n)。1/n 趨向 0，故極限為 1。這是同次多項式的係數比。"
+    },
+    {
+      "prompt": "等比數列 rⁿ 在 |r| < 1 時收斂到？",
+      "options": [
+        "0",
+        "1",
+        "r",
+        "無窮"
+      ],
+      "answer": 0,
+      "explanation": "|r| < 1 時，r 的次方越大越小，趨近 0。r = 1 時恆為 1；|r| > 1 時發散。"
     },
     {
       "type": "input",
-      "prompt": "lim(n→∞) (3n+1)/(n+2)？",
+      "prompt": "lim(n→∞) (1/2)ⁿ 等於多少？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "公比 1/2 的絕對值小於 1，故數列趨向 0。每乘一次 1/2 就減半，最終趨近 0。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 aₙ = (2n + 1)/n。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "把 aₙ 改寫成 2 + k/n 的形式，k 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "(2n+1)/n = 2 + 1/n，故 k = 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "n 趨向無窮時，aₙ 的極限是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "1/n 趨向 0，故極限為 2。這是分子分母同次的情形，答案為係數比。"
+        }
+      ],
+      "explanation": "有理式的標準處理：先拆成常數加真分式，再讓分母趨向無窮。拆開後極限一目了然。"
+    },
+    {
+      "type": "input",
+      "prompt": "lim(n→∞) 3n²/(n² + 1) 等於多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：3/1 = 3。"
+      "explanation": "同除 n²，得 3/(1 + 1/n²)。1/n² 趨向 0，極限為 3。分子分母次數相同，答案就是係數比。"
+    },
+    {
+      "prompt": "數列收斂的意思是？",
+      "options": [
+        "趨近某個有限值",
+        "越來越大",
+        "有界",
+        "單調"
+      ],
+      "answer": 0,
+      "explanation": "收斂指存在有限極限。有界或單調都不是收斂的充分條件：1,-1,1,-1,… 有界但不收斂。"
     },
     {
       "type": "input",
-      "prompt": "lim(n→∞) 3/n？",
+      "prompt": "lim(n→∞) (1 + 1/n)ⁿ 等於多少？（e 請寫 e）",
       "answers": [
-        "0"
+        "e"
       ],
-      "explanation": "計算：0 = 0。"
+      "explanation": "這是自然常數 e 的定義式，值約 2.718。它是連續複利與指數成長的來源，值得單獨記住。"
     },
     {
-      "type": "input",
-      "prompt": "a_n=1-1/n，第 3 項？",
-      "answers": [
-        "0.6666666666666667"
+      "type": "multipart",
+      "prompt": "設 aₙ = 1/n²。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "n = 2 時，aₙ 等於多少？",
+          "answers": [
+            "1/4"
+          ],
+          "explanation": "1/2² = 1/4。"
+        },
+        {
+          "type": "input",
+          "prompt": "n 趨向無窮時，aₙ 的極限是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "分母趨向無窮，分數趨向 0。平方使收斂更快，但極限相同。"
+        }
       ],
-      "explanation": "計算：1-1/3 = 0.6666666666666667。"
-    },
-    {
-      "type": "input",
-      "prompt": "a_n=(3/4)^n 的極限？",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：0 (ratio magnitude below 1) = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "a_n=n²/(n²+3) 的極限？",
-      "answers": [
-        "1"
-      ],
-      "explanation": "計算：1/1 = 1。"
+      "explanation": "1/n 與 1/n² 都收斂到 0，但速度不同。這個差別在級數中變得關鍵：Σ1/n 發散，Σ1/n² 卻收斂。"
     }
   ],
   "passCount": 7

@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-33",
   "title": "33 · 部分分式",
-  "intro": "參考原書第 30 章。學習部分分式，完成10 道輸入練習。",
+  "intro": "學完這一節，你能把有理函數拆成簡單分式之和，再逐項積分。這是處理分母可因式分解的分式積分的標準方法，也是積分技巧中最後一塊拼圖。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 26,
   "parents": [
     "mendelson-calculus.skill-26",
     "mendelson-calculus.skill-30"
@@ -12,121 +12,208 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：先分解分母"
     },
     {
       "type": "paragraph",
-      "text": "先做多項式除法，讓分子次數小於分母。不同線性因子各配一常數；重根配每次冪，不可約二次因子配一次分子。"
+      "text": "有理函數是兩個多項式相除。若分子的次數不低於分母，先做長除法分出多項式部分；剩下的真分式再分解。分母能分解成一次或二次因式，才能拆成部分分式。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "P(x)/Q(x)：先確認 deg P < deg Q\n否則先做長除法"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：每個因式對應一個待定係數"
     },
     {
       "type": "paragraph",
-      "text": "5/(x(x+1))=A/x+B/(x+1)，求 A。"
+      "text": "分母有 (x-a) 就設 A/(x-a)；有重根 (x-a)² 就設 A/(x-a) + B/(x-a)²；有不可約二次式就設 (Cx+D)/(二次式)。係數用通分比較或代入特殊值求出。"
     },
     {
-      "type": "example",
-      "text": "5/(x(x+1))=A/x+B/(x+1)，求 A。\n計算：5 = 5。"
+      "type": "formula",
+      "text": "1/[(x-a)(x-b)] = A/(x-a) + B/(x-b)"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：拆完就能逐項積分"
     },
     {
       "type": "paragraph",
-      "text": "6/(x(x+1))=A/x+B/(x+1)，求 A。"
+      "text": "部分分式的價值在於每一項都能直接積分：A/(x-a) 積成 A·ln|x-a|；A/(x-a)² 積成 -A/(x-a)。這是一開始無法直接處理的分式，被化成了基本形式。"
     },
     {
-      "type": "example",
-      "text": "6/(x(x+1))=A/x+B/(x+1)，求 A。\n計算：6 = 6。"
+      "type": "formula",
+      "text": "∫A/(x-a) dx = A·ln|x-a| + C\n∫A/(x-a)² dx = -A/(x-a) + C"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，確認是真分式；不是就先長除法。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，把分母因式分解，列出對應的部分分式形式。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，通分後比較係數，或用特殊值代入求係數。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，逐項積分。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，求導驗證，或通分檢查分解是否正確。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是重根只設一項。(x-a)² 需要 A/(x-a) 與 B/(x-a)² 兩項，少一項就解不出正確係數。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是分子次數不低於分母時直接分解。必須先做長除法，否則部分分式的形式不成立。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是求出係數後忘記加絕對值。ln|x-a| 的絕對值不可省，因為 x 可能在 a 的左側。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "2/(x(x+1))=A/x+B/(x+1)，求 A。",
-      "answers": [
-        "2"
+      "prompt": "部分分式法適用於哪類函數？",
+      "options": [
+        "有理函數（多項式相除）",
+        "三角函數",
+        "指數函數",
+        "根號函數"
       ],
-      "explanation": "計算：2 = 2。"
+      "answer": 0,
+      "explanation": "部分分式專門處理有理函數，也就是兩個多項式相除。三角、指數、根號需要其他方法。"
     },
     {
       "type": "input",
-      "prompt": "2/(x(x+1))=A/x+B/(x+1)，求 B。",
-      "answers": [
-        "-2"
-      ],
-      "explanation": "計算：-2 = -2。"
-    },
-    {
-      "type": "input",
-      "prompt": "1/((x+1)(x+3)) 中 1/(x+1) 的係數？",
-      "answers": [
-        "0.5"
-      ],
-      "explanation": "計算：1/2 = 0.5。"
-    },
-    {
-      "type": "input",
-      "prompt": "(x+2)/x²=1/x+B/x²，求 B。",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：2 = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₁² 2/x² dx？",
+      "prompt": "1/[(x)(x+1)] = A/x + B/(x+1)，則 A 等於多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：2*(1-1/2) = 1。"
+      "explanation": "通分得 1 = A(x+1) + Bx。令 x = 0 得 1 = A，故 A = 1。代入特殊值是求係數最快的方法。"
     },
     {
       "type": "input",
-      "prompt": "3/(x(x+1))=A/x+B/(x+1)，求 A。",
+      "prompt": "承上題，B 等於多少？",
       "answers": [
-        "3"
+        "-1"
       ],
-      "explanation": "計算：3 = 3。"
+      "explanation": "令 x = -1 得 1 = -B，故 B = -1。也可比較 x 的係數：A + B = 0，配合 A = 1 得 B = -1。"
+    },
+    {
+      "prompt": "分解部分分式的第一步是？",
+      "options": [
+        "把分母因式分解",
+        "先對分子求導",
+        "先積分",
+        "先求極限"
+      ],
+      "answer": 0,
+      "explanation": "分母的因式結構決定部分分式的形式：一次因式、重根、不可約二次式各有對應設法。不先分解就無法列出正確形式。"
     },
     {
       "type": "input",
-      "prompt": "3/(x(x+1))=A/x+B/(x+1)，求 B。",
+      "prompt": "∫1² (1/x²) dx 等於多少？",
       "answers": [
-        "-3"
+        "1/2"
       ],
-      "explanation": "計算：-3 = -3。"
+      "explanation": "1/x² 的原函數是 -1/x，代入 2 得 -1/2，代入 1 得 -1，相減為 1/2。這是最簡單的有理函數積分。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "將 (x+3)/[(x+1)(x+2)] 分解為 A/(x+1) + B/(x+2)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "A 等於多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "通分得 x+3 = A(x+2) + B(x+1)。令 x = -1 得 2 = A，故 A = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "B 等於多少？",
+          "answers": [
+            "-1"
+          ],
+          "explanation": "令 x = -2 得 1 = -B，故 B = -1。"
+        },
+        {
+          "type": "input",
+          "prompt": "原式可寫成 2/(x+1) 減去多少除以 (x+2)？填被減的係數絕對值。",
+          "answers": [
+            "1"
+          ],
+          "explanation": "B = -1，故為 2/(x+1) - 1/(x+2)，被減的係數絕對值為 1。"
+        }
+      ],
+      "explanation": "部分分式的係數求法：代入使某一因式為 0 的 x 值，一次消去一個未知數。這比展開比較係數快得多。"
     },
     {
       "type": "input",
-      "prompt": "1/((x+1)(x+4)) 中 1/(x+1) 的係數？",
+      "prompt": "1/(x² - 1) = A/(x-1) + B/(x+1)，則 A 等於多少？",
       "answers": [
-        "0.3333333333333333"
+        "1/2"
       ],
-      "explanation": "計算：1/3 = 0.3333333333333333。"
+      "explanation": "通分得 1 = A(x+1) + B(x-1)。令 x = 1 得 1 = 2A，故 A = 1/2。這是平方差的標準分解。"
+    },
+    {
+      "prompt": "分母有重根 (x-a)² 時，部分分式應該設幾項？",
+      "options": [
+        "兩項：A/(x-a) 與 B/(x-a)²",
+        "一項：A/(x-a)²",
+        "一項：A/(x-a)",
+        "三項"
+      ],
+      "answer": 0,
+      "explanation": "重根必須從一次到最高次各設一項，否則係數無法配平。這是部分分式最常見的遺漏。"
     },
     {
       "type": "input",
-      "prompt": "(x+3)/x²=1/x+B/x²，求 B。",
+      "prompt": "∫1^e (1/x) dx 等於多少？",
       "answers": [
-        "3"
+        "1"
       ],
-      "explanation": "計算：3 = 3。"
+      "explanation": "1/x 的原函數是 ln|x|，代入 e 得 1，代入 1 得 0，結果 1。部分分式拆完後，每一項都會回到這種基本形式。"
     },
     {
-      "type": "input",
-      "prompt": "∫₁² 3/x² dx？",
-      "answers": [
-        "1.5"
+      "type": "multipart",
+      "prompt": "將 1/[x(x+2)] 分解為 A/x + B/(x+2)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "A 等於多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "通分得 1 = A(x+2) + Bx。令 x = 0 得 1 = 2A，故 A = 1/2。"
+        },
+        {
+          "type": "input",
+          "prompt": "B 等於多少？",
+          "answers": [
+            "-1/2"
+          ],
+          "explanation": "令 x = -2 得 1 = -2B，故 B = -1/2。兩係數互為相反數，因為分母因式對稱。"
+        }
       ],
-      "explanation": "計算：3*(1-1/2) = 1.5。"
+      "explanation": "本題的兩個係數大小相等、符號相反，這是分母為 x(x+a) 形式的規律。可用通分快速驗證。"
     }
   ],
   "passCount": 7

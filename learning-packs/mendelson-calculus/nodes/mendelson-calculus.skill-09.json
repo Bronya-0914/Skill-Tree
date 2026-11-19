@@ -2,130 +2,221 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-09",
   "title": "09 · 差商、導數與切線",
-  "intro": "參考原書第 8 章。學習差商、導數與切線，完成10 道輸入練習。",
+  "intro": "學完這一節，你能用差商算平均變化率，用極限把它變成瞬時變化率，並寫出切線方程式。導數的定義只有這一個，後面所有求導公式都從它推出來。",
   "kind": "derivative",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-08"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：差商是割線斜率"
     },
     {
       "type": "paragraph",
-      "text": "導數是差商的極限，代表局部變化率。先計算 f(a+h)-f(a)，再除 h、取極限；切線斜率為 f′(a)。"
+      "text": "從 x 到 x + h，函數值改變 f(x+h) - f(x)，自變量改變 h。兩者相除就是平均變化率，幾何上是通過兩點的割線斜率。h 就是兩點的橫向距離。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "差商 = [f(x + h) - f(x)] / h\n這是 x 到 x+h 之間的平均變化率，也是割線斜率"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：導數是差商的極限"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=x²，求 f′(5)。"
+      "text": "讓 h 趨近 0，割線的兩端不斷靠近，割線趨向切線。這個極限就是導數，代表該點的瞬時變化率與切線斜率。導數是一個數，不是一個函數；把每個點的導數收集起來才得到導函數。"
     },
     {
-      "type": "example",
-      "text": "f(x)=x²，求 f′(5)。\n計算：2*5 = 10。"
+      "type": "formula",
+      "text": "f'(x) = lim(h→0) [f(x + h) - f(x)] / h\n幾何意義：曲線在 (x, f(x)) 處的切線斜率"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：可導必連續"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=x²，求 f′(6)。"
+      "text": "差商有極限，意味著 h 趨近 0 時函數值的改變也趨近 0，也就是連續。反過來不成立：|x| 在 0 連續，但左右差商的極限分別是 -1 與 1，不相等，所以不可導。尖角與垂直切線都是不可導的典型。"
     },
     {
-      "type": "example",
-      "text": "f(x)=x²，求 f′(6)。\n計算：2*6 = 12。"
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，寫出 f(x + h) 與 f(x)，代入差商式。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，展開分子並化簡，務必把 h 提出來約去；約不掉就表示算錯。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，令 h → 0，得到導數。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，要切線就先算該點斜率 f'(a) 與點 (a, f(a))，再用點斜式。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用數值核對：取很小的 h 算差商，應接近算出的導數。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是分子沒化簡就直接令 h = 0，得到 0/0。必須先把 h 約掉。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把導數當成「函數在某點的值」。導數是變化率，f'(3) = 6 表示在 x = 3 附近每增加 1，函數值約增加 6。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是以為連續就可導。|x| 在 0 是標準反例：連續但左右斜率不一致。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "f(x)=x²，求 f′(2)。",
-      "answers": [
-        "4"
-      ],
-      "explanation": "計算：2*2 = 4。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=2x+1，求 f′(0)。",
-      "answers": [
+      "prompt": "f(x) = x² 的導函數是？",
+      "options": [
+        "2x",
+        "x",
+        "x²",
         "2"
       ],
-      "explanation": "計算：2 = 2。"
+      "answer": 0,
+      "explanation": "差商為 [(x+h)² - x²]/h = (2xh + h²)/h = 2x + h，令 h → 0 得 2x。這是冪法則的最基本例子，建議親手推一次。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=x²，a=2, h=1，求差商。",
-      "answers": [
-        "5"
-      ],
-      "explanation": "計算：(2+1)^2-2^2 = 5。"
-    },
-    {
-      "type": "input",
-      "prompt": "y=x² 在 x=2 的切線 y 截距？",
-      "answers": [
-        "-4"
-      ],
-      "explanation": "計算：4-4*2 = -4。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=2，求導數。",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：0 = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=x²，求 f′(3)。",
+      "prompt": "f(x) = x² 在 x = 3 的導數是多少？",
       "answers": [
         "6"
       ],
-      "explanation": "計算：2*3 = 6。"
+      "explanation": "f'(x) = 2x，代入 3 得 6。意義是：在 x = 3 附近，x 每增加 1，函數值約增加 6；切線斜率也是 6。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=3x+1，求 f′(0)。",
+      "prompt": "f(x) = 3x + 2 的導數是多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：3 = 3。"
+      "explanation": "一次函數的差商恆為 3，與 h 無關，所以導數處處為 3。幾何上直線的斜率處處相同。"
+    },
+    {
+      "prompt": "導數 f'(a) 的幾何意義是？",
+      "options": [
+        "曲線在 x = a 處切線的斜率",
+        "曲線在 x = a 處的函數值",
+        "割線的斜率",
+        "曲線下面積"
+      ],
+      "answer": 0,
+      "explanation": "導數是割線斜率在 h → 0 時的極限，也就是切線斜率。函數值是 f(a)，不是 f'(a)；割線斜率是差商，取極限後才成為導數。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=x²，a=3, h=1，求差商。",
+      "prompt": "f(x) = x³ 在 x = 1 的導數是多少？",
       "answers": [
-        "7"
+        "3"
       ],
-      "explanation": "計算：(3+1)^2-3^2 = 7。"
+      "explanation": "f'(x) = 3x²，代入 1 得 3。用定義驗證：[(1+h)³ - 1]/h = 3 + 3h + h²，令 h → 0 得 3。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = x²，考慮 x = 2 處。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "差商 [f(2+h) - f(2)]/h 化簡後，常數項是多少？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "f(2+h) = 4 + 4h + h²，減去 4 得 4h + h²，除以 h 得 4 + h，常數項為 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "導數 f'(2) 是多少？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "令 h → 0，4 + h → 4，所以 f'(2) = 4。這與 2x 在 x = 2 的值一致。"
+        },
+        {
+          "type": "input",
+          "prompt": "切線在 x = 2 處的函數值是多少？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "切點在曲線上，故 y = f(2) = 4。切線通過 (2, 4)，斜率 4。"
+        }
+      ],
+      "explanation": "三個小問對應導數定義的三個環節：化簡差商、取極限、回到切點。順序顛倒就會得到 0/0。"
     },
     {
       "type": "input",
-      "prompt": "y=x² 在 x=3 的切線 y 截距？",
+      "prompt": "f(x) = 1/x 在 x = 1 的導數是多少？",
       "answers": [
-        "-9"
+        "-1"
       ],
-      "explanation": "計算：9-6*3 = -9。"
+      "explanation": "差商為 [1/(1+h) - 1]/h = [(1 - (1+h))/(1+h)]/h = -1/(1+h)，令 h → 0 得 -1。一般式 f'(x) = -1/x²，代入 1 也是 -1。"
+    },
+    {
+      "prompt": "關於可導與連續，下列敘述何者正確？",
+      "options": [
+        "可導必連續，連續不一定可導",
+        "連續必可導",
+        "兩者等價",
+        "可導與連續無關"
+      ],
+      "answer": 0,
+      "explanation": "可導蘊含連續，因為差商有極限迫使函數值的改變趨近 0。反向不成立：|x| 在 0 連續但不可導。這是單向蘊含的標準例子。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=3，求導數。",
+      "prompt": "f(x) = √x 在 x = 4 的導數是多少？",
       "answers": [
-        "0"
+        "1/4"
       ],
-      "explanation": "計算：0 = 0。"
+      "explanation": "f'(x) = 1/(2√x)，代入 4 得 1/(2·2) = 1/4。用定義也可得：差商有理化後為 1/(√(4+h)+2)，令 h → 0 得 1/4。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "曲線 y = x² 在 x = 3 處的切線。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "切線斜率是多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "y' = 2x，代入 3 得 6。"
+        },
+        {
+          "type": "input",
+          "prompt": "切點的 y 座標是多少？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "切點在曲線上，y = 3² = 9。"
+        },
+        {
+          "type": "input",
+          "prompt": "切線的 y 截距是多少？",
+          "answers": [
+            "-9"
+          ],
+          "explanation": "點斜式 y - 9 = 6(x - 3)，整理得 y = 6x - 9，y 截距為 -9。"
+        }
+      ],
+      "explanation": "求切線的固定流程：先算斜率，再算切點，最後套點斜式。三個數字任一算錯，切線就整條錯。"
     }
   ],
   "passCount": 7

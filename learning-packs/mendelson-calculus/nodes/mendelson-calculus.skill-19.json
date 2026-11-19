@@ -2,130 +2,209 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-19",
   "title": "19 · 直線運動",
-  "intro": "參考原書第 17 章。學習直線運動，完成10 道輸入練習。",
+  "intro": "學完這一節，你能從位置函數算出速度與加速度、判斷何時靜止與往哪個方向移動，並分清位移與路程。這是導數最直觀的物理意義。",
   "kind": "derivative",
-  "minutes": 20,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-14"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：位置、速度、加速度是連續求導"
     },
     {
       "type": "paragraph",
-      "text": "速度是位置導數，加速度是速度導數。位移為位置差，路程要按速度變號的時刻分段取絕對值。"
+      "text": "位置 s(t) 對時間求導得速度 v(t)，速度再求導得加速度 a(t)。三者的關係固定：速度描述位置改變的快慢，加速度描述速度改變的快慢。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "v(t) = s'(t)\na(t) = v'(t) = s''(t)"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：速度的符號表示方向"
     },
     {
       "type": "paragraph",
-      "text": "s(t)=5t²，求 v(3)。"
+      "text": "速度為正表示往正方向移動，為負表示往負方向移動，為零表示瞬時靜止。速率是速度的絕對值，永遠非負；速度可正可負。"
     },
     {
-      "type": "example",
-      "text": "s(t)=5t²，求 v(3)。\n計算：2*5*3 = 30。"
+      "type": "formula",
+      "text": "v > 0：往正方向\nv < 0：往負方向\nv = 0：瞬時靜止"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：位移與路程不同"
     },
     {
       "type": "paragraph",
-      "text": "s(t)=6t²，求 v(3)。"
+      "text": "位移是「終點減起點」，只看兩端；路程是「實際走過的總長度」，要把折返的部分累加。若中途改變方向，兩者不相等。"
     },
     {
-      "type": "example",
-      "text": "s(t)=6t²，求 v(3)。\n計算：2*6*3 = 36。"
+      "type": "formula",
+      "text": "位移 = s(b) - s(a)\n路程 = ∫|v(t)| dt（需分段處理折返）"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，寫出 s(t)，求 s'(t) 得速度。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，再求導得加速度。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，令 v(t)=0 找出靜止時刻，這些時刻是運動方向可能改變的地方。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，在靜止點之間取測試時刻，判斷速度正負，得到運動方向。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，求位移直接代端點；求路程要先分段再取絕對值累加。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把速度當成速率。速度有方向，可以為負；速率是大小，永遠非負。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是以為 v=0 就是停止不動。它只是瞬時靜止，下一刻可能反向移動，例如拋體運動的最高點。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是求路程時直接算 s(b)-s(a)。若中途折返，這樣會少算走過的路。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "s(t)=2t²，求 v(3)。",
-      "answers": [
-        "12"
+      "prompt": "位置 s(t) = t² 的速度函數是？",
+      "options": [
+        "2t",
+        "t",
+        "t²",
+        "2"
       ],
-      "explanation": "計算：2*2*3 = 12。"
+      "answer": 0,
+      "explanation": "速度是位置的導數：s'(t) = 2t。這是本章最基本的關係，建議與加速度一起記：s → v → a 是連續求導。"
     },
     {
       "type": "input",
-      "prompt": "s(t)=t³-2t，求 a(2)。",
+      "prompt": "s(t) = t² - 4t，在 t = 3 時的速度是多少？",
       "answers": [
-        "12"
+        "2"
       ],
-      "explanation": "計算：6*2 = 12。"
+      "explanation": "v(t) = 2t - 4，代入 3 得 2。速度為正表示往正方向移動；若算出負值則表示反向。"
     },
     {
       "type": "input",
-      "prompt": "s(t)=2t²，在 0≤t≤2 的位移？",
+      "prompt": "s(t) = t³，在 t = 2 時的加速度是多少？",
+      "answers": [
+        "12"
+      ],
+      "explanation": "v = 3t²，a = 6t，代入 2 得 12。加速度是位置的二階導數，要連續求導兩次。"
+    },
+    {
+      "prompt": "速度為負表示質點？",
+      "options": [
+        "往負方向移動",
+        "靜止",
+        "加速",
+        "往正方向移動"
+      ],
+      "answer": 0,
+      "explanation": "速度的符號就是運動方向。負速度表示往座標軸負方向移動，與加速或靜止無關；加速度為負才表示速度在減少。"
+    },
+    {
+      "type": "input",
+      "prompt": "s(t) = t² - 6t，質點在哪個正時刻靜止？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "v = 2t - 6，令其為 0 得 t = 3。此處速度由負變正，是運動方向改變的時刻。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 s(t) = t²，考慮 t = 3。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "速度 v(3) 是多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "v = 2t，代入 3 得 6。"
+        },
+        {
+          "type": "input",
+          "prompt": "加速度 a(3) 是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "a = 2，為常數，與 t 無關。這表示速度每單位時間穩定增加 2。"
+        }
+      ],
+      "explanation": "等加速運動的特徵是加速度為常數。本題 a 恆為 2，速度每秒增加 2，位置則是二次函數。"
+    },
+    {
+      "type": "input",
+      "prompt": "s(t) = 2t³，在 t = 1 時的速度是多少？",
+      "answers": [
+        "6"
+      ],
+      "explanation": "v = 6t²，代入 1 得 6。三次位置函數對應二次速度函數，這是最常見的多項式運動模型。"
+    },
+    {
+      "prompt": "位移與路程的差別是？",
+      "options": [
+        "位移只看起終點，路程看實際走過的總長度",
+        "兩者完全相同",
+        "位移一定大於路程",
+        "路程一定為負"
+      ],
+      "answer": 0,
+      "explanation": "位移是 s(b)-s(a)，只看兩端；路程要累加實際走過的距離，折返部分不能抵消。只有單向運動時兩者才相等。"
+    },
+    {
+      "type": "input",
+      "prompt": "速度 v(t) = 3t²，從 t = 0 到 t = 2 的位移是多少？",
       "answers": [
         "8"
       ],
-      "explanation": "計算：2*(4-0) = 8。"
+      "explanation": "位移等於速度的積分：∫0² 3t² dt = t³ |0² = 8。也可理解為 s(2)-s(0)，其中 s(t)=t³。"
     },
     {
-      "type": "input",
-      "prompt": "v(t)=2t-4，何時靜止？",
-      "answers": [
-        "2"
+      "type": "multipart",
+      "prompt": "設 s(t) = t³ - 3t²。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "速度為 0 的正時刻是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "v = 3t² - 6t = 3t(t-2)，速度為 0 於 t = 0 與 t = 2，正時刻是 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "在 t = 2 時的加速度是多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "a = 6t - 6，代入 2 得 6。加速度為正，表示速度在此處由負轉正。"
+        }
       ],
-      "explanation": "計算：4/2 = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "v=-2 m/s，速率是多少？",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：abs(-2) = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "s(t)=3t²，求 v(3)。",
-      "answers": [
-        "18"
-      ],
-      "explanation": "計算：2*3*3 = 18。"
-    },
-    {
-      "type": "input",
-      "prompt": "s(t)=t³-3t，求 a(2)。",
-      "answers": [
-        "12"
-      ],
-      "explanation": "計算：6*2 = 12。"
-    },
-    {
-      "type": "input",
-      "prompt": "s(t)=3t²，在 0≤t≤2 的位移？",
-      "answers": [
-        "12"
-      ],
-      "explanation": "計算：3*(4-0) = 12。"
-    },
-    {
-      "type": "input",
-      "prompt": "v(t)=2t-6，何時靜止？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：6/2 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "v=-3 m/s，速率是多少？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：abs(-3) = 3。"
+      "explanation": "靜止點是運動方向可能改變的地方。本題 t=0 與 t=2 兩次靜止，中間速度為負、之後為正，質點先往負方向再折返。"
     }
   ],
   "passCount": 7

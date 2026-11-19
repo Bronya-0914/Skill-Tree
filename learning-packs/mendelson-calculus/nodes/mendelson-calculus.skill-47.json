@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-47",
   "title": "47 · 偏導數與全微分",
-  "intro": "參考原書第 42 章。學習偏導數與全微分，完成10 道輸入練習。",
+  "intro": "學完這一節，你能對多變量函數求偏導數、算出全微分，並理解「固定其他變量」的意義。偏導數是梯度、極值與多重積分的基礎工具。",
   "kind": "base",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-14",
     "mendelson-calculus.skill-46"
@@ -12,121 +12,208 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：偏導數是固定其他變量後求導"
     },
     {
       "type": "paragraph",
-      "text": "對一變量求偏導時，其餘獨立變量暫作常數。全微分 df=fₓdx+fᵧdy；沿路徑變動時用多變量鏈式法則。"
+      "text": "對 x 求偏導時，把 y 當成常數，只對 x 求導。這等於在 y 固定的那條線上，看函數隨 x 的變化率。對 y 求偏導同理。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "∂f/∂x：y 視為常數\n∂f/∂y：x 視為常數"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：全微分是各方向改變的疊加"
     },
     {
       "type": "paragraph",
-      "text": "f=x²y，在 (5,2) 求 fₓ。"
+      "text": "x 與 y 同時小幅改變時，函數的總改變量近似等於兩個偏導數分別乘上各自的改變量再相加。這是單變量微分的推廣，也是誤差傳遞公式的來源。"
     },
     {
-      "type": "example",
-      "text": "f=x²y，在 (5,2) 求 fₓ。\n計算：2*5*2 = 20。"
+      "type": "formula",
+      "text": "dz = (∂f/∂x) dx + (∂f/∂y) dy"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：混合偏導通常相等"
     },
     {
       "type": "paragraph",
-      "text": "f=x²y，在 (6,2) 求 fₓ。"
+      "text": "先對 x 再對 y，與先對 y 再對 x，在多數常見函數上結果相同。這個性質叫二階混合偏導相等，讓計算順序可以自由選擇。"
     },
     {
-      "type": "example",
-      "text": "f=x²y，在 (6,2) 求 fₓ。\n計算：2*6*2 = 24。"
+      "type": "formula",
+      "text": "∂²f/∂x∂y = ∂²f/∂y∂x"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，確認對哪個變量求導，另一個視為常數。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，套用單變量的求導法則。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，需要某一點的值時，把兩個座標一起代入。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，求全微分時分別算兩個偏導，再乘上 dx、dy。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用數值檢查：固定 y 時，函數應只隨 x 變化。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是對 x 求偏導時，把 y 也當成變量求導。y 在偏導過程中是常數，導數為 0。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把偏導數寫成 df/dx。偏導用 ∂ 而非 d，因為還有其他變量在。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是算 fx(2,3) 時只代入 x。偏導數仍是兩個變量的函數，必須同時代入。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "f=x²y，在 (2,2) 求 fₓ。",
-      "answers": [
-        "8"
+      "prompt": "∂/∂x (x²y) 等於？",
+      "options": [
+        "2xy",
+        "x²",
+        "2x",
+        "x²y"
       ],
-      "explanation": "計算：2*2*2 = 8。"
+      "answer": 0,
+      "explanation": "對 x 求偏導時 y 是常數，故 x²y 對 x 求導得 2xy。若把 y 也求導，就會得到錯誤結果。"
     },
     {
       "type": "input",
-      "prompt": "f=x²y，在 (2,2) 求 fᵧ。",
-      "answers": [
-        "4"
-      ],
-      "explanation": "計算：2^2 = 4。"
-    },
-    {
-      "type": "input",
-      "prompt": "f=x²y，在 x=2 求 fₓᵧ。",
-      "answers": [
-        "4"
-      ],
-      "explanation": "計算：2*2 = 4。"
-    },
-    {
-      "type": "input",
-      "prompt": "f=x²+y²，x=t,y=2t，t=1 時 df/dt？",
-      "answers": [
-        "10"
-      ],
-      "explanation": "計算：2+2*2^2 = 10。"
-    },
-    {
-      "type": "input",
-      "prompt": "f=x+y，在 dx=0.1,dy=0.2 時 df？",
-      "answers": [
-        "0.30000000000000004"
-      ],
-      "explanation": "計算：0.1+0.2 = 0.30000000000000004。"
-    },
-    {
-      "type": "input",
-      "prompt": "f=x²y，在 (3,2) 求 fₓ。",
+      "prompt": "f(x, y) = x²y，fx 在 (2, 3) 等於多少？",
       "answers": [
         "12"
       ],
-      "explanation": "計算：2*3*2 = 12。"
+      "explanation": "fx = 2xy，代入 x=2、y=3 得 12。注意 y 雖然是常數，但仍要代入它的值。"
     },
     {
       "type": "input",
-      "prompt": "f=x²y，在 (3,2) 求 fᵧ。",
+      "prompt": "f(x, y) = x²y，fy 在 (2, 3) 等於多少？",
       "answers": [
-        "9"
+        "4"
       ],
-      "explanation": "計算：3^2 = 9。"
+      "explanation": "fy = x²，代入 2 得 4。對 y 求偏導時 x² 是常數，故結果不含 y。"
+    },
+    {
+      "prompt": "偏導數的意義是？",
+      "options": [
+        "固定其他變量，對某一變量求變化率",
+        "對所有變量同時求導",
+        "對函數取絕對值",
+        "求函數的最大值"
+      ],
+      "answer": 0,
+      "explanation": "偏導數固定其他變量，只看一個方向的變化率。全微分才是所有方向改變的疊加，兩者不同。"
     },
     {
       "type": "input",
-      "prompt": "f=x²y，在 x=3 求 fₓᵧ。",
+      "prompt": "f(x, y) = x² + y²，fx 在 (1, 2) 等於多少？",
       "answers": [
-        "6"
+        "2"
       ],
-      "explanation": "計算：2*3 = 6。"
+      "explanation": "fx = 2x，代入 1 得 2。y 在此過程中是常數，不影響結果。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x, y) = xy。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "fx 在 (2, 3) 等於多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "fx = y，代入 3 得 3。對 x 求偏導時 y 是常數。"
+        },
+        {
+          "type": "input",
+          "prompt": "fy 在 (2, 3) 等於多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "fy = x，代入 2 得 2。"
+        }
+      ],
+      "explanation": "xy 是最簡單的混合項：對 x 求偏導得 y，對 y 求偏導得 x。這個對稱性是偏導計算的基本直覺。"
     },
     {
       "type": "input",
-      "prompt": "f=x²+y²，x=t,y=3t，t=1 時 df/dt？",
+      "prompt": "f(x, y) = e^(xy)，fx 在 (0, 1) 等於多少？",
       "answers": [
-        "20"
+        "1"
       ],
-      "explanation": "計算：2+2*3^2 = 20。"
+      "explanation": "fx = y·e^(xy)，代入 x=0、y=1 得 1·e⁰ = 1。指數型要用鏈式法則，內層對 x 的導數是 y。"
+    },
+    {
+      "prompt": "全微分的公式是？",
+      "options": [
+        "fx dx + fy dy",
+        "fx + fy",
+        "fx·fy·dx·dy",
+        "f dx dy"
+      ],
+      "answer": 0,
+      "explanation": "全微分是兩個偏導分別乘上各自的微小改變再相加。它給出函數的線性主部，用於誤差估計。"
     },
     {
       "type": "input",
-      "prompt": "f=x+y，在 dx=0.1,dy=0.3 時 df？",
+      "prompt": "f(x, y) = x²y²，fxy 在 (1, 1) 等於多少？",
       "answers": [
-        "0.4"
+        "4"
       ],
-      "explanation": "計算：0.1+0.3 = 0.4。"
+      "explanation": "fx = 2xy²，再對 y 求導得 fxy = 4xy。代入 (1,1) 得 4。混合偏導可交換順序，結果相同。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x, y) = x² + y²。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "fx 在 (3, 4) 等於多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "fx = 2x，代入 3 得 6。"
+        },
+        {
+          "type": "input",
+          "prompt": "fy 在 (3, 4) 等於多少？",
+          "answers": [
+            "8"
+          ],
+          "explanation": "fy = 2y，代入 4 得 8。"
+        },
+        {
+          "type": "input",
+          "prompt": "兩個偏導數之和是多少？",
+          "answers": [
+            "14"
+          ],
+          "explanation": "6 + 8 = 14。這不是梯度長度，只是分量和。"
+        }
+      ],
+      "explanation": "兩個偏導分別代表沿 x 與 y 方向的坡度。它們組成的向量就是梯度，下一節會用它找最陡方向。"
     }
   ],
   "passCount": 7

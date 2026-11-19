@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-30",
   "title": "30 · 反三角函數",
-  "intro": "參考原書第 27 章。學習反三角函數，完成10 道輸入練習。",
+  "intro": "學完這一節，你能由三角函數值反推角度、記住 arcsin 與 arctan 的定義域與值域，並對它們求導。反三角函數是積分中處理根號與平方和形式的關鍵。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-12",
     "mendelson-calculus.skill-26"
@@ -12,121 +12,208 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：反三角函數是限制後的反函數"
     },
     {
       "type": "paragraph",
-      "text": "反三角函數採主值範圍，不等於倒數。arcsin 的導數是 1/√(1-x²)，arctan 的導數是 1/(1+x²)。"
+      "text": "三角函數本身不是一對一，必須限制區間才能反推。arcsin 限制在 [-π/2, π/2]，arccos 限制在 [0, π]，arctan 限制在 (-π/2, π/2)。這些限制就是值域。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "arcsin：定義域 [-1, 1]，值域 [-π/2, π/2]\narccos：定義域 [-1, 1]，值域 [0, π]\narctan：定義域 ℝ，值域 (-π/2, π/2)"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：arcsin 與 arctan 的導數"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=arctan(5x)，求 f′(0)。"
+      "text": "arcsin 的導數是 1/√(1-x²)，在端點趨向無窮，因為那裡切線垂直。arctan 的導數是 1/(1+x²)，恆正且遞減，說明圖形處處上升但越來越平。"
     },
     {
-      "type": "example",
-      "text": "f(x)=arctan(5x)，求 f′(0)。\n計算：5/(1+0) = 5。"
+      "type": "formula",
+      "text": "(arcsin x)' = 1/√(1 - x²)\n(arctan x)' = 1/(1 + x²)"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：這些導數是積分公式的來源"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=arctan(6x)，求 f′(0)。"
+      "text": "反過來看，1/√(1-x²) 的積分是 arcsin x，1/(1+x²) 的積分是 arctan x。這兩個形式在積分中出現頻率極高，記住導數就等於記住積分。"
     },
     {
-      "type": "example",
-      "text": "f(x)=arctan(6x)，求 f′(0)。\n計算：6/(1+0) = 6。"
+      "type": "formula",
+      "text": "∫ dx/√(1-x²) = arcsin x + C\n∫ dx/(1+x²) = arctan x + C"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，確認輸入值在定義域內；arcsin 只接受 [-1,1]。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，回想對應的特殊角：arcsin(1/2) = π/6、arctan(1) = π/4。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，求導時套公式，複合形式用鏈式法則。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，需要切線時，先算該點導數與函數值。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用 sin 或 tan 回代驗證：sin(arcsin x) = x。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忽略值域限制。arcsin(1/2) 只取 π/6，不是 5π/6，因為值域限制在 [-π/2, π/2]。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是 arcsin 的導數漏掉根號。是 1/√(1-x²)，不是 1/(1-x²)。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是把 arctan 的導數與 arcsin 混淆。arctan 是 1/(1+x²)，沒有根號。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "f(x)=arctan(2x)，求 f′(0)。",
-      "answers": [
-        "2"
+      "prompt": "arcsin(1) 等於？",
+      "options": [
+        "π/2",
+        "π",
+        "0",
+        "π/4"
       ],
-      "explanation": "計算：2/(1+0) = 2。"
+      "answer": 0,
+      "explanation": "sin(π/2) = 1，且 π/2 在 arcsin 的值域 [-π/2, π/2] 內，故 arcsin(1) = π/2。這是值域上限。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=arcsin(x/2)，求 f′(0)。",
+      "prompt": "arctan(1) 等於多少？（π 請寫 pi）",
       "answers": [
-        "0.5"
+        "pi/4"
       ],
-      "explanation": "計算：1/2 = 0.5。"
+      "explanation": "tan(π/4) = 1，且 π/4 在 arctan 的值域內，故答案為 π/4。這是反三角函數最常用的特殊值之一。"
     },
     {
       "type": "input",
-      "prompt": "∫₀¹ 1/(1+x²) dx 除以 pi？",
+      "prompt": "arcsin(0) 等於多少？",
       "answers": [
-        "0.25"
+        "0"
       ],
-      "explanation": "計算：1/4 = 0.25。"
+      "explanation": "sin(0) = 0，且 0 在值域內，故 arcsin(0) = 0。原點是 arcsin 圖形的對稱中心。"
+    },
+    {
+      "prompt": "(arctan x)' 等於？",
+      "options": [
+        "1/(1 + x²)",
+        "1/√(1 - x²)",
+        "1/(1 - x²)",
+        "-1/(1 + x²)"
+      ],
+      "answer": 0,
+      "explanation": "arctan 的導數是 1/(1+x²)，沒有根號且恆正。1/√(1-x²) 是 arcsin 的導數，兩者常被混淆。"
     },
     {
       "type": "input",
-      "prompt": "arctan(1) 除以 pi，再乘 8？",
+      "prompt": "(arcsin x)' 在 x = 0 等於多少？",
       "answers": [
-        "2"
+        "1"
       ],
-      "explanation": "計算：8/4 = 2。"
+      "explanation": "導數為 1/√(1-x²)，代入 0 得 1/1 = 1。這說明 arcsin 在原點的切線斜率為 1，與 sin 在原點的行為對稱。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "考慮 y = arctan x 在 x = 0 處的切線。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "切線斜率是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "y' = 1/(1+x²)，代入 0 得 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "切點的 y 座標是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "arctan 0 = 0，故切點為原點。"
+        },
+        {
+          "type": "input",
+          "prompt": "切線的 y 截距是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "過原點且斜率 1 的直線是 y = x，y 截距為 0。"
+        }
+      ],
+      "explanation": "arctan 在原點的切線是 y = x，與 sin、tan 在原點的行為一致。這也是小角度近似 tan θ ≈ θ 的來源。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=arccos(x/2)，求 f′(0)。",
+      "prompt": "arccos(0) 等於多少？（π 請寫 pi）",
       "answers": [
-        "-0.5"
+        "pi/2"
       ],
-      "explanation": "計算：-1/2 = -0.5。"
+      "explanation": "cos(π/2) = 0，且 π/2 在 arccos 的值域 [0, π] 內，故答案為 π/2。"
+    },
+    {
+      "prompt": "arcsin 的值域是？",
+      "options": [
+        "[-π/2, π/2]",
+        "[0, π]",
+        "(-π/2, π/2)",
+        "所有實數"
+      ],
+      "answer": 0,
+      "explanation": "為了讓 sin 一對一，arcsin 的值域限制在 [-π/2, π/2]，兩端都包含。(-π/2, π/2) 是 arctan 的值域，不包含端點。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=arctan(3x)，求 f′(0)。",
+      "prompt": "(arctan x)' 在 x = 1 等於多少？",
       "answers": [
-        "3"
+        "1/2"
       ],
-      "explanation": "計算：3/(1+0) = 3。"
+      "explanation": "導數 1/(1+x²)，代入 1 得 1/2。這說明 arctan 在 x=1 處的斜率已降到原點的一半。"
     },
     {
-      "type": "input",
-      "prompt": "f(x)=arcsin(x/3)，求 f′(0)。",
-      "answers": [
-        "0.3333333333333333"
+      "type": "multipart",
+      "prompt": "考慮 arcsin(1/2)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "它的值是多少？（π 請寫 pi）",
+          "answers": [
+            "pi/6"
+          ],
+          "explanation": "sin(π/6) = 1/2，且 π/6 在值域內，故 arcsin(1/2) = π/6。"
+        },
+        {
+          "type": "input",
+          "prompt": "sin(π/6) 等於多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "這是特殊角：sin 30° = 1/2。回代驗證確認 arcsin 的答案正確。"
+        }
       ],
-      "explanation": "計算：1/3 = 0.3333333333333333。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀¹ 1/(1+x²) dx 除以 pi？",
-      "answers": [
-        "0.25"
-      ],
-      "explanation": "計算：1/4 = 0.25。"
-    },
-    {
-      "type": "input",
-      "prompt": "arctan(1) 除以 pi，再乘 12？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：12/4 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=arccos(x/3)，求 f′(0)。",
-      "answers": [
-        "-0.3333333333333333"
-      ],
-      "explanation": "計算：-1/3 = -0.3333333333333333。"
+      "explanation": "反三角函數的答案必須落在指定值域內。arcsin(1/2) 只取 π/6，不取 5π/6，因為後者不在 [-π/2, π/2] 內。"
     }
   ],
   "passCount": 7

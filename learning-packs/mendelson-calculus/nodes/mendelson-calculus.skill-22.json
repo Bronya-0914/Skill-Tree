@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-22",
   "title": "22 · 定積分與基本定理",
-  "intro": "參考原書第 20 章。學習定積分與基本定理，完成10 道輸入練習。",
+  "intro": "學完這一節，你能算出函數在區間上的定積分，並理解它與求導是互逆運算。這是微積分最核心的定理：把「累加無窮多項」變成「原函數相減」。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 26,
   "parents": [
     "mendelson-calculus.skill-08",
     "mendelson-calculus.skill-21"
@@ -12,121 +12,216 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：定積分是有號面積"
     },
     {
       "type": "paragraph",
-      "text": "定積分累積帶正負的量。若 F′=f，則 ∫ₐᵇf=F(b)-F(a)。變上限積分求導要乘上限的導數。"
+      "text": "把區間切成許多小段，每段用長方形近似，再把面積相加，取極限就是定積分。在 x 軸上方的部分算正，下方算負，所以叫有號面積。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "∫a^b f(x) dx = 黎曼和的極限\nx 軸上方為正，下方為負"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：微積分基本定理"
     },
     {
       "type": "paragraph",
-      "text": "∫₀^5 2x dx？"
+      "text": "第一部分說：以 a 為起點、上限為變量 x 的積分，其導數就是 f(x) 本身。這說明積分與求導互為逆運算。第二部分給出計算方法：定積分等於原函數在上限的值減去在下限的值。"
     },
     {
-      "type": "example",
-      "text": "∫₀^5 2x dx？\n計算：5^2 = 25。"
+      "type": "formula",
+      "text": "d/dx ∫a^x f(t) dt = f(x)\n∫a^b f(x) dx = F(b) - F(a)，其中 F' = f"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：上下限對調與同限"
     },
     {
       "type": "paragraph",
-      "text": "∫₀^6 2x dx？"
+      "text": "上下限對調會變號，這是因為方向相反。上下限相同時積分為 0，因為區間長度為 0。這兩條性質常用來簡化計算。"
     },
     {
-      "type": "example",
-      "text": "∫₀^6 2x dx？\n計算：6^2 = 36。"
+      "type": "formula",
+      "text": "∫a^b f = -∫b^a f\n∫a^a f = 0"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，找一個原函數 F；不需要加 C，因為相減時會抵消。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，把上限代入 F，再減去下限代入 F 的值。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，注意符號：下限較大時要小心，或先對調上下限再變號。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，遇到絕對值或分段函數，依零點把區間拆開。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用面積意義檢查：若函數全在 x 軸上方，結果必為正。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是忘記代下限。定積分是 F(b) - F(a)，只算 F(b) 會多出一個常數。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是以為定積分一定為正。它是有號面積，函數在 x 軸下方時結果為負。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是把定積分與不定積分混為一談。定積分是一個數，不定積分是一族函數。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "∫₀^2 2x dx？",
-      "answers": [
-        "4"
-      ],
-      "explanation": "計算：2^2 = 4。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫₀¹ 2 dx？",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：2*(1-0) = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "F(x)=∫₀ˣ t² dt，求 F′(2)。",
-      "answers": [
-        "4"
-      ],
-      "explanation": "計算：2^2 = 4。"
-    },
-    {
-      "type": "input",
-      "prompt": "F(x)=∫₀^(x²) t dt，求 F′(2)。",
-      "answers": [
-        "16"
-      ],
-      "explanation": "計算：2^2*2*2 = 16。"
-    },
-    {
-      "type": "input",
-      "prompt": "∫_(-2)^2 x³ dx？",
-      "answers": [
+      "prompt": "∫0² 2x dx 等於？",
+      "options": [
+        "4",
+        "2",
+        "8",
         "0"
       ],
-      "explanation": "計算：0 (odd symmetry) = 0。"
+      "answer": 0,
+      "explanation": "原函數 x²，代入上限 2 得 4，代入下限 0 得 0，相減為 4。也可用面積理解：三角形底 2、高 4，面積 4。"
     },
     {
       "type": "input",
-      "prompt": "∫₀^3 2x dx？",
+      "prompt": "∫0¹ 3x² dx 等於多少？",
       "answers": [
-        "9"
+        "1"
       ],
-      "explanation": "計算：3^2 = 9。"
+      "explanation": "原函數 x³，上限 1 得 1，下限 0 得 0，結果 1。驗證：∫3x² = x³ + C，相減時 C 抵消。"
     },
     {
       "type": "input",
-      "prompt": "∫₀¹ 3 dx？",
+      "prompt": "∫1² 2x dx 等於多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：3*(1-0) = 3。"
+      "explanation": "原函數 x²，上限 2 得 4，下限 1 得 1，相減為 3。注意不是 4-0，下限要代 1。"
     },
     {
-      "type": "input",
-      "prompt": "F(x)=∫₀ˣ t² dt，求 F′(3)。",
-      "answers": [
-        "9"
+      "prompt": "微積分基本定理說明？",
+      "options": [
+        "積分與求導互為逆運算",
+        "積分等於面積的絕對值",
+        "導數一定存在",
+        "積分只能用數值方法"
       ],
-      "explanation": "計算：3^2 = 9。"
+      "answer": 0,
+      "explanation": "基本定理建立了微分與積分的橋樑：先積分再求導回到原函數。這使定積分不必每次回到黎曼和，只要找原函數相減。"
     },
     {
       "type": "input",
-      "prompt": "F(x)=∫₀^(x²) t dt，求 F′(3)。",
+      "prompt": "∫0² (x + 1) dx 等於多少？",
       "answers": [
-        "54"
+        "4"
       ],
-      "explanation": "計算：3^2*2*3 = 54。"
+      "explanation": "原函數 x²/2 + x，上限 2 得 2 + 2 = 4，下限 0 得 0，結果 4。這是梯形面積：底 2、兩高 1 與 3，平均高 2，面積 4。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "計算 ∫0³ x² dx。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "原函數在上限 3 的值是多少？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "原函數 x³/3，代入 3 得 27/3 = 9。"
+        },
+        {
+          "type": "input",
+          "prompt": "原函數在下限 0 的值是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "代入 0 得 0。這是定積分計算中下限常被忽略的一步。"
+        },
+        {
+          "type": "input",
+          "prompt": "定積分的值是多少？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "9 - 0 = 9。函數在 [0,3] 全為正，結果為正，符合面積意義。"
+        }
+      ],
+      "explanation": "定積分的計算只有三步：找原函數、代上限、減下限。中間不需要寫 +C，因為相減必然抵消。"
     },
     {
       "type": "input",
-      "prompt": "∫_(-3)^3 x³ dx？",
+      "prompt": "∫-1¹ x³ dx 等於多少？",
       "answers": [
         "0"
       ],
-      "explanation": "計算：0 (odd symmetry) = 0。"
+      "explanation": "原函數 x⁴/4，上限 1 得 1/4，下限 -1 也得 1/4，相減為 0。這是奇函數在對稱區間上的必然結果：左右面積相等而符號相反。"
+    },
+    {
+      "prompt": "∫a^a f(x) dx 等於？",
+      "options": [
+        "0",
+        "f(a)",
+        "2f(a)",
+        "無法確定"
+      ],
+      "answer": 0,
+      "explanation": "上下限相同表示區間長度為 0，沒有任何面積，積分為 0。這是定積分最基本的性質之一。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫1^e (1/x) dx 等於多少？（e 請寫 e）",
+      "answers": [
+        "1"
+      ],
+      "explanation": "1/x 的原函數是 ln x，上限 e 得 ln e = 1，下限 1 得 ln 1 = 0，結果 1。這是自然對數的重要性質之一。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "計算 ∫0² (3x² + 1) dx。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "原函數在上限 2 的值是多少？",
+          "answers": [
+            "10"
+          ],
+          "explanation": "原函數 x³ + x，代入 2 得 8 + 2 = 10。"
+        },
+        {
+          "type": "input",
+          "prompt": "原函數在下限 0 的值是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "代入 0 得 0。"
+        },
+        {
+          "type": "input",
+          "prompt": "定積分的值是多少？",
+          "answers": [
+            "10"
+          ],
+          "explanation": "10 - 0 = 10。被積函數在區間上恆正，結果為正。"
+        }
+      ],
+      "explanation": "多項式的定積分逐項反推再代上下限。本題兩項都容易反推，適合用來熟悉流程。"
     }
   ],
   "passCount": 7

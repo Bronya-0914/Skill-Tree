@@ -2,130 +2,217 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-26",
   "title": "26 · 自然對數",
-  "intro": "參考原書第 23 章。學習自然對數，完成10 道輸入練習。",
+  "intro": "學完這一節，你能用積分定義自然對數、對 ln 求導與積分，並用對數性質化簡乘除與次方。自然對數是處理成長、衰減與積分 1/x 的關鍵工具。",
   "kind": "integral",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-22"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：ln 由積分定義"
     },
     {
       "type": "paragraph",
-      "text": "ln x 的實數定義域是 x>0，導數為 1/x。∫1/x dx=ln|x|+C；對數可把乘法轉為加法。"
+      "text": "自然對數定義為從 1 到 x 的 1/t 積分。這個定義保證了 ln 1 = 0、ln e = 1，也讓它的導數自然就是 1/x，不需要額外證明。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "ln x = ∫1^x (1/t) dt，x > 0"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：導數與積分互為搭檔"
     },
     {
       "type": "paragraph",
-      "text": "ln(e^5)？"
+      "text": "ln x 的導數是 1/x；反過來，1/x 的原函數是 ln|x|。絕對值不可省略，因為 1/x 在負區間也有定義。"
     },
     {
-      "type": "example",
-      "text": "ln(e^5)？\n計算：5 = 5。"
+      "type": "formula",
+      "text": "(ln x)' = 1/x\n∫(1/x) dx = ln|x| + C"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：對數把乘除變加減"
     },
     {
       "type": "paragraph",
-      "text": "ln(e^6)？"
+      "text": "對數的核心價值是把乘法變成加法、除法變成減法、次方變成乘法。這使得複雜的乘除運算可以先取對數再處理，也是對數微分法的基礎。"
     },
     {
-      "type": "example",
-      "text": "ln(e^6)？\n計算：6 = 6。"
+      "type": "formula",
+      "text": "ln(ab) = ln a + ln b\nln(a/b) = ln a - ln b\nln(aⁿ) = n·ln a"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，確認真數為正；ln 的定義域是 x > 0。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，求導時用 1/x；複合函數用鏈式法則，內層導數乘上去。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，積分 1/x 時記得加絕對值與 C。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，化簡時優先使用對數性質，把乘除拆成加減。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用 ln e = 1、ln 1 = 0 檢查數值是否合理。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是 (ln x)' 寫成 1/ln x 或 ln x。導數是 1/x，這是 ln 最重要的性質。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是積分 1/x 得 ln x 而漏掉絕對值。在負區間 ln x 無定義，必須寫 ln|x|。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是把 ln(a+b) 拆成 ln a + ln b。對數只對乘法成立，加法不能拆。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "ln(e^2)？",
-      "answers": [
-        "2"
+      "prompt": "(ln x)' 等於？",
+      "options": [
+        "1/x",
+        "ln x",
+        "1/ln x",
+        "x"
       ],
-      "explanation": "計算：2 = 2。"
+      "answer": 0,
+      "explanation": "自然對數的導數是 1/x，這是它最重要的性質，也是為什麼 1/x 的積分是 ln。其餘選項都是常見誤記。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=ln x，求 f′(2)。",
-      "answers": [
-        "0.5"
-      ],
-      "explanation": "計算：1/2 = 0.5。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=ln(2x)，求 f′(1)。",
+      "prompt": "ln e 等於多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：2/2 = 1。"
+      "explanation": "e 是自然對數的底，定義上 ln e = 1。這與 log₁₀10 = 1 是同一個道理，只是底不同。"
     },
     {
       "type": "input",
-      "prompt": "∫₁^(e^2) 1/x dx？",
+      "prompt": "ln 1 等於多少？",
       "answers": [
-        "2"
+        "0"
       ],
-      "explanation": "計算：2-0 = 2。"
+      "explanation": "任何底的對數，1 的對數都是 0，因為 a⁰ = 1。ln 1 = 0 是對數的基本性質。"
+    },
+    {
+      "prompt": "ln(ab) 等於？",
+      "options": [
+        "ln a + ln b",
+        "ln a · ln b",
+        "ln a - ln b",
+        "ln(a + b)"
+      ],
+      "answer": 0,
+      "explanation": "對數把乘法變成加法：ln(ab) = ln a + ln b。這是對數最重要的運算性質，也是它能簡化計算的原因。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=ln(x²+2)，求 f′(1)。",
-      "answers": [
-        "0.6666666666666666"
-      ],
-      "explanation": "計算：2/(1+2) = 0.6666666666666666。"
-    },
-    {
-      "type": "input",
-      "prompt": "ln(e^3)？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=ln x，求 f′(3)。",
-      "answers": [
-        "0.3333333333333333"
-      ],
-      "explanation": "計算：1/3 = 0.3333333333333333。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=ln(3x)，求 f′(1)。",
+      "prompt": "(ln(2x))' 在 x = 1 等於多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：3/3 = 1。"
+      "explanation": "鏈式法則：1/(2x)·2 = 1/x，代入 1 得 1。也可先化簡為 ln2 + ln x，導數同樣是 1/x。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "計算 ∫1^e (1/x) dx。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "1/x 的原函數是 ln|x|，它在 x = e 時的值是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "ln e = 1。原函數在上限 e 的值是 1，在下限 1 的值是 ln 1 = 0。"
+        },
+        {
+          "type": "input",
+          "prompt": "定積分的值是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "ln e - ln 1 = 1 - 0 = 1。"
+        }
+      ],
+      "explanation": "本題用積分定義驗證 ln e = 1：從 1 到 e 的 1/x 面積恰好是 1。這也是 e 這個數的由來。"
     },
     {
       "type": "input",
-      "prompt": "∫₁^(e^3) 1/x dx？",
+      "prompt": "ln(e³) 等於多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：3-0 = 3。"
+      "explanation": "用對數性質：ln(e³) = 3·ln e = 3·1 = 3。指數可以提到對數前面，這是化簡的常用技巧。"
+    },
+    {
+      "prompt": "ln x 的定義域是？",
+      "options": [
+        "x > 0",
+        "x ≥ 0",
+        "所有實數",
+        "x ≠ 0"
+      ],
+      "answer": 0,
+      "explanation": "對數的引數必須嚴格為正，因為沒有任何實數次方能得到負數或 0。定義域是 (0, ∞)，端點不包含。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=ln(x²+3)，求 f′(1)。",
+      "prompt": "(x·ln x)' 在 x = 1 等於多少？",
       "answers": [
-        "0.5"
+        "1"
       ],
-      "explanation": "計算：2/(1+3) = 0.5。"
+      "explanation": "乘積法則：1·ln x + x·(1/x) = ln x + 1，代入 1 得 0 + 1 = 1。這是對數出現在乘積中的典型求導。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "考慮 y = ln x 在 x = 1 處的切線。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "切線斜率是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "y' = 1/x，代入 1 得 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "切點的 y 座標是多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "ln 1 = 0，故切點為 (1, 0)。"
+        },
+        {
+          "type": "input",
+          "prompt": "切線的 y 截距是多少？",
+          "answers": [
+            "-1"
+          ],
+          "explanation": "點斜式 y - 0 = 1(x - 1)，得 y = x - 1，y 截距為 -1。"
+        }
+      ],
+      "explanation": "ln x 在 x=1 的切線是 y = x - 1，這條線在後面的線性近似與不等式估計中反覆出現。"
     }
   ],
   "passCount": 7

@@ -2,187 +2,226 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-29",
   "title": "29 · 成長與衰減",
-  "intro": "參考原書第 26 章。學習成長與衰減，完成4 道分步輸入長題。",
+  "intro": "學完這一節，你能建立指數成長與衰減模型、由資料定出常數，並用半衰期描述衰減速度。這是微分方程最常見的應用，從細菌繁殖到放射性定年都靠它。",
   "kind": "integral",
-  "minutes": 40,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-27"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：變化率與現量成正比"
     },
     {
       "type": "paragraph",
-      "text": "模型 P′=rP 的解為 P=P₀eʳᵗ。用已知資料求 r，再代入時間；倍增與半衰期用對數求解。"
+      "text": "成長或衰減的核心假設是：變化率正比於目前的量。写成微分方程就是 y' = ky。這個方程的解是指數函數，因為指數函數的導數正比於自身。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "y' = k·y  ⇒  y = C·e^(kt)"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：k 的符號決定成長或衰減"
     },
     {
       "type": "paragraph",
-      "text": "族群初值 700，每 2 年倍增，模型 P=P₀eʳᵗ。"
+      "text": "k > 0 時 y 隨時間增大，是指數成長；k < 0 時減小，是指數衰減。|k| 越大，變化越快。C 是初始量，因為 t = 0 時 e⁰ = 1。"
     },
     {
-      "type": "example",
-      "text": "輸入 r（每年，可用 ln）。\n計算：ln(2)/2 = 0.34657359027997264。"
+      "type": "formula",
+      "text": "k > 0：成長\nk < 0：衰減\ny(0) = C"
     },
     {
-      "type": "example",
-      "text": "4 年後的族群？\n計算：700*2^2 = 2800。"
-    },
-    {
-      "type": "example",
-      "text": "達到初值 8 倍需幾年？\n計算：2*3 = 6。"
+      "type": "heading",
+      "text": "原理三：半衰期只依賴 k"
     },
     {
       "type": "paragraph",
-      "text": "族群初值 800，每 2 年倍增，模型 P=P₀eʳᵗ。"
+      "text": "衰減到一半所需的時間叫半衰期。由 C·e^(kt) = C/2 解得 t = ln2/|k|。半衰期與初始量無關，這是放射性定年的基礎。"
     },
     {
-      "type": "example",
-      "text": "輸入 r（每年，可用 ln）。\n計算：ln(2)/2 = 0.34657359027997264。"
+      "type": "formula",
+      "text": "半衰期 t½ = ln2 / |k|"
     },
     {
-      "type": "example",
-      "text": "4 年後的族群？\n計算：800*2^2 = 3200。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "達到初值 8 倍需幾年？\n計算：2*3 = 6。"
+      "type": "paragraph",
+      "text": "第一步，確認模型是 y = Ce^(kt)，並找出初始量 C。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，用一組已知數據代入，解出 k。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，把 k 與 C 寫回模型。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，代入要求的時間或量，求解。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，檢查合理性：成長模型的值應遞增，衰減應遞減且恆正。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把 k 的符號弄反。衰減模型的 k 必須為負，否則算出的量會隨時間增大。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是以為 C 是成長率。C 是初始量，成長率是 k，兩者角色不同。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是半衰期公式用 ln10 或直接用 k。正確是 ln2/|k|，2 來自「一半」。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "族群初值 200，每 2 年倍增，模型 P=P₀eʳᵗ。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "輸入 r（每年，可用 ln）。",
-          "answers": [
-            "0.34657359027997264"
-          ],
-          "explanation": "計算：ln(2)/2 = 0.34657359027997264。"
-        },
-        {
-          "type": "input",
-          "prompt": "4 年後的族群？",
-          "answers": [
-            "800"
-          ],
-          "explanation": "計算：200*2^2 = 800。"
-        },
-        {
-          "type": "input",
-          "prompt": "達到初值 8 倍需幾年？",
-          "answers": [
-            "6"
-          ],
-          "explanation": "計算：2*3 = 6。"
-        }
-      ]
+      "prompt": "指數成長模型的一般形式是？",
+      "options": [
+        "y = C·e^(kt)",
+        "y = C + kt",
+        "y = C·t^k",
+        "y = k^t"
+      ],
+      "answer": 0,
+      "explanation": "變化率正比於現量的微分方程，解為 y = Ce^(kt)。線性模型 y=C+kt 是等速變化，與「變化率正比於現量」不同。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 100·e^(0.5t)，當 t = 0 時 y 等於多少？",
+      "answers": [
+        "100"
+      ],
+      "explanation": "t = 0 時 e⁰ = 1，故 y = 100。這說明係數 100 就是初始量，與成長率無關。"
+    },
+    {
+      "type": "input",
+      "prompt": "某量滿足 y = C·e^(kt)，且 y(0) = 50、y(1) = 100。C 等於多少？",
+      "answers": [
+        "50"
+      ],
+      "explanation": "y(0) = C·e⁰ = C，已知 y(0) = 50，故 C = 50。初始條件直接給出 C，這是解成長模型的第一步。"
+    },
+    {
+      "prompt": "若 k < 0，模型 y = C·e^(kt) 描述的是？",
+      "options": [
+        "衰減",
+        "成長",
+        "常數",
+        "線性增加"
+      ],
+      "answer": 0,
+      "explanation": "k 為負時指數為負，e^(kt) 隨 t 增大而減小，故為衰減。k 的符號是判斷成長或衰減的唯一依據。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 100·e^(-0.5t)，當 t = 0 時 y 等於多少？",
+      "answers": [
+        "100"
+      ],
+      "explanation": "e⁰ = 1，故 y = 100。即使 k 為負，t = 0 時的值仍是初始量 C。"
     },
     {
       "type": "multipart",
-      "prompt": "族群初值 300，每 2 年倍增，模型 P=P₀eʳᵗ。",
+      "prompt": "細菌數量滿足 y = 200·e^(0.2t)。",
       "parts": [
         {
           "type": "input",
-          "prompt": "輸入 r（每年，可用 ln）。",
+          "prompt": "初始數量是多少？",
           "answers": [
-            "0.34657359027997264"
+            "200"
           ],
-          "explanation": "計算：ln(2)/2 = 0.34657359027997264。"
+          "explanation": "t = 0 時 e⁰ = 1，y = 200。係數就是初始量。"
         },
         {
           "type": "input",
-          "prompt": "4 年後的族群？",
+          "prompt": "t = 5 時，指數 0.2t 的值是多少？",
           "answers": [
-            "1200"
+            "1"
           ],
-          "explanation": "計算：300*2^2 = 1200。"
+          "explanation": "0.2 × 5 = 1。這一步先算指數，再算 e 的次方。"
         },
         {
           "type": "input",
-          "prompt": "達到初值 8 倍需幾年？",
+          "prompt": "成長率 k 是多少？",
           "answers": [
-            "6"
+            "0.2"
           ],
-          "explanation": "計算：2*3 = 6。"
+          "explanation": "模型中 e 的指數是 0.2t，故 k = 0.2。k 為正，表示數量在增加。"
         }
-      ]
+      ],
+      "explanation": "指數模型的三個要素：初始量 C、成長率 k、時間 t。本題逐一取出，是理解模型結構的基本訓練。"
+    },
+    {
+      "type": "input",
+      "prompt": "微分方程 y' = 0.3y 的通解中，指數的係數是多少？",
+      "answers": [
+        "0.3"
+      ],
+      "explanation": "y' = ky 的解為 y = Ce^(kt)，故係數就是 0.3。這是把微分方程轉成指數模型最直接的方式。"
+    },
+    {
+      "prompt": "半衰期與 k 的關係是？",
+      "options": [
+        "t½ = ln2 / |k|",
+        "t½ = k / ln2",
+        "t½ = ln2 · |k|",
+        "t½ = 1/k"
+      ],
+      "answer": 0,
+      "explanation": "由 e^(kt) = 1/2 解得 t = ln2/|k|。分子是 ln2 而非 ln10，因為我們要的是「剩一半」的時間。"
+    },
+    {
+      "type": "input",
+      "prompt": "y = 50·e^(0.2t)，成長率 k 等於多少？",
+      "answers": [
+        "0.2"
+      ],
+      "explanation": "指數部分為 0.2t，故 k = 0.2。k 為正表示成長，數值代表每單位時間的相對成長率。"
     },
     {
       "type": "multipart",
-      "prompt": "族群初值 400，每 2 年倍增，模型 P=P₀eʳᵗ。",
+      "prompt": "某放射性物質滿足 y = 100·e^(-0.1t)，t 以年計。",
       "parts": [
         {
           "type": "input",
-          "prompt": "輸入 r（每年，可用 ln）。",
+          "prompt": "初始量是多少？",
           "answers": [
-            "0.34657359027997264"
+            "100"
           ],
-          "explanation": "計算：ln(2)/2 = 0.34657359027997264。"
+          "explanation": "t = 0 時 y = 100·1 = 100。"
         },
         {
           "type": "input",
-          "prompt": "4 年後的族群？",
+          "prompt": "t = 10 時，指數 -0.1t 的值是多少？",
           "answers": [
-            "1600"
+            "-1"
           ],
-          "explanation": "計算：400*2^2 = 1600。"
+          "explanation": "-0.1 × 10 = -1。指數為負，符合衰減。"
         },
         {
           "type": "input",
-          "prompt": "達到初值 8 倍需幾年？",
+          "prompt": "此時的量是初始量的多少倍？（以 e 表示，輸入 1/e 的形式請填 1/e）",
           "answers": [
-            "6"
+            "1/e"
           ],
-          "explanation": "計算：2*3 = 6。"
+          "explanation": "y(10) = 100·e^(-1) = 100/e，故為初始量的 1/e 倍。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "族群初值 500，每 2 年倍增，模型 P=P₀eʳᵗ。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "輸入 r（每年，可用 ln）。",
-          "answers": [
-            "0.34657359027997264"
-          ],
-          "explanation": "計算：ln(2)/2 = 0.34657359027997264。"
-        },
-        {
-          "type": "input",
-          "prompt": "4 年後的族群？",
-          "answers": [
-            "2000"
-          ],
-          "explanation": "計算：500*2^2 = 2000。"
-        },
-        {
-          "type": "input",
-          "prompt": "達到初值 8 倍需幾年？",
-          "answers": [
-            "6"
-          ],
-          "explanation": "計算：2*3 = 6。"
-        }
-      ]
+      ],
+      "explanation": "衰減模型的指數必為負。本題用 1/e 這個乾淨的值說明：每 10 年剩下約 37%，與 e 的定義直接相關。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }

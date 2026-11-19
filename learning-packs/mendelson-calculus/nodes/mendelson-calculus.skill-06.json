@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-06",
   "title": "06 · 圖形、合成與反函數",
-  "intro": "參考原書第 5 章。學習圖形、合成與反函數，完成10 道輸入練習。",
+  "intro": "學完這一節，你能把兩個函數串接成合成函數、判斷一個函數有沒有反函數，並實際求出反函數的值。這是鏈式法則與反三角函數的語言準備。",
   "kind": "base",
   "minutes": 20,
   "parents": [
@@ -11,121 +11,212 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：合成是依序作用"
     },
     {
       "type": "paragraph",
-      "text": "合成 f(g(x)) 先算內層。反函數需一對一；先交換 x、y 再解出 y。偶函數關於 y 軸對稱，奇函數關於原點對稱。"
+      "text": "合成函數 f(g(x)) 表示先做 g、再把結果交給 f。順序不可交換：先後不同，結果通常不同。合成後的定義域要求 x 在 g 的定義域內，且 g(x) 落在 f 的定義域內。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "(f ∘ g)(x) = f(g(x))\n先算內層 g(x)，再把結果代入外層 f"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：反函數是還原動作"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=x²，g(x)=x+5。求 f(g(1))。"
+      "text": "反函數把輸出還原成輸入。存在的前提是原函數一對一：不同的 x 必須給出不同的 y，否則無法判斷該還原成哪一個。水平線測試就是在檢查這件事。"
     },
     {
-      "type": "example",
-      "text": "f(x)=x²，g(x)=x+5。求 f(g(1))。\n計算：(1+5)^2 = 36。"
+      "type": "formula",
+      "text": "y = f(x)  ⇒  x = f⁻¹(y)\n求法：交換 x 與 y，再解出 y\nf⁻¹(f(x)) = x"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：單調性保證可逆"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=x²，g(x)=x+6。求 f(g(1))。"
+      "text": "嚴格遞增或嚴格遞減的函數一定一對一，因此一定有反函數。x² 在整個實數上不是一對一（f(2) = f(-2)），但限制在 x ≥ 0 之後就可逆。"
     },
     {
-      "type": "example",
-      "text": "f(x)=x²，g(x)=x+6。求 f(g(1))。\n計算：(1+6)^2 = 49。"
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，求合成值時由內而外，先算內層。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，求合成式時把內層整個代入外層的每一個 x。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，求反函數時先寫 y = f(x)，交換 x 與 y，再解出 y。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，求反函數在某一點的值，可直接令 f(x) 等於該值求解，通常比先求整條反函數快。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用 f⁻¹(f(a)) = a 回代驗證。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把 f(g(x)) 寫成 f(x)·g(x)。合成是代入，不是相乘。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是以為所有函數都有反函數。x²、sin x 在整個定義域上都不可逆，必須先限制區間。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是求 f⁻¹(2) 時先把 2 代入 f。正確做法是解 f(x) = 2，找出哪個 x 會輸出 2。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "f(x)=x²，g(x)=x+2。求 f(g(1))。",
-      "answers": [
+      "prompt": "設 f(x) = x + 1、g(x) = 2x，則 f(g(3)) 等於？",
+      "options": [
+        "7",
+        "6",
+        "8",
         "9"
       ],
-      "explanation": "計算：(1+2)^2 = 9。"
+      "answer": 0,
+      "explanation": "由內而外：先算 g(3) = 6，再算 f(6) = 7。若誤算成 f(3)·g(3) = 4·6 = 24，就是把合成當成相乘。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=2x+2，求 f⁻¹(8)。",
+      "prompt": "設 f(x) = x²、g(x) = x + 1，則 (g ∘ f)(2) 等於多少？",
       "answers": [
-        "3"
+        "5"
       ],
-      "explanation": "計算：(8-2)/2 = 3。"
+      "explanation": "(g ∘ f)(2) 表示先 f 後 g：f(2) = 4，再 g(4) = 5。注意 (g ∘ f) 與 (f ∘ g) 順序相反，本題是 g 在外層。"
     },
     {
       "type": "input",
-      "prompt": "y=(x-2)² 的頂點 x？",
+      "prompt": "設 f(x) = 3x - 6，則 f⁻¹(0) 等於多少？",
       "answers": [
         "2"
       ],
-      "explanation": "計算：2 = 2。"
+      "explanation": "令 f(x) = 0：3x - 6 = 0，得 x = 2，所以 f⁻¹(0) = 2。也可先求反函數 f⁻¹(x) = (x+6)/3，再代入 0 得 2。"
     },
     {
-      "type": "input",
-      "prompt": "偶函數 f 已知 f(2)=5。求 f(-2)。",
-      "answers": [
-        "5"
+      "prompt": "函數 f(x) = x² 在整個實數上沒有反函數，主要原因是？",
+      "options": [
+        "它不是一對一",
+        "它不是遞增",
+        "它的值域不是實數",
+        "它在 0 不可微"
       ],
-      "explanation": "計算：5 = 5。"
+      "answer": 0,
+      "explanation": "f(2) = f(-2) = 4，同一個輸出對應兩個輸入，無法決定該還原成哪一個，所以不滿足一對一。限制在 x ≥ 0 或 x ≤ 0 之後即可逆。"
     },
     {
       "type": "input",
-      "prompt": "奇函數 f 已知 f(2)=5。求 f(-2)。",
+      "prompt": "設 f(x) = x³，則 f⁻¹(8) 等於多少？",
       "answers": [
-        "-5"
+        "2"
       ],
-      "explanation": "計算：-5 = -5。"
+      "explanation": "解 x³ = 8，得 x = 2。三次方在實數上嚴格遞增且一對一，所以反函數存在，就是立方根。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = 2x + 1、g(x) = x²。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "f(g(2)) 等於多少？",
+          "answers": [
+            "9"
+          ],
+          "explanation": "先算 g(2) = 4，再算 f(4) = 9。"
+        },
+        {
+          "type": "input",
+          "prompt": "g(f(2)) 等於多少？",
+          "answers": [
+            "25"
+          ],
+          "explanation": "先算 f(2) = 5，再算 g(5) = 25。"
+        },
+        {
+          "type": "input",
+          "prompt": "兩者相差多少？",
+          "answers": [
+            "16"
+          ],
+          "explanation": "25 - 9 = 16。這個差值說明合成不可交換。"
+        }
+      ],
+      "explanation": "同一組函數、不同順序，結果完全不同。這是合成運算非交換性的最直接示範，也是鏈式法則必須注意內外層的原因。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=x²，g(x)=x+3。求 f(g(1))。",
-      "answers": [
-        "16"
-      ],
-      "explanation": "計算：(1+3)^2 = 16。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=2x+3，求 f⁻¹(9)。",
+      "prompt": "設 f(x) = 1/x（x ≠ 0），則 f(f(3)) 等於多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：(9-3)/2 = 3。"
+      "explanation": "f(3) = 1/3，再算 f(1/3) = 3。倒數函數是自己的反函數，兩次作用回到原值。"
+    },
+    {
+      "prompt": "下列哪個函數在整個實數上有反函數？",
+      "options": [
+        "f(x) = x³",
+        "f(x) = x²",
+        "f(x) = |x|",
+        "f(x) = x⁴"
+      ],
+      "answer": 0,
+      "explanation": "x³ 嚴格遞增，一對一，故可逆。x² 與 x⁴ 都是偶函數，f(a) = f(-a)；|x| 同樣不滿足一對一。判斷關鍵是單調性或水平線測試。"
     },
     {
       "type": "input",
-      "prompt": "y=(x-3)² 的頂點 x？",
+      "prompt": "函數 f(x) = √(x - 1) 的定義域下界是多少？",
       "answers": [
-        "3"
+        "1"
       ],
-      "explanation": "計算：3 = 3。"
+      "explanation": "根號內需 x - 1 ≥ 0，得 x ≥ 1，下界為 1 且可取。這也說明此函數的值域是 y ≥ 0。"
     },
     {
-      "type": "input",
-      "prompt": "偶函數 f 已知 f(3)=5。求 f(-3)。",
-      "answers": [
-        "5"
+      "type": "multipart",
+      "prompt": "設 f(x) = x/(x + 1)（x ≠ -1）。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "f(1) 等於多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "f(1) = 1/(1+1) = 1/2。"
+        },
+        {
+          "type": "input",
+          "prompt": "f⁻¹(2) 等於多少？",
+          "answers": [
+            "-2"
+          ],
+          "explanation": "解 f(x) = 2：x/(x+1) = 2，得 x = 2x + 2，所以 x = -2。"
+        },
+        {
+          "type": "input",
+          "prompt": "f(f(1)) 等於多少？",
+          "answers": [
+            "1/3"
+          ],
+          "explanation": "f(1) = 1/2，再算 f(1/2) = (1/2)/(3/2) = 1/3。"
+        }
       ],
-      "explanation": "計算：5 = 5。"
-    },
-    {
-      "type": "input",
-      "prompt": "奇函數 f 已知 f(3)=5。求 f(-3)。",
-      "answers": [
-        "-5"
-      ],
-      "explanation": "計算：-5 = -5。"
+      "explanation": "求反函數值不必先求出整條反函數，直接解 f(x) = 目標值更快，也更不容易出錯。"
     }
   ],
   "passCount": 7

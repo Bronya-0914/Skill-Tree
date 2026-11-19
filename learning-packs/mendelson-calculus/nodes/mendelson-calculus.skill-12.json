@@ -2,130 +2,225 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-12",
   "title": "12 · 三角函數與求導",
-  "intro": "參考原書第 10 章。學習三角函數與求導，完成10 道輸入練習。",
+  "intro": "學完這一節，你能對 sin、cos、tan 及其複合形式求導，並用 lim(sin x/x)=1 處理相關極限。三角函數的導數是往後處理振動、週期與極座標問題的基礎。",
   "kind": "derivative",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-11"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：sin 與 cos 的導數互為循環"
     },
     {
       "type": "paragraph",
-      "text": "求導公式採弧度。sin 的導數是 cos，cos 的導數是 -sin，tan 的導數是 sec²；複合角仍須乘內層導數。"
+      "text": "sin 的導數是 cos，cos 的導數是 -sin。負號出現在 cos 這一支，因為 cos 在 0 附近是遞減的。連續求導四次會回到原函數，形成 sin → cos → -sin → -cos → sin 的循環。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "(sin x)' = cos x\n(cos x)' = -sin x"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：tan 的導數是 sec²"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=sin(5x)，求 f′(0)。"
+      "text": "tan = sin/cos，用商法則可得 (cos² + sin²)/cos² = 1/cos² = sec²。因為 cos² + sin² = 1，結果恆為正，符合 tan 在其定義域上嚴格遞增。"
     },
     {
-      "type": "example",
-      "text": "f(x)=sin(5x)，求 f′(0)。\n計算：5*cos(0) = 5。"
+      "type": "formula",
+      "text": "(tan x)' = sec²x = 1/cos²x"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：重要極限 lim(sin x/x)=1"
     },
     {
       "type": "paragraph",
-      "text": "f(x)=sin(6x)，求 f′(0)。"
+      "text": "這個極限是 sin 導數為 cos 的關鍵。x 用弧度時成立；用角度則會多一個換算常數。所有三角函數的求導公式都建立在弧度制上。"
     },
     {
-      "type": "example",
-      "text": "f(x)=sin(6x)，求 f′(0)。\n計算：6*cos(0) = 6。"
+      "type": "formula",
+      "text": "lim(x→0) sin x / x = 1\nlim(x→0) (1 - cos x)/x = 0"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，辨認是基本三角函數還是複合形式。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，基本形式直接套公式；複合形式用鏈式法則，內層導數乘上去。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，tan、cot、sec、cosec 建議先化成 sin、cos，再用商法則，比背公式可靠。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，需要特定點的值時，先化簡再代入；記得 π/4、π/6、π/3 的三角值。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用恆等式（如 sin²+cos²=1）檢查結果是否可進一步化簡。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是 (cos x)' = sin x，漏掉負號。可以用 x=π/2 檢查：cos 的導數應為 -1，而 sin(π/2)=1 為正，符號明顯相反。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是複合時忘記內層導數。(sin 2x)' 是 2cos 2x，不是 cos 2x。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是 sin²x 與 sin(x²) 混淆。前者是 (sin x)²，導數 2 sin x cos x；後者是 sin(x²)，導數 2x cos(x²)。"
     }
   ],
   "questions": [
     {
+      "prompt": "(sin x)' 等於？",
+      "options": [
+        "cos x",
+        "-cos x",
+        "sin x",
+        "-sin x"
+      ],
+      "answer": 0,
+      "explanation": "sin 的導數是 cos。其餘三個選項分別對應 -cos（積分結果）、sin（原函數）、-sin（cos 的導數），都是常見混淆。"
+    },
+    {
       "type": "input",
-      "prompt": "f(x)=sin(2x)，求 f′(0)。",
+      "prompt": "f(x) = sin x + cos x，則 f'(0) 等於多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "f'(x) = cos x - sin x。代入 0 得 1 - 0 = 1。注意 cos 的導數帶負號，這是最容易漏的地方。"
+    },
+    {
+      "type": "input",
+      "prompt": "(tan x)' 在 x = 0 等於多少？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "tan 的導數是 sec²x = 1/cos²x，在 0 時 cos 0 = 1，故為 1。也可用商法則驗證：(cos²+sin²)/cos² 在 0 得 1。"
+    },
+    {
+      "prompt": "(cos x)' 等於？",
+      "options": [
+        "-sin x",
+        "sin x",
+        "cos x",
+        "-cos x"
+      ],
+      "answer": 0,
+      "explanation": "cos 的導數是 -sin。負號來自 cos 在 0 附近遞減。若寫成 sin x，會讓所有含 cos 的求導結果正負相反。"
+    },
+    {
+      "type": "input",
+      "prompt": "d/dx sin(2x) 在 x = 0 等於多少？",
       "answers": [
         "2"
       ],
-      "explanation": "計算：2*cos(0) = 2。"
+      "explanation": "鏈式法則：外層 cos(2x)，內層導數 2，得 2cos(2x)。代入 0 得 2·1 = 2。漏掉 2 是忘記內層導數的典型錯誤。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = sin x · cos x。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "f'(0) 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "乘積法則：cos x·cos x + sin x·(-sin x) = cos²x - sin²x。代入 0 得 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "f(π/4) 等於多少？",
+          "answers": [
+            "1/2"
+          ],
+          "explanation": "sin(π/4)·cos(π/4) = (√2/2)(√2/2) = 1/2。"
+        },
+        {
+          "type": "input",
+          "prompt": "f'(π/4) 等於多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "f' = cos²x - sin²x = cos(2x)。在 π/4 時 cos(π/2) = 0。這也說明 f 在此處有水平切線。"
+        }
+      ],
+      "explanation": "本題用乘積法則與倍角恆等式兩條路互相驗證：sin x cos x = (1/2)sin 2x，導數為 cos 2x，與 cos²x - sin²x 一致。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=cos(2x)，求 f′(0)。",
+      "prompt": "d/dx (x·sin x) 在 x = 0 等於多少？",
       "answers": [
         "0"
       ],
-      "explanation": "計算：-2*sin(0) = 0。"
+      "explanation": "乘積法則：1·sin x + x·cos x = sin x + x cos x。代入 0 得 0 + 0 = 0。這說明 y = x sin x 在原點有水平切線。"
     },
     {
-      "type": "input",
-      "prompt": "f(x)=tan(2x)，求 f′(0)。",
-      "answers": [
-        "2"
+      "prompt": "lim(x→0) sin x / x 等於？",
+      "options": [
+        "1",
+        "0",
+        "∞",
+        "不存在"
       ],
-      "explanation": "計算：2/cos(0)^2 = 2。"
+      "answer": 0,
+      "explanation": "這是三角求導的基礎極限，值為 1（x 以弧度計）。若用角度制，會多出 π/180 的換算因子，這也是所有三角公式都要求弧度的原因。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=2sin(x)，求 f′(pi)。",
-      "answers": [
-        "-2"
-      ],
-      "explanation": "計算：2*cos(pi) = -2。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=sin(x)^2，求 f′(pi/2)。",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：2*1*0 = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=sin(3x)，求 f′(0)。",
+      "prompt": "d/dx tan(3x) 在 x = 0 等於多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：3*cos(0) = 3。"
+      "explanation": "鏈式法則：外層 sec²(3x)，內層導數 3，得 3sec²(3x)。代入 0 得 3·1 = 3。"
     },
     {
-      "type": "input",
-      "prompt": "f(x)=cos(3x)，求 f′(0)。",
-      "answers": [
-        "0"
+      "type": "multipart",
+      "prompt": "設 g(x) = tan x。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "g'(0) 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "g' = sec²x，在 0 時 cos 0 = 1，故 sec²0 = 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "g(π/4) 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "tan(π/4) = sin(π/4)/cos(π/4) = 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "g'(π/4) 等於多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "sec²(π/4) = 1/cos²(π/4) = 1/(1/2) = 2。"
+        }
       ],
-      "explanation": "計算：-3*sin(0) = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=tan(3x)，求 f′(0)。",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3/cos(0)^2 = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=3sin(x)，求 f′(pi)。",
-      "answers": [
-        "-3"
-      ],
-      "explanation": "計算：3*cos(pi) = -3。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=sin(x)^3，求 f′(pi/2)。",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：3*1*0 = 0。"
+      "explanation": "tan 的三個典型值一次考完：原點斜率 1、π/4 的函數值 1、π/4 的斜率 2。這些值在後面的圖形分析與極值題會反覆用到。"
     }
   ],
   "passCount": 7

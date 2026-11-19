@@ -2,130 +2,237 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-10",
   "title": "10 · 基本求導與乘商法則",
-  "intro": "參考原書第 8 章。學習基本求導與乘商法則，完成10 道輸入練習。",
+  "intro": "學完這一節，你能對冪函數、多項式、乘積與商直接求導，不必每次回到極限定義。這是把導數從「定義」變成「工具」的關鍵一步。",
   "kind": "derivative",
-  "minutes": 20,
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-09"
   ],
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：冪法則是所有多項式的基礎"
     },
     {
       "type": "paragraph",
-      "text": "冪次法則：xⁿ 的導數是 nxⁿ⁻¹。乘積要兩項相加；商法則分母平方，分子是上導下減上下導。"
+      "text": "對 x 的 n 次方求導，指數搬到前面當係數，指數本身減 1。這個規則對正整數、負整數、分數都成立。常數的導數為 0，因為常數不隨 x 改變。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "(xⁿ)' = n·xⁿ⁻¹\n(c)' = 0"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：線性能逐項處理"
     },
     {
       "type": "paragraph",
-      "text": "d(x^5)/dx 在 x=2 的值？"
+      "text": "求導是線性運算：常數可以提出來，和與差可以逐項求導。所以多項式不必用定義，逐項套冪法則即可。"
     },
     {
-      "type": "example",
-      "text": "d(x^5)/dx 在 x=2 的值？\n計算：5*2^4 = 80。"
+      "type": "formula",
+      "text": "(c·f)' = c·f'\n(f ± g)' = f' ± g'"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：乘積法則不是分別求導再相乘"
     },
     {
       "type": "paragraph",
-      "text": "d(x^6)/dx 在 x=2 的值？"
+      "text": "兩個函數相乘時，導數不是兩個導數的乘積。正確形式是「第一個的導數乘第二個，加上第一個乘第二個的導數」。原因是一個在變、另一個也在變，兩者的變化都要算進去。"
     },
     {
-      "type": "example",
-      "text": "d(x^6)/dx 在 x=2 的值？\n計算：6*2^5 = 192。"
+      "type": "formula",
+      "text": "(u·v)' = u'·v + u·v'"
+    },
+    {
+      "type": "heading",
+      "text": "原理四：商法則的分子順序不可顛倒"
+    },
+    {
+      "type": "paragraph",
+      "text": "商的導數是「分子導乘分母，減分子乘分母導，再除以分母平方」。減法順序若顛倒，整個答案會差一個負號。記憶法是「上導下不導，減，上不導下導」。"
+    },
+    {
+      "type": "formula",
+      "text": "(u/v)' = (u'·v - u·v') / v²"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，辨認結構：是單項、和差、乘積、商，還是複合（下一節處理）。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，選對應法則；多項式逐項套冪法則。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，乘積用 u'v + uv'，商用 (u'v - uv')/v²，先寫出 u、v、u'、v' 再代入。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，化簡：合併同類項、約去公因式，能因式分解就分解。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，需要某一點的導數值時，先化簡再代入，可減少計算錯誤。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是 (uv)' = u'v'。這是把乘積當成線性運算，但求導不是線性的。用 x·x 檢驗：u=v=x，u'v'=1，而 (x²)'=2x，明顯不對。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是商法則分子順序顛倒，寫成 (uv' - u'v)/v²。這會讓答案正負相反。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是負指數或分數指數忘了套同一條冪法則。1/x = x⁻¹，導數是 -x⁻²；√x = x^(1/2)，導數是 (1/2)x^(-1/2)。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "d(x^2)/dx 在 x=2 的值？",
-      "answers": [
-        "4"
+      "prompt": "(x⁵)' 等於？",
+      "options": [
+        "5x⁴",
+        "x⁴",
+        "5x⁵",
+        "4x⁵"
       ],
-      "explanation": "計算：2*2^1 = 4。"
+      "answer": 0,
+      "explanation": "冪法則：指數 5 搬到前面，指數減 1 得 4，所以是 5x⁴。寫成 x⁴ 是漏掉係數，寫成 5x⁵ 是忘記指數減 1。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=(x+2)x²，求 f′(1)。",
+      "prompt": "f(x) = 3x² + 2x，則 f'(1) 等於多少？",
       "answers": [
-        "7"
+        "8"
       ],
-      "explanation": "計算：1+2*(1+2) = 7。"
+      "explanation": "逐項求導：f'(x) = 6x + 2。代入 1 得 8。常數項若存在，導數為 0，不影響結果。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=1/x，求 f′(2)。",
+      "prompt": "(x² · x³) 的導數在 x = 1 等於多少？",
       "answers": [
-        "-0.25"
+        "5"
       ],
-      "explanation": "計算：-1/2^2 = -0.25。"
+      "explanation": "先化簡成 x⁵，導數為 5x⁴，在 x = 1 得 5。若直接套乘積法則也得到同樣結果：2x·x³ + x²·3x² = 5x⁴。化簡通常更快。"
+    },
+    {
+      "prompt": "乘積法則的正確形式是？",
+      "options": [
+        "(uv)' = u'v + uv'",
+        "(uv)' = u'v'",
+        "(uv)' = u'v - uv'",
+        "(uv)' = (u'v')/2"
+      ],
+      "answer": 0,
+      "explanation": "乘積法則是 u'v + uv'，兩項都要有。u'v' 完全錯誤；減號形式是商法則的分子，不是乘積法則。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=x/(x+2)，求 f′(0)。",
+      "prompt": "f(x) = x/(x + 1)，則 f'(1) 等於多少？",
       "answers": [
-        "0.5"
+        "1/4"
       ],
-      "explanation": "計算：2/2^2 = 0.5。"
+      "explanation": "商法則：u = x、u' = 1、v = x+1、v' = 1，分子為 1·(x+1) - x·1 = 1，分母為 (x+1)²。所以 f'(x) = 1/(x+1)²，代入 1 得 1/4。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x) = x²(x + 1)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "展開後 x³ 的係數是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "x²(x+1) = x³ + x²，x³ 的係數是 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "f'(x) 中 x² 的係數是多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "逐項求導：3x² + 2x，x² 的係數是 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "f'(1) 等於多少？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "f'(x) = 3x² + 2x，代入 1 得 5。也可用乘積法則驗證：2x(x+1) + x² = 3x² + 2x。"
+        }
+      ],
+      "explanation": "本題比較「先展開再求導」與「直接用乘積法則」兩條路。兩者結果必須相同，這是檢查乘積法則是否用對的好方法。"
     },
     {
       "type": "input",
-      "prompt": "f(x)=2x³-2x，求 f′(1)。",
+      "prompt": "f(x) = 2/x，則 f'(2) 等於多少？",
       "answers": [
-        "4"
+        "-1/2"
       ],
-      "explanation": "計算：3*2-2 = 4。"
+      "explanation": "2/x = 2x⁻¹，導數為 -2x⁻² = -2/x²，代入 2 得 -2/4 = -1/2。負指數要套同一條冪法則。"
+    },
+    {
+      "prompt": "(√x)' 等於？",
+      "options": [
+        "1/(2√x)",
+        "2√x",
+        "1/√x",
+        "√x/2"
+      ],
+      "answer": 0,
+      "explanation": "√x = x^(1/2)，導數為 (1/2)x^(-1/2) = 1/(2√x)。這題常被誤寫成 2√x，那是把積分公式與求導公式混淆。"
     },
     {
       "type": "input",
-      "prompt": "d(x^3)/dx 在 x=2 的值？",
+      "prompt": "f(x) = (x² + 1)(x - 1)，則 f'(0) 等於多少？",
       "answers": [
-        "12"
+        "1"
       ],
-      "explanation": "計算：3*2^2 = 12。"
+      "explanation": "乘積法則：u = x²+1、u' = 2x、v = x-1、v' = 1，f' = 2x(x-1) + (x²+1)。代入 0 得 0 + 1 = 1。展開驗證：x³ - x² + x - 1 的導數在 0 也是 1。"
     },
     {
-      "type": "input",
-      "prompt": "f(x)=(x+3)x²，求 f′(1)。",
-      "answers": [
-        "9"
+      "type": "multipart",
+      "prompt": "設 f(x) = (2x + 1)/(x - 1)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "商法則分子 u'v - uv' 在 x = 2 的值是多少？",
+          "answers": [
+            "-3"
+          ],
+          "explanation": "u = 2x+1、u' = 2、v = x-1、v' = 1。u'v - uv' = 2(x-1) - (2x+1) = -3，與 x 無關，所以在 x = 2 仍為 -3。"
+        },
+        {
+          "type": "input",
+          "prompt": "分母 v² 在 x = 2 的值是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "v = x-1，在 x = 2 時 v = 1，平方為 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "f'(2) 等於多少？",
+          "answers": [
+            "-3"
+          ],
+          "explanation": "f'(2) = -3/1 = -3。分子恆為 -3、分母為 (x-1)²，故 f'(x) = -3/(x-1)²。"
+        }
       ],
-      "explanation": "計算：1+2*(1+3) = 9。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=1/x，求 f′(3)。",
-      "answers": [
-        "-0.1111111111111111"
-      ],
-      "explanation": "計算：-1/3^2 = -0.1111111111111111。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=x/(x+3)，求 f′(0)。",
-      "answers": [
-        "0.3333333333333333"
-      ],
-      "explanation": "計算：3/3^2 = 0.3333333333333333。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x)=3x³-2x，求 f′(1)。",
-      "answers": [
-        "7"
-      ],
-      "explanation": "計算：3*3-2 = 7。"
+      "explanation": "商法則的三個環節：算分子、算分母、相除。分子化簡後往往與 x 無關，這時整條導數只由分母決定大小。"
     }
   ],
   "passCount": 7

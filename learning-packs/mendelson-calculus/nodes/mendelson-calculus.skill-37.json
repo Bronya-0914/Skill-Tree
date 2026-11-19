@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-37",
   "title": "37 · 平面向量",
-  "intro": "參考原書第 33 章。學習平面向量，完成10 道輸入練習。",
+  "intro": "學完這一節，你能做向量的加法、純量乘法與點積，用點積算夾角並判斷垂直。向量是後面空間幾何、參數曲線與向量場的共同語言。",
   "kind": "base",
-  "minutes": 20,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-03",
     "mendelson-calculus.skill-12"
@@ -12,121 +12,216 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：向量有方向與大小"
     },
     {
       "type": "paragraph",
-      "text": "向量相加逐分量處理；長度由平方和開根號。內積 a·b=|a||b|cos θ，用來判垂直與投影。"
+      "text": "向量用一對分量表示，代表從起點到終點的位移。加法是分量相加，純量乘法是把每個分量乘上同一個數。這兩種運算讓向量可以像數一樣代數化處理。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "(a₁, a₂) + (b₁, b₂) = (a₁+b₁, a₂+b₂)\nk·(a₁, a₂) = (ka₁, ka₂)"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：點積把兩個向量變成一個數"
     },
     {
       "type": "paragraph",
-      "text": "向量 (15,20) 的長度？"
+      "text": "點積是對應分量相乘再相加。它的幾何意義是「一個向量在另一個方向上的投影乘上長度」，因此能算出夾角。點積為正表示夾角小於 90 度，為負表示大於 90 度，為 0 表示垂直。"
     },
     {
-      "type": "example",
-      "text": "向量 (15,20) 的長度？\n計算：sqrt(225+400) = 25。"
+      "type": "formula",
+      "text": "a·b = a₁b₁ + a₂b₂ = |a||b|cos θ"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：長度與單位向量"
     },
     {
       "type": "paragraph",
-      "text": "向量 (18,24) 的長度？"
+      "text": "向量的長度由勾股定理給出，等於各分量平方和開根號。把向量除以自己的長度，就得到同方向的單位向量，長度為 1。"
     },
     {
-      "type": "example",
-      "text": "向量 (18,24) 的長度？\n計算：sqrt(324+576) = 30。"
+      "type": "formula",
+      "text": "|a| = √(a₁² + a₂²)\n單位向量 = a / |a|"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，加法與純量乘法直接對分量操作。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，算點積：對應分量相乘再相加。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，算長度：平方和開根號。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，算夾角：cos θ = a·b / (|a||b|)。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，判斷垂直：點積為 0。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是把點積算成向量。點積的結果是一個數，不是向量；分量相乘後要相加。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把垂直條件寫成「斜率相乘為 -1」。對向量而言，垂直就是點積為 0，這個判別對垂直線也適用。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是求單位向量時只除以分量個數，而不是除以長度。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "向量 (6,8) 的長度？",
-      "answers": [
-        "10"
+      "prompt": "點積的定義是？",
+      "options": [
+        "a·b = |a||b|cos θ",
+        "a·b = |a| + |b|",
+        "a·b = |a||b|sin θ",
+        "a·b 是向量"
       ],
-      "explanation": "計算：sqrt(36+64) = 10。"
+      "answer": 0,
+      "explanation": "點積等於兩向量長度乘積再乘夾角的餘弦，結果是一個純量。用 sin 的是叉積的大小，方向另計。"
     },
     {
       "type": "input",
-      "prompt": "(2,1)·(2,3)？",
+      "prompt": "(1, 2)·(3, 4) 等於多少？",
       "answers": [
-        "7"
+        "11"
       ],
-      "explanation": "計算：2*2+3 = 7。"
+      "explanation": "對應分量相乘再相加：1·3 + 2·4 = 3 + 8 = 11。點積結果是數，不是向量。"
     },
     {
       "type": "input",
-      "prompt": "(2,2)+(1,3) 的 x 分量？",
+      "prompt": "向量 (3, 4) 的長度是多少？",
       "answers": [
-        "3"
+        "5"
       ],
-      "explanation": "計算：2+1 = 3。"
+      "explanation": "√(3² + 4²) = √25 = 5。這是 3-4-5 直角三角形，是最常用的向量長度例子。"
+    },
+    {
+      "prompt": "兩個非零向量垂直的條件是？",
+      "options": [
+        "點積為 0",
+        "點積為 1",
+        "長度相等",
+        "方向相同"
+      ],
+      "answer": 0,
+      "explanation": "垂直表示夾角 90 度，cos 90° = 0，故點積為 0。這個判別比斜率法更通用，垂直線也能處理。"
     },
     {
       "type": "input",
-      "prompt": "(1,2)·(-2,1)？",
+      "prompt": "向量 (2, 1) 與 (k, 4) 垂直，k 等於多少？",
+      "answers": [
+        "-2"
+      ],
+      "explanation": "點積為 0：2k + 4 = 0，解得 k = -2。垂直條件直接給出一個方程式，這是點積最常用的用途。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "考慮向量 a = (1, 2)、b = (3, -1)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "a·b 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "1·3 + 2·(-1) = 3 - 2 = 1。點積為正，表示夾角小於 90 度。"
+        },
+        {
+          "type": "input",
+          "prompt": "|a|² 等於多少？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "1² + 2² = 5。長度平方就是分量平方和，常用來避免開根號。"
+        },
+        {
+          "type": "input",
+          "prompt": "|b|² 等於多少？",
+          "answers": [
+            "10"
+          ],
+          "explanation": "3² + (-1)² = 9 + 1 = 10。"
+        }
+      ],
+      "explanation": "點積與長度平方是向量計算的兩個基本量。cos θ = a·b/(|a||b|)，用平方可以避免中間開根號。"
+    },
+    {
+      "type": "input",
+      "prompt": "(1, 1) 與 (1, -1) 的點積是多少？",
       "answers": [
         "0"
       ],
-      "explanation": "計算：-2+2 = 0。"
+      "explanation": "1·1 + 1·(-1) = 0，故兩向量垂直。這是平面上兩條對角線方向，夾角正好 90 度。"
+    },
+    {
+      "prompt": "向量加法如何計算？",
+      "options": [
+        "對應分量相加",
+        "分量相乘",
+        "長度相加",
+        "角度相加"
+      ],
+      "answer": 0,
+      "explanation": "向量加法是分量相加：(a₁,a₂)+(b₁,b₂) = (a₁+b₁, a₂+b₂)。幾何上是首尾相接的平行四邊形對角線。"
     },
     {
       "type": "input",
-      "prompt": "(2,3) 在 x 軸單位向量上的純量投影？",
+      "prompt": "向量 (3, 4) 的單位向量，第一個分量是多少？",
       "answers": [
-        "2"
+        "3/5"
       ],
-      "explanation": "計算：2 = 2。"
+      "explanation": "長度為 5，單位向量為 (3/5, 4/5)，第一個分量 3/5。單位向量的長度必為 1。"
     },
     {
-      "type": "input",
-      "prompt": "向量 (9,12) 的長度？",
-      "answers": [
-        "15"
+      "type": "multipart",
+      "prompt": "考慮向量 a = (2, 3)、b = (4, -1)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "a + b 的第一個分量是多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "2 + 4 = 6。向量加法逐分量進行。"
+        },
+        {
+          "type": "input",
+          "prompt": "a·b 等於多少？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "2·4 + 3·(-1) = 8 - 3 = 5。點積為正，夾角小於 90 度。"
+        },
+        {
+          "type": "input",
+          "prompt": "|a|² 等於多少？",
+          "answers": [
+            "13"
+          ],
+          "explanation": "4 + 9 = 13。"
+        }
       ],
-      "explanation": "計算：sqrt(81+144) = 15。"
-    },
-    {
-      "type": "input",
-      "prompt": "(3,1)·(2,3)？",
-      "answers": [
-        "9"
-      ],
-      "explanation": "計算：2*3+3 = 9。"
-    },
-    {
-      "type": "input",
-      "prompt": "(3,2)+(1,3) 的 x 分量？",
-      "answers": [
-        "4"
-      ],
-      "explanation": "計算：3+1 = 4。"
-    },
-    {
-      "type": "input",
-      "prompt": "(1,3)·(-3,1)？",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：-3+3 = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "(3,3) 在 x 軸單位向量上的純量投影？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3 = 3。"
+      "explanation": "本題同時練加法、點積與長度平方，是向量基本運算的完整組合。注意點積是數，加法是向量。"
     }
   ],
   "passCount": 7

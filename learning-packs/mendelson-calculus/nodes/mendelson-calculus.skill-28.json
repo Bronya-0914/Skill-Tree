@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-28",
   "title": "28 · L’Hôpital 法則",
-  "intro": "參考原書第 25 章。學習L’Hôpital 法則，完成10 道輸入練習。",
-  "kind": "integral",
-  "minutes": 20,
+  "intro": "學完這一節，你能處理 0/0 與 ∞/∞ 這兩種不定型的極限：分別對分子分母求導再取極限。這是把極限問題轉成求導問題的捷徑，但只對不定型有效。",
+  "kind": "derivative",
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-13",
     "mendelson-calculus.skill-27"
@@ -12,121 +12,216 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：只對不定型有效"
     },
     {
       "type": "paragraph",
-      "text": "只有 0/0 或 ∞/∞ 型且滿足條件時，才對分子分母分別求導。乘積、差與冪型須先轉換；不是商法則。"
+      "text": "當分子分母同時趨向 0，或同時趨向無窮，直接代入無法判斷。L'Hôpital 法則說：在這種情況下，原極限等於分子導數除以分母導數的極限。前提是後者的極限存在。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "若 lim f = lim g = 0 或同時為 ±∞，且 g' ≠ 0\n則 lim f/g = lim f'/g'"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：不是不定型就不能用"
     },
     {
       "type": "paragraph",
-      "text": "lim(x→0) (e^(5x)-1)/x？"
+      "text": "若分子分母的極限不是同時為 0 或同時為無窮，直接代入即可，強行求導會得到錯誤答案。使用前必須先確認型態，這是本章最容易被忽略的一步。"
     },
     {
-      "type": "example",
-      "text": "lim(x→0) (e^(5x)-1)/x？\n計算：5*1/1 = 5。"
+      "type": "formula",
+      "text": "先代入確認：0/0 或 ∞/∞ 才可用\n3/0、0/5 等都不是不定型"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：可以重複使用"
     },
     {
       "type": "paragraph",
-      "text": "lim(x→0) (e^(6x)-1)/x？"
+      "text": "求導一次後若仍是不定型，可以再求導一次。但只要某一歩已不再是 0/0 或 ∞/∞，就必須停止，否則會愈算愈錯。"
     },
     {
-      "type": "example",
-      "text": "lim(x→0) (e^(6x)-1)/x？\n計算：6*1/1 = 6。"
+      "type": "formula",
+      "text": "lim f/g = lim f'/g' = lim f''/g''（每步都需確認型態）"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，直接代入，確認是否為 0/0 或 ∞/∞。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，對分子、分母分別求導，不要用商法則。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，再代入；若仍是不定型，重複一次。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，一旦不再是定型，就停止求導，直接代入得答案。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用數值表或已知極限核對結果是否合理。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是對非不定型使用法則。例如 lim(x→0) (x+1)/x 不是 0/0，強行求導得 1/1 = 1，完全錯誤。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是對整個商套商法則。L'Hôpital 是分別對分子分母求導，不是 (f/g)'。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是求導次數過多。已脫離不定型還繼續求導，答案會偏離。"
     }
   ],
   "questions": [
     {
-      "type": "input",
-      "prompt": "lim(x→0) (e^(2x)-1)/x？",
-      "answers": [
-        "2"
+      "prompt": "L'Hôpital 法則適用於哪些情況？",
+      "options": [
+        "0/0 或 ∞/∞ 型",
+        "任何極限",
+        "只有 0/0 型",
+        "只有多項式"
       ],
-      "explanation": "計算：2*1/1 = 2。"
+      "answer": 0,
+      "explanation": "法則是為了解決不定型：分子分母同時趨向 0 或同時趨向無窮。其他型態直接代入即可，強行使用會得到錯誤結果。"
     },
     {
       "type": "input",
-      "prompt": "lim(x→0) ln(1+2x)/x？",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：2/1 = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "lim(x→0) (1-cos(2x))/x²？",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：2^2/2 = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "lim(x→∞) x^2/eˣ？",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：0 (exponential growth dominates) = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "lim(x→0) sin(2x)/sin(2x)？",
+      "prompt": "lim(x→0) sin x / x 等於多少？",
       "answers": [
         "1"
       ],
-      "explanation": "計算：2/2 = 1。"
+      "explanation": "代入得 0/0，可用 L'Hôpital：分子導數 cos x、分母導數 1，得 cos x/1，代入 0 得 1。這與之前的基礎極限一致。"
     },
     {
       "type": "input",
-      "prompt": "lim(x→0) (e^(3x)-1)/x？",
+      "prompt": "lim(x→0) (eˣ - 1)/x 等於多少？",
       "answers": [
-        "3"
+        "1"
       ],
-      "explanation": "計算：3*1/1 = 3。"
+      "explanation": "0/0 型。分子導數 eˣ、分母導數 1，得 eˣ，代入 0 得 1。這個極限也是 e 的定義之一。"
+    },
+    {
+      "prompt": "lim(x→0) (x + 1)/x 可以使用 L'Hôpital 嗎？",
+      "options": [
+        "不可以，因為不是不定型",
+        "可以，結果為 1",
+        "可以，結果為 0",
+        "可以，結果為無窮"
+      ],
+      "answer": 0,
+      "explanation": "分子趨向 1、分母趨向 0，是「非零除以零」，屬於無窮而非不定型。強行求導得 1/1 = 1，與正確答案（無窮）完全不符。"
     },
     {
       "type": "input",
-      "prompt": "lim(x→0) ln(1+3x)/x？",
+      "prompt": "lim(x→0) (1 - cos x)/x² 等於多少？",
       "answers": [
-        "3"
+        "1/2"
       ],
-      "explanation": "計算：3/1 = 3。"
+      "explanation": "0/0 型。第一次求導得 sin x/(2x)，仍是 0/0；再求導得 cos x/2，代入 0 得 1/2。這是需要重複使用的典型例子。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "計算 lim(x→0) sin(3x)/x。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "分子求導後在 x = 0 的值是多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "分子 sin(3x) 的導數是 3cos(3x)，代入 0 得 3·1 = 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "分母求導後的值是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "分母 x 的導數是 1，為常數。"
+        },
+        {
+          "type": "input",
+          "prompt": "極限值是多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "3/1 = 3。這與 lim sin(3x)/x = 3·lim sin(3x)/(3x) = 3 的結果一致。"
+        }
+      ],
+      "explanation": "L'Hôpital 的計算只有兩步：分子分母分別求導，再代入。本題的關鍵是鏈式法則產生係數 3。"
     },
     {
       "type": "input",
-      "prompt": "lim(x→0) (1-cos(3x))/x²？",
-      "answers": [
-        "4.5"
-      ],
-      "explanation": "計算：3^2/2 = 4.5。"
-    },
-    {
-      "type": "input",
-      "prompt": "lim(x→∞) x^3/eˣ？",
+      "prompt": "lim(x→∞) x/eˣ 等於多少？",
       "answers": [
         "0"
       ],
-      "explanation": "計算：0 (exponential growth dominates) = 0。"
+      "explanation": "∞/∞ 型。求導得 1/eˣ，當 x 趨向無窮時趨近 0。這說明指數成長遠快於多項式，是判斷無窮極限的重要依據。"
+    },
+    {
+      "prompt": "∞/∞ 型的極限應該如何處理？",
+      "options": [
+        "同樣使用 L'Hôpital 法則",
+        "直接寫無窮",
+        "取倒數",
+        "無法計算"
+      ],
+      "answer": 0,
+      "explanation": "∞/∞ 與 0/0 都是不定型，都適用 L'Hôpital。方法相同：分子分母分別求導再取極限，必要時重複。"
     },
     {
       "type": "input",
-      "prompt": "lim(x→0) sin(3x)/sin(2x)？",
+      "prompt": "lim(x→0) (e^(2x) - 1)/x 等於多少？",
       "answers": [
-        "1.5"
+        "2"
       ],
-      "explanation": "計算：3/2 = 1.5。"
+      "explanation": "0/0 型。分子導數 2e^(2x)、分母導數 1，代入 0 得 2·1 = 2。內層係數 2 會直接出現在答案中。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "計算 lim(x→1) (x² - 1)/(x - 1)。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "分子求導後在 x = 1 的值是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "分子 x²-1 的導數是 2x，代入 1 得 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "分母求導後的值是多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "分母 x-1 的導數是 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "極限值是多少？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "2/1 = 2。與因式分解法 (x+1) 代入 1 的結果一致，兩法可互相驗證。"
+        }
+      ],
+      "explanation": "本題可以用因式分解或 L'Hôpital，兩者結果相同。多項式題目通常因式分解更快，L'Hôpital 的優勢在於三角與指數。"
     }
   ],
   "passCount": 7

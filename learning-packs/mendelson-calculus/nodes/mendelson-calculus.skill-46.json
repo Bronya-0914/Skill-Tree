@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-46",
   "title": "46 · 多變量函數與座標",
-  "intro": "參考原書第 41 章。學習多變量函數與座標，完成10 道輸入練習。",
+  "intro": "學完這一節，你能讀懂 f(x, y) 的意義、算出函數值、判斷定義域，並用等高線想像三維圖形。多變量是所有偏導與多重積分的前提。",
   "kind": "base",
-  "minutes": 20,
+  "minutes": 22,
   "parents": [
     "mendelson-calculus.skill-06",
     "mendelson-calculus.skill-45"
@@ -12,121 +12,219 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：輸入是平面上的點"
     },
     {
       "type": "paragraph",
-      "text": "定義域可能是平面區域或空間集合。等高線固定函數值；柱座標 x=r cos θ、y=r sin θ，球座標須說明角度慣例。"
+      "text": "多變量函數 f(x, y) 接受一對數，輸出一個數。可以想成地圖上的高度：每個位置對應一個海拔。這比單變量多了一個自由度，圖形從曲線變成曲面。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "z = f(x, y)：(x, y) 是平面上的點，z 是高度"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：定義域是平面區域"
     },
     {
       "type": "paragraph",
-      "text": "f(x,y)=x²+y²，求 f(5,1)。"
+      "text": "定義域是所有使式子有意義的 (x, y)。限制與單變量相同：分母不為 0、偶次根號內非負、對數引數為正，只是條件變成兩個變量的不等式。"
     },
     {
-      "type": "example",
-      "text": "f(x,y)=x²+y²，求 f(5,1)。\n計算：5^2+1 = 26。"
+      "type": "formula",
+      "text": "f = 1/(x - y)：x ≠ y\nf = √(x² + y²)：所有點"
+    },
+    {
+      "type": "heading",
+      "text": "原理三：等高線把三維壓成二維"
     },
     {
       "type": "paragraph",
-      "text": "f(x,y)=x²+y²，求 f(6,1)。"
+      "text": "把 f(x, y) = k 的所有點連起來，就是高度為 k 的等高線。等高線密集表示高度變化快，稀疏表示平緩。這是用平面圖表達曲面的標準方法。"
     },
     {
-      "type": "example",
-      "text": "f(x,y)=x²+y²，求 f(6,1)。\n計算：6^2+1 = 37。"
+      "type": "formula",
+      "text": "f(x, y) = k：高度為 k 的等高線"
+    },
+    {
+      "type": "heading",
+      "text": "操作步驟"
+    },
+    {
+      "type": "paragraph",
+      "text": "第一步，確認函數的輸入個數與輸出。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第二步，算函數值時把兩個座標一起代入。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，求定義域時逐項列限制，取交集。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，畫等高線時令 f = 常數，化簡成熟悉的圖形。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用一個具體點檢查：算出的高度是否與直覺相符。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是算 f(2,3) 時只代入一個數。必須同時代入 x 與 y，順序不可顛倒。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把定義域當成一個區間。多變量的定義域是平面上的區域，不是數線上的一段。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是認為等高線就是曲面本身。等高線是投影，只保留高度資訊，不含立體形狀。"
     }
   ],
   "questions": [
     {
+      "prompt": "f(x, y) = x² + y² 的等高線是什麼形狀？",
+      "options": [
+        "圓",
+        "直線",
+        "拋物線",
+        "雙曲線"
+      ],
+      "answer": 0,
+      "explanation": "令 x² + y² = k，k > 0 時是半徑 √k 的圓。等高線是一圈圈的同心圓，中心在原點，這正是碗形曲面的投影。"
+    },
+    {
       "type": "input",
-      "prompt": "f(x,y)=x²+y²，求 f(2,1)。",
+      "prompt": "f(x, y) = x² + y²，f(2, 3) 等於多少？",
+      "answers": [
+        "13"
+      ],
+      "explanation": "4 + 9 = 13。兩個座標都要代入，且各自平方後相加。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x, y) = xy，f(2, 3) 等於多少？",
+      "answers": [
+        "6"
+      ],
+      "explanation": "2 × 3 = 6。乘積型函數的等高線是雙曲線 xy = k。"
+    },
+    {
+      "prompt": "多變量函數的定義域是？",
+      "options": [
+        "使式子有意義的點集",
+        "一個區間",
+        "一條曲線",
+        "一個數"
+      ],
+      "answer": 0,
+      "explanation": "定義域是平面上所有使函數有定義的 (x,y)，通常是一個區域。單變量的定義域才是數線上的一段。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x, y) = √(x² + y²)，f(3, 4) 等於多少？",
       "answers": [
         "5"
       ],
-      "explanation": "計算：2^2+1 = 5。"
+      "explanation": "√(9 + 16) = √25 = 5。這是點到原點的距離，故等高線是圓。"
     },
     {
-      "type": "input",
-      "prompt": "x²+y²=4 的等高線半徑？",
-      "answers": [
-        "2"
+      "type": "multipart",
+      "prompt": "設 f(x, y) = x² + y²。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "f(1, 0) 等於多少？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "1 + 0 = 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "f(0, 2) 等於多少？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "0 + 4 = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "兩者相加等於多少？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "1 + 4 = 5。"
+        }
       ],
-      "explanation": "計算：sqrt(4) = 2。"
+      "explanation": "多變量函數的值仍是一個數。本題分別在兩個座標軸上取值，用來熟悉「同時代入兩個變量」的操作。"
     },
     {
-      "type": "input",
-      "prompt": "柱座標 r=2, θ=0，求 x。",
-      "answers": [
-        "2"
+      "prompt": "f(x, y) = 1/(x - y) 在哪些點無定義？",
+      "options": [
+        "x = y 的所有點",
+        "x = 0 的點",
+        "y = 0 的點",
+        "原點"
       ],
-      "explanation": "計算：2*cos(0) = 2。"
+      "answer": 0,
+      "explanation": "分母為 0 時無定義，即 x - y = 0，也就是整條直線 y = x。多變量的「無定義」通常是一條線或一個區域，不是單獨的點。"
     },
     {
-      "type": "input",
-      "prompt": "球座標 ρ=2, φ=pi/2（φ 從正 z 軸量），求 z。",
-      "answers": [
-        "0"
+      "prompt": "等高線越密集，表示？",
+      "options": [
+        "高度變化越快",
+        "高度變化越慢",
+        "高度為 0",
+        "曲面是平的"
       ],
-      "explanation": "計算：2*cos(pi/2) = 0。"
+      "answer": 0,
+      "explanation": "密集表示在短距離內高度改變很多，即坡度陡。稀疏則表示平緩。這是讀地形圖的基本規則。"
     },
     {
       "type": "input",
-      "prompt": "f(x,y)=√(4-x²-y²)，求 f(0,0)。",
-      "answers": [
-        "2"
-      ],
-      "explanation": "計算：sqrt(4) = 2。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x,y)=x²+y²，求 f(3,1)。",
-      "answers": [
-        "10"
-      ],
-      "explanation": "計算：3^2+1 = 10。"
-    },
-    {
-      "type": "input",
-      "prompt": "x²+y²=9 的等高線半徑？",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：sqrt(9) = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "柱座標 r=3, θ=0，求 x。",
-      "answers": [
-        "3"
-      ],
-      "explanation": "計算：3*cos(0) = 3。"
-    },
-    {
-      "type": "input",
-      "prompt": "球座標 ρ=3, φ=pi/2（φ 從正 z 軸量），求 z。",
-      "answers": [
-        "0"
-      ],
-      "explanation": "計算：3*cos(pi/2) = 0。"
-    },
-    {
-      "type": "input",
-      "prompt": "f(x,y)=√(9-x²-y²)，求 f(0,0)。",
+      "prompt": "f(x, y) = x + y，f(1, 2) 等於多少？",
       "answers": [
         "3"
       ],
-      "explanation": "計算：sqrt(9) = 3。"
+      "explanation": "1 + 2 = 3。線性函數的等高線是平行直線 x + y = k。"
+    },
+    {
+      "type": "multipart",
+      "prompt": "設 f(x, y) = x² - y²。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "f(2, 1) 等於多少？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "4 - 1 = 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "f(1, 2) 等於多少？",
+          "answers": [
+            "-3"
+          ],
+          "explanation": "1 - 4 = -3。這說明 f 不對稱：交換 x 與 y 會變號。"
+        },
+        {
+          "type": "input",
+          "prompt": "兩者相加等於多少？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "3 + (-3) = 0。這是因為 f(y,x) = -f(x,y)，屬於反對稱函數。"
+        }
+      ],
+      "explanation": "x² - y² 的等高線是雙曲線，且在原點附近呈鞍形。交換座標會變號，是判斷鞍點的重要線索。"
     }
   ],
   "passCount": 7

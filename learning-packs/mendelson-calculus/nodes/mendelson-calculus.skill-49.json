@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "mendelson-calculus.skill-49",
   "title": "49 · 二重積分與區域",
-  "intro": "參考原書第 44 章。學習二重積分與區域，完成4 道分步輸入長題。",
-  "kind": "base",
-  "minutes": 40,
+  "intro": "學完這一節，你能在矩形與簡單區域上算二重積分，並理解它等於「把平面切成小塊後累加」。二重積分是面積、質量與平均值的統一工具。",
+  "kind": "integral",
+  "minutes": 24,
   "parents": [
     "mendelson-calculus.skill-23",
     "mendelson-calculus.skill-47"
@@ -12,218 +12,201 @@
   "content": [
     {
       "type": "heading",
-      "text": "先用白話理解"
+      "text": "原理一：二重積分是兩次單變量積分"
     },
     {
       "type": "paragraph",
-      "text": "先畫區域再寫內外上下限。內層積分時外層變量固定；交換次序須重寫區域，不能只交換 dx、dy。"
+      "text": "把平面區域切成小方塊，每塊用函數值乘面積，再加起來取極限，就是二重積分。實際計算時寫成累次積分：先對內層變量積分，再對外層積分。"
     },
     {
-      "type": "tip",
-      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+      "type": "formula",
+      "text": "∬_R f(x, y) dA = ∫a^b ∫c^d f(x, y) dy dx"
     },
     {
       "type": "heading",
-      "text": "逐步例題"
+      "text": "原理二：區域決定上下限"
     },
     {
       "type": "paragraph",
-      "text": "三角區域 D：0≤x≤7, 0≤y≤x，計算質量與矩，密度為 1。"
+      "text": "矩形區域的上下限是常數；非矩形區域的內層上下限會依外層變量而變。先畫出區域，再判斷哪個方向切比較容易，是設定積分的關鍵。"
     },
     {
-      "type": "example",
-      "text": "面積 ∬D 1 dA？\n計算：7^2/2 = 24.5。"
+      "type": "formula",
+      "text": "矩形：∫a^b ∫c^d\n一般區域：∫a^b ∫g₁(x)^g₂(x)"
     },
     {
-      "type": "example",
-      "text": "➍D x dA（此處符號表示二重積分）？\n計算：7^3/3 = 114.33333333333333。"
-    },
-    {
-      "type": "example",
-      "text": "➍D y dA（此處符號表示二重積分）？\n計算：7^3/6 = 57.166666666666664。"
-    },
-    {
-      "type": "example",
-      "text": "交換積分順序後，外層 y 上限？\n計算：7 = 7。"
+      "type": "heading",
+      "text": "原理三：積分 1 得到面積"
     },
     {
       "type": "paragraph",
-      "text": "三角區域 D：0≤x≤8, 0≤y≤x，計算質量與矩，密度為 1。"
+      "text": "被積函數是 1 時，二重積分就是區域的面積。這是檢查上下限是否正確最快的方法：算出的面積應與幾何直覺相符。"
     },
     {
-      "type": "example",
-      "text": "面積 ∬D 1 dA？\n計算：8^2/2 = 32。"
+      "type": "formula",
+      "text": "∬_R 1 dA = 面積(R)"
     },
     {
-      "type": "example",
-      "text": "➍D x dA（此處符號表示二重積分）？\n計算：8^3/3 = 170.66666666666666。"
+      "type": "heading",
+      "text": "操作步驟"
     },
     {
-      "type": "example",
-      "text": "➍D y dA（此處符號表示二重積分）？\n計算：8^3/6 = 85.33333333333333。"
+      "type": "paragraph",
+      "text": "第一步，畫出區域，確認是矩形還是曲邊區域。"
     },
     {
-      "type": "example",
-      "text": "交換積分順序後，外層 y 上限？\n計算：8 = 8。"
+      "type": "paragraph",
+      "text": "第二步，決定積分順序，選內層較容易積的方向。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第三步，寫出內外兩層的上下限。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第四步，先算內層，把結果當成外層的被積函數。"
+    },
+    {
+      "type": "paragraph",
+      "text": "第五步，用「積分 1 得面積」檢查設定是否正確。"
+    },
+    {
+      "type": "heading",
+      "text": "常見誤解"
     },
     {
       "type": "tip",
-      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+      "text": "最常見的錯誤是內外層上下限寫反。內層的上下限可以含外層變量，外層的必須是常數。"
+    },
+    {
+      "type": "tip",
+      "text": "第二個誤解是把二重積分當成兩個獨立積分的乘積。只有被積函數可分離且區域是矩形時才成立。"
+    },
+    {
+      "type": "tip",
+      "text": "第三個誤解是忘記 dA 在極座標下是 r dr dθ，不是 dr dθ。少了 r 會讓面積算錯。"
     }
   ],
   "questions": [
     {
-      "type": "multipart",
-      "prompt": "三角區域 D：0≤x≤2, 0≤y≤x，計算質量與矩，密度為 1。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "面積 ∬D 1 dA？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2^2/2 = 2。"
-        },
-        {
-          "type": "input",
-          "prompt": "➍D x dA（此處符號表示二重積分）？",
-          "answers": [
-            "2.6666666666666665"
-          ],
-          "explanation": "計算：2^3/3 = 2.6666666666666665。"
-        },
-        {
-          "type": "input",
-          "prompt": "➍D y dA（此處符號表示二重積分）？",
-          "answers": [
-            "1.3333333333333333"
-          ],
-          "explanation": "計算：2^3/6 = 1.3333333333333333。"
-        },
-        {
-          "type": "input",
-          "prompt": "交換積分順序後，外層 y 上限？",
-          "answers": [
-            "2"
-          ],
-          "explanation": "計算：2 = 2。"
-        }
-      ]
+      "prompt": "二重積分的實際計算方式是？",
+      "options": [
+        "內外兩次單變量積分",
+        "一次積分",
+        "兩個積分相乘",
+        "求導"
+      ],
+      "answer": 0,
+      "explanation": "二重積分化成累次積分：先對內層變量積分，結果再對外層積分。這是把二維問題拆成兩個一維問題。"
+    },
+    {
+      "type": "input",
+      "prompt": "∬ 1 dA 在區域 [0,1]×[0,2] 上等於多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "被積函數為 1，積分等於區域面積：1 × 2 = 2。這是檢查上下限最快的方法。"
+    },
+    {
+      "type": "input",
+      "prompt": "∬ xy dA 在 [0,1]×[0,1] 上等於多少？",
+      "answers": [
+        "1/4"
+      ],
+      "explanation": "分離變量：∫0¹x dx · ∫0¹y dy = (1/2)(1/2) = 1/4。矩形區域且被積函數可分離時，可以拆成兩個積分相乘。"
+    },
+    {
+      "prompt": "∬ 1 dA 的幾何意義是？",
+      "options": [
+        "區域的面積",
+        "區域的周長",
+        "區域的體積",
+        "區域的質心"
+      ],
+      "answer": 0,
+      "explanation": "被積函數為 1 時，二重積分就是區域面積。若被積函數是密度，則得到質量；除以面積則得到平均值。"
+    },
+    {
+      "type": "input",
+      "prompt": "∬ x dA 在 [0,2]×[0,1] 上等於多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "∫0¹dy · ∫0²x dx = 1 · 2 = 2。被積函數只含 x，對 y 的積分只是乘上 y 的區間長度。"
     },
     {
       "type": "multipart",
-      "prompt": "三角區域 D：0≤x≤3, 0≤y≤x，計算質量與矩，密度為 1。",
+      "prompt": "計算 ∬ 1 dA 在 [0,2]×[0,3] 上。",
       "parts": [
         {
           "type": "input",
-          "prompt": "面積 ∬D 1 dA？",
-          "answers": [
-            "4.5"
-          ],
-          "explanation": "計算：3^2/2 = 4.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "➍D x dA（此處符號表示二重積分）？",
-          "answers": [
-            "9"
-          ],
-          "explanation": "計算：3^3/3 = 9。"
-        },
-        {
-          "type": "input",
-          "prompt": "➍D y dA（此處符號表示二重積分）？",
-          "answers": [
-            "4.5"
-          ],
-          "explanation": "計算：3^3/6 = 4.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "交換積分順序後，外層 y 上限？",
+          "prompt": "先對 y 積分（0 到 3），結果是多少？",
           "answers": [
             "3"
           ],
-          "explanation": "計算：3 = 3。"
+          "explanation": "∫0³ 1 dy = 3。這是內層積分，結果是常數。"
+        },
+        {
+          "type": "input",
+          "prompt": "再對 x 積分（0 到 2），結果是多少？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "∫0² 3 dx = 6。區域面積 2×3 = 6，一致。"
         }
-      ]
+      ],
+      "explanation": "矩形區域的累次積分最簡單：內層積出一個常數，外層再乘上長度。結果必等於面積。"
+    },
+    {
+      "type": "input",
+      "prompt": "∬ x² dA 在 [0,1]×[0,1] 上等於多少？",
+      "answers": [
+        "1/3"
+      ],
+      "explanation": "∫0¹x²dx · ∫0¹1 dy = (1/3)·1 = 1/3。被積函數只含 x，對 y 積分得 1。"
+    },
+    {
+      "prompt": "矩形區域上，二重積分的積分順序可以交換嗎？",
+      "options": [
+        "可以，結果相同",
+        "不可以",
+        "只有被積函數為 1 時可以",
+        "只有區域為正方形時可以"
+      ],
+      "answer": 0,
+      "explanation": "矩形區域且函數連續時，交換順序不改變結果（Fubini 定理）。非矩形區域也可交換，但上下限要重新設定。"
+    },
+    {
+      "type": "input",
+      "prompt": "∬ y dA 在 [0,1]×[0,2] 上等於多少？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "對 y 積分：∫0² y dy = 2；對 x 積分得區間長度 1。乘積為 2。也可用平均值檢查：y 在 [0,2] 的平均是 1，區域面積 2，乘積為 2。"
     },
     {
       "type": "multipart",
-      "prompt": "三角區域 D：0≤x≤4, 0≤y≤x，計算質量與矩，密度為 1。",
+      "prompt": "計算 ∬ xy dA 在 [0,2]×[0,1] 上。",
       "parts": [
         {
           "type": "input",
-          "prompt": "面積 ∬D 1 dA？",
+          "prompt": "先對 x 積分（0 到 2），結果中 y 的係數是多少？",
           "answers": [
-            "8"
+            "2"
           ],
-          "explanation": "計算：4^2/2 = 8。"
+          "explanation": "∫0² xy dx = y·(4/2) = 2y，係數為 2。"
         },
         {
           "type": "input",
-          "prompt": "➍D x dA（此處符號表示二重積分）？",
+          "prompt": "再對 y 積分（0 到 1），結果是多少？",
           "answers": [
-            "21.333333333333332"
+            "1"
           ],
-          "explanation": "計算：4^3/3 = 21.333333333333332。"
-        },
-        {
-          "type": "input",
-          "prompt": "➍D y dA（此處符號表示二重積分）？",
-          "answers": [
-            "10.666666666666666"
-          ],
-          "explanation": "計算：4^3/6 = 10.666666666666666。"
-        },
-        {
-          "type": "input",
-          "prompt": "交換積分順序後，外層 y 上限？",
-          "answers": [
-            "4"
-          ],
-          "explanation": "計算：4 = 4。"
+          "explanation": "∫0¹ 2y dy = 1。區域面積 2，平均 xy 為 1/2，乘積為 1。"
         }
-      ]
-    },
-    {
-      "type": "multipart",
-      "prompt": "三角區域 D：0≤x≤5, 0≤y≤x，計算質量與矩，密度為 1。",
-      "parts": [
-        {
-          "type": "input",
-          "prompt": "面積 ∬D 1 dA？",
-          "answers": [
-            "12.5"
-          ],
-          "explanation": "計算：5^2/2 = 12.5。"
-        },
-        {
-          "type": "input",
-          "prompt": "➍D x dA（此處符號表示二重積分）？",
-          "answers": [
-            "41.666666666666664"
-          ],
-          "explanation": "計算：5^3/3 = 41.666666666666664。"
-        },
-        {
-          "type": "input",
-          "prompt": "➍D y dA（此處符號表示二重積分）？",
-          "answers": [
-            "20.833333333333332"
-          ],
-          "explanation": "計算：5^3/6 = 20.833333333333332。"
-        },
-        {
-          "type": "input",
-          "prompt": "交換積分順序後，外層 y 上限？",
-          "answers": [
-            "5"
-          ],
-          "explanation": "計算：5 = 5。"
-        }
-      ]
+      ],
+      "explanation": "可分離的被積函數在矩形上可以拆成兩個積分相乘：∫0²x dx · ∫0¹y dy = 2 · 1/2 = 1，與累次積分結果相同。"
     }
   ],
-  "passCount": 3
+  "passCount": 7
 }
