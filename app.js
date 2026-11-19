@@ -4,6 +4,16 @@ const STORAGE_KEY = 'calculus-tree-progress-v1';
 const $ = (selector) => document.querySelector(selector);
 const startNode = {id:'start',title:'Start',en:'從這裡開始',icon:'✧',x:590,y:65,parents:[]};
 const PACKS_KEY = 'calculus-tree-packs-v1';
+const LEGACY_ARCHIVE_KEY = 'calculus-tree-cis221-archive-v1';
+let legacyArchived = false;
+try {
+  const keys=[STORAGE_KEY,PACKS_KEY,'calculus-tree-session-v1'];
+  const records=Object.fromEntries(keys.map(key=>[key,localStorage.getItem(key)]));
+  if(Object.values(records).some(raw=>raw?.includes('cis221-calculus'))){
+    if(!localStorage.getItem(LEGACY_ARCHIVE_KEY))localStorage.setItem(LEGACY_ARCHIVE_KEY,JSON.stringify({schemaVersion:1,records}));
+    legacyArchived=true;
+  }
+} catch (_) { /* Keep the legacy pack visible if its archive cannot be saved. */ }
 let library = TopicPacks.loadLibrary(LEARNING_PACKS);
 let librarySnapshot = null;
 let catalogError = '';
@@ -13,7 +23,9 @@ try {
   if (librarySnapshot) {
     const saved = JSON.parse(librarySnapshot);
     if (saved.schemaVersion !== 1 || !Array.isArray(saved.packs)) throw new Error('教材儲存格式不相容。');
-    const restored = TopicPacks.loadLibrary(LEARNING_PACKS, saved.packs);
+    const needsLegacy=saved.packs.some(p=>p.topic.id!=='cis221-calculus' &&
+      (p.topic.attachTo?.startsWith('cis221-calculus.')||p.nodes.some(n=>n.parents.some(id=>id.startsWith('cis221-calculus.')))));
+    const restored = TopicPacks.loadLibrary(LEARNING_PACKS, legacyArchived&&!needsLegacy?saved.packs.filter(p=>p.topic.id!=='cis221-calculus'):saved.packs);
     lessons = TopicPacks.buildLessons(restored);
     library = restored;
   }
@@ -45,7 +57,7 @@ let completionPresentation = 0;
 
 // A+ 補強：重開後回到同一課、同一分頁，並保留作答卷。格式帶 schemaVersion 以便日後遷移。
 const SESSION_KEY = 'calculus-tree-session-v1';
-const BACKUP_KEYS = [STORAGE_KEY, PACKS_KEY, SESSION_KEY, 'skill-tree-theme',
+const BACKUP_KEYS = [STORAGE_KEY, PACKS_KEY, SESSION_KEY, LEGACY_ARCHIVE_KEY, 'skill-tree-theme',
   'calculus-tree-glow-v1', 'calculus-tree-lesson-frame-v1', 'calculus-tree-scratch-v1', 'skill-tree-language'];
 window.SkillTreeBackupKeys = BACKUP_KEYS;
 function saveSession() {
@@ -70,6 +82,13 @@ function restoreSession() {
       if (!lesson || !attempt || !attempt.answers || typeof attempt.answers !== 'object') continue;
       const answers = {};
       for (const [key, value] of Object.entries(attempt.answers)) {
+        if(lesson.quiz.some(q=>q.type)){
+          const [qi,pi]=key.split('.').map(Number),q=lesson.quiz[qi];
+          if(Array.isArray(q)&&key===String(qi)&&Number.isInteger(value)&&value>=0&&value<q[1].length)answers[key]=value;
+          if(q && typeof value==='string' && value.length<=200 &&
+            (q.type==='input'&&key===String(qi)||q.type==='multipart'&&Number.isInteger(pi)&&q.parts[pi]))answers[key]=value;
+          continue;
+        }
         const index = Number(key);
         if (Number.isInteger(index) && index >= 0 && index < lesson.quiz.length &&
             Number.isInteger(value) && value >= 0 && value < lesson.quiz[index][1].length) answers[index] = value;
@@ -79,6 +98,12 @@ function restoreSession() {
   } catch (_) {}
 }
 restoreSession();
+// A subject link from the galaxy chooses that library without discarding an existing draft.
+const requestedTopic = new URLSearchParams(location.search).get('topic');
+if(progress.started && requestedTopic && lessons.find(n=>n.id===selectedId)?.topicId!==requestedTopic){
+  const entry=lessons.find(n=>n.topicId===requestedTopic&&!isCompleted(n.id)&&isAvailable(n))||lessons.find(n=>n.topicId===requestedTopic&&isAvailable(n));
+  if(entry){selectedId=entry.id;activeTab='learn';}
+}
 
 function isCompleted(id) { return id === 'start' ? progress.started : progress.completed.includes(id); }
 function isAvailable(node) { return isCompleted(node.id) || node.parents.every(isCompleted); }
@@ -160,7 +185,7 @@ function renderTree() {
   if (justLitId) window.SkillTreeEffects?.play($('#nodes').querySelector('.node.just-lit'));
   justLitId = null;
 }
-function selectNode(id, {open = true} = {}) {
+function selectNode(id) {
   const node = allNodes.find(item => item.id === id);
   if (!node || !isAvailable(node)) {
     if (node) notify(`先完成「${node.parents.filter(parent => !isCompleted(parent)).map(parent => allNodes.find(item => item.id === parent).title).join('」與「')}」即可解鎖。`);
@@ -168,23 +193,13 @@ function selectNode(id, {open = true} = {}) {
   }
   selectedId = id;
   completionPresentation++;
-  if (open) window.LessonWorkspace?.setOpen(true);
+  window.LessonWorkspace?.setOpen(true);
   activeTab = 'learn';
-  if (open) renderTree();
-  else {
-    // Keep node elements in place between the two clicks of a double-click.
-    for (const button of $('#nodes').querySelectorAll('.node')) {
-      const selected = button.dataset.id === selectedId;
-      button.classList.toggle('selected', selected);
-      button.setAttribute('aria-pressed', String(selected));
-    }
-  }
+  renderTree();
   renderLesson();
   ($('#quiz-content') || $('#lesson-content')).scrollTop = 0;
-  if (open) {
-    focusTree();
-    if (matchMedia('(max-width:760px)').matches) $('#lesson').scrollIntoView({behavior:'smooth',block:'start'});
-  }
+  focusTree();
+  if (matchMedia('(max-width:760px)').matches) $('#lesson').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function renderWelcome() {
   const finished = progress.completed.length === lessons.length;
@@ -225,6 +240,7 @@ function answeredCount(attempt, total) {
   return count;
 }
 function renderQuiz(lesson) {
+  if(lesson.quiz.some(q=>q.type))return renderInputQuiz(lesson);
   const attempt = attempts.get(lesson.id) || {answers:{},submitted:false};
   attempts.set(lesson.id, attempt);
   const score = lesson.quiz.filter((question,index) => attempt.answers[index] === question[2]).length;
@@ -348,27 +364,34 @@ const map = $('#map');
 const pointers = new Map();
 let gesture = null;
 let suppressClick = false;
-let previousBackgroundClick = false;
-let backgroundDoubleClick = false;
+let touchTapTimer;
 function isMapBackground(target) {
   return target === map || (!!target.closest('#world') && !target.closest('button,a,input,select,textarea,[role="button"]'));
 }
-map.addEventListener('click', event => {
-  const background = event.detail > 0 && !suppressClick && isMapBackground(event.target);
-  backgroundDoubleClick = event.detail === 2 && previousBackgroundClick && background;
-  previousBackgroundClick = background;
-}, true);
-map.addEventListener('dblclick', event => {
-  if (!backgroundDoubleClick || suppressClick || !isMapBackground(event.target)) return;
-  event.preventDefault();
-  window.LessonWorkspace?.setOpen(false);
-  map.focus({preventScroll:true});
+// The tree is a pan surface, not a source for browser text/image dragging.
+map.addEventListener('dragstart', event => {
+  if (event.target.closest('#world')) event.preventDefault();
 });
+map.addEventListener('selectstart', event => {
+  if (event.target.closest('#world')) event.preventDefault();
+});
+// 單擊背景即收合學習區，手機與桌機一致；拖曳、鍵盤與浮動工具不處理。
+map.addEventListener('click', event => {
+  clearTimeout(touchTapTimer);
+  // Touch/pen activation may have detail=0; only ignore non-pointer activation.
+  if ((event.detail === 0 && !event.pointerType) || suppressClick || !isMapBackground(event.target)) return;
+  window.LessonWorkspace?.setOpen(false);
+}, true);
 map.addEventListener('pointerdown', event => {
+  clearTimeout(touchTapTimer);
+  if (event.pointerType === 'mouse' && event.button !== 0) return;
   if (event.target.closest('.map-tools')) return;
+  // Stop native text selection before it can steal the pointer gesture.
+  // Keep touch defaults governed by touch-action, and leave toolbar controls alone.
+  if (event.pointerType === 'mouse') event.preventDefault();
   pointers.set(event.pointerId, {x:event.clientX,y:event.clientY});
   if (pointers.size === 1) {
-    gesture = {x:event.clientX,y:event.clientY,startX:viewport.x,startY:viewport.y};
+    gesture = {x:event.clientX,y:event.clientY,startX:viewport.x,startY:viewport.y,background:isMapBackground(event.target),tapTarget:event.target.closest('[data-id],[data-prerequisite]')};
     suppressClick = false;
   } else if (pointers.size === 2) {
     const [a,b] = [...pointers.values()];
@@ -387,7 +410,7 @@ map.addEventListener('pointermove', event => {
   } else if (pointers.size === 1 && !gesture.distance) {
     const dx = event.clientX-gesture.x;
     const dy = event.clientY-gesture.y;
-    if (Math.hypot(dx,dy)>5) {
+    if (map.classList.contains('dragging') || Math.hypot(dx,dy)>5) {
       suppressClick = true;
       map.setPointerCapture(event.pointerId);
       map.classList.add('dragging');
@@ -398,6 +421,20 @@ map.addEventListener('pointermove', event => {
   }
 });
 function endPointer(event) {
+  if (!pointers.has(event.pointerId)) return;
+  if (event.type === 'pointercancel') suppressClick = true;
+  // A completed pan can make mobile browsers omit the next synthesized click.
+  // Let a native click win; otherwise activate only a stationary same-node tap.
+  if (event.type === 'pointerup' && event.pointerType === 'touch' && pointers.size === 1 &&
+      !suppressClick && gesture?.tapTarget && gesture.tapTarget === event.target.closest('[data-id],[data-prerequisite]')) {
+    const target=gesture.tapTarget;
+    touchTapTimer=setTimeout(()=>{if(target.isConnected && !pointers.size)target.click();},80);
+  }
+  // Close on a completed touch tap too: mobile browsers may omit click after a pan.
+  if (event.type === 'pointerup' && event.pointerType === 'touch' && pointers.size === 1 &&
+      !suppressClick && gesture?.background && isMapBackground(event.target)) {
+    window.LessonWorkspace?.setOpen(false);
+  }
   pointers.delete(event.pointerId);
   if (pointers.size === 1) {
     const [point] = pointers.values();
@@ -406,6 +443,10 @@ function endPointer(event) {
 }
 window.addEventListener('pointerup',endPointer);
 window.addEventListener('pointercancel',endPointer);
+map.addEventListener('lostpointercapture', event => {
+  // Touch transfers implicit capture from the child to the map when panning starts.
+  if (event.target === map) endPointer(event);
+});
 $('#nodes').addEventListener('click',event => {
   if (suppressClick && event.detail !== 0) return;
   const reference = event.target.closest('[data-prerequisite]');
@@ -422,14 +463,7 @@ $('#nodes').addEventListener('click',event => {
     return;
   }
   const node = event.target.closest('[data-id]');
-  if (node) selectNode(node.dataset.id, {open:event.detail === 0});
-});
-$('#nodes').addEventListener('dblclick', event => {
-  if (suppressClick) return;
-  const node = event.target.closest('.node[data-id]');
-  if (!node) return;
-  event.preventDefault();
-  selectNode(node.dataset.id);
+  if (node) selectNode(node.dataset.id);
 });
 map.addEventListener('wheel',event => {
   if (event.target.closest('.prerequisite-label')) return;
