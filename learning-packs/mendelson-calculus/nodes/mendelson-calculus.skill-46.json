@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-46",
+  "title": "46 · 多變量函數與座標",
+  "intro": "參考原書第 41 章。學習多變量函數與座標，完成10 道輸入練習。",
+  "kind": "base",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-06",
+    "mendelson-calculus.skill-45"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "定義域可能是平面區域或空間集合。等高線固定函數值；柱座標 x=r cos θ、y=r sin θ，球座標須說明角度慣例。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "f(x,y)=x²+y²，求 f(5,1)。"
+    },
+    {
+      "type": "example",
+      "text": "f(x,y)=x²+y²，求 f(5,1)。\n計算：5^2+1 = 26。"
+    },
+    {
+      "type": "paragraph",
+      "text": "f(x,y)=x²+y²，求 f(6,1)。"
+    },
+    {
+      "type": "example",
+      "text": "f(x,y)=x²+y²，求 f(6,1)。\n計算：6^2+1 = 37。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "f(x,y)=x²+y²，求 f(2,1)。",
+      "answers": [
+        "5"
+      ],
+      "explanation": "計算：2^2+1 = 5。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²+y²=4 的等高線半徑？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：sqrt(4) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "柱座標 r=2, θ=0，求 x。",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2*cos(0) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "球座標 ρ=2, φ=pi/2（φ 從正 z 軸量），求 z。",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：2*cos(pi/2) = 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x,y)=√(4-x²-y²)，求 f(0,0)。",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：sqrt(4) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x,y)=x²+y²，求 f(3,1)。",
+      "answers": [
+        "10"
+      ],
+      "explanation": "計算：3^2+1 = 10。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²+y²=9 的等高線半徑？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：sqrt(9) = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "柱座標 r=3, θ=0，求 x。",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3*cos(0) = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "球座標 ρ=3, φ=pi/2（φ 從正 z 軸量），求 z。",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：3*cos(pi/2) = 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "f(x,y)=√(9-x²-y²)，求 f(0,0)。",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：sqrt(9) = 3。"
+    }
+  ],
+  "passCount": 7
+}

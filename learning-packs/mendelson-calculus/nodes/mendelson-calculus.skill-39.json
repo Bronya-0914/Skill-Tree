@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-39",
+  "title": "39 · 極座標",
+  "intro": "參考原書第 35 章。學習極座標，完成4 道分步輸入長題。",
+  "kind": "base",
+  "minutes": 40,
+  "parents": [
+    "mendelson-calculus.skill-23",
+    "mendelson-calculus.skill-24",
+    "mendelson-calculus.skill-37"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "x=r cos θ，y=r sin θ。極座標面積為 ½∫r²dθ；弧長為 ∫√(r²+(dr/dθ)²)dθ，先確認曲線追蹤次數。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "極座標曲線 r=7，0≤θ≤pi/2。"
+    },
+    {
+      "type": "example",
+      "text": "θ=0 時 x 座標？\n計算：7*cos(0) = 7。"
+    },
+    {
+      "type": "example",
+      "text": "扇形面積除以 pi？\n計算：7^2/4 = 12.25。"
+    },
+    {
+      "type": "example",
+      "text": "弧長除以 pi？\n計算：7/2 = 3.5。"
+    },
+    {
+      "type": "paragraph",
+      "text": "極座標曲線 r=8，0≤θ≤pi/2。"
+    },
+    {
+      "type": "example",
+      "text": "θ=0 時 x 座標？\n計算：8*cos(0) = 8。"
+    },
+    {
+      "type": "example",
+      "text": "扇形面積除以 pi？\n計算：8^2/4 = 16。"
+    },
+    {
+      "type": "example",
+      "text": "弧長除以 pi？\n計算：8/2 = 4。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "multipart",
+      "prompt": "極座標曲線 r=2，0≤θ≤pi/2。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "θ=0 時 x 座標？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "計算：2*cos(0) = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "扇形面積除以 pi？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "計算：2^2/4 = 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "弧長除以 pi？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "計算：2/2 = 1。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "極座標曲線 r=3，0≤θ≤pi/2。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "θ=0 時 x 座標？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "計算：3*cos(0) = 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "扇形面積除以 pi？",
+          "answers": [
+            "2.25"
+          ],
+          "explanation": "計算：3^2/4 = 2.25。"
+        },
+        {
+          "type": "input",
+          "prompt": "弧長除以 pi？",
+          "answers": [
+            "1.5"
+          ],
+          "explanation": "計算：3/2 = 1.5。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "極座標曲線 r=4，0≤θ≤pi/2。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "θ=0 時 x 座標？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：4*cos(0) = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "扇形面積除以 pi？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：4^2/4 = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "弧長除以 pi？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "計算：4/2 = 2。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "極座標曲線 r=5，0≤θ≤pi/2。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "θ=0 時 x 座標？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "計算：5*cos(0) = 5。"
+        },
+        {
+          "type": "input",
+          "prompt": "扇形面積除以 pi？",
+          "answers": [
+            "6.25"
+          ],
+          "explanation": "計算：5^2/4 = 6.25。"
+        },
+        {
+          "type": "input",
+          "prompt": "弧長除以 pi？",
+          "answers": [
+            "2.5"
+          ],
+          "explanation": "計算：5/2 = 2.5。"
+        }
+      ]
+    }
+  ],
+  "passCount": 3
+}

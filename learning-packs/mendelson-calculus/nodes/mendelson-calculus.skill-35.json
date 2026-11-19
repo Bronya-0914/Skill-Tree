@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-35",
+  "title": "35 · 功與形心",
+  "intro": "參考原書第 31 章。學習功與形心，完成4 道分步輸入長題。",
+  "kind": "integral",
+  "minutes": 40,
+  "parents": [
+    "mendelson-calculus.skill-23",
+    "mendelson-calculus.skill-31"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "功是 ∫F dx。平面均勻薄片的形心是一次矩除以面積；先描述區域與密度，再建立積分。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "均勻三角薄片由 y=x、y=0、x=7 圍成，密度為 1。"
+    },
+    {
+      "type": "example",
+      "text": "面積？\n計算：7^2/2 = 24.5。"
+    },
+    {
+      "type": "example",
+      "text": "形心 x 座標？\n計算：(7^3/3)/(7^2/2) = 4.666666666666667。"
+    },
+    {
+      "type": "example",
+      "text": "形心 y 座標？\n計算：(7^3/6)/(7^2/2) = 2.3333333333333335。"
+    },
+    {
+      "type": "example",
+      "text": "另有彈簧 F(x)=7x，從 0 拉到 2 所做的功？\n計算：7*2^2/2 = 14。"
+    },
+    {
+      "type": "paragraph",
+      "text": "均勻三角薄片由 y=x、y=0、x=8 圍成，密度為 1。"
+    },
+    {
+      "type": "example",
+      "text": "面積？\n計算：8^2/2 = 32。"
+    },
+    {
+      "type": "example",
+      "text": "形心 x 座標？\n計算：(8^3/3)/(8^2/2) = 5.333333333333333。"
+    },
+    {
+      "type": "example",
+      "text": "形心 y 座標？\n計算：(8^3/6)/(8^2/2) = 2.6666666666666665。"
+    },
+    {
+      "type": "example",
+      "text": "另有彈簧 F(x)=8x，從 0 拉到 2 所做的功？\n計算：8*2^2/2 = 16。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "multipart",
+      "prompt": "均勻三角薄片由 y=x、y=0、x=2 圍成，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "面積？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "計算：2^2/2 = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 x 座標？",
+          "answers": [
+            "1.3333333333333333"
+          ],
+          "explanation": "計算：(2^3/3)/(2^2/2) = 1.3333333333333333。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 y 座標？",
+          "answers": [
+            "0.6666666666666666"
+          ],
+          "explanation": "計算：(2^3/6)/(2^2/2) = 0.6666666666666666。"
+        },
+        {
+          "type": "input",
+          "prompt": "另有彈簧 F(x)=2x，從 0 拉到 2 所做的功？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：2*2^2/2 = 4。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "均勻三角薄片由 y=x、y=0、x=3 圍成，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "面積？",
+          "answers": [
+            "4.5"
+          ],
+          "explanation": "計算：3^2/2 = 4.5。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 x 座標？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "計算：(3^3/3)/(3^2/2) = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 y 座標？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "計算：(3^3/6)/(3^2/2) = 1。"
+        },
+        {
+          "type": "input",
+          "prompt": "另有彈簧 F(x)=3x，從 0 拉到 2 所做的功？",
+          "answers": [
+            "6"
+          ],
+          "explanation": "計算：3*2^2/2 = 6。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "均勻三角薄片由 y=x、y=0、x=4 圍成，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "面積？",
+          "answers": [
+            "8"
+          ],
+          "explanation": "計算：4^2/2 = 8。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 x 座標？",
+          "answers": [
+            "2.6666666666666665"
+          ],
+          "explanation": "計算：(4^3/3)/(4^2/2) = 2.6666666666666665。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 y 座標？",
+          "answers": [
+            "1.3333333333333333"
+          ],
+          "explanation": "計算：(4^3/6)/(4^2/2) = 1.3333333333333333。"
+        },
+        {
+          "type": "input",
+          "prompt": "另有彈簧 F(x)=4x，從 0 拉到 2 所做的功？",
+          "answers": [
+            "8"
+          ],
+          "explanation": "計算：4*2^2/2 = 8。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "均勻三角薄片由 y=x、y=0、x=5 圍成，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "面積？",
+          "answers": [
+            "12.5"
+          ],
+          "explanation": "計算：5^2/2 = 12.5。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 x 座標？",
+          "answers": [
+            "3.3333333333333335"
+          ],
+          "explanation": "計算：(5^3/3)/(5^2/2) = 3.3333333333333335。"
+        },
+        {
+          "type": "input",
+          "prompt": "形心 y 座標？",
+          "answers": [
+            "1.6666666666666667"
+          ],
+          "explanation": "計算：(5^3/6)/(5^2/2) = 1.6666666666666667。"
+        },
+        {
+          "type": "input",
+          "prompt": "另有彈簧 F(x)=5x，從 0 拉到 2 所做的功？",
+          "answers": [
+            "10"
+          ],
+          "explanation": "計算：5*2^2/2 = 10。"
+        }
+      ]
+    }
+  ],
+  "passCount": 3
+}
