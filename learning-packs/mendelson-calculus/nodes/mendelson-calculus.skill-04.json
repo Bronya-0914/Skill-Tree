@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-04",
+  "title": "04 · 圓與配方",
+  "intro": "參考原書第 4 章。學習圓與配方，完成10 道輸入練習。",
+  "kind": "base",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-03"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "圓的標準式為 (x-a)²+(y-b)²=r²。配方時兩邊要補上相同常數；半徑是 r² 的非負平方根。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "(x-5)²+(y+1)²=25 的圓心 x？"
+    },
+    {
+      "type": "example",
+      "text": "(x-5)²+(y+1)²=25 的圓心 x？\n計算：5 = 5。"
+    },
+    {
+      "type": "paragraph",
+      "text": "(x-6)²+(y+1)²=25 的圓心 x？"
+    },
+    {
+      "type": "example",
+      "text": "(x-6)²+(y+1)²=25 的圓心 x？\n計算：6 = 6。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "(x-2)²+(y+1)²=25 的圓心 x？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²+y²=4 的半徑？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：sqrt(4) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²-4x+y²=0 的圓心 x？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：4/2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "圓心 (0,0)，通過 (6,8)，半徑？",
+      "answers": [
+        "10"
+      ],
+      "explanation": "計算：sqrt(36+64) = 10。"
+    },
+    {
+      "type": "input",
+      "prompt": "(x+2)²+(y-2)²=9 的圓心 y？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2 = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "(x-3)²+(y+1)²=25 的圓心 x？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²+y²=9 的半徑？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：sqrt(9) = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "x²-6x+y²=0 的圓心 x？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：6/2 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "圓心 (0,0)，通過 (9,12)，半徑？",
+      "answers": [
+        "15"
+      ],
+      "explanation": "計算：sqrt(81+144) = 15。"
+    },
+    {
+      "type": "input",
+      "prompt": "(x+2)²+(y-3)²=9 的圓心 y？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3 = 3。"
+    }
+  ],
+  "passCount": 7
+}

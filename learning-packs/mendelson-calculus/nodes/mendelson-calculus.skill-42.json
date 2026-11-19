@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-42",
+  "title": "42 · 收斂判別與誤差",
+  "intro": "參考原書第 37 章。學習收斂判別與誤差，完成4 道分步輸入長題。",
+  "kind": "base",
+  "minutes": 40,
+  "parents": [
+    "mendelson-calculus.skill-41"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "按題型選比較、積分、比值或根值判別；比值極限等於 1 時無結論。交錯級數遞減趨零時，餘項不超過首個省略項。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "用前 9 項近似交錯級數 Σ(n=1→∞)(-1)^(n+1)/n。判別題輸入 1 表示是、0 表示否。"
+    },
+    {
+      "type": "example",
+      "text": "此級數是否收斂？\n1/n 遞減趨零，所以交錯級數收斂。"
+    },
+    {
+      "type": "example",
+      "text": "是否絕對收斂？\n絕對值級數為調和級數，發散。"
+    },
+    {
+      "type": "example",
+      "text": "此近似的交錯餘項上界？\n計算：1/10 = 0.1。"
+    },
+    {
+      "type": "paragraph",
+      "text": "用前 10 項近似交錯級數 Σ(n=1→∞)(-1)^(n+1)/n。判別題輸入 1 表示是、0 表示否。"
+    },
+    {
+      "type": "example",
+      "text": "此級數是否收斂？\n1/n 遞減趨零，所以交錯級數收斂。"
+    },
+    {
+      "type": "example",
+      "text": "是否絕對收斂？\n絕對值級數為調和級數，發散。"
+    },
+    {
+      "type": "example",
+      "text": "此近似的交錯餘項上界？\n計算：1/11 = 0.09090909090909091。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "multipart",
+      "prompt": "用前 4 項近似交錯級數 Σ(n=1→∞)(-1)^(n+1)/n。判別題輸入 1 表示是、0 表示否。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "此級數是否收斂？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "1/n 遞減趨零，所以交錯級數收斂。"
+        },
+        {
+          "type": "input",
+          "prompt": "是否絕對收斂？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "絕對值級數為調和級數，發散。"
+        },
+        {
+          "type": "input",
+          "prompt": "此近似的交錯餘項上界？",
+          "answers": [
+            "0.2"
+          ],
+          "explanation": "計算：1/5 = 0.2。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "用前 5 項近似交錯級數 Σ(n=1→∞)(-1)^(n+1)/n。判別題輸入 1 表示是、0 表示否。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "此級數是否收斂？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "1/n 遞減趨零，所以交錯級數收斂。"
+        },
+        {
+          "type": "input",
+          "prompt": "是否絕對收斂？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "絕對值級數為調和級數，發散。"
+        },
+        {
+          "type": "input",
+          "prompt": "此近似的交錯餘項上界？",
+          "answers": [
+            "0.16666666666666666"
+          ],
+          "explanation": "計算：1/6 = 0.16666666666666666。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "用前 6 項近似交錯級數 Σ(n=1→∞)(-1)^(n+1)/n。判別題輸入 1 表示是、0 表示否。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "此級數是否收斂？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "1/n 遞減趨零，所以交錯級數收斂。"
+        },
+        {
+          "type": "input",
+          "prompt": "是否絕對收斂？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "絕對值級數為調和級數，發散。"
+        },
+        {
+          "type": "input",
+          "prompt": "此近似的交錯餘項上界？",
+          "answers": [
+            "0.14285714285714285"
+          ],
+          "explanation": "計算：1/7 = 0.14285714285714285。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "用前 7 項近似交錯級數 Σ(n=1→∞)(-1)^(n+1)/n。判別題輸入 1 表示是、0 表示否。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "此級數是否收斂？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "1/n 遞減趨零，所以交錯級數收斂。"
+        },
+        {
+          "type": "input",
+          "prompt": "是否絕對收斂？",
+          "answers": [
+            "0"
+          ],
+          "explanation": "絕對值級數為調和級數，發散。"
+        },
+        {
+          "type": "input",
+          "prompt": "此近似的交錯餘項上界？",
+          "answers": [
+            "0.125"
+          ],
+          "explanation": "計算：1/8 = 0.125。"
+        }
+      ]
+    }
+  ],
+  "passCount": 3
+}

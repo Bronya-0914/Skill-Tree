@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-21",
+  "title": "21 · 原函數與初值",
+  "intro": "參考原書第 19 章。學習原函數與初值，完成10 道輸入練習。",
+  "kind": "integral",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-12"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "積分逆轉求導。冪次積分增加指數再除新指數，但 x⁻¹ 例外；不定積分保留 C，用初始條件求 C。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "F′(x)=5x，F(0)=1，求 F(2)。"
+    },
+    {
+      "type": "example",
+      "text": "F′(x)=5x，F(0)=1，求 F(2)。\n計算：5*4/2+1 = 11。"
+    },
+    {
+      "type": "paragraph",
+      "text": "F′(x)=6x，F(0)=1，求 F(2)。"
+    },
+    {
+      "type": "example",
+      "text": "F′(x)=6x，F(0)=1，求 F(2)。\n計算：6*4/2+1 = 13。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "F′(x)=2x，F(0)=1，求 F(2)。",
+      "answers": [
+        "5"
+      ],
+      "explanation": "計算：2*4/2+1 = 5。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫x^2 dx 中 x^3 的係數？",
+      "answers": [
+        "0.3333333333333333"
+      ],
+      "explanation": "計算：1/3 = 0.3333333333333333。"
+    },
+    {
+      "type": "input",
+      "prompt": "F′(x)=2，F(1)=0，求 F(3)。",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：2*(3-1) = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "F′(x)=cos x，F(0)=2，求 F(pi/2)。",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：1+2 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "F′(x)=2x+2，F(0)=0，求 F(1)。",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：1+2 = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "F′(x)=3x，F(0)=1，求 F(2)。",
+      "answers": [
+        "7"
+      ],
+      "explanation": "計算：3*4/2+1 = 7。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫x^3 dx 中 x^4 的係數？",
+      "answers": [
+        "0.25"
+      ],
+      "explanation": "計算：1/4 = 0.25。"
+    },
+    {
+      "type": "input",
+      "prompt": "F′(x)=3，F(1)=0，求 F(3)。",
+      "answers": [
+        "6"
+      ],
+      "explanation": "計算：3*(3-1) = 6。"
+    },
+    {
+      "type": "input",
+      "prompt": "F′(x)=cos x，F(0)=3，求 F(pi/2)。",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：1+3 = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "F′(x)=2x+3，F(0)=0，求 F(1)。",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：1+3 = 4。"
+    }
+  ],
+  "passCount": 7
+}

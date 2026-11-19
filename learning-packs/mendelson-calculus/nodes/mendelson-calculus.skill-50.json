@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-50",
+  "title": "50 · 多重積分與座標變換",
+  "intro": "參考原書第 44 章。學習多重積分與座標變換，完成4 道分步輸入長題。",
+  "kind": "base",
+  "minutes": 40,
+  "parents": [
+    "mendelson-calculus.skill-25",
+    "mendelson-calculus.skill-49"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "柱座標體積元素是 r dr dθ dz，球座標是 ρ² sin φ dρ dφ dθ。Jacobian 不能漏掉，積分上下限須描述同一區域。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "實心圓柱：0≤r≤7, 0≤θ≤2pi, 0≤z≤2，密度為 1。"
+    },
+    {
+      "type": "example",
+      "text": "在 r=7 的柱座標 Jacobian？\n計算：7 = 7。"
+    },
+    {
+      "type": "example",
+      "text": "體積除以 pi？\n計算：2*7^2 = 98。"
+    },
+    {
+      "type": "example",
+      "text": "∭z dV 除以 pi？\n計算：7^2*2^2/2 = 98。"
+    },
+    {
+      "type": "example",
+      "text": "質心 z 座標？\n計算：2/2 = 1。"
+    },
+    {
+      "type": "paragraph",
+      "text": "實心圓柱：0≤r≤8, 0≤θ≤2pi, 0≤z≤2，密度為 1。"
+    },
+    {
+      "type": "example",
+      "text": "在 r=8 的柱座標 Jacobian？\n計算：8 = 8。"
+    },
+    {
+      "type": "example",
+      "text": "體積除以 pi？\n計算：2*8^2 = 128。"
+    },
+    {
+      "type": "example",
+      "text": "∭z dV 除以 pi？\n計算：8^2*2^2/2 = 128。"
+    },
+    {
+      "type": "example",
+      "text": "質心 z 座標？\n計算：2/2 = 1。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "multipart",
+      "prompt": "實心圓柱：0≤r≤2, 0≤θ≤2pi, 0≤z≤2，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 r=2 的柱座標 Jacobian？",
+          "answers": [
+            "2"
+          ],
+          "explanation": "計算：2 = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "8"
+          ],
+          "explanation": "計算：2*2^2 = 8。"
+        },
+        {
+          "type": "input",
+          "prompt": "∭z dV 除以 pi？",
+          "answers": [
+            "8"
+          ],
+          "explanation": "計算：2^2*2^2/2 = 8。"
+        },
+        {
+          "type": "input",
+          "prompt": "質心 z 座標？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "計算：2/2 = 1。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "實心圓柱：0≤r≤3, 0≤θ≤2pi, 0≤z≤2，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 r=3 的柱座標 Jacobian？",
+          "answers": [
+            "3"
+          ],
+          "explanation": "計算：3 = 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "18"
+          ],
+          "explanation": "計算：2*3^2 = 18。"
+        },
+        {
+          "type": "input",
+          "prompt": "∭z dV 除以 pi？",
+          "answers": [
+            "18"
+          ],
+          "explanation": "計算：3^2*2^2/2 = 18。"
+        },
+        {
+          "type": "input",
+          "prompt": "質心 z 座標？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "計算：2/2 = 1。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "實心圓柱：0≤r≤4, 0≤θ≤2pi, 0≤z≤2，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 r=4 的柱座標 Jacobian？",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：4 = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "32"
+          ],
+          "explanation": "計算：2*4^2 = 32。"
+        },
+        {
+          "type": "input",
+          "prompt": "∭z dV 除以 pi？",
+          "answers": [
+            "32"
+          ],
+          "explanation": "計算：4^2*2^2/2 = 32。"
+        },
+        {
+          "type": "input",
+          "prompt": "質心 z 座標？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "計算：2/2 = 1。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "實心圓柱：0≤r≤5, 0≤θ≤2pi, 0≤z≤2，密度為 1。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "在 r=5 的柱座標 Jacobian？",
+          "answers": [
+            "5"
+          ],
+          "explanation": "計算：5 = 5。"
+        },
+        {
+          "type": "input",
+          "prompt": "體積除以 pi？",
+          "answers": [
+            "50"
+          ],
+          "explanation": "計算：2*5^2 = 50。"
+        },
+        {
+          "type": "input",
+          "prompt": "∭z dV 除以 pi？",
+          "answers": [
+            "50"
+          ],
+          "explanation": "計算：5^2*2^2/2 = 50。"
+        },
+        {
+          "type": "input",
+          "prompt": "質心 z 座標？",
+          "answers": [
+            "1"
+          ],
+          "explanation": "計算：2/2 = 1。"
+        }
+      ]
+    }
+  ],
+  "passCount": 3
+}

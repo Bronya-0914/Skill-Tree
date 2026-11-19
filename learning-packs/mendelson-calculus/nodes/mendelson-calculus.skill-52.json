@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-52",
+  "title": "52 · 微分方程與初值",
+  "intro": "參考原書第 46 章。學習微分方程與初值，完成4 道分步輸入長題。",
+  "kind": "base",
+  "minutes": 40,
+  "parents": [
+    "mendelson-calculus.skill-29",
+    "mendelson-calculus.skill-31",
+    "mendelson-calculus.skill-33"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "先辨認可分離、一階線性或常係數等形式。求通解後代入初值，再把答案微分代回方程檢查；除以未知函數前留意零解。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "求解 y′=2xy，y(0)=7，並驗證數值。"
+    },
+    {
+      "type": "example",
+      "text": "ln|y|=x²+C 中的 C？\n計算：ln(7) = 1.9459101490553132。"
+    },
+    {
+      "type": "example",
+      "text": "求 y(1)/e。\n計算：7*exp(1)/exp(1) = 7。"
+    },
+    {
+      "type": "example",
+      "text": "求 y′(1)/e。\n計算：2*1*7 = 14。"
+    },
+    {
+      "type": "example",
+      "text": "求 y″(0)。\n計算：2*7+0 = 14。"
+    },
+    {
+      "type": "paragraph",
+      "text": "求解 y′=2xy，y(0)=8，並驗證數值。"
+    },
+    {
+      "type": "example",
+      "text": "ln|y|=x²+C 中的 C？\n計算：ln(8) = 2.0794415416798357。"
+    },
+    {
+      "type": "example",
+      "text": "求 y(1)/e。\n計算：8*exp(1)/exp(1) = 8。"
+    },
+    {
+      "type": "example",
+      "text": "求 y′(1)/e。\n計算：2*1*8 = 16。"
+    },
+    {
+      "type": "example",
+      "text": "求 y″(0)。\n計算：2*8+0 = 16。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "multipart",
+      "prompt": "求解 y′=2xy，y(0)=2，並驗證數值。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "ln|y|=x²+C 中的 C？",
+          "answers": [
+            "0.6931471805599453"
+          ],
+          "explanation": "計算：ln(2) = 0.6931471805599453。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y(1)/e。",
+          "answers": [
+            "2"
+          ],
+          "explanation": "計算：2*exp(1)/exp(1) = 2。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y′(1)/e。",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：2*1*2 = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y″(0)。",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：2*2+0 = 4。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "求解 y′=2xy，y(0)=3，並驗證數值。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "ln|y|=x²+C 中的 C？",
+          "answers": [
+            "1.0986122886681096"
+          ],
+          "explanation": "計算：ln(3) = 1.0986122886681096。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y(1)/e。",
+          "answers": [
+            "3"
+          ],
+          "explanation": "計算：3*exp(1)/exp(1) = 3。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y′(1)/e。",
+          "answers": [
+            "6"
+          ],
+          "explanation": "計算：2*1*3 = 6。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y″(0)。",
+          "answers": [
+            "6"
+          ],
+          "explanation": "計算：2*3+0 = 6。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "求解 y′=2xy，y(0)=4，並驗證數值。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "ln|y|=x²+C 中的 C？",
+          "answers": [
+            "1.3862943611198906"
+          ],
+          "explanation": "計算：ln(4) = 1.3862943611198906。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y(1)/e。",
+          "answers": [
+            "4"
+          ],
+          "explanation": "計算：4*exp(1)/exp(1) = 4。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y′(1)/e。",
+          "answers": [
+            "8"
+          ],
+          "explanation": "計算：2*1*4 = 8。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y″(0)。",
+          "answers": [
+            "8"
+          ],
+          "explanation": "計算：2*4+0 = 8。"
+        }
+      ]
+    },
+    {
+      "type": "multipart",
+      "prompt": "求解 y′=2xy，y(0)=5，並驗證數值。",
+      "parts": [
+        {
+          "type": "input",
+          "prompt": "ln|y|=x²+C 中的 C？",
+          "answers": [
+            "1.6094379124341003"
+          ],
+          "explanation": "計算：ln(5) = 1.6094379124341003。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y(1)/e。",
+          "answers": [
+            "5"
+          ],
+          "explanation": "計算：5*exp(1)/exp(1) = 5。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y′(1)/e。",
+          "answers": [
+            "10"
+          ],
+          "explanation": "計算：2*1*5 = 10。"
+        },
+        {
+          "type": "input",
+          "prompt": "求 y″(0)。",
+          "answers": [
+            "10"
+          ],
+          "explanation": "計算：2*5+0 = 10。"
+        }
+      ]
+    }
+  ],
+  "passCount": 3
+}

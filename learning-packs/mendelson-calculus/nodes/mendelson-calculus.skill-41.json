@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-41",
+  "title": "41 · 無窮級數",
+  "intro": "參考原書第 37 章。學習無窮級數，完成10 道輸入練習。",
+  "kind": "base",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-36",
+    "mendelson-calculus.skill-40"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "級數的和是部分和數列的極限。幾何級數 |r|<1 時和為 a/(1-r)；若通項不趨零，級數必發散。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "Σ(n=0→∞) 5(1/2)^n？"
+    },
+    {
+      "type": "example",
+      "text": "Σ(n=0→∞) 5(1/2)^n？\n計算：5/(1-1/2) = 10。"
+    },
+    {
+      "type": "paragraph",
+      "text": "Σ(n=0→∞) 6(1/2)^n？"
+    },
+    {
+      "type": "example",
+      "text": "Σ(n=0→∞) 6(1/2)^n？\n計算：6/(1-1/2) = 12。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "Σ(n=0→∞) 2(1/2)^n？",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：2/(1-1/2) = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=1→∞) 2/(n(n+1))？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2*(1-0) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "1+1/2+...+(1/2)^1？",
+      "answers": [
+        "1.5"
+      ],
+      "explanation": "計算：(1-(1/2)^2)/(1-1/2) = 1.5。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=0→∞) 2(-1/2)^n？",
+      "answers": [
+        "1.3333333333333333"
+      ],
+      "explanation": "計算：2/(1+1/2) = 1.3333333333333333。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=1→∞) (1/2)^n？",
+      "answers": [
+        "1"
+      ],
+      "explanation": "計算：1/(2-1) = 1。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=0→∞) 3(1/2)^n？",
+      "answers": [
+        "6"
+      ],
+      "explanation": "計算：3/(1-1/2) = 6。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=1→∞) 3/(n(n+1))？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3*(1-0) = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "1+1/2+...+(1/2)^2？",
+      "answers": [
+        "1.75"
+      ],
+      "explanation": "計算：(1-(1/2)^3)/(1-1/2) = 1.75。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=0→∞) 3(-1/2)^n？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：3/(1+1/2) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "Σ(n=1→∞) (1/3)^n？",
+      "answers": [
+        "0.5"
+      ],
+      "explanation": "計算：1/(3-1) = 0.5。"
+    }
+  ],
+  "passCount": 7
+}

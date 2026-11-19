@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus.skill-22",
+  "title": "22 · 定積分與基本定理",
+  "intro": "參考原書第 20 章。學習定積分與基本定理，完成10 道輸入練習。",
+  "kind": "integral",
+  "minutes": 20,
+  "parents": [
+    "mendelson-calculus.skill-08",
+    "mendelson-calculus.skill-21"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "text": "先用白話理解"
+    },
+    {
+      "type": "paragraph",
+      "text": "定積分累積帶正負的量。若 F′=f，則 ∫ₐᵇf=F(b)-F(a)。變上限積分求導要乘上限的導數。"
+    },
+    {
+      "type": "tip",
+      "text": "先辨認已知量與所求量；檢查公式適用條件，再列式、計算並核對結果。"
+    },
+    {
+      "type": "heading",
+      "text": "逐步例題"
+    },
+    {
+      "type": "paragraph",
+      "text": "∫₀^5 2x dx？"
+    },
+    {
+      "type": "example",
+      "text": "∫₀^5 2x dx？\n計算：5^2 = 25。"
+    },
+    {
+      "type": "paragraph",
+      "text": "∫₀^6 2x dx？"
+    },
+    {
+      "type": "example",
+      "text": "∫₀^6 2x dx？\n計算：6^2 = 36。"
+    },
+    {
+      "type": "tip",
+      "text": "作答只填數值，不填單位。分數用 /，乘法用 *，次方用 ^；需要近似時可保留至少 10 位小數。"
+    }
+  ],
+  "questions": [
+    {
+      "type": "input",
+      "prompt": "∫₀^2 2x dx？",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：2^2 = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫₀¹ 2 dx？",
+      "answers": [
+        "2"
+      ],
+      "explanation": "計算：2*(1-0) = 2。"
+    },
+    {
+      "type": "input",
+      "prompt": "F(x)=∫₀ˣ t² dt，求 F′(2)。",
+      "answers": [
+        "4"
+      ],
+      "explanation": "計算：2^2 = 4。"
+    },
+    {
+      "type": "input",
+      "prompt": "F(x)=∫₀^(x²) t dt，求 F′(2)。",
+      "answers": [
+        "16"
+      ],
+      "explanation": "計算：2^2*2*2 = 16。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫_(-2)^2 x³ dx？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：0 (odd symmetry) = 0。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫₀^3 2x dx？",
+      "answers": [
+        "9"
+      ],
+      "explanation": "計算：3^2 = 9。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫₀¹ 3 dx？",
+      "answers": [
+        "3"
+      ],
+      "explanation": "計算：3*(1-0) = 3。"
+    },
+    {
+      "type": "input",
+      "prompt": "F(x)=∫₀ˣ t² dt，求 F′(3)。",
+      "answers": [
+        "9"
+      ],
+      "explanation": "計算：3^2 = 9。"
+    },
+    {
+      "type": "input",
+      "prompt": "F(x)=∫₀^(x²) t dt，求 F′(3)。",
+      "answers": [
+        "54"
+      ],
+      "explanation": "計算：3^2*2*3 = 54。"
+    },
+    {
+      "type": "input",
+      "prompt": "∫_(-3)^3 x³ dx？",
+      "answers": [
+        "0"
+      ],
+      "explanation": "計算：0 (odd symmetry) = 0。"
+    }
+  ],
+  "passCount": 7
+}
