@@ -48,6 +48,17 @@ const TopicPacks = (() => {
       });
       requireValue(Array.isArray(raw.questions) && raw.questions.length > 0 && raw.questions.length <= 20, `${id} 需要 1–20 題練習。`);
       const questions = raw.questions.map(question => {
+        function inputQuestion(item) {
+          requireValue(item && Array.isArray(item.answers) && item.answers.length>0 && item.answers.length<=8, `${id} 輸入題需要答案。`);
+          const result={type:'input',prompt:text(item.prompt,'題目',1000),answers:item.answers.map(a=>text(a,'答案',200)),explanation:text(item.explanation,'答案解析')};
+          if(item.tolerance!==undefined){requireValue(Number.isFinite(item.tolerance)&&item.tolerance>0&&item.tolerance<=0.01,'答案容差無效。');result.tolerance=item.tolerance;}
+          return result;
+        }
+        if(question?.type==='input')return inputQuestion(question);
+        if(question?.type==='multipart'){
+          requireValue(Array.isArray(question.parts)&&question.parts.length>=2&&question.parts.length<=8,`${id} 長題需要 2–8 個小問。`);
+          return {type:'multipart',prompt:text(question.prompt,'長題',2000),parts:question.parts.map(inputQuestion)};
+        }
         requireValue(question && Array.isArray(question.options) && question.options.length >= 2 && question.options.length <= 6, `${id} 每題需要 2–6 個選項。`);
         const options = question.options.map(option => text(option, '選項', 500));
         requireValue(new Set(options).size === options.length, `${id} 的題目包含重複選項。`);
@@ -91,7 +102,7 @@ const TopicPacks = (() => {
       topicId:topic.id,topicTitle:escape(topic.title),icon:node.kind === 'integral' ? '∫' : '◇',
       minutes:node.minutes,parents:node.parents.length ? node.parents : [topic.attachTo],
       body:blocks,passCount:node.passCount,
-      quiz:node.questions.map(q => [escape(q.prompt),q.options.map(escape),q.answer,escape(q.explanation)])};
+      quiz:node.questions.map(q => q.type ? q : [escape(q.prompt),q.options.map(escape),q.answer,escape(q.explanation)])};
   }
   function buildLessons(packs) {
     requireValue(Array.isArray(packs) && packs.length <= 30, '最多可儲存 30 個主題。');

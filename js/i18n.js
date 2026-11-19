@@ -6,6 +6,7 @@ window.SkillTreeI18n = (() => {
   const KEY = 'skill-tree-language';
   const messages = window.SkillTreeEnglish;
   const templates = [
+    ['通過題數：{0} / {1}', 'Required correct problems: {0} / {1}'],
     ['無法載入已存教材。請保留備份並重新整理後再試。{0}', 'Unable to load saved content. Keep a backup, then reload and try again. {0}'],
     ['飽和度 {0}% · 亮度 {1}%', 'Saturation {0}% · Brightness {1}%'],
     ['已作答 {0} / {1} 題 · 可以交卷了', '{0} / {1} answered · Ready to submit'],
@@ -66,7 +67,7 @@ window.SkillTreeI18n = (() => {
       const match = text.match(pattern);
       if (match) return target.replace(/\{(\d+)\}/g, (_, index) => english(match[Number(index)+1],depth+1));
     }
-    const numbered = text.match(/^(\d+\.\s*)(.+)$/s);
+    const numbered = text.match(/^((?:\d+\.|\(\d+\))\s*)(.+)$/s);
     if (numbered) return numbered[1]+english(numbered[2],depth+1);
     // Compound labels use the same catalog titles and status strings as visible text.
     for (const separator of ['」與「','，','、']) {
