@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "mendelson-calculus",
+  "title": "3000 Solved Problems in Calculus · 全書技能路線",
+  "version": 1,
+  "description": "依全書 46 章重新設計 52 個節點，包含數值輸入題與分步長題。",
+  "attachTo": "start"
+}
